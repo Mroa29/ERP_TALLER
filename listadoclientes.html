@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ERP Taller 3 | Inicio</title>
+  <title>ERP Taller 3 | Listado Clientes</title>
   <!-- Jocsan -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -555,204 +555,518 @@
   <div class="content-wrapper">
     <br>
     <!-- Content Header (Page header) -->
-    <div class="container">
-        <div class="card bg-dark">
-          <div class="card-body">
-            <h2 class="m-0 bi-person-fill-add nav-icon card-header bg-secondary text-whiter text-center">Nuevo Cliente</h2>
-            <br>
-            <!--<div class="bg-light border"></div>-->
-            <br>
-            <form>
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="rut">RUT</label>
-                  <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente">
+
+    <div class="container my-2">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Búsqueda Avanzada</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
                 </div>
-                <div class="form-group col-md-4">
-                  <label for="N°Cliente">N°Cliente</label>
-                  <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
+                <div class="form-group">
+                  <label for="apellido">Razon social</label>
+                  <input type="text" class="form-control" id="rsocial" placeholder="Ingrese el apellido">
                 </div>
-                <div class="form-group col-md-4">
-                  <label for="country">Tipo de Cliente</label>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
+                </div>
+                <div class="form-group">
+                  <label for="ciudad">Telefono movil</label>
+                  <input type="text" class="form-control" id="movil" placeholder="Ingrese la ciudad">
+                </div>
+                <div class="form-group">
+                  <label for="pais">Tipo de cliente</label>
                   <select class="form-control" id="tipoclient">
-                    <option>Particular</option>
-                    <option>Empresa</option>
-                    <option>Independiente</option>
+                    <option value="">Seleccione un tipo</option>
+                    <option value="empr">Empresa</option>
+                    <option value="par">Particular</option>
+                    <option value="ind">Independiente</option>
+                    <option value="sindef">Sin definir</option>
                   </select>
                 </div>
-              </div>
-              <div class = "form-row">
-                <div class="form-group col-md-6">
-                  <label for="name">Nombre</label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del Cliente">
+                <div class="form-group">
+                  <label for="ciudad">Patente asociada</label>
+                  <input type="number" class="form-control" id="Patente" placeholder="Ingrese Patente • Ejemplo AA1122 • BBCC11">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="razonsocial">Razon social</label>
-                  <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                </div>
-    
-              </div>
-              
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="f-apellido">Primer Apellido</label>
-                  <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="s-apellido">Segundo Apellido</label>
-                  <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="phone">Teléfono Fijo</label>
-                  <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                </div>
-                <div class="form-group col-md-4">
-                  
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="movil">Teléfono Móvil</label>
-                  <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="address">Dirección</label>
-                <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="zipCode">Código Postal</label>
-                  <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="city">Ciudad</label>
-                  <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="country">País</label>
-                  <select class="form-control" id="country">
-                    <option>Chile</option>
-                    <option>Argentina</option>
-                    <option>Perú</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
-              </div>
-              <div class="form-group">
-                <label for="observations">Observaciones</label>
-                <textarea class="form-control" id="observations" rows="3"></textarea>
-              </div>
-              <h4 class="m-0 card-header bg-secondary text-whiter text-center">Otros Datos del Cliente</h4>
                 <br>
-                <div class="bg-light border"></div>
-                <br>
-              <br>
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="tipoTarifa">Tipo de Tarifa</label>
-                    <select class="form-control" id="tipoTarifa">
-                      <option>Tarifa 1 - 0.5 Hora</option>
-                      <!-- Agrega más opciones según sea necesario -->
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="grupoFacturacion">Grupo de Facturación</label>
-                    <select class="form-control" id="grupoFacturacion">
-                      <option>Opción 1</option>
-                      <!-- Agrega más opciones según sea necesario -->
-                    </select>
-                  </div>
-                </div>
-                
-              </div>
-              
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="descuentoPlazas">Desc. en Plazas</label>
-                    <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="descuentoManoObra">Desc. Mano Obra</label>
-                    <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="descuentoGral">Descuento gral</label>
-                    <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                  </div>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="formaPago">Forma Pago</label>
-                    <select class="form-control" id="formaPago">
-                      <option>Opción 1</option>
-                      <!-- Agrega más opciones según sea necesario -->
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="condicionesPago">Condiciones Pago</label>
-                    <select class="form-control" id="condicionesPago">
-                      <option>Sin Definir</option>
-                      <!-- Agrega más opciones según sea necesario -->
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                    <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                  </div>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="cuentaContable">Cuenta Contable</label>
-                    <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="comoNosConocio">Cómo nos conoció</label>
-                    <select class="form-control" id="comoNosConocio">
-                      <option>- sin definir -</option>
-                      <!-- Agrega más opciones según sea necesario -->
-                    </select>
-                  </div>
-                </div>
-              </div>
-            
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-primary mr-2 btn-block">Agregar</button>
-                  <button type="button" class="btn btn-secondary  btn-block">Volver</button>
-                </div>
-              </div>
-          
-            </form>
+                <button type="button" class="btn btn-primary btn-block">Buscar</button>
+              </form>
+            </div>
           </div>
         </div>
+        <div class="card card-primary py-4 px-4 col-md-8">
+          <div class="card-header">
+            <h3 class="card-title bi bi-person-lines-fill nav-icon">Listado de Clientes</h3>
+            
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 200px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="RUT">
+  
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>  
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <div class="table-responsive" style="height: 500px;">
+              <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
+                <thead>
+                <tr>
+                  <th>N°Cliente</th>
+                  <th>RUT</th>
+                  <th>Nombre</th>
+                  <th>Tipo de Cliente</th>
+                  <th>Ver</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td>21448838-3</td>
+                        <td>Jocsan Riquelme Mella</td>
+                        <td>Empresa</td>
+                        <td>
+                        <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                <tr>
+                    <td>0002</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                  </td>
+                  <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0003</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0004</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0005</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0005</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0005</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>0005</td>
+                    <td>21448838-3</td>
+                    <td>Jocsan Riquelme Mella</td>
+                    <td>Empresa</td>
+                    <td>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                      <i class="fas fa-search"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>0005</td>
+                  <td>21448838-3</td>
+                  <td>Jocsan Riquelme Mella</td>
+                  <td>Empresa</td>
+                  <td>
+                  <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>0005</td>
+                <td>21448838-3</td>
+                <td>Jocsan Riquelme Mella</td>
+                <td>Empresa</td>
+                <td>
+                <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                  <i class="fas fa-search"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>0005</td>
+              <td>21448838-3</td>
+              <td>Jocsan Riquelme Mella</td>
+              <td>Empresa</td>
+              <td>
+              <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+                <i class="fas fa-search"></i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>0005</td>
+            <td>21448838-3</td>
+            <td>Jocsan Riquelme Mella</td>
+            <td>Empresa</td>
+            <td>
+            <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
+              <i class="fas fa-search"></i>
+            </a>
+          </td>
+        </tr>
+               
+                </tbody>
+              </table>
+        <!-- Modalalerta -->
+        <div class="modal fade" id="confirmacionEliminarModal" tabindex="-1" aria-labelledby="confirmacionEliminarModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                  <h5 class="modal-title" id="confirmacionEliminarModalLabel">Confirmación de Eliminación</h5>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>¿Está seguro de que desea eliminar este cliente? <strong>Todos los datos se perderán permanentemente.</strong></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-danger" id="confirmarEliminarCliente">Eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  
+        <!-- Modal -->
+        <div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+              <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                  <h5 class="modal-title" id="clienteModalLabel">Datos del Cliente</h5>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <p><strong>N°Cliente:</strong> 0001</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>RUT:</strong> 21334556-9</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Tipo de Cliente:</strong> Particular</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Nombre:</strong> Juan Pérez</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Primer Apellido:</strong> Pérez</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Segundo Apellido:</strong> Pérez</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Teléfono Fijo:</strong> +123456789</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Teléfono Móvil:</strong> +123456789</p>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <p><strong>Código Postal:</strong> 123456</p>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <p><strong>Email:</strong> ejemplo@correo.com</p>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <p><strong>Observaciones:</strong> Observaciones del cliente.</p>
+                      </div>
+                    </div>
+                    <!-- Añade más datos del cliente aquí -->
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-block" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#confirmacionEliminarModal">Eliminar</button>
+                  <button type="button" class="btn btn-primary btn-block" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
+                  <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+            <!-- Modal edit -->
+            <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                      <h5 class="modal-title" id="editarClienteModalLabel">Editar Datos del Cliente</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="rut">RUT</label>
+                                <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente">
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="N°Cliente">N°Cliente</label>
+                                <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="country">Tipo de Cliente</label>
+                                <select class="form-control" id="tipoclient">
+                                  <option>Particular</option>
+                                  <option>Empresa</option>
+                                  <option>Independiente</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class = "form-row">
+                              <div class="form-group col-md-6">
+                                <label for="name">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del Cliente">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="razonsocial">Razon social</label>
+                                <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
+                              </div>
+                  
+                            </div>
+                            
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="f-apellido">Primer Apellido</label>
+                                <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="s-apellido">Segundo Apellido</label>
+                                <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="phone">Teléfono Fijo</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
+                              </div>
+                              <div class="form-group col-md-4">
+                                
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="movil">Teléfono Móvil</label>
+                                <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="address">Dirección</label>
+                              <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="zipCode">Código Postal</label>
+                                <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="city">Ciudad</label>
+                                <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="country">País</label>
+                                <select class="form-control" id="country">
+                                  <option>Chile</option>
+                                  <option>Argentina</option>
+                                  <option>Perú</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                            </div>
+                            <div class="form-group">
+                              <label for="observations">Observaciones</label>
+                              <textarea class="form-control" id="observations" rows="3"></textarea>
+                            </div>
+                            <h4 class="m-0 card-header bg-secondary text-whiter text-center">Otros Datos del Cliente</h4>
+                              <br>
+                              <div class="bg-light border"></div>
+                              <br>
+                            <br>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="tipoTarifa">Tipo de Tarifa</label>
+                                  <select class="form-control" id="tipoTarifa">
+                                    <option>Tarifa 1 - 0.5 Hora</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="grupoFacturacion">Grupo de Facturación</label>
+                                  <select class="form-control" id="grupoFacturacion">
+                                    <option>Opción 1</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                  </select>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="descuentoPlazas">Desc. en Plazas</label>
+                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
+                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="descuentoGral">Descuento gral</label>
+                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="formaPago">Forma Pago</label>
+                                  <select class="form-control" id="formaPago">
+                                    <option>Opción 1</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="condicionesPago">Condiciones Pago</label>
+                                  <select class="form-control" id="condicionesPago">
+                                    <option>Sin Definir</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
+                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="cuentaContable">Cuenta Contable</label>
+                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="comoNosConocio">Cómo nos conoció</label>
+                                  <select class="form-control" id="comoNosConocio">
+                                    <option>- sin definir -</option>
+                                    <!-- Agrega más opciones según sea necesario -->
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                        
+                          </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="guardarCambios">Guardar Cambios</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
+      <div class="card-footer clearfix">
+        <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>-->
+         <a href="javascript:void(0)" class="btn btn-sm btn-info float-right btn-block">Ver todos los clientes</a>
+       </div>
+    </div>  
+            <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              
+              <!-- /.card-footer -->
+            </div>
+        </div>
+            </div>
+    
     
 
               <!-- /.card-footer -->
