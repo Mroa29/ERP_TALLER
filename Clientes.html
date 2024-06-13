@@ -258,30 +258,16 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Modulos/Taller/EjemploCuerpo.html" class="nav-link">
+                <a href="Clientes.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Clientes</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="nuevocliente.html" class="nav-link">
-                      <i class="bi bi-person-fill-add nav-icon"></i>
-                      <p>Nuevo Clientes</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="listadoclientes.html" class="nav-link">
-                      <i class="bi bi-person-lines-fill nav-icon"></i>
-                      <p>Listado Clientes</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="nuevovehiculo.html" class="nav-link">
-                      <i class="bi bi-car-front-fill nav-icon"></i>
-                      <p>Nuevo Vehículo</p>
-                    </a>
-                  </li>
-                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="Vehiculos.html" class="nav-link">
+                  <i class="bi bi-car-front nav-icon"></i>
+                  <p>Vehiculos</p>
+                </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -572,17 +558,17 @@
               </h3>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoCliente" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
                   <i class="fas fa-user-plus"></i> Nuevo cliente
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaClientes" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
                   <i class="fas fa-users"></i> Lista de clientes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelBusqueda" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
                   <i class="fas fa-search"></i> Búsqueda Avanzada
               </a>
           </li>
@@ -590,7 +576,7 @@
         </div>
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+            <div class="tab-pane fade show active" id="panelNuevoCliente" role="tabpanel" aria-labelledby="panelNuevoCliente">
               <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
                 <div class="row">
                   <div class="col-md-12">
@@ -844,15 +830,15 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+            <div class="tab-pane fade" id="panelListaClientes" role="tabpanel" aria-labelledby="panelListaClientes">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
                   <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="RUT">
+                      <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button id="search_button" type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
@@ -862,7 +848,7 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadoclientes" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
                           <th>N°Cliente</th>
@@ -873,140 +859,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                                      <tr>
-                                        <td>0001</td>
-                                        <td>21448838-3</td>
-                                        <td>Jocsan Riquelme Mella</td>
-                                        <td>Empresa</td>
-                                        <td>
-                                        <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                          <i class="fas fa-search"></i>
-                                        </a>
-                                      </td>
-                                    </tr>
-                                <tr>
-                                    <td>0002</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                  </td>
-                                  <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0003</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0004</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>0005</td>
-                                  <td>21448838-3</td>
-                                  <td>Jocsan Riquelme Mella</td>
-                                  <td>Empresa</td>
-                                  <td>
-                                  <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                    <i class="fas fa-search"></i>
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>0005</td>
-                                <td>21448838-3</td>
-                                <td>Jocsan Riquelme Mella</td>
-                                <td>Empresa</td>
-                                <td>
-                                <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                  <i class="fas fa-search"></i>
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>0005</td>
-                              <td>21448838-3</td>
-                              <td>Jocsan Riquelme Mella</td>
-                              <td>Empresa</td>
-                              <td>
-                              <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                <i class="fas fa-search"></i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>0005</td>
-                            <td>21448838-3</td>
-                            <td>Jocsan Riquelme Mella</td>
-                            <td>Empresa</td>
-                            <td>
-                            <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                              <i class="fas fa-search"></i>
-                            </a>
-                          </td>
-                        </tr>
-                        <!-- Aquí van las filas de los clientes -->
+                                      
+                        <!-- Aquí van las filas de los clientes (Dinamico)-->
                       </tbody>
                       
                     </table>
@@ -1331,7 +1185,7 @@
               </div>  
             </div>
             
-            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+            <div class="tab-pane fade" id="panelBusqueda" role="tabpanel" aria-labelledby="panelBusqueda">
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header custom-card-header">
@@ -1560,7 +1414,124 @@
       document.getElementById('mensajeErroreditar').style.display = 'block';
     }
   });
+  
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Datos simulados para la tabla
+    const clientes = [
+      { numero: 1, rut: "12345678-9", nombre: "Juan Pérez", tipo: "Particular" },
+      { numero: 2, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 3, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 4, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 5, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 6, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 7, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 8, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 9, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 10, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 11, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 12, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 13, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 14, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 15, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 16, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 17, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 18, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 19, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 20, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 21, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 22, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 23, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 24, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 25, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 26, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 27, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      { numero: 28, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
+      { numero: 29, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
+      { numero: 30, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
+      
+
+      // Puedes agregar más datos aquí
+    ];
+
+    const tbody = document.querySelector("#tablalistadoclientes tbody");
+
+    // Función para llenar la tabla
+    function llenarTabla(clientes) {
+      tbody.innerHTML = '';
+
+      clientes.forEach(cliente => {
+        const fila = document.createElement('tr');
+
+        fila.innerHTML = `
+          <td>${cliente.numero}</td>
+          <td>${cliente.rut}</td>
+          <td>${cliente.nombre}</td>
+          <td>${cliente.tipo}</td>
+          <td>
+            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#clienteModal">
+              <i class="fas fa-search"></i>
+            </button>
+          </td>
+        `;
+
+        tbody.appendChild(fila);
+      });
+    }
+
+    llenarTabla(clientes);
+
+    // Función para normalizar el texto
+    function normalizarTexto(texto) {
+      return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
+    // Función para filtrar la tabla
+    function filtrarTabla() {
+      // Obtén el valor del campo de búsqueda y normalízalo
+      const input = normalizarTexto(document.getElementById('barraBuscarClientes').value);
+      const rows = tbody.getElementsByTagName('tr');
+
+      // Recorre las filas de la tabla
+      for (let i = 0; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        // Recorre las celdas en cada fila
+        for (let j = 0; j < cells.length - 1; j++) { // Excluye la última columna (botón Ver)
+          if (cells[j]) {
+            // Normaliza el texto de las celdas
+            const txtValue = normalizarTexto(cells[j].textContent || cells[j].innerText);
+            if (txtValue.indexOf(input) > -1) {
+              match = true;
+              break;
+            }
+          }
+        }
+
+        // Muestra la fila si coincide, o la oculta si no
+        if (match) {
+          rows[i].style.display = "";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+
+    // Agrega un evento 'click' al botón de búsqueda
+    document.getElementById('search_button').addEventListener('click', filtrarTabla);
+
+    // Evento 'keydown' al campo de búsqueda para detectar la tecla Enter
+    document.getElementById('barraBuscarClientes').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevenir el comportamiento por defecto (enviar formulario)
+        filtrarTabla(); // Llama a la función de filtrado
+      }
+    });
+
+  });
 </script>
+
+
 
 
 </body>
