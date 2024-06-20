@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="stylesclientes.css">
+  <link rel="stylesheet" href="stylespresupuesto.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -545,7 +545,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
       <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
         <i class="fas fa-file-invoice-dollar"></i>
-        Presupuestos
+        Nuevo Presupuesto
       </a>
     </nav>
     <div class="container-fluid px-4 py-4">
@@ -554,172 +554,228 @@
           <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="pt-2 px-3">
               <h3 class="card-title">
-                <i class="fas fa-cogs"></i> Opciones
+                <i class="fas fa-random"></i> Flujo
               </h3>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoPresupuesto" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
-                  <i class="fas fa-file-invoice-dollar"></i> Nuevo presupuesto
+              <a class="nav-link active" id="datosgeneralespresupuesto" data-toggle="pill" href="#paneldatosgeneralespresupuesto" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+                  <i class="fas fa-info-circle"></i>  Datos Generales
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panel" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class=""></i> Lista de presupuestos
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panepiezasenpreceso" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-car-crash"></i> Piezas en Proceso
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-search"></i> Búsqueda Avanzada
+                  <i class="fas fa-money-bill-wave"></i> Cobros
               </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-image"></i> Imágenes/videos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-file"></i> Documentos
+            </a>
           </li>
           </ul>
         </div>
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="panelNuevoPresupuesto" role="tabpanel" aria-labelledby="panelNuevoPresupuesto">
-              <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                      <div class="btn-container">
-                        <button class="btn btn-primary btn-square" onclick="window.location.href='nuevopresupuesto.html'">
-                          <i class="fas fa-file-invoice-dollar"></i>
-                        </button>
-                      </div>
-                      <div class="description-inline ml-3">
-                        <span class="line-1">Nuevo</span>
-                        <span class="line-2">Presupuesto</span>
-                      </div>
+            <div class="tab-pane fade show active" id="paneldatosgeneralespresupuesto" role="tabpanel" aria-labelledby="paneldatosgeneralespresupuesto">
+                <div class="container my-4">
+                    <div class="card">
+                        <div class="card-header custom-card-header">
+                            <h5 class="card-title">Datos Generales</h5>
+                        </div>
+                        <div class="card-body">
+                          <form>
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="budgetNumber">N° Presupuesto</label>
+                                <input type="text" class="form-control" id="budgetNumber" placeholder="PPT2284" readonly>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="date">Fecha</label>
+                                <input type="date" class="form-control" id="date" value="2024-05-23">
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="validity">Validez (días)</label>
+                                <input type="number" class="form-control" id="validity" value="30">
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="client">Cliente</label>
+                              <div class="input-group">
+                                <input type="text" class="form-control" id="client" readonly>
+                                <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#buscarclientesModal">
+                                    <i class="fas fa-search"></i>
+                                  </button>                                          
+                                  <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#agregarclientemodal">
+                                    <i class="fas fa-plus"></i> 
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <div class="card card-primary py-4 px-4">
+                                <div class="card-header">
+                                  <h3 class="card-title"><i class="fas fa-car"></i> Panel Listado de Vehículos</h3>
+                                  <div class="card-tools">
+                                    <div class="input-group input-group-sm" style="width: 200px;">
+                                      <input type="text" name="buscarvehiculospresupuesto" class="form-control float-right" placeholder="Buscar">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card-body p-0">
+                                  <div class="table-responsive" style="height: 150px; overflow-y: auto;">
+                                    <table id="tablavehiculospresupuesto" class="table table-head-fixed table-bordered text-nowrap">
+                                      <thead>
+                                        <tr>
+                                          <th>Patente</th>
+                                          <th>Marca</th>
+                                          <th>Modelo</th>
+                                          <th>Año</th>
+                                          <th>Seleccionar</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <!-- Añade más filas según sea necesario -->
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-footer clearfix">
+                                <a href="javascript:void(0)" class="btn btn-sm float-right btn-block badge-info">
+                                  <i class="fas fa-car-side"></i> Crear Vehículo
+                                </a>
+                              </div>
+                            </div>
+                            
+                            <div class="form-row">
+                              <div class="form-group col-md-4">
+                                <label for="budgetItem">Presupuestar</label>
+                                <select class="form-control" id="budgetItem">
+                                  <option>El cliente</option>
+                                  <option>Por el vehículo</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="discount">Descuento</label>
+                                <div class="input-group">
+                                  <input type="number" class="form-control" id="discount" value="0">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">%</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="billingGroup">Grupo de Facturación</label>
+                                <select class="form-control" id="billingGroup">
+                                  <option>Grupo 1</option>
+                                  <option>Grupo 2</option>
+                                  <option>Grupo 3</option>
+                                  <!-- Añade más opciones según sea necesario -->
+                                </select>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="observations">Observaciones</label>
+                              <textarea class="form-control" id="observations" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="printModel">Modelo de impresión</label>
+                              <select class="form-control" id="printModel">
+                                <option>Configuración Presupuesto 1</option>
+                                <option>Configuración Presupuesto 2</option>
+                              </select>
+                            </div>
+                          </form>
+                          
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- Modal Nuevo presupuesto-->
-              <div class="modal fade" id="nuevopresupuestoModal" tabindex="-1" aria-labelledby="nuevopresupuestoModal" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
+
+              <!-- Modal que contiene la tabla de clientes -->
+              <div class="modal fade" id="buscarclientesModal" tabindex="-1" aria-labelledby="clientesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="budgetModalLabel">Formulario de Presupuesto</h5>
+                      <h5 class="modal-title" id="clientesModalLabel">Buscar Clientes</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
-                        <div class="form-row">
-                          <div class="form-group col-md-4">
-                            <label for="budgetNumber">N° Presupuesto</label>
-                            <input type="text" class="form-control" id="budgetNumber" placeholder="PPT2284" readonly>
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="date">Fecha</label>
-                            <input type="date" class="form-control" id="date" value="2024-05-23">
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="validity">Validez (días)</label>
-                            <input type="number" class="form-control" id="validity" value="30">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="client">Cliente</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="client" readonly>
-                            <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="button">
-                                <i class="fas fa-search"></i> 
-                              </button>
-                              <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#agregarclientemodal">
-                                <i class="fas fa-plus"></i> 
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="card card-primary py-4 px-4 col-md-12">
-                            <div class="card-header">
-                              <h3 class="card-title"><i class="fas fa-car"></i> Panel Listado de Vehículos</h3>
-                              <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 200px;">
-                                  <input type="text" name="buscarvehiculospresupuesto" class="form-control float-right" placeholder="Buscar">
-                                  <div class="input-group-append">
-                        
-                                  </div>
-                                </div>
+                      <!-- Contenido del Modal: Tabla de Clientes -->
+                      <div class="card card-primary py-4 px-4 col-md-12">
+                        <div class="card-header">
+                          <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
+                          <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                              <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
+                              <div class="input-group-append">
+                                <button id="search_button" type="submit" class="btn btn-default">
+                                  <i class="fas fa-search"></i>
+                                </button>
                               </div>
                             </div>
-                            
-                            <div class="card-body p-0">
-                              <div class="table-responsive" style="height: 150px; overflow-y: auto;">
-                                <table id="tablavehiculospresupuesto" class="table table-head-fixed table-bordered text-nowrap">
-                                  <thead>
-                                    <tr>
-                                      <th>Patente</th>
-                                      <th>Marca</th>
-                                      <th>Modelo</th>
-                                      <th>Año</th>
-                                      <th>Seleccionar</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      
-                                    <!-- Añade más filas según sea necesario -->
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm float-right btn-block badge-info">
-                              <i class="fas fa-car-side"></i> Crear Vehículo
-                            </a>
+                          </div>  
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <div class="table-responsive" style="height: 500px;">
+                            <table id="tablalistadoclientes" class="table table-head-fixed table-bordered text-nowrap ">
+                              <thead>
+                                <tr>
+                                  <th>N°Cliente</th>
+                                  <th>RUT</th>
+                                  <th>Nombre</th>
+                                  <th>Tipo de Cliente</th>
+                                  <th>Ver</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- Aquí van las filas de los clientes (Dinámico)-->
+                              </tbody>
+                            </table>
                           </div>
                         </div>
-                        
-                        <div class="form-group">
-                          <label for="budgetItem">Presupuestar</label>
-                          <select class="form-control" id="budgetItem">
-                            <option>El cliente</option>
-                            <option>Por el vehículo</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="distance">Distancia</label>
-                          <input type="number" class="form-control" id="distance" placeholder="Kilómetros">
-                        </div>
-                        <div class="form-group">
-                          <label for="discount">Descuento</label>
-                          <div class="input-group">
-                            <input type="number" class="form-control" id="discount" value="0">
-                            <div class="input-group-append">
-                              <span class="input-group-text">%</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="billingGroup">Grupo de Facturación</label>
-                          <input type="text" class="form-control" id="billingGroup">
-                        </div>
-                        <div class="form-group">
-                          <label for="observations">Observaciones</label>
-                          <textarea class="form-control" id="observations" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="internalObservations">Observaciones internas</label>
-                          <textarea class="form-control" id="internalObservations" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="printModel">Modelo de impresión</label>
-                          <select class="form-control" id="printModel">
-                            <option>Configuración Presupuesto 1</option>
-                            <option>Configuración Presupuesto 2</option>
-                          </select>
-                        </div>
-                      </form>
+                      </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                      <button type="submit" class="btn btn-primary">Alta Presupuesto</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal de Confirmación de Selección de Cliente -->
+              <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header custom-card-header">
+                      <h5 class="modal-title" id="confirmacionModalLabel">Selección de Cliente</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Cliente seleccionado correctamente.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                     </div>
                   </div>
                 </div>
@@ -934,58 +990,108 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="panel" role="tabpanel" aria-labelledby="anel">
-              <div class="card card-primary py-4 px-4 col-md-12">
-                <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>  
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body p-0">
-                  <div class="table-responsive" style="height: 500px;">
-                    <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
-                      <thead>
-                        <tr>
-                          <th>Patente</th>
-                          <th>Marca</th>
-                          <th>Modelo</th>
-                          <th>Año</th>
-                          <th>Ver</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>AA1122</td>
-                          <td>Toyota</td>
-                          <td>Yaris</td>
-                          <td>2019</td>
-                          <td>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-block badge-info">Ver</a>
-                          </td>
-
-                                      
-                        <!-- Aquí van las filas de los clientes -->
-                      </tbody>
-                      
-                    </table>
-                   
+          
+            <div class="tab-pane fade " id="panepiezasenpreceso" role="tabpanel" aria-labelledby="panelpiezaspresupuesto">
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="car-model">Modelo del Auto</label>
+                      <select id="car-model" class="form-control">
+                          <option value="">Seleccionar Modelo</option>
+                          <option value="Modelo A">Modelo A</option>
+                          <option value="Modelo B">Modelo B</option>
+                          <option value="Modelo C">Modelo C</option>
+                      </select>
                   </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
-                </div>
-              </div>  
-            </div>
+                  <div class="col-md-8">
+                      <label for="new-part-name">Agregar Nueva Pieza</label>
+                      <div class="input-group">
+                          <input type="text" id="new-part-name" class="form-control" placeholder="Nombre de la pieza">
+                          <input type="number" id="new-part-price" class="form-control" placeholder="Precio por unidad" min="1">
+                          <div class="input-group-append">
+                              <button id="add-part" class="btn btn-primary">Agregar</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <!-- Área principal con piezas -->
+                  <div class="col-md-8">
+                      <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                        <i class="fas fa-list-ul"></i>
+                         Lista de Piezas
+                      </a>
+                      <div id="parts-list" class="list-group">
+                            <div class="list-group-item part-item" style="background-color: #3F474E;" data-name="Filtro de Aire" data-price="50000">
+                              <div class="d-flex align-items-center mb-2">
+                                  <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
+                                  <div class="part-name">CAPOT</div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div>Precio:</div>
+                                  <div>$50,000</div>
+                              </div>
+                              <div class="mt-2">
+                                  <label>
+                                      <input type="checkbox" class="action-option" value="pintar"> Pintar
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" class="action-option" value="comprar"> Comprar
+                                  </label>
+                                  <label>
+                                      <input type="checkbox" class="action-option" value="reparar"> Reparar
+                                  </label>
+                              </div>
+                              <div class="mt-2">
+                                  <label for="quantity-filtro">Cantidad:</label>
+                                  <input type="number" id="quantity-filtro" class="quantity-input" min="1" value="1" style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
+                              </div>
+                              <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
+                          </div>
+                          <div class="list-group-item part-item" style="background-color: #3F474E;" data-name="Filtro de Aire" data-price="50000">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
+                                <div class="part-name">PUERTA DELANTERA IZQUIERDA</div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div>Precio:</div>
+                                <div>$50,000</div>
+                            </div>
+                            <div class="mt-2">
+                                <label>
+                                    <input type="checkbox" class="action-option" value="pintar"> Pintar
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="action-option" value="comprar"> Comprar
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="action-option" value="reparar"> Reparar
+                                </label>
+                            </div>
+                            <div class="mt-2">
+                                <label for="quantity-filtro">Cantidad:</label>
+                                <input type="number" id="quantity-filtro" class="quantity-input" min="1" value="1" style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
+                            </div>
+                            <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                          <!-- Más piezas pueden ser agregadas dinámicamente -->
+                      </div>
+                  </div>
+                  <!-- Resumen de piezas seleccionadas -->
+                  <div class="col-md-4">
+                      <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                        <i class="fas fa-list-ul"></i>
+                        Piezas Presupuestadas
+                      </a>
+                      <ul id="selected-parts" class="list-group mb-3">
+                          <!-- Piezas seleccionadas aparecerán aquí -->
+                      </ul>
+                      <div class="d-flex justify-content-between">
+                          <strong>Total:</strong>
+                          <strong id="total-cost">$0</strong>
+                      </div>
+                  </div>
+              </div>
+          </div>
             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
               <div class="col-md-12">
                 <div class="card">
@@ -1148,6 +1254,110 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script src="JavaScripts/presupuestos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const partsList = document.querySelector('#parts-list');
+    const selectedParts = document.querySelector('#selected-parts');
+    const totalCostEl = document.querySelector('#total-cost');
+    const addPartButton = document.querySelector('#add-part');
+    const newPartNameInput = document.querySelector('#new-part-name');
+    const newPartPriceInput = document.querySelector('#new-part-price');
+    let totalCost = 0;
+
+    partsList.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.closest('.add-to-summary-btn')) {
+            const partItem = target.closest('.part-item');
+            const partName = partItem.getAttribute('data-name');
+            const partPrice = parseFloat(partItem.getAttribute('data-price'));
+            const quantityInput = partItem.querySelector('.quantity-input');
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            // Obtener las opciones seleccionadas
+            const selectedActions = Array.from(partItem.querySelectorAll('.action-option:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+
+            // Calcular el costo total de esta pieza
+            const totalPartCost = partPrice * quantity;
+
+            // Agregar pieza al resumen
+            const li = document.createElement('li');
+            li.className = 'summary-item';
+            li.innerHTML = `
+                ${partName} (${selectedActions}, ${quantity} piezas)
+                <span class="badge badge-primary badge-pill">$${totalPartCost.toLocaleString()}</span>
+                <button class="remove-item"><i class="fas fa-trash"></i></button>
+            `;
+
+            // Botón para eliminar pieza del resumen
+            li.querySelector('.remove-item').onclick = function() {
+                selectedParts.removeChild(li);
+                totalCost -= totalPartCost;
+                totalCostEl.textContent = `$${totalCost.toLocaleString()}`;
+            };
+
+            selectedParts.appendChild(li);
+
+            // Actualizar el costo total
+            totalCost += totalPartCost;
+            totalCostEl.textContent = `$${totalCost.toLocaleString()}`;
+        }
+    });
+
+    // Funcionalidad para agregar nuevas piezas
+    addPartButton.addEventListener('click', () => {
+        const partName = newPartNameInput.value.trim();
+        const partPrice = parseFloat(newPartPriceInput.value.trim());
+
+        if (partName && !isNaN(partPrice) && partPrice > 0) {
+            const newPart = document.createElement('div');
+            newPart.className = 'list-group-item part-item';
+            newPart.setAttribute('data-name', partName);
+            newPart.setAttribute('data-price', partPrice);
+
+            newPart.style.backgroundColor = '#3F474E'; // Cambiar el color de fondo
+
+            newPart.innerHTML = `
+                <div class="d-flex align-items-center mb-2">
+                    <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
+                    <div class="part-name">${partName}</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>$${partPrice.toLocaleString()}</div>
+                </div>
+                <div class="mt-2">
+                    <label>
+                        <input type="checkbox" class="action-option" value="pintar"> Pintar
+                    </label>
+                    <label>
+                        <input type="checkbox" class="action-option" value="comprar"> Comprar
+                    </label>
+                    <label>
+                        <input type="checkbox" class="action-option" value="reparar"> Reparar
+                    </label>
+                </div>
+                <div class="mt-2">
+                    <label for="quantity-${partName.replace(/\s+/g, '-')}">Cantidad:</label>
+                    <input type="number" id="quantity-${partName.replace(/\s+/g, '-')}" class="quantity-input" min="1" value="1"style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
+                </div>
+                <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
+            `;
+
+            partsList.appendChild(newPart);
+
+            // Limpiar los campos de entrada
+            newPartNameInput.value = '';
+            newPartPriceInput.value = '';
+        } else {
+            alert('Por favor, ingrese un nombre de pieza válido y un precio mayor a 0.');
+        }
+    });
+});
+  
+  
+
+</script>
 
 
 </body>
