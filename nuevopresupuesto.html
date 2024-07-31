@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="stylespresupuesto.css">
+  <link rel="stylesheet" href="./Styles/stylespresupuesto.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -333,7 +333,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="presupuesto.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Presupuestos</p>
                 </a>
@@ -568,18 +568,33 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelcobrospresupuesto" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
                   <i class="fas fa-money-bill-wave"></i> Cobros
               </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                <i class="fas fa-image"></i> Imágenes/videos
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelimagenesvideospresupuestos" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-image"></i> Multimedia
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                <i class="fas fa-file"></i> Documentos
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#paneldaños" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+              <i class="fas fa-file"></i> Daños
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelfirma" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-signature"></i> Firma Cliente
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#paneldatos" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-database"></i> Datos
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelAcciones" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-table"></i> Acciones
             </a>
           </li>
           </ul>
@@ -993,160 +1008,568 @@
           
             <div class="tab-pane fade " id="panepiezasenpreceso" role="tabpanel" aria-labelledby="panelpiezaspresupuesto">
               <div class="row mb-3">
-                  <div class="col-md-4">
-                      <label for="car-model">Modelo del Auto</label>
-                      <select id="car-model" class="form-control">
-                          <option value="">Seleccionar Modelo</option>
-                          <option value="Modelo A">Modelo A</option>
-                          <option value="Modelo B">Modelo B</option>
-                          <option value="Modelo C">Modelo C</option>
-                      </select>
-                  </div>
-                  <div class="col-md-8">
-                      <label for="new-part-name">Agregar Nueva Pieza</label>
-                      <div class="input-group">
-                          <input type="text" id="new-part-name" class="form-control" placeholder="Nombre de la pieza">
-                          <input type="number" id="new-part-price" class="form-control" placeholder="Precio por unidad" min="1">
-                          <div class="input-group-append">
-                              <button id="add-part" class="btn btn-primary">Agregar</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <!-- Área principal con piezas -->
-                  <div class="col-md-8">
-                      <a class="navbar-brand d-flex align-items-center mx-auto my-1">
-                        <i class="fas fa-list-ul"></i>
-                         Lista de Piezas
-                      </a>
-                      <div id="parts-list" class="list-group">
-                            <div class="list-group-item part-item" style="background-color: #3F474E;" data-name="CAPOT" data-price="50000">
-                              <div class="d-flex align-items-center mb-2">
-                                  <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
-                                  <div class="part-name">CAPOT</div>
-                              </div>
-                              <div class="d-flex justify-content-between">
-                                  <div>Precio:</div>
-                                  <div>$50,000</div>
-                              </div>
-                              <div class="mt-2">
-                                  <label>
-                                      <input type="checkbox" class="action-option" value="pintar"> Pintar
-                                  </label>
-                                  <label>
-                                      <input type="checkbox" class="action-option" value="comprar"> Comprar
-                                  </label>
-                                  <label>
-                                      <input type="checkbox" class="action-option" value="reparar"> Reparar
-                                  </label>
-                              </div>
-                              <div class="mt-2">
-                                  <label for="quantity-filtro">Cantidad:</label>
-                                  <input type="number" id="quantity-filtro" class="quantity-input" min="1" value="1" style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
-                              </div>
-                              <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
-                          </div>
-                          <div class="list-group-item part-item" style="background-color: #3F474E;" data-name="PUERTA DELANTERA IZQUIERDA" data-price="50000">
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
-                                <div class="part-name">PUERTA DELANTERA IZQUIERDA</div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div>Precio:</div>
-                                <div>$50,000</div>
-                            </div>
-                            <div class="mt-2">
-                                <label>
-                                    <input type="checkbox" class="action-option" value="pintar"> Pintar
-                                </label>
-                                <label>
-                                    <input type="checkbox" class="action-option" value="comprar"> Comprar
-                                </label>
-                                <label>
-                                    <input type="checkbox" class="action-option" value="reparar"> Reparar
-                                </label>
-                            </div>
-                            <div class="mt-2">
-                                <label for="quantity-filtro">Cantidad:</label>
-                                <input type="number" id="quantity-filtro" class="quantity-input" min="1" value="1" style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
-                            </div>
-                            <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
+                <div class="col-md-4">
+                    <label for="car-model">Modelo del Auto</label>
+                    <input type="text" id="car-model" class="form-control" placeholder="Ingrese el modelo del auto">
+                </div>
+                <div class="col-md-8">
+                    <label for="new-part-name">Agregar Nueva Pieza</label>
+                    <div class="input-group">
+                        <input type="text" id="new-part-name" class="form-control" placeholder="Nombre de la pieza">
+                        <div class="input-group-append">
+                            <button id="add-part" class="btn btn-primary">Agregar</button>
                         </div>
-                          <!-- Más piezas pueden ser agregadas dinámicamente -->
-                      </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs" id="action-tabs" role="tablist">
+              <li class="nav-item">
+                  <a class="nav-link active" id="pintar-tab" data-toggle="tab" href="#pintar" role="tab" aria-controls="pintar" aria-selected="true">
+                      <i class="fas fa-paint-brush"></i> Pintar
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="reparar-tab" data-toggle="tab" href="#reparar" role="tab" aria-controls="reparar" aria-selected="false">
+                      <i class="fas fa-tools"></i> Reparar
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="comprar-tab" data-toggle="tab" href="#comprar" role="tab" aria-controls="comprar" aria-selected="false">
+                      <i class="fas fa-shopping-cart"></i> Comprar
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" id="procesar-tab" data-toggle="tab" href="#procesar" role="tab" aria-controls="procesar" aria-selected="false">
+                      <i class="fas fa-receipt"></i> Resumen del Presupuesto
+                  </a>
+              </li>
+          </ul>
+            <div class="tab-content" id="action-tabs-content">
+                <div class="tab-pane fade show active" id="pintar" role="tabpanel" aria-labelledby="pintar-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas para Pintar
+                            </a>
+                            <div id="paint-parts-list" class="list-group">
+                                <!-- Piezas para pintar se agregarán dinámicamente aquí -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas Presupuestadas
+                            </a>
+                            <ul id="selected-paint-parts" class="list-group mb-3">
+                                <!-- Piezas seleccionadas para pintar -->
+                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <strong>Total:</strong>
+                                <strong id="total-paint-cost">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="reparar" role="tabpanel" aria-labelledby="reparar-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas para Reparar
+                            </a>
+                            <div id="repair-parts-list" class="list-group">
+                                <!-- Piezas para reparar se agregarán dinámicamente aquí -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas Presupuestadas
+                            </a>
+                            <ul id="selected-repair-parts" class="list-group mb-3">
+                                <!-- Piezas seleccionadas para reparar -->
+                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <strong>Total:</strong>
+                                <strong id="total-repair-cost">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="comprar" role="tabpanel" aria-labelledby="comprar-tab">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas para Comprar
+                            </a>
+                            <div id="buy-parts-list" class="list-group">
+                                <!-- Piezas para comprar se agregarán dinámicamente aquí -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Piezas Presupuestadas
+                            </a>
+                            <ul id="selected-buy-parts" class="list-group mb-3">
+                                <!-- Piezas seleccionadas para comprar -->
+                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <strong>Total:</strong>
+                                <strong id="total-buy-cost">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="procesar" role="tabpanel" aria-labelledby="procesar-tab">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <a class="navbar-brand d-flex align-items-center mx-auto my-1">
+                                <i class="fas fa-list-ul"></i>
+                                Resumen del Presupuesto
+                            </a>
+                            <ul id="selected-process-parts" class="list-group mb-3">
+                                <!-- Piezas seleccionadas en proceso -->
+                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <strong>Total:</strong>
+                                <strong id="total-process-cost">$0</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+            <div class="tab-pane fade" id="panelcobrospresupuesto" role="tabpanel" aria-labelledby="panelcobrospresupuesto">
+                  <div class="container mt-5">
+                    <!-- Cobros a Cuenta -->
+                    <div class="card card-primary py-4 px-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-money-bill-wave"></i> Cobros a Cuenta</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive" style="height: 150px; overflow-y: auto;">
+                                <table id="tablacobrosacuenta" class="table table-head-fixed table-bordered text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>N° Recibo</th>
+                                            <th>Importe Cobrado</th>
+                                            <th>Forma Pago</th>
+                                            <th>Fecha Cobro</th>
+                                            <th>Descripción</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Filas de cobros serán añadidas aquí dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Formulario de Agregar Cobro a Cuenta -->
+                    <div class="card mt-3">
+                        <div class="card-header custom-card-header text-center text-white">
+                            <h5><i class="fas fa-plus-circle"></i> Agregar Cobro de Cuenta</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="formCobro">
+                                <div class="form-group row">
+                                    <label for="numeroRecibo" class="col-sm-2 col-form-label">Número Recibo</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="numeroRecibo">
+                                    </div>
+                                    <label for="importeCobrado" class="col-sm-2 col-form-label">Importe Cobrado</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control" id="importeCobrado">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="formaPago" class="col-sm-2 col-form-label">Forma Pago</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="formaPago">
+                                            <option>Tarjeta Débito</option>
+                                            <option>Tarjeta Crédito</option>
+                                            <option>Efectivo</option>
+                                            <option>Transferencia</option>
+                                        </select>
+                                    </div>
+                                    <label for="fechaCobro" class="col-sm-2 col-form-label">Fecha Cobro</label>
+                                    <div class="col-sm-4">
+                                        <input type="date" class="form-control" id="fechaCobro">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="descripcion">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col text-center">
+                                      <button type="submit" class="btn btn-primary">Agregar</button>
+                                  </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Modal para editar cobro -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Editar Cobro</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formEditCobro">
+                                    <div class="form-group">
+                                        <label for="editNumeroRecibo">Número Recibo</label>
+                                        <input type="text" class="form-control" id="editNumeroRecibo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editImporteCobrado">Importe Cobrado</label>
+                                        <input type="number" class="form-control" id="editImporteCobrado">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFormaPago">Forma Pago</label>
+                                        <select class="form-control" id="editFormaPago">
+                                            <option>Tarjeta Débito</option>
+                                            <option>Tarjeta Crédito</option>
+                                            <option>Efectivo</option>
+                                            <option>Transferencia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editFechaCobro">Fecha Cobro</label>
+                                        <input type="date" class="form-control" id="editFechaCobro">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editDescripcion">Descripción</label>
+                                        <input type="text" class="form-control" id="editDescripcion">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+        
+            </div>
+            <div class="tab-pane fade" id="panelimagenesvideospresupuestos" role="tabpanel" aria-labelledby="panelimagenesvideospresupuestos">
+                <div class="container">
+                  <div class="upload-section">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                      <i class="fas fa-upload mr-2"></i>
+                      Subir Imágenes
+                    </a>
+                    <form id="uploadForm" class="upload-form">
+                      <label for="imageUpload">
+                          <i class="fas fa-plus fa-3x"></i>
+                          <br>
+                          Arrastra y suelta tus imágenes aquí o haz clic para subir
+                      </label>
+                      <input type="file" id="imageUpload" accept="image/*" multiple>
+                    </form>
+                  
+        
                   </div>
-                  <!-- Resumen de piezas seleccionadas -->
-                  <div class="col-md-4">
-                      <a class="navbar-brand d-flex align-items-center mx-auto my-1">
-                        <i class="fas fa-list-ul"></i>
-                        Piezas Presupuestadas
+                  
+                  <div class="carousel-section">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                      <i class="fas fa-images mr-2"></i>
+                      Imágenes Subidas
                       </a>
-                      <ul id="selected-parts" class="list-group mb-3">
-                          <!-- Piezas seleccionadas aparecerán aquí -->
-                      </ul>
-                      <div class="d-flex justify-content-between">
-                          <strong>Total:</strong>
-                          <strong id="total-cost">$0</strong>
+                      <div id="uploadedImagesCarousel" class="carousel slide" data-ride="carousel">
+                          <ol class="carousel-indicators" id="carouselIndicators">
+                              <!-- Indicators will be dynamically added here -->
+                          </ol>
+                          <div class="carousel-inner" id="carouselInner">
+                              <!-- Images will be dynamically added here -->
+                          </div>
+                          <a class="carousel-control-prev" href="#uploadedImagesCarousel" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#uploadedImagesCarousel" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                          </a>
                       </div>
                   </div>
               </div>
-          </div>
-            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header custom-card-header">
-                    <h5 class="card-title"><i class="fas fa-search"></i> Panel Búsqueda Avanzada</h5>
-                  </div>
-                  <div class="card-body">
-                    <!-- Nueva tarjeta de descripción -->
-                    <div class="card mb-3">
-                      <div class="card-body custom-card-header">
-                        <p class="card-text">
-                          Podrá realizar la búsqueda llenando cualquiera de los campos a continuación.
-                        </p>
+            </div>
+            <div class="tab-pane fade" id="paneldaños" role="tabpanel" aria-labelledby="paneldaños">
+              <div class="container mt-1">
+                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                  <i class="fas fa-car-crash mr-2"></i>
+                  Identificación de Daños del Vehículo
+                </a>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="card my-3">
+                      <div class="card-header custom-card-header">
+                        <h5 class="card-title">Mapa del Vehículo</h5>
+                      </div>
+                      <div class="card-body">
+                        <div class="vehicle-map position-relative">
+                          <img src="auto-removebg-preview.png" alt="Mapa del Vehículo" class="img-fluid" id="vehicleImage">
+                          <div class="cursor-marker" id="cursorMarker" style="display: none;"></div>
+                        </div>
                       </div>
                     </div>
-                    <!-- Formulario de búsqueda avanzada -->
-                    <form>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+                    
+                    
+                  </div>
+                  <div class="col-md-4">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                      <i class="fas fa-car-crash mr-2"></i>
+                      Detalles de Daños
+                    </a>
+                    <ul class="list-group" id="damageList">
+                      <!-- Lista de daños -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Modal para agregar daño -->
+              <div class="modal fade" id="damageModal" tabindex="-1" role="dialog" aria-labelledby="damageModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="damageModalLabel">Agregar Daño</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="damageForm">
+                        <div class="form-group">
+                          <label for="damageDescription">Descripción del Daño</label>
+                          <input type="text" class="form-control" id="damageDescription" required>
                         </div>
-                        <div class="form-group col-md-6">
-                          <label for="rsocial">Razón social</label>
-                          <input type="text" class="form-control" id="rsocial" placeholder="Ingrese la razón social">
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="movil">Teléfono móvil</label>
-                          <input type="tel" class="form-control" id="movil" placeholder="+56 9 123 456 78" >
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="tipoclient">Tipo de cliente</label>
-                          <select class="form-control" id="tipoclient">
-                            <option value="">Seleccione un tipo</option>
-                            <option value="empr">Empresa</option>
-                            <option value="par">Particular</option>
-                            <option value="ind">Independiente</option>
-                            <option value="sindef">Sin definir</option>
+                        <div class="form-group">
+                          <label for="damageSeverity">Severidad del Daño</label>
+                          <select class="form-control" id="damageSeverity">
+                            <option value="Leve">Leve</option>
+                            <option value="Moderado">Moderado</option>
+                            <option value="Severo">Severo</option>
                           </select>
                         </div>
-                        <div class="form-group col-md-6">
-                          <label for="Patente">Patente asociada</label>
-                          <input type="text" class="form-control" id="Patente" placeholder="Ingrese Patente • Ejemplo AA1122 • BBCC11">
-                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="tab-pane fade" id="panelfirma" role="tabpanel" aria-labelledby="panelfirma">
+              <div class="container mt-1">
+                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                  <i class="fas fa-signature"></i>
+                  Firma del Cliente
+                </a>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="signature-pad" id="signaturePad">
+                      <canvas></canvas>
+                    </div>
+                    <button class="btn btn-primary mt-3" id="clearButton">Borrar</button>
+                    <button class="btn btn-success mt-3" id="saveButton">Guardar</button>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <h4>Firma Guardada:</h4>
+                  <img id="savedSignature" src="" alt="Firma guardada" class="img-fluid">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="paneldatos" role="tabpanel" aria-labelledby="paneldatos">
+              <div class="container mt-1">
+                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                  <i class="fas fa-database"></i>
+                  Visualización de Datos
+                </a>>
+                
+                <div class="row">
+                  <!-- Resumen Detallado -->
+                  <div class="col-md-6">
+                    <div class="card card-custom-datos">
+                      <div class="card-header-datos text-center">
+                        <h5><i class="fas fa-table"></i> RESUMEN DETALLADO</h5>
                       </div>
-                      <button type="submit" class="btn btn-primary btn-block" >Buscar</button>
-                    </form>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Monto</th>
+                              <th>Dto(%)</th>
+                              <th>Dto($)</th>
+                              <th>Importe Neto</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Piezas</td>
+                              <td>$ 0</td>
+                              <td>0.00%</td>
+                              <td>$ 0</td>
+                              <td>$ 0</td>
+                            </tr>
+                            <tr>
+                              <td>Mano de Obra</td>
+                              <td>$ 0</td>
+                              <td>0.00%</td>
+                              <td>$ 0</td>
+                              <td>$ 0</td>
+                            </tr>
+                            <tr>
+                              <td>Pintura</td>
+                              <td>$ 164,000</td>
+                              <td>0.00%</td>
+                              <td>$ 0</td>
+                              <td>$ 164,000</td>
+                            </tr>
+                            <tr>
+                              <td>Otros</td>
+                              <td>$ 0</td>
+                              <td>0.00%</td>
+                              <td>$ 0</td>
+                              <td>$ 0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <!-- Gestión de cobros -->
+                  <div class="col-md-6">
+                    <div class="card card-custom-datos">
+                      <div class="card-header-datos text-center">
+                        <h5><i class="fas fa-cogs"></i> GESTIÓN DE COBROS</h5>
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Origen</th>
+                              <th>Fecha Cobro</th>
+                              <th>Monto</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Presupuesto</td>
+                              <td>17/06/2024</td>
+                              <td>$ 10,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p class="text-center font-weight-bold">TOTAL COBRADO: $ 10,000</p>
+                        <p class="text-center font-weight-bold">PENDIENTE DE COBRO: $ 185,160</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="row">
+                  <!-- Importe Presupuesto -->
+                  <div class="col-md-8 offset-md-2">
+                    <div class="card card-custom-datos">
+                      <div class="card-header-datos text-center">
+                        <h5><i class="fas fa-database"></i> IMPORTE PRESUPUESTO</h5>
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Base Imponible</th>
+                              <th>IVA(%)</th>
+                              <th>IVA($)</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>$ 164,000</td>
+                              <td>19.00%</td>
+                              <td>$ 31,160</td>
+                              <td>$ 195,160</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p class="text-center font-weight-bold">TOTAL PRESUPUESTO: $ 195,160</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+            
+            
+
+            <div class="tab-pane fade" id="panelAcciones" role="tabpanel" aria-labelledby="panelAcciones">
+              <div class="container mt-5">
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="window.location.href='imprimir.html'">
+                      <i class="fas fa-print"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Imprimir</span>
+                    <span class="line-2">Documento</span>
+                  </div>
+                </div>
+            
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="window.location.href='contabilizar.html'">
+                      <i class="fas fa-calculator"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Contabilizar</span>
+                    <span class="line-2">Documento</span>
+                  </div>
+                </div>
+            
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="window.location.href='facturar.html'">
+                      <i class="fas fa-file-invoice"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Facturar</span>
+                    <span class="line-2">Documento</span>
+                  </div>
+                </div>
+            
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="window.location.href='compartir.html'">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Compartir</span>
+                    <span class="line-2">Documento</span>
                   </div>
                 </div>
               </div>
@@ -1164,6 +1587,7 @@
         <!-- /.card -->
       </div>
     </div>
+
   
     
                   
@@ -1254,112 +1678,14 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script src="JavaScripts/presupuestos.js"></script>
+<script src="JavaScripts/carruselimg.js"></script>
+<script src="JavaScripts/Piesaspresupuesto.js"></script>
+<script src="JavaScripts/Cobros_a_Cuenta_Presupuesto.js"></script>
+<script src="JavaScripts/DañosVisuales_NuevoPresupuesto.js"></script>
+<script src="JavaScripts/FirmaCliente_NuevoPresupuesto.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const partsList = document.querySelector('#parts-list');
-    const selectedParts = document.querySelector('#selected-parts');
-    const totalCostEl = document.querySelector('#total-cost');
-    const addPartButton = document.querySelector('#add-part');
-    const newPartNameInput = document.querySelector('#new-part-name');
-    const newPartPriceInput = document.querySelector('#new-part-price');
-    let totalCost = 0;
-
-    partsList.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target.closest('.add-to-summary-btn')) {
-            const partItem = target.closest('.part-item');
-            const partName = partItem.getAttribute('data-name');
-            const partPrice = parseFloat(partItem.getAttribute('data-price'));
-            const quantityInput = partItem.querySelector('.quantity-input');
-            const quantity = parseInt(quantityInput.value) || 1;
-
-            // Obtener las opciones seleccionadas
-            const selectedActions = Array.from(partItem.querySelectorAll('.action-option:checked'))
-                .map(checkbox => checkbox.value)
-                .join(', ');
-
-            // Calcular el costo total de esta pieza
-            const totalPartCost = partPrice * quantity;
-
-            // Agregar pieza al resumen
-            const li = document.createElement('li');
-            li.className = 'summary-item';
-            li.innerHTML = `
-                ${partName} (${selectedActions}, ${quantity} piezas)
-                <span class="badge badge-primary badge-pill">$${totalPartCost.toLocaleString()}</span>
-                <button class="remove-item"><i class="fas fa-trash"></i></button>
-            `;
-
-            // Botón para eliminar pieza del resumen
-            li.querySelector('.remove-item').onclick = function() {
-                selectedParts.removeChild(li);
-                totalCost -= totalPartCost;
-                totalCostEl.textContent = `$${totalCost.toLocaleString()}`;
-            };
-
-            selectedParts.appendChild(li);
-
-            // Actualizar el costo total
-            totalCost += totalPartCost;
-            totalCostEl.textContent = `$${totalCost.toLocaleString()}`;
-        }
-    });
-
-    // Funcionalidad para agregar nuevas piezas
-    addPartButton.addEventListener('click', () => {
-        const partName = newPartNameInput.value.trim();
-        const partPrice = parseFloat(newPartPriceInput.value.trim());
-
-        if (partName && !isNaN(partPrice) && partPrice > 0) {
-            const newPart = document.createElement('div');
-            newPart.className = 'list-group-item part-item';
-            newPart.setAttribute('data-name', partName);
-            newPart.setAttribute('data-price', partPrice);
-
-            newPart.style.backgroundColor = '#3F474E'; // Cambiar el color de fondo
-
-            newPart.innerHTML = `
-                <div class="d-flex align-items-center mb-2">
-                    <i class="far fa-circle mr-3" alt="Triángulo" style="font-size: 20px; transform: rotate(90deg);"></i>
-                    <div class="part-name">${partName}</div>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div>Precio:</div>
-                    <div>$${partPrice.toLocaleString()}</div>
-                </div>
-                <div class="mt-2">
-                    <label>
-                        <input type="checkbox" class="action-option" value="pintar"> Pintar
-                    </label>
-                    <label>
-                        <input type="checkbox" class="action-option" value="comprar"> Comprar
-                    </label>
-                    <label>
-                        <input type="checkbox" class="action-option" value="reparar"> Reparar
-                    </label>
-                </div>
-                <div class="mt-2">
-                    <label for="quantity-${partName.replace(/\s+/g, '-')}">Cantidad:</label>
-                    <input type="number" id="quantity-${partName.replace(/\s+/g, '-')}" class="quantity-input" min="1" value="1"style="background-color: #343A40; color: white; border-radius: 8px; border: none; padding: 5px;">
-                </div>
-                <button class="add-to-summary-btn"><i class="fas fa-plus"></i></button>
-            `;
-
-            partsList.appendChild(newPart);
-
-            // Limpiar los campos de entrada
-            newPartNameInput.value = '';
-            newPartPriceInput.value = '';
-        } else {
-            alert('Por favor, ingrese un nombre de pieza válido y un precio mayor a 0.');
-        }
-    });
-});
   
-  
-
 </script>
-
 
 </body>
 </html>

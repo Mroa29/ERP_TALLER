@@ -20,7 +20,22 @@
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="stylesclientes.css">
+  <link rel="stylesheet" href="./Styles/stylespresupuesto.css">
+  <style>
+    .list-group-item {
+    display: flex;
+    align-items: center;
+}
+.list-group-item i {
+    font-size: 24px;
+    margin-right: 15px;
+}
+.scrollable-list {
+    max-height: 400px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto;
+}
+  </style>
+  
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -333,7 +348,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="presupuesto.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Presupuestos</p>
                 </a>
@@ -563,7 +578,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panel" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListadodepresupuestos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
                   <i class=""></i> Lista de presupuestos
               </a>
             </li>
@@ -594,398 +609,31 @@
                   </div>
                 </div>
               </div>
-              <!-- Modal Nuevo presupuesto-->
-              <div class="modal fade" id="nuevopresupuestoModal" tabindex="-1" aria-labelledby="nuevopresupuestoModal" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
-                    <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="budgetModalLabel">Formulario de Presupuesto</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-row">
-                          <div class="form-group col-md-4">
-                            <label for="budgetNumber">N° Presupuesto</label>
-                            <input type="text" class="form-control" id="budgetNumber" placeholder="PPT2284" readonly>
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="date">Fecha</label>
-                            <input type="date" class="form-control" id="date" value="2024-05-23">
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="validity">Validez (días)</label>
-                            <input type="number" class="form-control" id="validity" value="30">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="client">Cliente</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="client" readonly>
-                            <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="button">
-                                <i class="fas fa-search"></i> 
-                              </button>
-                              <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#agregarclientemodal">
-                                <i class="fas fa-plus"></i> 
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="card card-primary py-4 px-4 col-md-12">
-                            <div class="card-header">
-                              <h3 class="card-title"><i class="fas fa-car"></i> Panel Listado de Vehículos</h3>
-                              <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 200px;">
-                                  <input type="text" name="buscarvehiculospresupuesto" class="form-control float-right" placeholder="Buscar">
-                                  <div class="input-group-append">
-                        
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div class="card-body p-0">
-                              <div class="table-responsive" style="height: 150px; overflow-y: auto;">
-                                <table id="tablavehiculospresupuesto" class="table table-head-fixed table-bordered text-nowrap">
-                                  <thead>
-                                    <tr>
-                                      <th>Patente</th>
-                                      <th>Marca</th>
-                                      <th>Modelo</th>
-                                      <th>Año</th>
-                                      <th>Seleccionar</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      
-                                    <!-- Añade más filas según sea necesario -->
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm float-right btn-block badge-info">
-                              <i class="fas fa-car-side"></i> Crear Vehículo
-                            </a>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                          <label for="budgetItem">Presupuestar</label>
-                          <select class="form-control" id="budgetItem">
-                            <option>El cliente</option>
-                            <option>Por el vehículo</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="distance">Distancia</label>
-                          <input type="number" class="form-control" id="distance" placeholder="Kilómetros">
-                        </div>
-                        <div class="form-group">
-                          <label for="discount">Descuento</label>
-                          <div class="input-group">
-                            <input type="number" class="form-control" id="discount" value="0">
-                            <div class="input-group-append">
-                              <span class="input-group-text">%</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="billingGroup">Grupo de Facturación</label>
-                          <input type="text" class="form-control" id="billingGroup">
-                        </div>
-                        <div class="form-group">
-                          <label for="observations">Observaciones</label>
-                          <textarea class="form-control" id="observations" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="internalObservations">Observaciones internas</label>
-                          <textarea class="form-control" id="internalObservations" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="printModel">Modelo de impresión</label>
-                          <select class="form-control" id="printModel">
-                            <option>Configuración Presupuesto 1</option>
-                            <option>Configuración Presupuesto 2</option>
-                          </select>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                      <button type="submit" class="btn btn-primary">Alta Presupuesto</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-            
-              <!-- Modal agregra cliente-->
-              <div class="modal fade" id="agregarclientemodal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                  <div class="modal-content">
-                    <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="editarClienteModalLabel">Agregar Cliente</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="card card-body">
-                        <!-- Mensaje de error -->
-                        <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
-                        <form id="idformagregarcliente">
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="rut">RUT</label>
-                              <input type="text" class="form-control" id="rut" placeholder="Ej: 12345678-9" required>
-                              <div class="invalid-feedback">RUT no válido.</div>
-                              <div class="valid-feedback">RUT válido.</div> <!-- Mensaje de validación -->
-                            </div>
-                              <div class="form-group col-md-4">
-                                <label for="N°Cliente">N°Cliente</label>
-                                <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">Tipo de Cliente</label>
-                                <select class="form-control" id="tipoclient">
-                                  <option>Sin definir</option>
-                                  <option>Particular</option>
-                                  <option>Empresa</option>
-                                  <option>Independiente</option>
-                                  
-                                </select>
-                              </div>
-                            </div>
-                            <div class = "form-row">
-                              <div class="form-group col-md-6">
-                                <label for="name">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="razonsocial">Razon social</label>
-                                <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                              </div>
-                  
-                            </div>
-                            
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="f-apellido">Primer Apellido</label>
-                                <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="s-apellido">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                              </div>
-                            </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="phone">Teléfono Fijo</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                              </div>
-                              <div class="form-group col-md-4">
-                                
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="movil">Teléfono Móvil</label>
-                                <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="address">Dirección</label>
-                              <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-                            </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="zipCode">Código Postal</label>
-                                <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="city">Ciudad</label>
-                                <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">País</label>
-                                <select class="form-control" id="country">
-                                  <option>Chile</option>
-                                  <option>Argentina</option>
-                                  <option>Perú</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
-                            </div>
-                            <div class="form-group">
-                              <label for="observations">Observaciones</label>
-                              <textarea class="form-control" id="observations" rows="3"></textarea>
-                            </div>
-                            <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                              <br>
-                              <div class="bg-light border"></div>
-                              <br>
-                            <br>
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="tipoTarifa">Tipo de Tarifa</label>
-                                  <select class="form-control" id="tipoTarifa">
-                                    <option>Tarifa 1 - 0.5 Hora</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="grupoFacturacion">Grupo de Facturación</label>
-                                  <select class="form-control" id="grupoFacturacion">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoPlazas">Desc. en Plazas</label>
-                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoGral">Descuento gral</label>
-                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="formaPago">Forma Pago</label>
-                                  <select class="form-control" id="formaPago">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="condicionesPago">Condiciones Pago</label>
-                                  <select class="form-control" id="condicionesPago">
-                                    <option>Sin Definir</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="cuentaContable">Cuenta Contable</label>
-                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="comoNosConocio">Cómo nos conoció</label>
-                                  <select class="form-control" id="comoNosConocio">
-                                    <option>- sin definir -</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="btnagregarcliente">Agregar Cliente</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="tab-pane fade" id="panel" role="tabpanel" aria-labelledby="anel">
-              <div class="card card-primary py-4 px-4 col-md-12">
-                <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
-                        </button>
-                      </div>
+            <div class="tab-pane fade" id="panelListadodepresupuestos" role="tabpanel" aria-labelledby="panelListadodepresupuestos">
+              <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header custom-card-header">
+                        <h1 class="mb-0">Lista de Presupuestos</h1>
                     </div>
-                  </div>  
+                    <div class="card-body">
+                        <!-- Barra de búsqueda -->
+                        <div class="input-group mb-4">
+                            <input type="text" id="search" class="form-control form-control-custom" placeholder="Buscar presupuesto...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-primary-custom" type="button">Buscar</button>
+                            </div>
+                        </div>
+        
+                        <!-- Lista de presupuestos -->
+                        <div class="list-group scrollable-list" id="budgetList">
+                            <!-- Presupuestos se llenarán aquí de forma dinámica -->
+                        </div>
+                    </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body p-0">
-                  <div class="table-responsive" style="height: 500px;">
-                    <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
-                      <thead>
-                        <tr>
-                          <th>Patente</th>
-                          <th>Marca</th>
-                          <th>Modelo</th>
-                          <th>Año</th>
-                          <th>Ver</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>AA1122</td>
-                          <td>Toyota</td>
-                          <td>Yaris</td>
-                          <td>2019</td>
-                          <td>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-block badge-info">Ver</a>
-                          </td>
-
-                                      
-                        <!-- Aquí van las filas de los clientes -->
-                      </tbody>
-                      
-                    </table>
-                   
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
-                </div>
-              </div>  
             </div>
+          </div>
+          
             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
               <div class="col-md-12">
                 <div class="card">
@@ -1148,6 +796,54 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script src="JavaScripts/presupuestos.js"></script>
+<script>
+   const budgets = [
+            { id: 1, name: 'Presupuesto A', date: '2024-06-01', file: 'path/to/presupuestoA.pdf' },
+            { id: 2, name: 'Presupuesto B', date: '2024-06-15', file: 'path/to/presupuestoB.pdf' },
+            { id: 3, name: 'Presupuesto C', date: '2024-06-20', file: 'path/to/presupuestoC.pdf' },
+            { id: 4, name: 'Presupuesto D', date: '2024-06-22', file: 'path/to/presupuestoD.pdf' },
+            { id: 5, name: 'Presupuesto E', date: '2024-06-23', file: 'path/to/presupuestoE.pdf' },
+            { id: 6, name: 'Presupuesto F', date: '2024-06-24', file: 'path/to/presupuestoF.pdf' },
+            { id: 7, name: 'Presupuesto G', date: '2024-06-25', file: 'path/to/presupuestoG.pdf' },
+            { id: 8, name: 'Presupuesto H', date: '2024-06-26', file: 'path/to/presupuestoH.pdf' },
+            { id: 9, name: 'Presupuesto I', date: '2024-06-27', file: 'path/to/presupuestoI.pdf' },
+            { id: 10, name: 'Presupuesto J', date: '2024-06-28', file: 'path/to/presupuestoJ.pdf' },
+            { id: 11, name: 'Presupuesto K', date: '2024-06-29', file: 'path/to/presupuestoK.pdf' }
+            // Añade más presupuestos aquí
+        ];
+
+        function loadBudgets() {
+            const budgetList = $('#budgetList');
+            budgetList.empty();
+            budgets.forEach(budget => {
+                const budgetItem = `
+                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-dark">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-file-pdf text-danger"></i>
+                            <div class="ml-3">
+                                <h5 class="mb-1 text-white">${budget.name}</h5>
+                                <p class="mb-1 text-white">Fecha: ${budget.date}</p>
+                            </div>
+                        </div>
+                        <a href="${budget.file}" class="btn btn-primary" download>Descargar</a>
+                    </div>
+                `;
+                budgetList.append(budgetItem);
+            });
+        }
+
+        // Funcionalidad de búsqueda y filtrado
+        $(document).ready(function() {
+            loadBudgets();
+
+            $('#search').on('keyup', function() {
+                const value = $(this).val().toLowerCase();
+                $('#budgetList .list-group-item').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+</script>
 
 
 </body>
