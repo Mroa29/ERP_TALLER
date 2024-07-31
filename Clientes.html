@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="stylesclientes.css">
+  <link rel="stylesheet" href="./Styles/stylesclientes.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -333,7 +333,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="presupuesto.html" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Presupuestos</p>
                 </a>
@@ -1346,193 +1346,7 @@
   <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script>
-  $(function () {
-  $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
-  }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-  });
-  });
-  function showDescription(description) {
-      document.getElementById('descriptionCard').textContent = description;
-  }
-  // Obtener referencia al botón, al icono y al contenido a mostrar/ocultar
-  const agregarVehiculoBtn = document.getElementById('agregarVehiculoBtn');
-  const iconoFlecha = document.getElementById('iconoFlecha');
-  const vehiculoCollapseContent = document.getElementById('vehiculoCollapse');
-
-  // Función para mostrar/ocultar el contenido y actualizar el icono
-  function toggleVehiculoContent() {
-    vehiculoCollapseContent.classList.toggle('show');
-    // Desplazar hasta el final del modal
-    const modalFooter = document.querySelector('.modal-footer');
-    if (modalFooter) {
-      modalFooter.scrollIntoView({ behavior: 'smooth' });
-    }
-    // Actualizar el icono
-    iconoFlecha.classList.toggle('fa-chevron-down');
-    iconoFlecha.classList.toggle('fa-chevron-up');
-  }
-
-  // Agregar evento para escuchar el clic en el botón
-  agregarVehiculoBtn.addEventListener('click', toggleVehiculoContent);
-
-  // Inicializar el icono con la flecha hacia abajo
-  iconoFlecha.classList.add('fa', 'fa-chevron-down');
-  document.getElementById('btnagregarcliente').addEventListener('click', function() {
-    // Verifica si el formulario es válido
-    if (document.getElementById('idformagregarcliente').checkValidity()) {
-        // Envía el formulario si es válido
-        document.getElementById('idformagregarcliente').submit();
-    } else {
-      // Si el formulario agregar no es válido, enfoca el primer campo inválido para que el usuario lo corrija
-      document.getElementById('idformagregarcliente').querySelector(':invalid').focus();
-      // Si el formulario no es válido, muestra un mensaje de error
-      document.getElementById('mensajeError').innerText = 'Por favor complete todos los campos requeridos.';
-      document.getElementById('mensajeError').style.display = 'block';
-    }
-  });
-  document.getElementById('btneditarcliente').addEventListener('click', function() {
-    // Verifica si el formulario es válido
-    if (document.getElementById('idformeditarcliente').checkValidity()) {
-        // Envía el formulario si es válido
-        document.getElementById('idformeditarcliente').submit();
-    } else {
-      // Si el formulario agregar no es válido, enfoca el primer campo inválido para que el usuario lo corrija
-      document.getElementById('idformeditarcliente').querySelector(':invalid').focus();
-      // Si el formulario no es válido, muestra un mensaje de error
-      document.getElementById('mensajeErroreditar').innerText = 'Procurar que los campos requeridos no queden vacíos.';
-      document.getElementById('mensajeErroreditar').style.display = 'block';
-    }
-  });
-  
-  document.addEventListener('DOMContentLoaded', (event) => {
-    // Datos simulados para la tabla
-    const clientes = [
-      { numero: 1, rut: "12345678-9", nombre: "Juan Pérez", tipo: "Particular" },
-      { numero: 2, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 3, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 4, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 5, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 6, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 7, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 8, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 9, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 10, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 11, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 12, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 13, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 14, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 15, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 16, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 17, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 18, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 19, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 20, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 21, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 22, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 23, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 24, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 25, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 26, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 27, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      { numero: 28, rut: "24681357-0", nombre: "Ana López", tipo: "Particular" },
-      { numero: 29, rut: "98765432-1", nombre: "María González", tipo: "Empresa" },
-      { numero: 30, rut: "13579246-8", nombre: "Carlos Sánchez", tipo: "Independiente" },
-      
-
-      // Puedes agregar más datos aquí
-    ];
-
-    const tbody = document.querySelector("#tablalistadoclientes tbody");
-
-    // Función para llenar la tabla
-    function llenarTabla(clientes) {
-      tbody.innerHTML = '';
-
-      clientes.forEach(cliente => {
-        const fila = document.createElement('tr');
-
-        fila.innerHTML = `
-          <td>${cliente.numero}</td>
-          <td>${cliente.rut}</td>
-          <td>${cliente.nombre}</td>
-          <td>${cliente.tipo}</td>
-          <td>
-            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#clienteModal">
-              <i class="fas fa-search"></i>
-            </button>
-          </td>
-        `;
-
-        tbody.appendChild(fila);
-      });
-    }
-
-    llenarTabla(clientes);
-
-    // Función para normalizar el texto
-    function normalizarTexto(texto) {
-      return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-    }
-
-    // Función para filtrar la tabla
-    function filtrarTabla() {
-      // Obtén el valor del campo de búsqueda y normalízalo
-      const input = normalizarTexto(document.getElementById('barraBuscarClientes').value);
-      const rows = tbody.getElementsByTagName('tr');
-
-      // Recorre las filas de la tabla
-      for (let i = 0; i < rows.length; i++) {
-        let cells = rows[i].getElementsByTagName('td');
-        let match = false;
-
-        // Recorre las celdas en cada fila
-        for (let j = 0; j < cells.length - 1; j++) { // Excluye la última columna (botón Ver)
-          if (cells[j]) {
-            // Normaliza el texto de las celdas
-            const txtValue = normalizarTexto(cells[j].textContent || cells[j].innerText);
-            if (txtValue.indexOf(input) > -1) {
-              match = true;
-              break;
-            }
-          }
-        }
-
-        // Muestra la fila si coincide, o la oculta si no
-        if (match) {
-          rows[i].style.display = "";
-        } else {
-          rows[i].style.display = "none";
-        }
-      }
-    }
-
-    // Agrega un evento 'click' al botón de búsqueda
-    document.getElementById('search_button').addEventListener('click', filtrarTabla);
-
-    // Evento 'keydown' al campo de búsqueda para detectar la tecla Enter
-    document.getElementById('barraBuscarClientes').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevenir el comportamiento por defecto (enviar formulario)
-        filtrarTabla(); // Llama a la función de filtrado
-      }
-    });
-
-  });
-</script>
-
-
-
+<script src="JavaScripts/clientes.js"></script>
 
 </body>
 </html>
