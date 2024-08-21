@@ -569,7 +569,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelBusqueda" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-search"></i> Búsqueda Avanzada
+                  <i class="fas fa-file-import"></i> Manejo de Clientes
               </a>
           </li>
           </ul>
@@ -632,8 +632,8 @@
                             </div>
                             <div class = "form-row">
                               <div class="form-group col-md-6">
-                                <label for="name">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
+                                <label for="name">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese Nombre Completo del Cliente"required>
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="razonsocial">Razon social</label>
@@ -642,16 +642,7 @@
                   
                             </div>
                             
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="f-apellido">Primer Apellido</label>
-                                <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="s-apellido">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                              </div>
-                            </div>
+                            
                             <div class="form-row">
                               <div class="form-group col-md-4">
                                 <label for="phone">Teléfono Fijo</label>
@@ -790,34 +781,6 @@
                                 </div>
                               </div>
                             </div>
-                            
-                            <div class="row">
-                              <div class="col-md-12 text-center">
-                                <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                  <span id="iconoFlecha" class="mr-2"></span>
-                                  Crea Vehiculo Asociado (Opcional)
-                                </button>
-                              </div>
-                            </div>
-                            
-                            <div id="vehiculoCollapse" class="collapse mt-3">
-                              <div class="card card-body">
-                                <div class="form-row">
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoMarca">Marca</label>
-                                    <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                  </div>
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoModelo">Modelo</label>
-                                    <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                  </div>
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoAnio">Año</label>
-                                    <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                           </form>
                           
                       </div>
@@ -869,7 +832,7 @@
                         <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                              <div class="modal-header custom-card-header">
+                              <div class="modal-header text-white custom-card-header bg-dark">
                                 <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
                                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -877,68 +840,110 @@
                               </div>
                               <div class="modal-body">
                                 <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-md-12 text-center mb-4">
-                                      <h3>JUAN PÉREZ</h3>
+                                  <div class="row mb-4">
+                                    <div class="col-md-12 text-center">
+                                      <h3 class="mb-1">JUAN PÉREZ</h3>
                                       <span class="badge badge-success">Activo</span>
                                     </div>
                                   </div>
+                        
                                   <div class="row">
+                                    <!-- Datos Básicos -->
                                     <div class="col-md-6">
-                                      <h5>Datos Básicos</h5>
-                                      <p><strong>N°Cliente:</strong> 0001</p>
-                                      <p><strong>RUT:</strong> 21334556-9</p>
-                                      <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                      <p><strong>Nombre:</strong> Juan Pérez</p>
-                                      <p><strong>Primer Apellido:</strong> Pérez</p>
-                                      <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                      <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                      <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                      <p><strong>Email:</strong> ejemplo@correo.com</p>
+                                      <div class="card shadow-sm card-hover bg-lightblue">
+                                        <div class="card-header bg-primary text-white">
+                                          <h5 class="mb-0">Datos Básicos</h5>
+                                        </div>
+                                        <div class="card-body">
+                                          <p><strong>N°Cliente:</strong> 0001</p>
+                                          <p><strong>RUT:</strong> 21334556-9</p>
+                                          <p><strong>Tipo de Cliente:</strong> Particular</p>
+                                          <p><strong>Nombre:</strong> Juan Pérez</p>
+                                          <p><strong>Primer Apellido:</strong> Pérez</p>
+                                          <p><strong>Segundo Apellido:</strong> Pérez</p>
+                                          <p><strong>Teléfono Fijo:</strong> +123456789</p>
+                                          <p><strong>Teléfono Móvil:</strong> +123456789</p>
+                                          <p><strong>Email:</strong> ejemplo@correo.com</p>
+                                        </div>
+                                      </div>
                                     </div>
+                        
+                                    <!-- Datos de Ubicación -->
                                     <div class="col-md-6">
-                                      <h5>Datos de Ubicación</h5>
-                                      <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                      <p><strong>Código Postal:</strong> 123456</p>
-                                      <h5>Observaciones</h5>
-                                      <p>Observaciones del cliente.</p>
-                                    </div>
-                                  </div>
-                                  <!-- Nueva sección para vehículos asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <h5>Vehículos Asociados</h5>
-                                      <div class="d-flex flex-wrap">
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> AABB-22
-                                        </button>
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> CCDD-22
-                                        </button>
-                                        <!-- Agrega más botones de vehículos según sea necesario -->
+                                      <div class="card shadow-sm card-hover bg-lightgreen">
+                                        <div class="card-header bg-primary text-white">
+                                          <h5 class="mb-0">Datos de Ubicación</h5>
+                                        </div>
+                                        <div class="card-body">
+                                          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                                          <p><strong>Código Postal:</strong> 123456</p>
+                                          <h5>Observaciones</h5>
+                                          <p>Observaciones del cliente.</p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="row mt-3">
-                                    <div class="col-md-12 text-center">
-                                      <button type="button" class="btn btn-primary" id="crearvheiculoasociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                        <span class="fa-stack fa-1x">
-                                          <i class="fas fa-car fa-stack-1x"></i>
-                                          <i class="fas fa-plus fa-stack-1x fa-inverse" style="font-size: 0.5em; top: -5px; left: 5px;"></i>
-                                        </span> 
-                                        Asociar Nuevo Vehículo
-                                      </button>
+                        
+                                  <!-- Vehículos Asociados -->
+                                  <div class="row mt-4">
+                                    <div class="col-md-12">
+                                      <div class="card shadow-sm card-hover bg-lightcoral">
+                                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                          <h5 class="mb-0">Vehículos Asociados</h5>
+                                          <button type="button" class="btn btn-primary btn-animated btn-sm" id="crearVehiculoAsociado" data-dismiss="modal" data-toggle="modal" data-target="#">
+                                            <i class="fas fa-plus"></i> Nuevo Vehículo
+                                          </button>
+                                        </div>
+                                        <div class="card-body">
+                                          <div class="row">
+                                            <!-- Tarjeta de Vehículo -->
+                                            <div class="col-md-4">
+                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
+                                                <div class="card-body text-center">
+                                                  <i class="fas fa-car fa-2x mb-3 text-warning"></i>
+                                                  <h5 class="card-title">Marca: Toyota</h5>
+                                                  <p class="card-text"><strong>Modelo:</strong> Corolla</p>
+                                                  <p class="card-text"><strong>Patente:</strong> AABB-22</p>
+                                                  <p class="card-text"><strong>Año:</strong> 2020</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!-- Fin Tarjeta de Vehículo -->
+                        
+                                            <!-- Tarjeta de Vehículo -->
+                                            <div class="col-md-4">
+                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
+                                                <div class="card-body text-center">
+                                                  <i class="fas fa-car fa-2x mb-3 text-danger"></i>
+                                                  <h5 class="card-title">Marca: Honda</h5>
+                                                  <p class="card-text"><strong>Modelo:</strong> Civic</p>
+                                                  <p class="card-text"><strong>Patente:</strong> CCDD-22</p>
+                                                  <p class="card-text"><strong>Año:</strong> 2019</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!-- Fin Tarjeta de Vehículo -->
+                        
+                                            <!-- Puedes agregar más tarjetas aquí -->
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                        
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-success" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-success btn-animated" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
+                                <button type="button" class="btn btn-secondary btn-animated" data-dismiss="modal">Cerrar</button>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
+                        
+
+
 
                         <!-- Modal edit -->
                         <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
@@ -1186,71 +1191,59 @@
             </div>
             
             <div class="tab-pane fade" id="panelBusqueda" role="tabpanel" aria-labelledby="panelBusqueda">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header custom-card-header">
-                    <h5 class="card-title"><i class="fas fa-search"></i> Panel Búsqueda Avanzada</h5>
+              <div class="container mt-5">
+                <!-- Botón Exportar -->
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="exportarTablaAExcel()">
+                      <i class="fas fa-file-export"></i>
+                    </button>
                   </div>
-                  <div class="card-body">
-                    <!-- Nueva tarjeta de descripción -->
-                    <div class="card mb-3">
-                      <div class="card-body custom-card-header">
-                        <p class="card-text">
-                          Podrá realizar la búsqueda llenando cualquiera de los campos a continuación.
-                        </p>
-                      </div>
-                    </div>
-                    <!-- Formulario de búsqueda avanzada -->
-                    <form>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="rsocial">Razón social</label>
-                          <input type="text" class="form-control" id="rsocial" placeholder="Ingrese la razón social">
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="movil">Teléfono móvil</label>
-                          <input type="tel" class="form-control" id="movil" placeholder="+56 9 123 456 78" >
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="tipoclient">Tipo de cliente</label>
-                          <select class="form-control" id="tipoclient">
-                            <option value="">Seleccione un tipo</option>
-                            <option value="empr">Empresa</option>
-                            <option value="par">Particular</option>
-                            <option value="ind">Independiente</option>
-                            <option value="sindef">Sin definir</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="Patente">Patente asociada</label>
-                          <input type="text" class="form-control" id="Patente" placeholder="Ingrese Patente • Ejemplo AA1122 • BBCC11">
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary btn-block" >Buscar</button>
-                    </form>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Exportar</span>
+                    <span class="line-2">Clientes</span>
                   </div>
                 </div>
+                
+                <!-- Botón Importar -->
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <!-- Input para importar archivo Excel -->
+                    <input type="file" id="inputImportarExcel" accept=".xlsx, .xls" class="d-none">
+                    <button class="btn btn-primary btn-square" onclick="document.getElementById('inputImportarExcel').click()">
+                      <i class="fas fa-file-import"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Importar</span>
+                    <span class="line-2">Clientes</span>
+                  </div>
+                </div>
+                
+                <!-- Modal para manejar clientes duplicados -->
+                <div class="modal fade" id="modalDuplicados" tabindex="-1" role="dialog" aria-labelledby="modalDuplicadosLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="modalDuplicadosLabel">Clientes Duplicados Detectados</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              Se han encontrado clientes duplicados basados en el RUT. ¿Qué desea hacer?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" id="btnOmitirDuplicados">Omitir Duplicados</button>
+                              <button type="button" class="btn btn-primary" id="btnReemplazarDuplicados">Reemplazar Duplicados</button>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                
               </div>
-            </div>
-            
-            
-            
-            
-              
-              
-              
+             </div>
             </div>
           </div>
         </div>
@@ -1344,9 +1337,12 @@
   <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script src="JavaScripts/clientes.js"></script>
+
 
 </body>
 </html>

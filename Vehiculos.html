@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ERP Taller 3 | Clientes</title>
+  <title>ERP Taller 3 | Vehiculos </title>
   <!-- Jocsan -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -561,13 +561,13 @@
               </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+                <a class="nav-link active" id="Nuevovheiculo-tab" data-toggle="pill" href="#nuevovheiculo" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
                     <i class="bi bi-car-front-fill"></i> Nuevo vehículo
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#listadovehiculos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
                   <i class="fas fa-car-side"></i> Lista de vehículos
                 </a>
               </li>
@@ -575,20 +575,21 @@
               
             <li class="nav-item">
               <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-search"></i> Búsqueda Avanzada
-              </a>
+                  <i class="fas fa-history"></i>Historial de Vehículos
+              </a>     
           </li>
           </ul>
         </div>
+
         <div class="card-body">
-          <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+          <div class="tab-content" id="n">
+            <div class="tab-pane fade show active" id="nuevovheiculo" role="tabpanel" aria-labelledby="nuevovheiculo-tab">
                 <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
                           <div class="btn-container">
-                            <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarclientemodal">
+                            <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarvehiculomodal">
                               <i class="bi bi-car-front-fill"></i> 
                             </button>
                           </div>
@@ -605,12 +606,12 @@
                   
                   
             
-              <!-- Modal agregra cliente-->
-              <div class="modal fade" id="agregarclientemodal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+              <!-- Modal agregar Vehículo -->
+              <div class="modal fade" id="agregarvehiculomodal" tabindex="-1" aria-labelledby="agregarvehiculomodal" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="editarClienteModalLabel">Agregar Cliente</h5>
+                      <h5 class="modal-title" id="editarVehiculoModalLabel">Agregar Vehículo</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -618,235 +619,98 @@
                     <div class="modal-body">
                       <div class="card card-body">
                         <!-- Mensaje de error -->
-                        <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
-                        <form id="idformagregarcliente">
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="rut">RUT</label>
-                                <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="N°Cliente">N°Cliente</label>
-                                <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">Tipo de Cliente</label>
-                                <select class="form-control" id="tipoclient">
-                                  <option>Sin definir</option>
-                                  <option>Particular</option>
-                                  <option>Empresa</option>
-                                  <option>Independiente</option>
-                                  
-                                </select>
-                              </div>
+                        <div id="mensajeErrorVehiculo" class="alert alert-danger" style="display: none;"></div>
+
+                        <!-- Fila para búsqueda de cliente y campo no editable -->
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="buscarCliente">Buscar Cliente</label>
+                              <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
+                              <!-- Lista de coincidencias -->
+                              <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="clienteSeleccionado">Cliente</label>
+                              <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
+                          </div>
+                        </div>
+
+                        <form id="idformagregarvehiculo">
+                          <!-- Resto del formulario para agregar vehículo -->
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoPlaca">Placa</label>
+                              <input type="text" class="form-control" id="vehiculoPlaca" placeholder="Ingrese la placa del vehículo" required>
                             </div>
-                            <div class = "form-row">
-                              <div class="form-group col-md-6">
-                                <label for="name">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="razonsocial">Razon social</label>
-                                <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                              </div>
-                  
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoMarca">Marca</label>
+                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo" required>
                             </div>
-                            
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="f-apellido">Primer Apellido</label>
-                                <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="s-apellido">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoModelo">Modelo</label>
+                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo" required>
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="phone">Teléfono Fijo</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                              </div>
-                              <div class="form-group col-md-4">
-                                
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="movil">Teléfono Móvil</label>
-                                <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoAnio">Año</label>
+                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo" required>
                             </div>
-                            <div class="form-group">
-                              <label for="address">Dirección</label>
-                              <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoColor">Color</label>
+                              <input type="text" class="form-control" id="vehiculoColor" placeholder="Ingrese el color del vehículo">
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="zipCode">Código Postal</label>
-                                <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="city">Ciudad</label>
-                                <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">País</label>
-                                <select class="form-control" id="country">
-                                  <option>Chile</option>
-                                  <option>Argentina</option>
-                                  <option>Perú</option>
-                                </select>
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoVIN">VIN (Número de Identificación del Vehículo)</label>
+                              <input type="text" class="form-control" id="vehiculoVIN" placeholder="Ingrese el VIN del vehículo">
                             </div>
-                            <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoMotor">Número de Motor</label>
+                              <input type="text" class="form-control" id="vehiculoMotor" placeholder="Ingrese el número de motor">
                             </div>
-                            <div class="form-group">
-                              <label for="observations">Observaciones</label>
-                              <textarea class="form-control" id="observations" rows="3"></textarea>
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoKilometraje">Kilometraje</label>
+                              <input type="number" class="form-control" id="vehiculoKilometraje" placeholder="Ingrese el kilometraje del vehículo"required>
                             </div>
-                            <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                              <br>
-                              <div class="bg-light border"></div>
-                              <br>
-                            <br>
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="tipoTarifa">Tipo de Tarifa</label>
-                                  <select class="form-control" id="tipoTarifa">
-                                    <option>Tarifa 1 - 0.5 Hora</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="grupoFacturacion">Grupo de Facturación</label>
-                                  <select class="form-control" id="grupoFacturacion">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              
+                            <div class="form-group col-md-4">
+                              <label for="vehiculoTipo">Tipo de Vehículo</label>
+                              <select class="form-control" id="vehiculoTipo">
+                                <option>Automóvil</option>
+                                <option>Camioneta</option>
+                                <option>Moto</option>
+                                <option>Otro</option>
+                              </select>
                             </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoPlazas">Desc. en Plazas</label>
-                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoGral">Descuento gral</label>
-                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="formaPago">Forma Pago</label>
-                                  <select class="form-control" id="formaPago">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="condicionesPago">Condiciones Pago</label>
-                                  <select class="form-control" id="condicionesPago">
-                                    <option>Sin Definir</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="cuentaContable">Cuenta Contable</label>
-                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="comoNosConocio">Cómo nos conoció</label>
-                                  <select class="form-control" id="comoNosConocio">
-                                    <option>- sin definir -</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-md-12 text-center">
-                                <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                  <span id="iconoFlecha" class="mr-2"></span>
-                                  Crea Vehiculo Asociado (Opcional)
-                                </button>
-                              </div>
-                            </div>
-                            
-                            <div id="vehiculoCollapse" class="collapse mt-3">
-                              <div class="card card-body">
-                                <div class="form-row">
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoMarca">Marca</label>
-                                    <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                  </div>
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoModelo">Modelo</label>
-                                    <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                  </div>
-                                  <div class="form-group col-md-4">
-                                    <label for="vehiculoAnio">Año</label>
-                                    <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          
+                          </div>
+                          <div class="form-group">
+                            <label for="vehiculoObservaciones">Observaciones</label>
+                            <textarea class="form-control" id="vehiculoObservaciones" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
+                          </div>
+                        </form>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="btnagregarcliente">Agregar Cliente</button>
-                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" id="btnagregarvehiculo" disabled>Agregar Vehículo</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
+
+
+              
             </div>
-            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+            <div class="tab-pane fade" id="listadovehiculos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
+                  <h3 class="card-title">
+                    <i class="fas fa-car"></i> Panel Listado de Vehículos
+                  </h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="RUT">
+                      <input type="text" name="table_search" id ="barraBuscarVheiculos" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
                         <button type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
@@ -858,150 +722,21 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadovheiculos" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
-                          <th>N°Cliente</th>
-                          <th>RUT</th>
-                          <th>Nombre</th>
-                          <th>Tipo de Cliente</th>
+                          <th>Patente</th>
+                          <th>Cliente</th>
+                          <th>Marca</th>
+                          <th>Modelo</th>
+                          <th>Kilometraje</th>
+                          <th>Año</th>
                           <th>Ver</th>
                         </tr>
                       </thead>
                       <tbody>
-                                      <tr>
-                                        <td>0001</td>
-                                        <td>21448838-3</td>
-                                        <td>Jocsan Riquelme Mella</td>
-                                        <td>Empresa</td>
-                                        <td>
-                                        <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                          <i class="fas fa-search"></i>
-                                        </a>
-                                      </td>
-                                    </tr>
-                                <tr>
-                                    <td>0002</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                  </td>
-                                  <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0003</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0004</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                    <td>0005</td>
-                                    <td>21448838-3</td>
-                                    <td>Jocsan Riquelme Mella</td>
-                                    <td>Empresa</td>
-                                    <td>
-                                    <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                      <i class="fas fa-search"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>0005</td>
-                                  <td>21448838-3</td>
-                                  <td>Jocsan Riquelme Mella</td>
-                                  <td>Empresa</td>
-                                  <td>
-                                  <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                    <i class="fas fa-search"></i>
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>0005</td>
-                                <td>21448838-3</td>
-                                <td>Jocsan Riquelme Mella</td>
-                                <td>Empresa</td>
-                                <td>
-                                <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                  <i class="fas fa-search"></i>
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>0005</td>
-                              <td>21448838-3</td>
-                              <td>Jocsan Riquelme Mella</td>
-                              <td>Empresa</td>
-                              <td>
-                              <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                                <i class="fas fa-search"></i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>0005</td>
-                            <td>21448838-3</td>
-                            <td>Jocsan Riquelme Mella</td>
-                            <td>Empresa</td>
-                            <td>
-                            <a href="#" class="text-muted" data-toggle="modal" data-target="#clienteModal">
-                              <i class="fas fa-search"></i>
-                            </a>
-                          </td>
-                        </tr>
+                                      
+                       
                         <!-- Aquí van las filas de los clientes -->
                       </tbody>
                       
@@ -1326,63 +1061,62 @@
                 </div>
               </div>  
             </div>
+          
             
             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header custom-card-header">
-                    <h5 class="card-title"><i class="fas fa-search"></i> Panel Búsqueda Avanzada</h5>
-                  </div>
+              <div class="container mt-5">
+                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                  <i class="fas fa-history"></i>
+                  Historial de Vehículos
+                </a>
+            
+                <div class="card mt-4">
                   <div class="card-body">
-                    <!-- Nueva tarjeta de descripción -->
-                    <div class="card mb-3">
-                      <div class="card-body custom-card-header">
-                        <p class="card-text">
-                          Podrá realizar la búsqueda llenando cualquiera de los campos a continuación.
-                        </p>
-                      </div>
-                    </div>
-                    <!-- Formulario de búsqueda avanzada -->
-                    <form>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="rsocial">Razón social</label>
-                          <input type="text" class="form-control" id="rsocial" placeholder="Ingrese la razón social">
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="movil">Teléfono móvil</label>
-                          <input type="tel" class="form-control" id="movil" placeholder="+56 9 123 456 78" >
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="tipoclient">Tipo de cliente</label>
-                          <select class="form-control" id="tipoclient">
-                            <option value="">Seleccione un tipo</option>
-                            <option value="empr">Empresa</option>
-                            <option value="par">Particular</option>
-                            <option value="ind">Independiente</option>
-                            <option value="sindef">Sin definir</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="Patente">Patente asociada</label>
-                          <input type="text" class="form-control" id="Patente" placeholder="Ingrese Patente • Ejemplo AA1122 • BBCC11">
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary btn-block" >Buscar</button>
-                    </form>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Vehículo</th>
+                          <th>Acción</th>
+                          <th>Fecha</th>
+                          <th>Usuario</th>
+                          <th>Detalles</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Aquí se mostrarán los registros del historial -->
+                        <tr>
+                          <td>1</td>
+                          <td>Chevrolet Cruze 2019</td>
+                          <td><span class="badge bg-success">Agregado</span></td>
+                          <td>2024-08-20 10:45 AM</td>
+                          <td>Juan Pérez</td>
+                          <td>Vehículo agregado al sistema (Dato simulado)</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Toyota Corolla 2018</td>
+                          <td><span class="badge bg-warning">Editado</span></td>
+                          <td>2024-08-20 11:00 AM</td>
+                          <td>María López</td>
+                          <td>Cambio de propietario (Dato simulado)</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Honda Civic 2020</td>
+                          <td><span class="badge bg-danger">Eliminado</span></td>
+                          <td>2024-08-20 11:15 AM</td>
+                          <td>Carlos Gómez</td>
+                          <td>Vehículo eliminado del sistema (Dato simulado)</td>
+                        </tr>
+                        <!-- Añadir más registros según sea necesario -->
+                      </tbody>
+                    </table>
                   </div>
+                </div>
+            
+                <div class="text-center mt-4">
+                  <button class="btn btn-primary">Exportar Historial</button>
                 </div>
               </div>
             </div>
@@ -1488,75 +1222,7 @@
   <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script>
-  $(function () {
-  $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
-  }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-  });
-  });
-  function showDescription(description) {
-      document.getElementById('descriptionCard').textContent = description;
-  }
-  // Obtener referencia al botón, al icono y al contenido a mostrar/ocultar
-  const agregarVehiculoBtn = document.getElementById('agregarVehiculoBtn');
-  const iconoFlecha = document.getElementById('iconoFlecha');
-  const vehiculoCollapseContent = document.getElementById('vehiculoCollapse');
-
-  // Función para mostrar/ocultar el contenido y actualizar el icono
-  function toggleVehiculoContent() {
-    vehiculoCollapseContent.classList.toggle('show');
-    // Desplazar hasta el final del modal
-    const modalFooter = document.querySelector('.modal-footer');
-    if (modalFooter) {
-      modalFooter.scrollIntoView({ behavior: 'smooth' });
-    }
-    // Actualizar el icono
-    iconoFlecha.classList.toggle('fa-chevron-down');
-    iconoFlecha.classList.toggle('fa-chevron-up');
-  }
-
-  // Agregar evento para escuchar el clic en el botón
-  agregarVehiculoBtn.addEventListener('click', toggleVehiculoContent);
-
-  // Inicializar el icono con la flecha hacia abajo
-  iconoFlecha.classList.add('fa', 'fa-chevron-down');
-  document.getElementById('btnagregarcliente').addEventListener('click', function() {
-    // Verifica si el formulario es válido
-    if (document.getElementById('idformagregarcliente').checkValidity()) {
-        // Envía el formulario si es válido
-        document.getElementById('idformagregarcliente').submit();
-    } else {
-      // Si el formulario agregar no es válido, enfoca el primer campo inválido para que el usuario lo corrija
-      document.getElementById('idformagregarcliente').querySelector(':invalid').focus();
-      // Si el formulario no es válido, muestra un mensaje de error
-      document.getElementById('mensajeError').innerText = 'Por favor complete todos los campos requeridos.';
-      document.getElementById('mensajeError').style.display = 'block';
-    }
-  });
-  document.getElementById('btneditarcliente').addEventListener('click', function() {
-    // Verifica si el formulario es válido
-    if (document.getElementById('idformeditarcliente').checkValidity()) {
-        // Envía el formulario si es válido
-        document.getElementById('idformeditarcliente').submit();
-    } else {
-      // Si el formulario agregar no es válido, enfoca el primer campo inválido para que el usuario lo corrija
-      document.getElementById('idformeditarcliente').querySelector(':invalid').focus();
-      // Si el formulario no es válido, muestra un mensaje de error
-      document.getElementById('mensajeErroreditar').innerText = 'Procurar que los campos requeridos no queden vacíos.';
-      document.getElementById('mensajeErroreditar').style.display = 'block';
-    }
-  });
-</script>
+<script src="JavaScripts/vheiculos.js"></script>
 
 
 </body>
