@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ERP Taller 3 | Inicio</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+   <!-- Iconos de boostrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+</head>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="../dist/img/logo.png" alt="logo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-dark">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../index2.html" class="nav-link bi bi-house"> Inicio</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link bi bi-person-lines-fill"> Contacto</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <!-- **********************OCULTO LUPITA DE BUSQUEDA **************************
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+-->
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../index3.html" class="brand-link">
+      <img src="../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Usuario Kronos</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Marcos Roa</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+     <!-- <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+        <!-- 
+          *****************ACA VAN LOS 3 DASHBOAR DE PRUEBAS QUE ELIMINE 
+               <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index2.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
+          </li>  -->
+        <!--  <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Widgets
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>-->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas bi-kanban"></i>
+              <p>
+                GESTION
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Modulos/GESTION/Clientes.html" class="nav-link">
+                  <i class="bi bi-people-fill nav-icon"></i>
+                  <p>Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Modulos/GESTION/Vehiculos.html" class="nav-link">
+                  <i class="bi bi-car-front nav-icon"></i>
+                  <p>Vehiculos</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="Modulos/GESTION/Proveedores.html" class="nav-link">
+                  <i class="bi bi-box-seam-fill nav-icon"></i>
+                  <p>Proveedores</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Modulos/GESTION/empleados.html" class="nav-link">
+                  <i class="bi bi-people-fill nav-icon"></i>
+                  <p>Empleados</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Modulos/GESTION/" class="nav-link">
+                  <i class="bi bi-circle nav-icon"></i>
+                  <p>Aseguradoras</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas bi-car-front-fill"></i>
+              <p>
+                TALLER
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Modulos/Taller/EjemploCuerpo.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ingresos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="presupuesto.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Presupuestos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ordenes de Trabajo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comprobantes de Entrega</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Facturas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Certificado Laminas</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas bi-database-fill-add"></i>
+              <p>
+                ABASTECIMIENTO
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ordenes de Compra</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Recepcion de Repuestos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dispensacion de Insumos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Herramientas de Taller</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ingreso de Repuestos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Facturas de Ordenes de Compra</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                INFORMES
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Caja</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Vehiculos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Insumos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productividad</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                CONFIGURACION
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>General</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Alertas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Super Admin</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-header">Herramientas</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-person-square"></i>
+              <p>
+                Colaboradores
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far bi-box-arrow-in-down-right nav-icon"></i>
+                  <p>Ficha Colaborador</p>
+                </a>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far bi bi-person-fill-add nav-icon"></i>
+                      <p>Nuevo Colaborador</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far bi bi-person-lines-fill nav-icon"></i>
+                      <p>Listado Colaboradores</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far bi-person-fill-slash nav-icon"></i>
+                      <p>Deshabilitar Colaborador</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-person-square"></i>
+                  <p>
+                    Control Colaboradores
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <li class="nav-item">
+          <a href="pages/calendar.html" class="nav-link">
+            <i class="nav-icon bi bi-calendar-date"></i>
+            <p>
+              Calendario
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+        </li>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 bi bi-cpu"> CENTRO DE MANDO</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Panel de Mando</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas bi-flag-fill"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Meta Mensual</span>
+                <span class="info-box-number">
+                  $ 65.000.000
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-primary elevation-1"><i class="fas bi-car-front-fill"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Autos en Taller</span>
+                <span class="info-box-number">36</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas bi-currency-dollar"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Ventas Mes en Curso</span>
+                <span class="info-box-number">15.458.200</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas bi-ticket-perforated-fill"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Ticket Promedio Ventas</span>
+                <span class="info-box-number">$ 485.000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h5 class="card-title">Reporte Ticket Mensual</h5>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <p class="text-center">
+                      <strong>Presupuesto: 1 Enero, 2024 - 31 Enero, 2024</strong>
+                    </p>
+
+                    <div class="chart">
+                      <!-- Sales Chart Canvas -->
+                      <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+                    </div>
+                    <!-- /.chart-responsive -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <p class="text-center">
+                      <strong>Detalle Presupuestos</strong>
+                    </p>
+
+                    <div class="progress-group">
+                      Presupuestos Enviados
+                      <span class="float-right"><b>160</b>/200</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: 80%"></div>
+                      </div>
+                    </div>
+                    <!-- /.progress-group -->
+
+                    <div class="progress-group">
+                      Presupuestos Rechazados
+                      <span class="float-right"><b>310</b>/400</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-danger" style="width: 75%"></div>
+                      </div>
+                    </div>
+
+                    <!-- /.progress-group -->
+                    <div class="progress-group">
+                      <span class="progress-text">Presupuestos Aceptados</span>
+                      <span class="float-right"><b>480</b>/800</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-success" style="width: 60%"></div>
+                      </div>
+                    </div>
+
+                    <!-- /.progress-group -->
+                    <div class="progress-group">
+                      Total Presupuestos Sin Respuesta
+                      <span class="float-right"><b>250</b>/500</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-warning" style="width: 50%"></div>
+                      </div>
+                    </div>
+                    <!-- /.progress-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- ./card-body -->
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-primary"><i class="fas fa-caret-down"></i> 18%</span>
+                      <h5 class="description-header">1200</h5>
+                      <span class="description-text">Total Presupuestos Enviados</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-danger"><i class="fas fa-caret-left"></i> 0%</span>
+                      <h5 class="description-header">$10,390.90</h5>
+                      <span class="description-text">Total Presupuestos Rechazados</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                      <h5 class="description-header">$35,210.43</h5>
+                      <span class="description-text">Total Presupuestos Aceptados</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block">
+                      <span class="description-percentage text-warning"><i class="fas fa-caret-up"></i> 20%</span>
+                      <h5 class="description-header">$24,813.53</h5>
+                      <span class="description-text">Total Presupuestos Sin Respuesta</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Main row -->
+        <div class="row card-primary">
+          <!-- Left col -->
+          <div class="col-md-8">
+
+            <!-- TABLE: AGENDA PRESUPUESTOS SEMANAL-->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Agenda Semanal</h3>
+                
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive" style="height: 500px;">
+                  <table id="example1" class="table table-head-fixed table-bordered text-nowrap ">
+                    <thead>
+                    <tr>
+                      <th>N° Presupuesto</th>
+                      <th>Patente / Vehiculo</th>
+                      <th>Fecha</th>
+                      <th>Monto Prespuesto</th>
+                      <th>Ver</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>PPT1224</td>
+                      <td>SJRS45 / Great Wall Poer</td>
+                      <td><span class="">29/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00a65a" data-height="20">$ 584.220</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1328</td>
+                      <td>PPTC55 / Kia Rio4</td>
+                      <td><span class="">29/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">$ 125.450</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1428</td>
+                      <td>PTHC51 / Kia Cerato</td>
+                      <td><span class="">30/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f56954" data-height="20">$ 2.861.950</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1628</td>
+                      <td>PSWK15 / Mazda 3</td>
+                      <td><span class="">30/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00c0ef" data-height="20">$ 60.000</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1899</td>
+                      <td>KTGX27 / Mazda CX2 2.0</td>
+                      <td><span class="">31/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">$ 1.106.700</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1628</td>
+                      <td>PSWK15 / Mazda 3</td>
+                      <td><span class="">30/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00c0ef" data-height="20">$ 60.000</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1899</td>
+                      <td>KTGX27 / Mazda CX2 2.0</td>
+                      <td><span class="">31/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">$ 1.106.700</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1896</td>
+                      <td>GGJC13 / Nissan QashQai 4x4</td>
+                      <td><span class="">01/02/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f56954" data-height="20">$ 612.850</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1896</td>
+                      <td>GGJC13 / Nissan QashQai 4x4</td>
+                      <td><span class="">01/02/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f56954" data-height="20">$ 612.850</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1628</td>
+                      <td>PSWK15 / Mazda 3</td>
+                      <td><span class="">30/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00c0ef" data-height="20">$ 60.000</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1899</td>
+                      <td>KTGX27 / Mazda CX2 2.0</td>
+                      <td><span class="">31/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">$ 1.106.700</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1896</td>
+                      <td>GGJC13 / Nissan QashQai 4x4</td>
+                      <td><span class="">01/02/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f56954" data-height="20">$ 612.850</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1628</td>
+                      <td>PSWK15 / Mazda 3</td>
+                      <td><span class="">30/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00c0ef" data-height="20">$ 60.000</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1899</td>
+                      <td>KTGX27 / Mazda CX2 2.0</td>
+                      <td><span class="">31/01/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">$ 1.106.700</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1896</td>
+                      <td>GGJC13 / Nissan QashQai 4x4</td>
+                      <td><span class="">01/02/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#f56954" data-height="20">$ 612.850</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PPT1893</td>
+                      <td>FTKZ24 / Hyundai Accent RB</td>
+                      <td><span class="">01/02/2024</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00a65a" data-height="20">$ 3.474.782</div>
+                      </td>
+                      <td>
+                        <a href="#" class="text-muted">
+                          <i class="fas fa-search"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+               <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>-->
+                <a href="javascript:void(0)" class="btn btn-sm btn-info float-right">Ver Toda La Agenda</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+
+          <div class="col-md-4">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Piezas Preparadas por Colaboradores</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="chart-responsive">
+                      <canvas id="pieChart" height="150"></canvas>
+                    </div>
+                    <!-- ./chart-responsive -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-4">
+                    <ul class="chart-legend clearfix">
+                      <li><i class="far fa-circle text-danger"></i> Mauricio E.</li>
+                      <li><i class="far fa-circle text-success"></i> Michael </li>
+                      <li><i class="far fa-circle text-warning"></i> Leonardo S.</li>
+                      <li><i class="far fa-circle text-info"></i> Jose </li>
+                      <li><i class="far fa-circle text-primary"></i> Mauricio L.</li>
+                      <li><i class="far fa-circle text-secondary"></i> Oscar</li>
+                    </ul>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer p-0">
+                <ul class="nav nav-pills flex-column">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      Meta Minima mensual vs Mes anterior
+                      <span class="float-right text-danger">
+                        <i class="fas fa-arrow-down text-sm"></i>
+                        12%</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      Piezas en Proceso
+                      <span class="float-right text-success">
+                        <i class="fas fa-arrow-up text-sm"></i> 4%
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      Piezas Finalizadas
+                      <span class="float-right text-warning">
+                        <i class="fas fa-arrow-left text-sm"></i> 0%
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.footer -->
+            </div>
+            <!-- /.card -->
+
+            <!-- PRODUCT LIST -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Alertas</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <button type="button" class="btn btn-outline-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg>                      
+                        Stock Critico</button>
+                      <span class="product-description">
+                        Existen 9 Articulos Con Stock Critico.
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <button type="button" class="btn btn-outline-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg>                      
+                        Stock Critico</button>
+                      <span class="product-description">
+                        Existen 2 Retornos en Taller.
+                      </span>
+                    </div>
+                  </li>
+                  <!-- /.item -->
+                  <li class="item">
+                    <div class="product-img">
+                      <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                      <button type="button" class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg>                      
+                        Stock Critico</button>
+                      <span class="product-description">
+                        Existen 4 Vehiculos a la Espera de Repuestos.
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer text-center">
+                <a href="javascript:void(0)" class="uppercase">Revisar todas las alertas</a>
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2024 <a href="#">ERP Taller</a>.</strong>
+    Todos los derechos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="../plugins/raphael/raphael.min.js"></script>
+<script src="../plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="../plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="../plugins/chart.js/Chart.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../dist/js/pages/dashboard2.js"></script>
+
+<!-- DataTables  & Plugins -->
+  <script src="../../../plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../../../plugins/jszip/jszip.min.js"></script>
+  <script src="../../../plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../../../plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- SCRIPT FUNCIONALIDAD TABLA -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+</body>
+</html>

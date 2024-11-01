@@ -3,24 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ERP Taller 3 | Clientes</title>
+  <title>ERP Taller 3 | Proveedores</title>
   <!-- Jocsan -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars-->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
    <!-- Iconos de boostrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="./Styles/stylesclientes.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../Styles/stylesclientes.css">
+  <style>
+    .card-hover {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      cursor: pointer;
+    }
+
+    .card-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .hidden-table {
+      display: none;
+    }
+  </style>
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -269,48 +284,21 @@
                   <p>Vehiculos</p>
                 </a>
               </li>
+              
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="Proveedores.html" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="nuevoproveedor.html" class="nav-link">
-                      <i class="bi bi-person-fill-add nav-icon"></i>
-                      <p>Nuevo Proveedor</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="listadoproveedores.html" class="nav-link">
-                      <i class="bi bi-person-lines-fill nav-icon"></i>
-                      <p>Listado Proveedores</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="empleados.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Empleados</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="nuevoempleado.html" class="nav-link">
-                      <i class="bi bi-person-fill-add nav-icon"></i>
-                      <p>Nuevo Empleado</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="listadoempleados.html" class="nav-link">
-                      <i class="bi bi-person-lines-fill nav-icon"></i>
-                      <p>Listado Empleados</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="aseguradoras.html" class="nav-link">
                   <i class="bi bi-circle nav-icon"></i>
                   <p>Aseguradoras</p>
                 </a>
@@ -544,8 +532,8 @@
     <!-- Content Header (Page header) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
       <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
-        <i class="fas fa-users"></i>
-        Clientes
+        <i class="bi bi-box-seam-fill nav-icon"></i>
+        Proveedores
       </a>
     </nav>
     <div class="container-fluid px-4 py-4">
@@ -558,49 +546,49 @@
               </h3>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoCliente" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
-                  <i class="fas fa-user-plus"></i> Nuevo cliente
+              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoProveedor" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+                <i class="fas fa-handshake"></i> Nuevo Proveedor
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaClientes" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class="fas fa-users"></i> Lista de clientes
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaProveedores" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-list"></i> Lista de Proveedores
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelBusqueda" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-file-import"></i> Manejo de Clientes
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelhistorialproovedores" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                <i class="fas fa-receipt"></i> Historial de Pagos y Compras
               </a>
           </li>
           </ul>
         </div>
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="panelNuevoCliente" role="tabpanel" aria-labelledby="panelNuevoCliente">
+            <div class="tab-pane fade show active" id="panelNuevoProveedor" role="tabpanel" aria-labelledby="panelNuevoCliente">
               <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
                       <div class="btn-container">
-                        <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarclientemodal">
-                          <i class="fas fa-user-plus"></i>
+                        <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarproveedormodal">
+                          <i class="fas fa-handshake"></i>
                         </button>
                       </div>
                       <div class="description-inline ml-3">
                         <span class="line-1">Agregar</span>
-                        <span class="line-2">Cliente</span>
+                        <span class="line-2">Proveedor</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             
-              <!-- Modal agregra cliente-->
-              <div class="modal fade" id="agregarclientemodal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+              <!-- Modal agregra proovedor-->
+              <div class="modal fade" id="agregarproveedormodal" tabindex="-1" aria-labelledby="ProveedorModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="editarClienteModalLabel">Agregar Cliente</h5>
+                      <h5 class="modal-title" id="editarProveedorModalLabel">Agregar Proveedor</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -608,192 +596,69 @@
                     <div class="modal-body">
                       <div class="card card-body">
                         <!-- Mensaje de error -->
-                        <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
-                        <form id="idformagregarcliente">
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="rut">RUT</label>
-                                <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="N°Cliente">N°Cliente</label>
-                                <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">Tipo de Cliente</label>
-                                <select class="form-control" id="tipoclient">
-                                  <option>Sin definir</option>
-                                  <option>Particular</option>
-                                  <option>Empresa</option>
-                                  <option>Independiente</option>
-                                  
-                                </select>
-                              </div>
+                        <div id="mensajeErrorproveedor" class="alert alert-danger" style="display: none;"></div>
+                        <form id="idformagregarproveedor">
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="rut">RUT</label>
+                              <input type="text" class="form-control" id="rutproveedor" placeholder="Ingrese el RUT del Proveedor" required>
                             </div>
-                            <div class = "form-row">
-                              <div class="form-group col-md-6">
-                                <label for="name">Nombre Completo</label>
-                                <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese Nombre Completo del Cliente"required>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="razonsocial">Razon social</label>
-                                <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                              </div>
-                  
+                            <div class="form-group col-md-4">
+                              <label for="razonsocial">Razón Social</label>
+                              <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razón Social del Proveedor" required>
                             </div>
-                            
-                            
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="phone">Teléfono Fijo</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                              </div>
-                              <div class="form-group col-md-4">
-                                
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="movil">Teléfono Móvil</label>
-                                <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label for="giro">Giro</label>
+                              <input type="text" class="form-control" id="giro" placeholder="Ingrese el Giro del Proveedor">
                             </div>
-                            <div class="form-group">
-                              <label for="address">Dirección</label>
-                              <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="direccion">Dirección</label>
+                              <input type="text" class="form-control" id="direccion" placeholder="Ingrese la Dirección del Proveedor">
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="zipCode">Código Postal</label>
-                                <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="city">Ciudad</label>
-                                <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">País</label>
-                                <select class="form-control" id="country">
-                                  <option>Chile</option>
-                                  <option>Argentina</option>
-                                  <option>Perú</option>
-                                </select>
-                              </div>
+                            <div class="form-group col-md-3">
+                              <label for="telefono">Teléfono</label>
+                              <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el Teléfono del Proveedor">
                             </div>
-                            <div class="form-group">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                            <div class="form-group col-md-3">
+                              <label for="correo">Correo Electrónico</label>
+                              <input type="email" class="form-control" id="correo" placeholder="Ingrese el Correo Electrónico del Proveedor">
                             </div>
-                            <div class="form-group">
-                              <label for="observations">Observaciones</label>
-                              <textarea class="form-control" id="observations" rows="3"></textarea>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="personacontacto">Persona de Contacto</label>
+                              <input type="text" class="form-control" id="personacontacto" placeholder="Ingrese el Nombre de la Persona de Contacto">
                             </div>
-                            <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                              <br>
-                              <div class="bg-light border"></div>
-                              <br>
-                            <br>
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="tipoTarifa">Tipo de Tarifa</label>
-                                  <select class="form-control" id="tipoTarifa">
-                                    <option>Tarifa 1 - 0.5 Hora</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="grupoFacturacion">Grupo de Facturación</label>
-                                  <select class="form-control" id="grupoFacturacion">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              
+                            <div class="form-group col-md-3">
+                              <label for="paginaweb">Página Web</label>
+                              <input type="url" class="form-control" id="paginaweb" placeholder="Ingrese la Página Web del Proveedor">
                             </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoPlazas">Desc. en Plazas</label>
-                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoGral">Descuento gral</label>
-                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
+                            <div class="form-group col-md-3">
+                              <label for="tipoproveedor">Tipo de Proveedor</label>
+                              <select class="form-control" id="tipoproveedor">
+                                <option>Sin definir</option>
+                                <option>Piezas</option>
+                                <option>Herramientas</option>
+                                <option>Suministros Generales</option>
+                                <!-- Agrega más opciones según sea necesario -->
+                              </select>
                             </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="formaPago">Forma Pago</label>
-                                  <select class="form-control" id="formaPago">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="condicionesPago">Condiciones Pago</label>
-                                  <select class="form-control" id="condicionesPago">
-                                    <option>Sin Definir</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="cuentaContable">Cuenta Contable</label>
-                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="comoNosConocio">Cómo nos conoció</label>
-                                  <select class="form-control" id="comoNosConocio">
-                                    <option>- sin definir -</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          
+                          </div>
+                        </form>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="btnagregarcliente">Agregar Cliente</button>
-                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" id="btnagregarproveedor">Agregar Proveedor</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
+              
             </div>
-            <div class="tab-pane fade" id="panelListaClientes" role="tabpanel" aria-labelledby="panelListaClientes">
+            <div class="tab-pane fade" id="panelListaProveedores" role="tabpanel" aria-labelledby="panelListaProveedores">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
                   <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
@@ -811,19 +676,20 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="tablalistadoclientes" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadoproovedores" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
-                          <th>N°Cliente</th>
+                          <th>Razon Social</th>
                           <th>RUT</th>
-                          <th>Nombre</th>
-                          <th>Tipo de Cliente</th>
+                          <th>Giro</th>
+                          <th>Correo</th>
+                          <th>Tipo</th>
                           <th>Ver</th>
                         </tr>
                       </thead>
                       <tbody>
                                       
-                        <!-- Aquí van las filas de los clientes (Dinamico)-->
+                        
                       </tbody>
                       
                     </table>
@@ -1190,59 +1056,196 @@
               </div>  
             </div>
             
-            <div class="tab-pane fade" id="panelBusqueda" role="tabpanel" aria-labelledby="panelBusqueda">
-              <div class="container mt-5">
-                <!-- Botón Exportar -->
-                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                  <div class="btn-container">
-                    <button class="btn btn-primary btn-square" onclick="exportarTablaAExcel()">
-                      <i class="fas fa-file-export"></i>
-                    </button>
-                  </div>
-                  <div class="description-inline ml-3">
-                    <span class="line-1">Exportar</span>
-                    <span class="line-2">Clientes</span>
-                  </div>
-                </div>
-                
-                <!-- Botón Importar -->
-                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                  <div class="btn-container">
-                    <!-- Input para importar archivo Excel -->
-                    <input type="file" id="inputImportarExcel" accept=".xlsx, .xls" class="d-none">
-                    <button class="btn btn-primary btn-square" onclick="document.getElementById('inputImportarExcel').click()">
-                      <i class="fas fa-file-import"></i>
-                    </button>
-                  </div>
-                  <div class="description-inline ml-3">
-                    <span class="line-1">Importar</span>
-                    <span class="line-2">Clientes</span>
-                  </div>
-                </div>
-                
-                <!-- Modal para manejar clientes duplicados -->
-                <div class="modal fade" id="modalDuplicados" tabindex="-1" role="dialog" aria-labelledby="modalDuplicadosLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="modalDuplicadosLabel">Clientes Duplicados Detectados</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                          <div class="modal-body">
-                              Se han encontrado clientes duplicados basados en el RUT. ¿Qué desea hacer?
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" id="btnOmitirDuplicados">Omitir Duplicados</button>
-                              <button type="button" class="btn btn-primary" id="btnReemplazarDuplicados">Reemplazar Duplicados</button>
-                          </div>
+            <div class="tab-pane fade" id="panelhistorialproovedores" role="tabpanel" aria-labelledby="panelhistorialproovedores">
+              <div class="container mt-1">
+                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
+                  <i class="fas fa-receipt"></i>
+                  Historial de Pagos y Compras
+                </a>
+            
+                <!-- Resumen General -->
+                <div class="row mb-4">
+                  <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3 card-hover" id="totalComprasCard">
+                      <div class="card-body ">
+                        <h5 class="card-title">Total Compras</h5>
+                        <p class="card-text">$2.300.000</p>
+                        <p class="card-text"><small>Total de Productos Comprados: 80</small></p>
                       </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card text-white bg-success mb-3 card-hover" id="totalPagadoCard">
+                      <div class="card-body">
+                        <h5 class="card-title">Total Pagado</h5>
+                        <p class="card-text">$2.000.000</p>
+                        <p class="card-text"><small>Total Pagado Completo</small></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card text-white bg-warning mb-3 card-hover" id="pendientePagoCard">
+                      <div class="card-body">
+                        <h5 class="card-title">Pendiente de Pago</h5>
+                        <p class="card-text">$300.000</p>
+                        <p class="card-text"><small>Total Pendiente</small></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                
+            
+                <!-- Tabla Oculta para Últimas Compras -->
+                <div class="row hidden-table" id="comprasTable">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header bg-primary text-white">
+                        Últimas 10 Compras
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>ID del Producto</th>
+                              <th>Fecha</th>
+                              <th>Producto/Servicio</th>
+                              <th>Cantidad</th>
+                              <th>Total</th>
+                              <th>Factura/Boleta</th>
+                              <th>Estado</th>
+                              <th>Por Pagar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- Ejemplo de datos -->
+                            <tr>
+                              <td>001</td>
+                              <td>20/08/2024</td>
+                              <td>Piezas Automotrices</td>
+                              <td>50</td>
+                              <td>$1.500.000</td>
+                              <td>F123456</td>
+                              <td>Pagado</td>
+                              <td>$0</td>
+                            </tr>
+                            <tr>
+                              <td>002</td>
+                              <td>10/08/2024</td>
+                              <td>Herramientas Especializadas</td>
+                              <td>30</td>
+                              <td>$800.000</td>
+                              <td>B654321</td>
+                              <td>Pendiente de Pago</td>
+                              <td>$300.000</td>
+                            </tr>
+                            <tr>
+                              <td>003</td>
+                              <td>05/08/2024</td>
+                              <td>Insumos Importados</td>
+                              <td>100</td>
+                              <td>$2.000.000</td>
+                              <td>I789012</td>
+                              <td>Pagado</td>
+                              <td>$0</td>
+                            </tr>
+                            <!-- Agrega más filas según sea necesario -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- Tabla Oculta para Total Pagado (Solo los que están Pagados) -->
+                <div class="row hidden-table" id="pagadoTable">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header bg-success text-white">
+                        Pagos Completos
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>ID del Producto</th>
+                              <th>Fecha</th>
+                              <th>Producto/Servicio</th>
+                              <th>Cantidad</th>
+                              <th>Monto Total</th>
+                              <th>ID Factura/Boleta</th>
+                              <th>Estado</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- Ejemplo de datos (solo Pagados) -->
+                            <tr>
+                              <td>001</td>
+                              <td>20/08/2024</td>
+                              <td>Piezas Automotrices</td>
+                              <td>50</td>
+                              <td>$1.500.000</td>
+                              <td>F123456</td>
+                              <td>Pagado</td>
+                            </tr>
+                            <tr>
+                              <td>003</td>
+                              <td>05/08/2024</td>
+                              <td>Insumos Importados</td>
+                              <td>100</td>
+                              <td>$2.000.000</td>
+                              <td>I789012</td>
+                              <td>Pagado</td>
+                            </tr>
+                            <!-- Agrega más filas según sea necesario -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- Tabla Oculta para Pendiente de Pago -->
+                <div class="row hidden-table" id="pendienteTable">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header bg-warning text-white">
+                        Pagos Pendientes
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>ID del Producto</th>
+                              <th>Fecha</th>
+                              <th>Producto/Servicio</th>
+                              <th>Cantidad</th>
+                              <th>Total</th>
+                              <th>Factura/Boleta</th>
+                              <th>Estado</th>
+                              <th>Por Pagar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- Ejemplo de datos (solo Pendientes de Pago) -->
+                            <tr>
+                              <td>002</td>
+                              <td>10/08/2024</td>
+                              <td>Herramientas Especializadas</td>
+                              <td>30</td>
+                              <td>$800.000</td>
+                              <td>B654321</td>
+                              <td>Pendiente de Pago</td>
+                              <td>$300.000</td>
+                            </tr>
+                            <!-- Agrega más filas según sea necesario -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
+              
              </div>
             </div>
           </div>
@@ -1299,49 +1302,49 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars-->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="../../../dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="../../../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="../../../plugins/raphael/raphael.min.js"></script>
+<script src="../../../plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="../../../plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="../../../plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../../../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="../../../dist/js/pages/dashboard2.js"></script>
 <!-- Jocsan -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- DataTables  & Plugins -->
-  <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../../plugins/jszip/jszip.min.js"></script>
-  <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../../../plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../../../plugins/jszip/jszip.min.js"></script>
+  <script src="../../../plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../../../plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script src="JavaScripts/clientes.js"></script>
+<script type = "module" src="../../../JavaScripts/Proveedores/agregarproveedores.js"></script>
 
 
 </body>

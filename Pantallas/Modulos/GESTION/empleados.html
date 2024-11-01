@@ -3,26 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ERP Taller 3 | Vehiculos </title>
+  <title>ERP Taller 3 | Empleados </title>
   <!-- Jocsan -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  
-
+  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars-->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
    <!-- Iconos de boostrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="./Styles/stylesclientes.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../Styles/stylesclientes.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -30,7 +28,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/logo.png" alt="logo" height="60" width="60">
+    <img class="animation__wobble" src="../../../dist/img/logo.png" alt="logo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -41,7 +39,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index2.html" class="nav-link bi bi-house"> Inicio</a>
+        <a href="../../../../index2.html" class="nav-link bi bi-house"> Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link bi bi-person-lines-fill"> Contacto</a>
@@ -176,7 +174,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Usuario Kronos</span>
     </a>
 
@@ -185,7 +183,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Marcos Roa</a>
@@ -271,21 +269,34 @@
                   <p>Vehiculos</p>
                 </a>
               </li>
-              
               <li class="nav-item">
-                <a href="Proveedores.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="nuevoproveedor.html" class="nav-link">
+                      <i class="bi bi-person-fill-add nav-icon"></i>
+                      <p>Nuevo Proveedor</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="listadoproveedores.html" class="nav-link">
+                      <i class="bi bi-person-lines-fill nav-icon"></i>
+                      <p>Listado Proveedores</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a href="empleados.html" class="nav-link">
-                  <i class="bi bi-people-fill nav-icon"></i>
+                  <i class="bi bi-person-badge-fill"></i>
                   <p>Empleados</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="aseguradoras.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="bi bi-circle nav-icon"></i>
                   <p>Aseguradoras</p>
                 </a>
@@ -518,12 +529,11 @@
     <br>
     <!-- Content Header (Page header) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-        <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
-          <i class="bi bi-car-front"></i> <!-- Cambiado a Bootstrap Icons de un vehículo -->
-          Vehículos
-        </a>
-      </nav>
-      
+      <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
+        <i class="bi bi-person-badge-fill"></i>
+        Empleados
+      </a>
+    </nav>
     <div class="container-fluid px-4 py-4">
       <div class="card card-primary card-tabs">
         <div class="card-header p-0 pt-1">
@@ -534,57 +544,49 @@
               </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="Nuevovheiculo-tab" data-toggle="pill" href="#nuevovheiculo" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
-                    <i class="bi bi-car-front-fill"></i> Nuevo vehículo
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#listadovehiculos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class="fas fa-car-side"></i> Lista de vehículos
-                </a>
-              </li>
-              
-              
+              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoEmpleado" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+                  <i class="bi bi-person-badge-fill"></i> Nuevo Empleado
+              </a>
+            </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-history"></i>Historial de Vehículos
-              </a>     
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaClientes" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-users"></i> Lista de clientes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelBusqueda" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-file-import"></i> Manejo de Clientes
+              </a>
           </li>
           </ul>
         </div>
-
         <div class="card-body">
-          <div class="tab-content" id="n">
-            <div class="tab-pane fade show active" id="nuevovheiculo" role="tabpanel" aria-labelledby="nuevovheiculo-tab">
-                <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                          <div class="btn-container">
-                            <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarvehiculomodal">
-                              <i class="bi bi-car-front-fill"></i> 
-                            </button>
-                          </div>
-                          <div class="description-inline ml-3">
-                            <span class="line-1">Agregar</span>
-                            <span class="line-2">Vehículo</span>
-                          </div>
-                        </div>
+          <div class="tab-content" id="custom-tabs-one-tabContent">
+            <div class="tab-pane fade show active" id="panelNuevoEmpleado" role="tabpanel" aria-labelledby="panelNuevoEmpleado">
+              <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                      <div class="btn-container">
+                        <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarEmpleadoModal">
+                          <i class="bi bi-person-badge-fill"></i>
+                        </button>
+                      </div>
+                      <div class="description-inline ml-3">
+                        <span class="line-1">Agregar</span>
+                        <span class="line-2">Empleado</span>
                       </div>
                     </div>
                   </div>
-                  
-                  
-                  
-                  
+                </div>
+              </div>
             
-              <!-- Modal agregar Vehículo -->
-              <div class="modal fade" id="agregarvehiculomodal" tabindex="-1" aria-labelledby="agregarvehiculomodal" aria-hidden="true">
+              <!-- Modal agregra empleados-->
+              <div class="modal fade" id="agregarEmpleadoModal" tabindex="-1" aria-labelledby="agregarEmpleadoModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="editarVehiculoModalLabel">Agregar Vehículo</h5>
+                      <h5 class="modal-title" id="agregarEmpleadoModalLabel">Agregar Empleado</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -592,100 +594,126 @@
                     <div class="modal-body">
                       <div class="card card-body">
                         <!-- Mensaje de error -->
-                        <div id="mensajeErrorVehiculo" class="alert alert-danger" style="display: none;"></div>
-
-                        <!-- Fila para búsqueda de cliente y campo no editable -->
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                              <label for="buscarCliente">Buscar Cliente</label>
-                              <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
-                              <!-- Lista de coincidencias -->
-                              <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
-                          </div>
-                          <div class="form-group col-md-6">
-                              <label for="clienteSeleccionado">Cliente</label>
-                              <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
-                          </div>
-                        </div>
-
-                        <form id="idformagregarvehiculo">
-                          <!-- Resto del formulario para agregar vehículo -->
+                        <div id="mensajeErrorempleado" class="alert alert-danger" style="display: none;"></div>
+                        <form id="idformagregarempleado">
                           <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoPlaca">Placa</label>
-                              <input type="text" class="form-control" id="vehiculoPlaca" placeholder="Ingrese la placa del vehículo" required>
+                            <div class="form-group col-md-6">
+                              <label for="rutEmpleado">Rut</label>
+                              <input type="text" class="form-control" id="rutEmpleado" placeholder="Ingrese el RUT del empleado" required>
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoMarca">Marca</label>
-                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoModelo">Modelo</label>
-                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo" required>
+                            <div class="form-group col-md-6">
+                              <label for="nombreEmpleado">Nombres</label>
+                              <input type="text" class="form-control" id="nombreEmpleado" placeholder="Ingrese el nombre completo del empleado" required>
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoAnio">Año</label>
-                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoColor">Color</label>
-                              <input type="text" class="form-control" id="vehiculoColor" placeholder="Ingrese el color del vehículo">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoVIN">VIN (Número de Identificación del Vehículo)</label>
-                              <input type="text" class="form-control" id="vehiculoVIN" placeholder="Ingrese el VIN del vehículo">
+                            <div class="form-group col-md-12">
+                              <label for="domicilioEmpleado">Domicilio</label>
+                              <input type="text" class="form-control" id="domicilioEmpleado" placeholder="Ingrese la dirección del empleado">
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoMotor">Número de Motor</label>
-                              <input type="text" class="form-control" id="vehiculoMotor" placeholder="Ingrese el número de motor">
+                            <div class="form-group col-md-6">
+                              <label for="comunaEmpleado">Comuna</label>
+                              <input type="text" class="form-control" id="comunaEmpleado" placeholder="Ingrese la comuna del empleado">
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoKilometraje">Kilometraje</label>
-                              <input type="number" class="form-control" id="vehiculoKilometraje" placeholder="Ingrese el kilometraje del vehículo"required>
+                            <div class="form-group col-md-6">
+                              <label for="domicilioEmpleado">Ciuadad</label>
+                              <input type="text" class="form-control" id="cuidadEmpleado" placeholder="Ingrese la Ciudad del empleado">
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoTipo">Tipo de Vehículo</label>
-                              <select class="form-control" id="vehiculoTipo">
-                                <option>Automóvil</option>
-                                <option>Camioneta</option>
-                                <option>Moto</option>
-                                <option>Otro</option>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="fechaNacimientoEmpleado">Fecha de Nacimiento</label>
+                              <input type="date" class="form-control" id="fechaNacimientoEmpleado" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="estadoCivilEmpleado">Estado Civil</label>
+                              <select class="form-control" id="estadoCivilEmpleado">
+                                <option>Soltero</option>
+                                <option>Casado</option>
+                                <option>Divorciado</option>
+                                <option>Viudo</option>
                               </select>
                             </div>
                           </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="nacionalidadEmpleado">Nacionalidad</label>
+                              <input type="text" class="form-control" id="nacionalidadEmpleado" placeholder="Ingrese la nacionalidad" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="cargoEmpleado">Cargo</label>
+                              <input type="text" class="form-control" id="cargoEmpleado" placeholder="Ingrese el cargo del empleado" required>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="grupoSanguineoEmpleado">Grupo Sanguíneo</label>
+                              <input type="text" class="form-control" id="grupoSanguineoEmpleado" placeholder="Ingrese el grupo sanguíneo">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="telefonoEmpleado">Número de Teléfono</label>
+                              <input type="tel" class="form-control" id="telefonoEmpleado" placeholder="Ingrese el número de teléfono">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="emergenciaEmpleado">Contacto en Caso de Emergencia</label>
+                              <input type="text" class="form-control" id="emergenciaEmpleado" placeholder="Ingrese nombre y número de teléfono del contacto">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="previsionSaludEmpleado">Previsión de Salud</label>
+                              <input type="text" class="form-control" id="previsionSaludEmpleado" placeholder="Ingrese la previsión de salud (ej. Fonasa)">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="afpEmpleado">AFP</label>
+                              <input type="text" class="form-control" id="afpEmpleado" placeholder="Ingrese la AFP">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="tipoContratoEmpleado">Tipo de Contrato</label>
+                              <select class="form-control" id="tipoContratoEmpleado">
+                                <option>Indefinido</option>
+                                <option>Plazo Fijo</option>
+                                <option>Honorarios</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-12">
+                              <label for="correoEmpleado">Correo Electrónico</label>
+                              <input type="email" class="form-control" id="correoEmpleado" placeholder="Ingrese el correo electrónico">
+                            </div>
+                          </div>
                           <div class="form-group">
-                            <label for="vehiculoObservaciones">Observaciones</label>
-                            <textarea class="form-control" id="vehiculoObservaciones" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
+                            <label for="observacionesEmpleado">Observaciones</label>
+                            <textarea class="form-control" id="observacionesEmpleado" rows="3" placeholder="Ingrese cualquier observación adicional"></textarea>
                           </div>
                         </form>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="btnagregarvehiculo" disabled>Agregar Vehículo</button>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" id="btnAgregarEmpleado">Agregar Empleado</button>
+                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
-
-
+              
+              
               
             </div>
-            <div class="tab-pane fade" id="listadovehiculos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
+            <div class="tab-pane fade" id="panelListaClientes" role="tabpanel" aria-labelledby="panelListaClientes">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-car"></i> Panel Listado de Vehículos
-                  </h3>
+                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Empleados</h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" id ="barraBuscarVheiculos" class="form-control float-right" placeholder="Buscar">
+                      <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button id="search_button" type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
@@ -695,22 +723,20 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="tablalistadovheiculos" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadoempleados" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
-                          <th>Patente</th>
-                          <th>Cliente</th>
-                          <th>Marca</th>
-                          <th>Modelo</th>
-                          <th>Kilometraje</th>
-                          <th>Año</th>
+                          <th>Nombre</th>
+                          <th>RUT</th>
+                          <th>Cargo</th>
+                          <th>Contrato</th>
+                          <th>Teléfono</th>
                           <th>Ver</th>
                         </tr>
                       </thead>
                       <tbody>
                                       
-                       
-                        <!-- Aquí van las filas de los clientes -->
+                        <!-- Aquí van las filas de los clientes (Dinamico)-->
                       </tbody>
                       
                     </table>
@@ -719,7 +745,7 @@
                         <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                              <div class="modal-header custom-card-header">
+                              <div class="modal-header text-white custom-card-header bg-dark">
                                 <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
                                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -727,68 +753,110 @@
                               </div>
                               <div class="modal-body">
                                 <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-md-12 text-center mb-4">
-                                      <h3>JUAN PÉREZ</h3>
+                                  <div class="row mb-4">
+                                    <div class="col-md-12 text-center">
+                                      <h3 class="mb-1">JUAN PÉREZ</h3>
                                       <span class="badge badge-success">Activo</span>
                                     </div>
                                   </div>
+                        
                                   <div class="row">
+                                    <!-- Datos Básicos -->
                                     <div class="col-md-6">
-                                      <h5>Datos Básicos</h5>
-                                      <p><strong>N°Cliente:</strong> 0001</p>
-                                      <p><strong>RUT:</strong> 21334556-9</p>
-                                      <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                      <p><strong>Nombre:</strong> Juan Pérez</p>
-                                      <p><strong>Primer Apellido:</strong> Pérez</p>
-                                      <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                      <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                      <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                      <p><strong>Email:</strong> ejemplo@correo.com</p>
+                                      <div class="card shadow-sm card-hover bg-lightblue">
+                                        <div class="card-header bg-primary text-white">
+                                          <h5 class="mb-0">Datos Básicos</h5>
+                                        </div>
+                                        <div class="card-body">
+                                          <p><strong>N°Cliente:</strong> 0001</p>
+                                          <p><strong>RUT:</strong> 21334556-9</p>
+                                          <p><strong>Tipo de Cliente:</strong> Particular</p>
+                                          <p><strong>Nombre:</strong> Juan Pérez</p>
+                                          <p><strong>Primer Apellido:</strong> Pérez</p>
+                                          <p><strong>Segundo Apellido:</strong> Pérez</p>
+                                          <p><strong>Teléfono Fijo:</strong> +123456789</p>
+                                          <p><strong>Teléfono Móvil:</strong> +123456789</p>
+                                          <p><strong>Email:</strong> ejemplo@correo.com</p>
+                                        </div>
+                                      </div>
                                     </div>
+                        
+                                    <!-- Datos de Ubicación -->
                                     <div class="col-md-6">
-                                      <h5>Datos de Ubicación</h5>
-                                      <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                      <p><strong>Código Postal:</strong> 123456</p>
-                                      <h5>Observaciones</h5>
-                                      <p>Observaciones del cliente.</p>
-                                    </div>
-                                  </div>
-                                  <!-- Nueva sección para vehículos asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <h5>Vehículos Asociados</h5>
-                                      <div class="d-flex flex-wrap">
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> AABB-22
-                                        </button>
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> CCDD-22
-                                        </button>
-                                        <!-- Agrega más botones de vehículos según sea necesario -->
+                                      <div class="card shadow-sm card-hover bg-lightgreen">
+                                        <div class="card-header bg-primary text-white">
+                                          <h5 class="mb-0">Datos de Ubicación</h5>
+                                        </div>
+                                        <div class="card-body">
+                                          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                                          <p><strong>Código Postal:</strong> 123456</p>
+                                          <h5>Observaciones</h5>
+                                          <p>Observaciones del cliente.</p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="row mt-3">
-                                    <div class="col-md-12 text-center">
-                                      <button type="button" class="btn btn-primary" id="crearvheiculoasociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                        <span class="fa-stack fa-1x">
-                                          <i class="fas fa-car fa-stack-1x"></i>
-                                          <i class="fas fa-plus fa-stack-1x fa-inverse" style="font-size: 0.5em; top: -5px; left: 5px;"></i>
-                                        </span> 
-                                        Asociar Nuevo Vehículo
-                                      </button>
+                        
+                                  <!-- Vehículos Asociados -->
+                                  <div class="row mt-4">
+                                    <div class="col-md-12">
+                                      <div class="card shadow-sm card-hover bg-lightcoral">
+                                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                          <h5 class="mb-0">Vehículos Asociados</h5>
+                                          <button type="button" class="btn btn-primary btn-animated btn-sm" id="crearVehiculoAsociado" data-dismiss="modal" data-toggle="modal" data-target="#">
+                                            <i class="fas fa-plus"></i> Nuevo Vehículo
+                                          </button>
+                                        </div>
+                                        <div class="card-body">
+                                          <div class="row">
+                                            <!-- Tarjeta de Vehículo -->
+                                            <div class="col-md-4">
+                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
+                                                <div class="card-body text-center">
+                                                  <i class="fas fa-car fa-2x mb-3 text-warning"></i>
+                                                  <h5 class="card-title">Marca: Toyota</h5>
+                                                  <p class="card-text"><strong>Modelo:</strong> Corolla</p>
+                                                  <p class="card-text"><strong>Patente:</strong> AABB-22</p>
+                                                  <p class="card-text"><strong>Año:</strong> 2020</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!-- Fin Tarjeta de Vehículo -->
+                        
+                                            <!-- Tarjeta de Vehículo -->
+                                            <div class="col-md-4">
+                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
+                                                <div class="card-body text-center">
+                                                  <i class="fas fa-car fa-2x mb-3 text-danger"></i>
+                                                  <h5 class="card-title">Marca: Honda</h5>
+                                                  <p class="card-text"><strong>Modelo:</strong> Civic</p>
+                                                  <p class="card-text"><strong>Patente:</strong> CCDD-22</p>
+                                                  <p class="card-text"><strong>Año:</strong> 2019</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!-- Fin Tarjeta de Vehículo -->
+                        
+                                            <!-- Puedes agregar más tarjetas aquí -->
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                        
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-success" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-success btn-animated" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
+                                <button type="button" class="btn btn-secondary btn-animated" data-dismiss="modal">Cerrar</button>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
+                        
+
+
 
                         <!-- Modal edit -->
                         <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
@@ -1034,72 +1102,61 @@
                 </div>
               </div>  
             </div>
-          
             
-            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+            <div class="tab-pane fade" id="panelBusqueda" role="tabpanel" aria-labelledby="panelBusqueda">
               <div class="container mt-5">
-                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
-                  <i class="fas fa-history"></i>
-                  Historial de Vehículos
-                </a>
-            
-                <div class="card mt-4">
-                  <div class="card-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Vehículo</th>
-                          <th>Acción</th>
-                          <th>Fecha</th>
-                          <th>Usuario</th>
-                          <th>Detalles</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Aquí se mostrarán los registros del historial -->
-                        <tr>
-                          <td>1</td>
-                          <td>Chevrolet Cruze 2019</td>
-                          <td><span class="badge bg-success">Agregado</span></td>
-                          <td>2024-08-20 10:45 AM</td>
-                          <td>Juan Pérez</td>
-                          <td>Vehículo agregado al sistema (Dato simulado)</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Toyota Corolla 2018</td>
-                          <td><span class="badge bg-warning">Editado</span></td>
-                          <td>2024-08-20 11:00 AM</td>
-                          <td>María López</td>
-                          <td>Cambio de propietario (Dato simulado)</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Honda Civic 2020</td>
-                          <td><span class="badge bg-danger">Eliminado</span></td>
-                          <td>2024-08-20 11:15 AM</td>
-                          <td>Carlos Gómez</td>
-                          <td>Vehículo eliminado del sistema (Dato simulado)</td>
-                        </tr>
-                        <!-- Añadir más registros según sea necesario -->
-                      </tbody>
-                    </table>
+                <!-- Botón Exportar -->
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square" onclick="exportarTablaAExcel()">
+                      <i class="fas fa-file-export"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Exportar</span>
+                    <span class="line-2">Clientes</span>
                   </div>
                 </div>
-            
-                <div class="text-center mt-4">
-                  <button class="btn btn-primary">Exportar Historial</button>
+                
+                <!-- Botón Importar -->
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                  <div class="btn-container">
+                    <!-- Input para importar archivo Excel -->
+                    <input type="file" id="inputImportarExcel" accept=".xlsx, .xls" class="d-none">
+                    <button class="btn btn-primary btn-square" onclick="document.getElementById('inputImportarExcel').click()">
+                      <i class="fas fa-file-import"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Importar</span>
+                    <span class="line-2">Clientes</span>
+                  </div>
                 </div>
+                
+                <!-- Modal para manejar clientes duplicados -->
+                <div class="modal fade" id="modalDuplicados" tabindex="-1" role="dialog" aria-labelledby="modalDuplicadosLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="modalDuplicadosLabel">Clientes Duplicados Detectados</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              Se han encontrado clientes duplicados basados en el RUT. ¿Qué desea hacer?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" id="btnOmitirDuplicados">Omitir Duplicados</button>
+                              <button type="button" class="btn btn-primary" id="btnReemplazarDuplicados">Reemplazar Duplicados</button>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                
               </div>
-            </div>
-            
-            
-            
-            
-              
-              
-              
+             </div>
             </div>
           </div>
         </div>
@@ -1155,47 +1212,49 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars-->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="../../../dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="../../../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="../../../plugins/raphael/raphael.min.js"></script>
+<script src="../../../plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="../../../plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="../../../plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../../../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="../../../dist/js/pages/dashboard2.js"></script>
 <!-- Jocsan -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- DataTables  & Plugins -->
-  <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="../../plugins/jszip/jszip.min.js"></script>
-  <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="../../../plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="../../../plugins/jszip/jszip.min.js"></script>
+  <script src="../../../plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="../../../plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script src="JavaScripts/vheiculos.js"></script>
+<script type="module" src="../../../JavaScripts/Empleados/agregarempleados.js"></script>
 
 
 </body>

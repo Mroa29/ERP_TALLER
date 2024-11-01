@@ -1,34 +1,27 @@
-from fastapi import FastAPI, HTTPException
-from .database import get_db
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.Clientes.router import router as clientes_router
+from app.database import Base, engine
 
 app = FastAPI()
 
-# Ruta para obtener talleres activos
-@app.get("/talleres")
-def obtener_talleres():
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM talleres WHERE ESTADO_TALLER = 'Activo';")
-    talleres = cursor.fetchall()
-    cursor.close()
-    
-    if not talleres:
-        raise HTTPException(status_code=404, detail="No hay talleres activos")
-    
-    return {"talleres": talleres}
+# Configuración de CORS
+origins = [
+    "http://127.0.0.1:5500",    # Permite solicitudes desde este origen específico
+    "http://localhost",          # Permite solicitudes desde localhost en otros puertos
+    "http://127.0.0.1"           # Otros posibles orígenes en localhost
+]
 
-# Ruta para crear un nuevo taller
-@app.post("/creartalleres")
-def crear_taller(NOM_TALLER: str, DIRECCION_TALLER: str, COMUNA_TALLER: str, CIUDAD_TALLER: str, PAIS_TALLER: str, CONTACTO_TALLER: str, EMAIL_TALLER: str, CAPT_VEHICULOS: int, ESTADO_TALLER: str, GERENTE_TALLER: str):
-    db = get_db()
-    cursor = db.cursor()
-    
-    query = """
-    INSERT INTO talleres (NOM_TALLER, DIRECCION_TALLER, COMUNA_TALLER, CIUDAD_TALLER, PAIS_TALLER, CONTACTO_TALLER, EMAIL_TALLER, CAPT_VEHICULOS, ESTADO_TALLER, GERENTE_TALLER)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-    """
-    cursor.execute(query, (NOM_TALLER, DIRECCION_TALLER, COMUNA_TALLER, CIUDAD_TALLER, PAIS_TALLER, CONTACTO_TALLER, EMAIL_TALLER, CAPT_VEHICULOS, ESTADO_TALLER, GERENTE_TALLER))
-    db.commit()
-    cursor.close()
-    
-    return {"message": "Taller creado con éxito"}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,          # Permite solo estos orígenes específicos
+    allow_credentials=True,
+    allow_methods=["*"],            # Permite todos los métodos (GET, POST, etc.)
+    allow_headers=["*"],            # Permite todos los encabezados
+)
+
+# Vincular el modelo con la base de datos (solo para desarrollo)
+Base.metadata.create_all(bind=engine)
+
+# Incluir el router de clientes
+app.include_router(clientes_router)
