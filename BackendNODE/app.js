@@ -1,0 +1,20 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// Habilitar CORS para todas las solicitudes
+app.use(cors());
+app.use(express.json());
+
+
+const clientesRoutes = require('./routes/clientesRoutes');
+const talleresRoutes = require('./routes/tallerRoutes');
+const sucursalesRoutes = require('./routes/sucursalRoutes');
+
+// Usar las rutas
+app.use('/api/sucursales', sucursalesRoutes);
+app.use('/api/clientes', clientesRoutes);  // Rutas para la entidad clientes
+app.use('/api/talleres', talleresRoutes);  // Rutas para la entidad talleres
+
+// Exportar la app
+module.exports = app;

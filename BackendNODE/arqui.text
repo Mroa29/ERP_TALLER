@@ -1,0 +1,39 @@
+/Back                  # Carpeta principal del backend
+  /config              # Configuraciones generales
+    db.config.js       # Configuración de la base de datos
+    env.config.js      # Configuración de variables de entorno
+  /controllers         # Controladores de la aplicación (manejan las solicitudes y respuestas)
+    clienteController.js
+    vehiculoController.js
+    tallerController.js
+    ...
+  /models              # Modelos de la base de datos
+    clienteModel.js
+    vehiculoModel.js
+    tallerModel.js
+    ...
+  /routes              # Definición de rutas de la API
+    clienteRoutes.js
+    vehiculoRoutes.js
+    tallerRoutes.js
+    ...
+  /services            # Lógica de negocio y funciones de servicio
+    clienteService.js
+    vehiculoService.js
+    tallerService.js
+    ...
+  /middlewares         # Middlewares para validaciones, autenticación, etc.
+    authMiddleware.js
+    validationMiddleware.js
+  /utils               # Funciones de utilidad y helpers
+    dateUtils.js
+    formatUtils.js
+  /migrations          # Migraciones de la base de datos, si decides usarlas
+  /seeders             # Archivos de datos de prueba
+  /tests               # Pruebas unitarias e integrales
+  /docs                # Documentación de la API
+app.js                 # Archivo de entrada principal del backend
+server.js              # Archivo de configuración del servidor
+package.json           # Archivo de dependencias de Node.js
+.env                   # Archivo de variables de entorno
+README.md              # Documentación del proyecto
