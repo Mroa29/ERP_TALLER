@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <style>
+    .scrollable-container {
+  max-height: 600px; /* Ajusta la altura según tu diseño */
+  overflow-y: auto;  /* Habilita el desplazamiento vertical */
+  padding: 20px;     /* Opcional: añade espacio interno */
+  background-color: #f9f9f9; /* Color de fondo opcional */
+  border-radius: 8px; /* Bordes redondeados para estilo */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+}
+
+
+  </style>
+  <link rel="stylesheet" href="../Styles/styleslogin.css" />
+
+  <title>Login KronosTech</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- Formulario de inicio de sesión -->
+        <form action="http://127.0.0.1:5500/Pantallas/index2.html" class="sign-in-form">
+          <h2 class="title">Kronos<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;">Tech</span></h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Usuario" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Contraseña" />
+          </div>
+          <input class="btn solid" type="submit" value="Iniciar Sesión" />
+        </form>
+
+        <!-- Formulario interactivo para modo REGISTRO -->
+        <form id="sign-up-form" class="sign-up-form" style="display: none;">  
+        <div class="scrollable-container">
+          <div id="step-1" class="step">
+            <h2 class="title">Datos del Taller</h2>
+            <div class="input-field">
+              <i class="fas fa-building"></i>
+              <input type="text" id="NOM_TALLER" placeholder="Nombre del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map-marker-alt"></i>
+              <input type="text" id="DIRECCION_TALLER" placeholder="Dirección del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map-pin"></i>
+              <input type="text" id="COMUNA_TALLER" placeholder="Comuna del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-city"></i>
+              <input type="text" id="CIUDAD_TALLER" placeholder="Ciudad del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-globe"></i>
+              <input type="text" id="PAIS_TALLER" placeholder="País del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input type="text" id="CONTACTO_TALLER" placeholder="Contacto del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="EMAIL_TALLER" placeholder="Email del Taller" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-car"></i>
+              <input type="number" id="CAPT_VEHICULOS" placeholder="Capacidad de Vehículos" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user-tie"></i>
+              <input type="text" id="GERENTE_TALLER" placeholder="Nombre Gerente del Taller" required />
+            </div>
+            <input type="button" class="btn" value="Siguiente" onclick="nextStep(2)" />
+          </div>          
+
+          <div id="step-2" class="step" style="display: none;">
+            <h2 class="title">Cantidad de Sucursales</h2>
+            <div class="input-field">
+              <i class="fas fa-store-alt"></i>
+              <input type="number" placeholder="Cantidad de Sucursales" id="num-branches" required />
+            </div>
+            <input type="button" class="btn" value="Siguiente" onclick="nextBranches()" />
+            <button type="button" class="btn" onclick="previousStep(1)">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+          </div>
+          
+          <div id="step-3" class="step" style="display: none;">
+            <h2 class="title">Datos de cada Sucursal</h2>
+            <div id="branches-info">
+              <!-- Los datos de cada sucursal se generarán aquí -->
+            </div>
+            <input type="button" class="btn" value="Siguiente" onclick="nextStep(4)" />
+            <button type="button" class="btn" onclick="previousStep(2)">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+          </div>
+          
+
+          <div id="step-3" class="step" style="display: none;">
+            <h2 class="title">Datos de cada Sucursal</h2>
+            <div id="branches-info"></div>
+            <input type="button" class="btn" value="Siguiente" onclick="nextStep(4)" />
+            <button type="button" class="btn" onclick="previousStep(2)">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+          </div>
+
+          <div id="step-4" class="step" style="display: none;">
+            <h2 class="title">Usuarios del ERP</h2>
+            <div class="input-field">
+              <i class="fas fa-users"></i>
+              <input type="number" placeholder="Cantidad de Usuarios" id="num-users" required />
+            </div>
+            <input type="button" class="btn" value="Siguiente" onclick="nextStep(5)" />
+            <button type="button" class="btn" onclick="previousStep(3)">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+          </div>
+          <!-- Step 5: Datos del Super Usuario -->
+          <div id="step-5" class="step" style="display: none;">
+            <h2 class="title">Crear Super Usuario</h2>
+            <p>Los demás usuarios podrán ser creados posteriormente en la plataforma.</p>
+            
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Nombre del Super Usuario" name="NOM_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Apellido Paterno" name="APEP_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Apellido Materno" name="APEM_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email del Super Usuario" name="EMAIL_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Contraseña" name="PASSWORD_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Comfirmar Contraseña" name="PASSWORD_USUARIO" required />
+              </div>
+              <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input type="text" placeholder="Contacto" name="CONTAC_USUARIO" required />
+              </div>
+              
+              <input type="button" class="btn" value="Siguiente" onclick="nextStep(6)" />
+              <button type="button" class="btn" onclick="previousStep(4)">
+                <i class="fas fa-arrow-left"></i>
+              </button>
+            </div>
+
+
+          <!-- Step 6: Selección de Módulos -->
+          <div id="step-6" class="step" style="display: none;">
+            <h2 class="title">Seleccione los Módulos</h2>
+            <p>Elija los módulos que desea incluir en su ERP. Cada módulo tiene una breve descripción para ayudarle a decidir.</p>
+
+            <div class="row">
+              <!-- Card para Gestión -->
+              <div class="col-md-6 mb-3">
+                <div class="card module-card" onclick="toggleSelection(this)">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <input type="checkbox" id="gestion" name="modules[]" value="gestion" class="d-none">
+                      <label for="gestion"><strong>Gestión</strong></label>
+                    </h5>
+                    <p class="card-text">Gestión general del sistema, incluyendo administración de usuarios y permisos.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card para Taller -->
+              <div class="col-md-6 mb-3">
+                <div class="card module-card" onclick="toggleSelection(this)">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <input type="checkbox" id="taller" name="modules[]" value="taller" class="d-none">
+                      <label for="taller"><strong>Taller</strong></label>
+                    </h5>
+                    <p class="card-text">Administración de operaciones del taller, incluyendo órdenes de trabajo y gestión de vehículos.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card para Abastecimiento -->
+              <div class="col-md-6 mb-3">
+                <div class="card module-card" onclick="toggleSelection(this)">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <input type="checkbox" id="abastecimiento" name="modules[]" value="abastecimiento" class="d-none">
+                      <label for="abastecimiento"><strong>Abastecimiento</strong></label>
+                    </h5>
+                    <p class="card-text">Control de inventario y suministros, gestionando el abastecimiento del taller.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card para Informes -->
+              <div class="col-md-6 mb-3">
+                <div class="card module-card" onclick="toggleSelection(this)">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <input type="checkbox" id="informes" name="modules[]" value="informes" class="d-none">
+                      <label for="informes"><strong>Informes</strong></label>
+                    </h5>
+                    <p class="card-text">Generación de reportes y análisis de datos para evaluar el rendimiento del taller.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones para Siguiente y Regresar -->
+            <input type="button" class="btn btn-primary mt-3" value="Siguiente" onclick="nextStep(7)" />
+            <button type="button" class="btn btn-secondary mt-3" onclick="previousStep(5)">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+          </div>
+          <!-- Step 7: Datos de Pago -->
+          <div id="step-7" class="step" style="display: none;">
+            <h2 class="title">Información de Pago</h2>
+            <p>Por favor, ingrese los detalles de su tarjeta para completar el registro.</p>
+
+            
+            <div class="input-field">
+              <i class="fas fa-credit-card"></i>
+              <input type="text" placeholder="xxxx-xxxx-xxxx-xxxx" id="CARD" r />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="text" placeholder="xx/xx" id="date"  />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-key"></i>
+              <input type="text" placeholder="CVV" id="CVV"  />
+            </div>
+
+            <!-- Botón para completar registro y regresar -->
+            <input type="submit" class="btn btn-primary mt-3" value="Registrar">
+            <button type="button" class="btn btn-secondary mt-3" onclick="previousStep(6)">
+              <i class="fas fa-arrow-left"></i> 
+            </button>
+          </div>
+
+
+
+
+
+
+
+        </div>
+        </form> 
+      </div>
+    </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>¿Eres<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;"> nuevo</span>?</h3>
+          <p>Haz clic en <span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;">Comenzar</span> y consigue tu licencia para acceder al ERP de inmediato.</p>
+          <button class="btn transparent" id="sign-up-btn">Comenzar</button>
+        </div>
+        <img src="pictures/log.svg" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>¿Ya tienes una <span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;"> sesión</span>? </h3>
+          <p>Ingresa con tus credenciales y sigue aprovechando todas las herramientas de nuestro<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;"> ERP</span> para optimizar la gestión de tu taller.</p>
+          <button class="btn transparent" id="sign-in-btn">Inicia Sesión</button>
+          <h2 class="image">Kronos<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;">Tech</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sign_in_btn = document.querySelector('#sign-in-btn');
+    const sign_up_btn = document.querySelector('#sign-up-btn');
+    const container = document.querySelector('.container');
+    const synapseForm = document.getElementById('sign-up-form');
+    let currentStep = 1;
+    let transitionWaited = false; // Variable para controlar si ya esperamos la transición
+  
+    sign_up_btn.addEventListener('click', () => {
+      container.classList.add('sign-up-mode');
+      container.addEventListener('transitionend', () => {
+        synapseForm.style.display = "block";
+        transitionWaited = true; // Marcamos que ya se esperó la transición
+      }, { once: true });
+    });
+  
+    sign_in_btn.addEventListener('click', () => {
+      container.classList.remove('sign-up-mode');
+      container.addEventListener('transitionend', () => {
+        synapseForm.style.display = "none";
+        transitionWaited = false; // Reiniciamos la espera de transición
+      }, { once: true });
+    });
+  
+    function nextStep(step) {
+      // Esconde el paso actual
+      document.getElementById(`step-${currentStep}`).style.display = "none";
+  
+      // Si es el primer cambio de paso y no hemos esperado la transición, espera la transición
+      if (currentStep === 1 && !transitionWaited) {
+        container.addEventListener('transitionend', () => {
+          document.getElementById(`step-${step}`).style.display = "block";
+          currentStep = step;
+        }, { once: true });
+      } else {
+        // Para los pasos posteriores, cambia directamente sin esperar la transición
+        document.getElementById(`step-${step}`).style.display = "block";
+        currentStep = step;
+      }
+    }
+  
+    function nextBranches() {
+      const numBranches = parseInt(document.getElementById('num-branches').value);
+      const branchesContainer = document.getElementById('branches-info');
+      branchesContainer.innerHTML = '';
+  
+      for (let i = 1; i <= numBranches; i++) {
+        const branchInput = document.createElement('div');
+        branchInput.className = 'input-field';
+        branchInput.innerHTML = `<i class="fas fa-store"></i><input type="text" placeholder="Nombre de la Sucursal ${i}" required />`;
+        branchesContainer.appendChild(branchInput);
+      }
+      nextStep(3);
+    }
+  
+    function calculatePrice() {
+      const numUsers = parseInt(document.getElementById('num-users').value);
+      const priceEstimate = numUsers * 10000; // Precio ejemplo de 10000 por usuario
+      document.getElementById('price').textContent = `$${priceEstimate}`;
+      nextStep(5);
+    }
+    function nextBranches() {
+      const numBranches = parseInt(document.getElementById('num-branches').value);
+      const branchesContainer = document.getElementById('branches-info');
+      branchesContainer.innerHTML = ''; // Limpia el contenido previo
+        
+      for (let i = 1; i <= numBranches; i++) {
+        const branchDiv = document.createElement('div');
+        branchDiv.className = 'branch-fields';
+        branchDiv.innerHTML = `
+          <h3>Sucursal ${i}</h3>
+          <div class="input-field">
+            <i class="fas fa-store"></i>
+            <input type="text" placeholder="Nombre de la Sucursal" name="NOM_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" placeholder="Dirección de la Sucursal" name="DIRECION_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-map-pin"></i>
+            <input type="text" placeholder="Comuna de la Sucursal" name="COMUNA_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-city"></i>
+            <input type="text" placeholder="Ciudad de la Sucursal" name="CIUDAD_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-globe"></i>
+            <input type="text" placeholder="País de la Sucursal" name="PAIS_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-phone"></i>
+            <input type="text" placeholder="Teléfono de la Sucursal" name="TEL_SUCURSA_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email de la Sucursal" name="EMAIL_SUCURSAL_${i}" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-car"></i>
+            <input type="number" placeholder="Capacidad de Vehículos de la Sucursal" name="CAP_VEHICULOS_SUCURSAL_${i}" required />
+          </div>
+        `;
+        branchesContainer.appendChild(branchDiv);
+  }
+
+  // Avanza al siguiente paso (step 3)
+  nextStep(3);
+  }
+  function previousStep(step) {
+    document.getElementById(`step-${currentStep}`).style.display = "none";
+    document.getElementById(`step-${step}`).style.display = "block";
+    currentStep = step;
+  }
+  function toggleSelection(card) {
+  const checkbox = card.querySelector("input[type='checkbox']");
+  
+  // Cambia el estado del checkbox
+  checkbox.checked = !checkbox.checked;
+  
+  // Aplica o elimina la clase .selected en función del estado del checkbox
+  if (checkbox.checked) {
+    card.classList.add("selected");
+  } else {
+    card.classList.remove("selected");
+  }
+}
+
+
+
+  </script>
+
+  <script type = "module" src = "../JavaScripts/Talleres/CrearTaller.js"></script>
+  
+
+ 
+</body>
+</html>
