@@ -14,70 +14,86 @@ CREATE TABLE talleres (
     GERENTE_TALLER VARCHAR(15)              
 );
 
-
--- Tabla de Modulos --
-CREATE TABLE modulos (
-    ID_MODULO BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    NOM_MODULO VARCHAR (15) NOT NULL,
-    DESCRIPCION VARCHAR (30)
-);
-
--- Tabla de Roles --
-CREATE TABLE roles (
-    ID_ROL BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    NOM_ROL VARCHAR (15) NOT NULL,
-    DESCRIPCION VARCHAR (30)
-);
-
--- Tabla de Permisos --
-CREATE TABLE permisos (
-    ID_PERMISO BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    NOM_PERMISO VARCHAR (15) NOT NULL,
-    DESCRIPCION VARCHAR (30)
-);
-
--- Tabla de roles y permisos --
-CREATE TABLE rol_permiso (
-    ID_ROL BIGINT,
-    ID_PERMISO BIGINT,
-    FOREIGN KEY (ID_ROL) REFERENCES roles (ID_ROL) ON DELETE CASCADE,
-    FOREIGN KEY (ID_PERMISO) REFERENCES permisos (ID_PERMISO) ON DELETE CASCADE,
-    PRIMARY KEY (ID_ROL, ID_PERMISO)
-);
-
--- Tabla de Usuarios --
+-- Tabla de Usuarios
 CREATE TABLE usuarios (
     ID_USUARIO BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    EMAIL_USUARIO VARCHAR (25) UNIQUE,
-    PASSWORD_USUARO VARCHAR (20),
-    NOM_USUARIO VARCHAR (30),
-    APEP_USUARIO VARCHAR (30),
-    APEM_USUARIO VARCHAR (30),
-    CONTAC_USUARIO VARCHAR (15),
-    F_INGRESO_USUARIO VARCHAR (11),
-    ESTADO_USUARIO VARCHAR (10),
-    ID_ROL BIGINT,
+    EMAIL_USUARIO VARCHAR(25) UNIQUE NOT NULL,
+    PASSWORD_USUARIO VARCHAR(20) NOT NULL,
+    NOM_USUARIO VARCHAR(30) NOT NULL,
+    APEP_USUARIO VARCHAR(30),
+    APEM_USUARIO VARCHAR(30),
+    CONTAC_USUARIO VARCHAR(15),
+    F_INGRESO_USUARIO VARCHAR(11),
+    ESTADO_USUARIO VARCHAR(10),
     ID_TALLER BIGINT,
-    FOREIGN KEY (ID_ROL) REFERENCES roles (ID_ROL),
     FOREIGN KEY (ID_TALLER) REFERENCES talleres (ID_TALLER)
 );
 
--- Tabla de Modulos y permisos --
-CREATE TABLE modulo_permiso (
-    ID_MODULO BIGINT,
-    ID_PERMISO BIGINT,
-    FOREIGN KEY (ID_MODULO) REFERENCES modulos (ID_MODULO) ON DELETE CASCADE,
-    FOREIGN KEY (ID_PERMISO) REFERENCES permisos (ID_PERMISO) ON DELETE CASCADE,
-    PRIMARY KEY (ID_MODULO, ID_PERMISO)
+
+-- Tabla de Modulo
+CREATE TABLE Modulo (
+    id_modulo SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL                                 
 );
 
--- Tabla de usuarios y modulos --
-CREATE TABLE usuario_modulo (
-    ID_USUARIO BIGINT,
-    ID_MODULO BIGINT,
-    FOREIGN KEY (ID_USUARIO) REFERENCES usuarios (ID_USUARIO) ON DELETE CASCADE,
-    FOREIGN KEY (ID_MODULO) REFERENCES modulos (ID_MODULO) ON DELETE CASCADE,
-    PRIMARY KEY (ID_USUARIO, ID_MODULO)
+-- Tabla de SubModulo
+CREATE TABLE SubModulo (
+    id_submodulo SERIAL PRIMARY KEY,
+    id_modulo INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_modulo) REFERENCES Modulo(id_modulo)
+);
+
+-- Tabla de Seccion
+CREATE TABLE Seccion (
+    id_seccion SERIAL PRIMARY KEY,
+    id_submodulo INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_submodulo) REFERENCES SubModulo(id_submodulo)
+);
+
+-- Tabla de Permisos
+CREATE TABLE Permisos (
+    id_permiso SERIAL PRIMARY KEY,
+    descripcion VARCHAR(255) NOT NULL
+);
+
+-- Tabla de SecUser (Asociación entre Usuario y Seccion)
+CREATE TABLE SecUser (
+    id_usuario BIGINT NOT NULL,
+    id_seccion INT NOT NULL,
+    PRIMARY KEY (id_usuario, id_seccion),
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_seccion) REFERENCES Seccion(id_seccion)
+);
+
+-- Tabla de SecPerm (Asociación entre Permisos y Seccion)
+CREATE TABLE SecPerm (
+    id_seccion INT NOT NULL,
+    id_permiso INT NOT NULL,
+    PRIMARY KEY (id_seccion, id_permiso),
+    FOREIGN KEY (id_seccion) REFERENCES Seccion(id_seccion),
+    FOREIGN KEY (id_permiso) REFERENCES Permisos(id_permiso)
+);
+
+-- Tabla de ViewUser (Vista personalizada para el Frontend)
+CREATE TABLE ViewUser (
+    id_usuario BIGINT NOT NULL,
+    id_modulo INT NOT NULL,
+    id_submodulo INT NOT NULL,
+    PRIMARY KEY (id_usuario, id_modulo, id_submodulo),
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_modulo) REFERENCES Modulo(id_modulo),
+    FOREIGN KEY (id_submodulo) REFERENCES SubModulo(id_submodulo)
+);
+
+-- Tabla de BanPer (Asociación personalizada entre Usuario y Permisos)
+CREATE TABLE BanPer (
+    id_usuario BIGINT NOT NULL,
+    id_permiso INT NOT NULL,
+    PRIMARY KEY (id_usuario, id_permiso),
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_permiso) REFERENCES Permisos(id_permiso)
 );
 
 -- Tabla de sucursales --
@@ -400,3 +416,25 @@ DROP TABLE IF EXISTS talleres CASCADE;
 
 
 */
+
+INSERT INTO modulo (nombre) VALUES ('GESTION');
+
+INSERT INTO SUBMODULO (ID_MODULO,NOMBRE) VALUES (1,'CLIENTES');
+INSERT INTO SECCION (ID_SUBMODULO, NOMBRE)
+VALUES (1,'NUEVO CLIENTE'),(1,'LISTA DE CLIENTES'),(1,'MANEJO DE CLIENTES');
+INSERT INTO PERMISOS (DESCRIPCION) 
+VALUES ('CREAR CLIENTE'),('CREAR VEHICULO'),('BUSCAR CLIENTE POR NOMBRE'),('BUSCAR CLIENTE POR EMAIL'),('BUSCAR CLIENTE POR RUT'),
+('MOSTRAR ULTIMOS 10 CLIENTES'), ('MOSTRAR TODOS LOS CLIENTES'),('FILTRAR POR TIPO DE CLIENTE '),('FILTRAR POR PAIS DEL CLIENTE'),
+('FILTRAR POR CIUDAD DEL CLIENTE'),('BUSCAR CLIENTE POR TELMOVIL'),('BUSCAR CLIENTE POR TELFIJO');
+
+INSERT INTO SECPERM VALUES (1,1),(1,2),(2,3),(2,4),(2,5),(2,6),(2,7),(2,8),(2,9),(2,10),(2,11),(2,12),(3,7);
+
+INSERT INTO SUBMODULO (ID_MODULO,NOMBRE) VALUES (1,'VEHICULOS');
+INSERT INTO SECCION (ID_SUBMODULO,NOMBRE)
+VALUES (2,'NUEVO VEHICULO'), (2,'LISTA DE VEHICULOS');
+INSERT INTO PERMISOS (DESCRIPCION)
+VALUES ('MOSTRAR ULTIMOS 10 VEHICULOS'),('BUCSAR VEHICULO POR PLACA'),('BUCSAR VEHICULO POR RUT DEL CLIENTE'),
+('FILTRAR POR KILOMETRAJE DEL VEHICULO'),('FILTRAR POR MARCA DEL VEHICULO'),('FILTRAR POR MODELO DEL VEHICULO'),
+('FILTRAR POR AÑO DEL VEHICULO'),('MOSTRAR TODOS LOS VEHICULOS');
+
+INSERT INTO SECPERM VALUES (4,2),(4,3),(4,5),(5,13),(5,20),(5,14),(5,15),(5,16),(5,17),(5,18),(5,19);

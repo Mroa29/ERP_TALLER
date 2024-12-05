@@ -547,8 +547,8 @@
               
               
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-history"></i>Historial de Vehículos
+              <a class="nav-link" id="manejovehiculos-tab" data-toggle="pill" href="#manejovehiculos" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-history"></i> Manejo de Vehículos
               </a>     
           </li>
           </ul>
@@ -677,20 +677,48 @@
             </div>
             <div class="tab-pane fade" id="listadovehiculos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
               <div class="card card-primary py-4 px-4 col-md-12">
+
+                <div class="card shadow rounded-3 my-3">
+                  <div class="card-header custom-card-header text-white rounded-top">
+                    <h3 class="card-title bi bi-search nav-icon"> Panel de Búsqueda</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="input-group" id="busquedaContainer" style="height: 50px;">
+                      <select id="tipoBusqueda" name="tipoBusqueda" class="form-select rounded-start">
+                        <option value="" disabled selected>Buscar por...</option>
+                        <option value="placaVehiculo">Placa del Vehiculo</option>
+                        <option value="rut">RUT del Cliente</option>
+                        <option value="kilometraje">Kilometraje del Vehiculo</option>
+                      </select>
+                      <div id="inputContainer" class="d-flex" style="flex-grow: 1;">
+                        <input type="text" id="valorBusqueda" name="valorBusqueda" class="form-control" style="height: 100%;" placeholder="Ingrese valor">
+                      </div>
+                      <button id="buscarBtn" type="submit" class="btn btn-primary rounded-end" style="height: 100%;">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="fas fa-car"></i> Panel Listado de Vehículos
                   </h3>
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" id ="barraBuscarVheiculos" class="form-control float-right" placeholder="Buscar">
+                    <div class="input-group input-group-sm" style="width: 300px;">
+                      <select id="filtroClientes" name="filtroClientes" class="form-control float-right">
+                        <option value="" disabled selected>Filtrar por...</option>
+                        <option value="marcaVehiculo">Marca del Vehiculo</option>
+                        <option value="modeloVehiculo">Modelo del Vehiculo</option>
+                        <option value="añoVehiculo">Año del Vehiculo</option>
+                      </select>
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
+                        <button id="ordenarAlfabetico" type="button" class="btn btn-default" title="Invertir orden alfabético">
+                          <i class="fas fa-sort-alpha-down-alt"></i>
                         </button>
                       </div>
                     </div>
-                  </div>  
+                  </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
@@ -1036,62 +1064,8 @@
             </div>
           
             
-            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-              <div class="container mt-5">
-                <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
-                  <i class="fas fa-history"></i>
-                  Historial de Vehículos
-                </a>
-            
-                <div class="card mt-4">
-                  <div class="card-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Vehículo</th>
-                          <th>Acción</th>
-                          <th>Fecha</th>
-                          <th>Usuario</th>
-                          <th>Detalles</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Aquí se mostrarán los registros del historial -->
-                        <tr>
-                          <td>1</td>
-                          <td>Chevrolet Cruze 2019</td>
-                          <td><span class="badge bg-success">Agregado</span></td>
-                          <td>2024-08-20 10:45 AM</td>
-                          <td>Juan Pérez</td>
-                          <td>Vehículo agregado al sistema (Dato simulado)</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Toyota Corolla 2018</td>
-                          <td><span class="badge bg-warning">Editado</span></td>
-                          <td>2024-08-20 11:00 AM</td>
-                          <td>María López</td>
-                          <td>Cambio de propietario (Dato simulado)</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Honda Civic 2020</td>
-                          <td><span class="badge bg-danger">Eliminado</span></td>
-                          <td>2024-08-20 11:15 AM</td>
-                          <td>Carlos Gómez</td>
-                          <td>Vehículo eliminado del sistema (Dato simulado)</td>
-                        </tr>
-                        <!-- Añadir más registros según sea necesario -->
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-            
-                <div class="text-center mt-4">
-                  <button class="btn btn-primary">Exportar Historial</button>
-                </div>
-              </div>
+            <div class="tab-pane fade" id="manejovehiculos" role="tabpanel" aria-labelledby="manejovehiculos">
+              
             </div>
             
             
@@ -1196,6 +1170,50 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script type = "module" src="../../../JavaScripts/Vehiculos/agregarvehiculos.js"></script>
+
+<script>
+  const tipoBusqueda = document.getElementById('tipoBusqueda');
+  const inputContainer = document.getElementById('inputContainer');
+
+  tipoBusqueda.addEventListener('change', () => {
+    const selectedValue = tipoBusqueda.value;
+
+    // Limpia el contenido de inputContainer
+    inputContainer.innerHTML = '';
+
+    if (selectedValue === 'kilometraje') {
+      // Crear dos inputs para rango de kilometraje
+      const inputDesde = document.createElement('input');
+      inputDesde.type = 'number';
+      inputDesde.id = 'kilometrajeDesde';
+      inputDesde.name = 'kilometrajeDesde';
+      inputDesde.className = 'form-control';
+      inputDesde.placeholder = 'Desde';
+      inputDesde.style.marginRight = '5px';
+
+      const inputHasta = document.createElement('input');
+      inputHasta.type = 'number';
+      inputHasta.id = 'kilometrajeHasta';
+      inputHasta.name = 'kilometrajeHasta';
+      inputHasta.className = 'form-control';
+      inputHasta.placeholder = 'Hasta';
+
+      inputContainer.appendChild(inputDesde);
+      inputContainer.appendChild(inputHasta);
+    } else {
+      // Restaurar input único para otros tipos de búsqueda
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.id = 'valorBusqueda';
+      input.name = 'valorBusqueda';
+      input.className = 'form-control';
+      input.placeholder = 'Ingrese valor';
+      input.style.height = '100%';
+
+      inputContainer.appendChild(input);
+    }
+  });
+</script>
 
 
 </body>
