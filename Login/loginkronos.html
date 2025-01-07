@@ -26,18 +26,21 @@
     <div class="forms-container">
       <div class="signin-signup">
         <!-- Formulario de inicio de sesión -->
-        <form action="http://127.0.0.1:5500/Pantallas/index2.html" class="sign-in-form">
-          <h2 class="title">Kronos<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;">Tech</span></h2>
+        <form id="loginForm" action="../Pantallas/index2.html" class="sign-in-form">
+          <h2 class="title">
+            Kronos<span style="background: linear-gradient(90deg, #5fa2ff, #7bddfe); -webkit-background-clip: text; color: transparent; font-weight: bold;">Tech</span>
+          </h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Usuario" />
+            <input type="text" name="email" placeholder="Usuario" required />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Contraseña" />
+            <input type="password" name="password" placeholder="Contraseña" required />
           </div>
           <input class="btn solid" type="submit" value="Iniciar Sesión" />
         </form>
+        
 
         <!-- Formulario interactivo para modo REGISTRO -->
         <form id="sign-up-form" class="sign-up-form" style="display: none;">  
@@ -425,7 +428,7 @@
 
   </script>
 
-  <script type = "module" src = "../JavaScripts/Talleres/CrearTaller.js"></script>
+  <script type = "module" src = "../JavaScripts/login/login.js"></script>
   
 
  
