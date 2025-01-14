@@ -78,6 +78,29 @@ const UserController = {
       res.status(500).json({ message: 'Error interno del servidor' });
     }
   },
+
+  /**
+   * Obtiene los módulos y submódulos permitidos para un usuario.
+   * @param {Object} req - Objeto de solicitud HTTP.
+   * @param {Object} res - Objeto de respuesta HTTP.
+   * @returns {void}
+   */
+  getUserPantallas: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      // Obtener los módulos y submódulos disponibles para el usuario
+      const pantallas = await User.findPantallasByUserId(id);
+
+      res.status(200).json({
+        modulos: pantallas.modulos,
+        submodulos: pantallas.submodulos,
+      });
+    } catch (error) {
+      console.error('Error al obtener pantallas del usuario:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+    }
+  },
 };
 
 module.exports = UserController;

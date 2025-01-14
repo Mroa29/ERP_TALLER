@@ -40,6 +40,32 @@ const User = {
       throw error;
     }
   },
+
+  /**
+   * Obtiene los módulos y submódulos disponibles para un usuario.
+   * @param {string} userId - ID del usuario.
+   * @returns {Promise<Object>} - Retorna un objeto con los módulos y submódulos permitidos.
+   */
+  findPantallasByUserId: async (userId) => {
+    try {
+      const query = `
+        SELECT ID_MODULO, ID_SUBMODULO
+        FROM PANTALLAS_USUARIO
+        WHERE ID_USUARIO = $1
+      `;
+      const values = [userId];
+
+      const result = await pool.query(query, values);
+
+      const modulos = [...new Set(result.rows.map(row => row.id_modulo))]; // Eliminar duplicados
+      const submodulos = result.rows.map(row => row.id_submodulo);
+
+      return { modulos, submodulos };
+    } catch (error) {
+      console.error('Error al buscar pantallas del usuario:', error);
+      throw error;
+    }
+  },
 };
 
 module.exports = User;
