@@ -71,6 +71,12 @@ const UserController = {
           id: user.id_usuario,
           email: user.email_usuario,
           nombre: user.nombre_usuario,
+          apeliido_paterno: user.apep_usuario,
+          apellido_materno: user.apem_usuario,
+          contacto: user.contacto_usuario,
+          fecha_creacion: user.f_ingreso_usuario,
+          estado: user.id_estado_usuario,
+          taller: user.id_taller,
         },
       });
     } catch (error) {

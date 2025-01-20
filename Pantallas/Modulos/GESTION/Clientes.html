@@ -187,8 +187,8 @@
           <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Marcos Roa</a>
-        </div>
+          <a href="#" id="user-name" class="d-block" >Nombre por defecto</a>
+        </div>        
       </div>
 
       <!-- SidebarSearch Form -->
@@ -216,31 +216,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item" id ="submodulo-1">
-                <a href="./Modulos/GESTION/Clientes.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Clientes.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-2">
-                <a href="./Modulos/GESTION/Vehiculos.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Vehiculos.html" class="nav-link">
                   <i class="bi bi-car-front nav-icon"></i>
                   <p>Vehiculos</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-3">
-                <a href="./Modulos/GESTION/Proveedores.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Proveedores.html" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-5">
-                <a href="#" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/empleados.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-6">
-                <a href="#" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Aseguradoras.html" class="nav-link">
                   <i class="bi bi-circle nav-icon"></i>
                   <p>Aseguradoras</p>
                 </a>
@@ -263,7 +263,7 @@
                 </a>
               </li>
               <li class="nav-item" id ="submodulo-4">
-                <a href="./Modulos/TALLER/presupuesto.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/presupuesto.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Presupuestos</p>
                 </a>
@@ -441,17 +441,17 @@
               </h3>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoCliente" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+              <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#seccion-1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
                   <i class="fas fa-user-plus"></i> Nuevo cliente
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaClientes" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#seccion-2" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
                   <i class="fas fa-users"></i> Lista de clientes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelmanejodatos" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#seccion-3" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
                   <i class="fas fa-file-import"></i> Manejo de Clientes
               </a>
           </li>
@@ -459,7 +459,7 @@
         </div>
         <div class="card-body">
           <div class="tab-content" id="custom-tabs-one-tabContent">
-            <div class="tab-pane fade show active" id="panelNuevoCliente" role="tabpanel" aria-labelledby="panelNuevoCliente">
+            <div class="tab-pane fade show active" id="seccion-1" role="tabpanel" aria-labelledby="panelNuevoCliente">
               <div class="container  mt-2">
                   <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4" data-toggle="modal" data-target="#agregarclientemodal">
                     <div class="btn-container">
@@ -923,7 +923,7 @@
               
 
             </div>
-            <div class="tab-pane fade" id="panelListaClientes" role="tabpanel" aria-labelledby="panelListaClientes">
+            <div class="tab-pane fade" id="seccion-2" role="tabpanel" aria-labelledby="panelListaClientes">
               <div class="card card-primary py-4 px-4 col-md-12">
                 
                 <div class="card shadow rounded-3 my-3">
@@ -1356,7 +1356,7 @@
               </div>  
             </div>
             
-            <div class="tab-pane fade" id="panelmanejodatos" role="tabpanel" aria-labelledby="panelmanejodatos">
+            <div class="tab-pane fade" id="seccion-3" role="tabpanel" aria-labelledby="panelmanejodatos">
               <div class="container mt-1">
                 <!-- Botón Exportar -->
                 <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
