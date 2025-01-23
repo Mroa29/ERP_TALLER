@@ -142,6 +142,30 @@ updateNotificationVisibility: async (userId, notificationId, visibility) => {
       throw error;
   }
 },
+/**
+ * Obtiene todas las sucursales asociadas a un usuario.
+ * @param {string} userId - ID del usuario.
+ * @returns {Promise<Array<Object>>} - Retorna una lista de sucursales asociadas al usuario.
+ */
+getUserSucursales: async (userId) => {
+  try {
+    const query = `
+      SELECT S.*
+      FROM USUARIO_SUCURSAL US
+      INNER JOIN SUCURSAL S ON US.ID_SUCURSAL = S.ID_SUCURSAL
+      WHERE US.ID_USUARIO = $1
+    `;
+    const values = [userId];
+
+    const result = await pool.query(query, values);
+
+    return result.rows; // Devuelve todas las sucursales asociadas al usuario
+  } catch (error) {
+    console.error('Error al obtener las sucursales del usuario:', error);
+    throw error;
+  }
+},
+
 };
 
 module.exports = User;

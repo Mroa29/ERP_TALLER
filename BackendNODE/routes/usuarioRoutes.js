@@ -20,4 +20,8 @@ router.get('/:id/notificaciones/count', UserController.countVisibleNotifications
 // Ruta para actualizar la visibilidad de una notificación
 router.put('/:idUsuario/notificaciones/:idNotificacion', UserController.updateNotificationVisibility);
 
+// Ruta para obtener las sucursales de un usuario
+router.get('/:id/sucursales', UserController.getUserSucursales);
+
+
 module.exports = router;

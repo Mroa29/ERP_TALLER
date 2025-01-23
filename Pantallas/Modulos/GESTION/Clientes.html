@@ -427,7 +427,7 @@
                 
               </div>
             
-              <!-- Modal agregra cliente-->
+              <!-- Modal agregar cliente -->
               <div class="modal fade" id="agregarclientemodal" tabindex="-1" aria-labelledby="agregarClienteModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
@@ -442,192 +442,90 @@
                         <!-- Mensaje de error -->
                         <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
                         <form id="idformagregarcliente">
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="rut">RUT</label>
-                                <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="N°Cliente">N°Cliente</label>
-                                <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">Tipo de Cliente</label>
-                                <select class="form-control" id="tipoclient">
-                                  <option>Sin definir</option>
-                                  <option>Particular</option>
-                                  <option>Empresa</option>
-                                  <option>Independiente</option>
-                                  
-                                </select>
-                              </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="rut">RUT</label>
+                              <input type="text" class="form-control" id="rutCliente" placeholder="Ingrese el Rut del Cliente" required>
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-12">
-                                <label for="nombre">Nombre Completo / Razon social </label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre Completo del Cliente o Su Razon Social " required>
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label for="nombre">Nombre Completo / Razón Social</label>
+                              <input type="text" class="form-control" id="nombreCliente" placeholder="Ingrese el Nombre o Razón Social del Cliente" required>
                             </div>
-                            
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="phone">Teléfono Fijo</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="movil">Teléfono Móvil</label>
-                                <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                              </div>
+                            <div class="form-group col-md-4">
+                              <label for="tipoCliente">Tipo de Cliente</label>
+                              <select class="form-control" id="tipoCliente">
+                                <option value="">Seleccione Tipo de Cliente</option>
+                                <!-- Opciones dinámicas -->
+                              </select>
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="address">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" placeholder="Ingrese una dirección">
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="address">Comuna</label>
-                                <input type="text" class="form-control" id="comuna" placeholder="Ingrese una Comuna">
-                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="telefono">Teléfono</label>
+                              <input type="tel" class="form-control" id="telefonoCliente" placeholder="Ingrese Teléfono">
                             </div>
-                            <div class="form-row">
-                              <div class="form-group col-md-4">
-                                <label for="zipCode">Código Postal</label>
-                                <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="city">Ciudad</label>
-                                <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="country">País</label>
-                                <select class="form-control" id="country">
-                                  <option>Chile</option>
-                                  <option>Argentina</option>
-                                  <option>Perú</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label for="email">Email</label>
-                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                              <input type="email" class="form-control" id="emailCliente" placeholder="Ingrese Email">
                             </div>
-                            <div class="form-group">
-                              <label for="observations">Observaciones</label>
-                              <textarea class="form-control" id="observations" rows="3"></textarea>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="direccion">Dirección</label>
+                              <input type="text" class="form-control" id="direccionCliente" placeholder="Ingrese Dirección">
                             </div>
-                            <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                              <br>
-                              <div class="bg-light border"></div>
-                              <br>
-                            <br>
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="tipoTarifa">Tipo de Tarifa</label>
-                                  <select class="form-control" id="tipoTarifa">
-                                    <option>Tarifa 1 - 0.5 Hora</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="grupoFacturacion">Grupo de Facturación</label>
-                                  <select class="form-control" id="grupoFacturacion">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              
+                            <div class="form-group col-md-6">
+                              <label for="comuna">Comuna</label>
+                              <input type="text" class="form-control" id="comunaCliente" placeholder="Ingrese Comuna">
                             </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoPlazas">Desc. en Plazas</label>
-                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoGral">Descuento gral</label>
-                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="ciudad">Ciudad</label>
+                              <input type="text" class="form-control" id="ciudadCliente" placeholder="Ingrese Ciudad">
                             </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="formaPago">Forma Pago</label>
-                                  <select class="form-control" id="formaPago">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="condicionesPago">Condiciones Pago</label>
-                                  <select class="form-control" id="condicionesPago">
-                                    <option>Sin Definir</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
+                            <div class="form-group col-md-6">
+                              <label for="pais">País</label>
+                              <input type="text" class="form-control" id="paisCliente" placeholder="Ingrese País">
                             </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="cuentaContable">Cuenta Contable</label>
-                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="comoNosConocio">Cómo nos conoció</label>
-                                  <select class="form-control" id="comoNosConocio">
-                                    <option>- sin definir -</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="sucursal">Sucursal</label>
+                              <select class="form-control" id="sucursalCliente">
+                                <option value="">Seleccione Sucursal</option>
+                                <!-- Opciones dinámicas -->
+                              </select>
                             </div>
-                          </form>
-                          
+                            <div class="form-group col-md-6">
+                              <label for="estadoCliente">Estado</label>
+                              <select class="form-control" id="estadoCliente">
+                                <option value="">Seleccione Estado</option>
+                                <!-- Opciones dinámicas -->
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="observaciones">Observaciones</label>
+                            <textarea class="form-control" id="observacionesCliente" rows="3"></textarea>
+                          </div>
+                        </form>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="submit" class="btn btn-primary" id="btnagregarcliente">Agregar Cliente</button>
-                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Modal agregra cliente y Vehiculo-->
+
               <div class="modal fade" id="agregarclienteconautomodal" tabindex="-1" aria-labelledby="agregarClienteAutoModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                   <div class="modal-content">
                     <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="agregarvehiculoClienteAutoModalLabel">Agregar Cliente y Vehículo</h5>
+                      <h5 class="modal-title" id="agregarClienteAutoModalLabel">Agregar Cliente y Vehículo</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -642,64 +540,70 @@
                           <br>
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label for="rutclienteauto">RUT</label>
-                              <input type="text" class="form-control" id="rutclienteauto" placeholder="Ingrese el Rut del Cliente" required>
+                              <label for="clienteAuto_rutCliente">RUT</label>
+                              <input type="text" class="form-control" id="clienteAuto_rutCliente" placeholder="Ingrese el Rut del Cliente" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="N°Cliente">N°Cliente</label>
-                              <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
+                              <label for="clienteAuto_nombreCliente">Nombre Completo / Razón Social</label>
+                              <input type="text" class="form-control" id="clienteAuto_nombreCliente" placeholder="Ingrese el Nombre o Razón Social del Cliente" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="tipoclient">Tipo de Cliente</label>
-                              <select class="form-control" id="tipoclient">
-                                <option>Sin definir</option>
-                                <option>Particular</option>
-                                <option>Empresa</option>
-                                <option>Independiente</option>
+                              <label for="clienteAuto_tipoCliente">Tipo de Cliente</label>
+                              <select class="form-control" id="clienteAuto_tipoCliente">
+                                <option value="">Seleccione Tipo de Cliente</option>
+                                <!-- Opciones dinámicas -->
                               </select>
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-12">
-                              <label for="nombre">Nombre Completo / Razon social </label>
-                              <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre Completo del Cliente o Su Razon Social " required>
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_telefonoCliente">Teléfono</label>
+                              <input type="tel" class="form-control" id="clienteAuto_telefonoCliente" placeholder="Ingrese Teléfono">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_emailCliente">Email</label>
+                              <input type="email" class="form-control" id="clienteAuto_emailCliente" placeholder="Ingrese Email">
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="phone">Teléfono Fijo</label>
-                              <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_direccionCliente">Dirección</label>
+                              <input type="text" class="form-control" id="clienteAuto_direccionCliente" placeholder="Ingrese Dirección">
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="movil">Teléfono Móvil</label>
-                              <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_comunaCliente">Comuna</label>
+                              <input type="text" class="form-control" id="clienteAuto_comunaCliente" placeholder="Ingrese Comuna">
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_ciudadCliente">Ciudad</label>
+                              <input type="text" class="form-control" id="clienteAuto_ciudadCliente" placeholder="Ingrese Ciudad">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_paisCliente">País</label>
+                              <input type="text" class="form-control" id="clienteAuto_paisCliente" placeholder="Ingrese País">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_sucursalCliente">Sucursal</label>
+                              <select class="form-control" id="clienteAuto_sucursalCliente">
+                                <option value="">Seleccione Sucursal</option>
+                                <!-- Opciones dinámicas -->
+                              </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="clienteAuto_estadoCliente">Estado</label>
+                              <select class="form-control" id="clienteAuto_estadoCliente">
+                                <option value="">Seleccione Estado</option>
+                                <!-- Opciones dinámicas -->
+                              </select>
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="address">Dirección</label>
-                            <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="city">Ciudad</label>
-                              <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="country">País</label>
-                              <select class="form-control" id="country">
-                                <option>Chile</option>
-                                <option>Argentina</option>
-                                <option>Perú</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="zipCode">Código Postal</label>
-                              <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                            </div>
+                            <label for="clienteAuto_observacionesCliente">Observaciones</label>
+                            <textarea class="form-control" id="clienteAuto_observacionesCliente" rows="3"></textarea>
                           </div>
               
                           <!-- Sección Vehículo -->
@@ -707,149 +611,47 @@
                           <br>
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label for="placa">Placa</label>
-                              <input type="text" class="form-control" id="placa" placeholder="Ingrese la placa del vehículo">
+                              <label for="vehiculo_placa">Placa</label>
+                              <input type="text" class="form-control" id="vehiculo_placa" placeholder="Ingrese la placa del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="marca">Marca</label>
-                              <input type="text" class="form-control" id="marca" placeholder="Ingrese la marca del vehículo">
+                              <label for="vehiculo_marca">Marca</label>
+                              <input type="text" class="form-control" id="vehiculo_marca" placeholder="Ingrese la marca del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="modelo">Modelo</label>
-                              <input type="text" class="form-control" id="modelo" placeholder="Ingrese el modelo del vehículo">
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="anio">Año</label>
-                              <input type="number" class="form-control" id="anio" placeholder="Ingrese el año del vehículo">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="color">Color</label>
-                              <input type="text" class="form-control" id="color" placeholder="Ingrese el color del vehículo">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="vin">VIN (Número de Identificación del Vehículo)</label>
-                              <input type="text" class="form-control" id="vin" placeholder="Ingrese el VIN del vehículo">
+                              <label for="vehiculo_modelo">Modelo</label>
+                              <input type="text" class="form-control" id="vehiculo_modelo" placeholder="Ingrese el modelo del vehículo" required>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label for="motor">Número de Motor</label>
-                              <input type="text" class="form-control" id="motor" placeholder="Ingrese el número de motor">
+                              <label for="vehiculo_anio">Año</label>
+                              <input type="number" class="form-control" id="vehiculo_anio" placeholder="Ingrese el año del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="kilometraje">Kilometraje</label>
-                              <input type="number" class="form-control" id="kilometraje" placeholder="Ingrese el kilometraje del vehículo">
+                              <label for="vehiculo_color">Color</label>
+                              <input type="text" class="form-control" id="vehiculo_color" placeholder="Ingrese el color del vehículo">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="tipoVehiculo">Tipo de Vehículo</label>
-                              <select class="form-control" id="tipoVehiculo">
-                                <option>Automóvil</option>
-                                <option>Motocicleta</option>
-                                <option>Camión</option>
+                              <label for="vehiculo_kilometraje">Kilometraje</label>
+                              <input type="number" class="form-control" id="vehiculo_kilometraje" placeholder="Ingrese el kilometraje del vehículo">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="vehiculo_motor">Número de Motor</label>
+                              <input type="text" class="form-control" id="vehiculo_motor" placeholder="Ingrese el número de motor">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="vehiculo_tipo">Tipo de Vehículo</label>
+                              <select class="form-control" id="vehiculo_tipo">
+                                <option value="">Seleccione Tipo de Vehículo</option>
+                                <option value="Automóvil">Automóvil</option>
+                                <option value="Motocicleta">Motocicleta</option>
+                                <option value="Camión">Camión</option>
                               </select>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <label for="observaciones">Observaciones</label>
-                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
-                          </div>
-                          <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                              <br>
-                              <div class="bg-light border"></div>
-                              <br>
-                            <br>
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="tipoTarifa">Tipo de Tarifa</label>
-                                  <select class="form-control" id="tipoTarifa">
-                                    <option>Tarifa 1 - 0.5 Hora</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="grupoFacturacion">Grupo de Facturación</label>
-                                  <select class="form-control" id="grupoFacturacion">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              
-                            </div>
-                            
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoPlazas">Desc. en Plazas</label>
-                                  <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                  <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="descuentoGral">Descuento gral</label>
-                                  <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="formaPago">Forma Pago</label>
-                                  <select class="form-control" id="formaPago">
-                                    <option>Opción 1</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="condicionesPago">Condiciones Pago</label>
-                                  <select class="form-control" id="condicionesPago">
-                                    <option>Sin Definir</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                  <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                </div>
-                              </div>
-                            </div>
-                          
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="cuentaContable">Cuenta Contable</label>
-                                  <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="comoNosConocio">Cómo nos conoció</label>
-                                  <select class="form-control" id="comoNosConocio">
-                                    <option>- sin definir -</option>
-                                    <!-- Agrega más opciones según sea necesario -->
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
                         </form>
                       </div>
                     </div>
@@ -860,6 +662,7 @@
                   </div>
                 </div>
               </div>
+              
               
 
             </div>
@@ -1416,6 +1219,115 @@
 <script type0="module" src ="../../../JavaScripts/Clientes/TablaClientes.js"></script>
 <script type0="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
 
+<script>
+ document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Obtener el token del localStorage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicie sesión.');
+    }
+
+    // Decodificar el token para obtener el ID del usuario
+    const decodedToken = JSON.parse(atob(token.split('.')[1]));
+    const userId = decodedToken.id;
+
+    // Seleccionar los selects en ambos modales
+    const modals = [
+      {
+        tipoClienteSelect: document.getElementById('tipoCliente'),
+        estadoClienteSelect: document.getElementById('estadoCliente'),
+        sucursalClienteSelect: document.getElementById('sucursalCliente'),
+      },
+      {
+        tipoClienteSelect: document.getElementById('clienteAuto_tipoCliente'),
+        estadoClienteSelect: document.getElementById('clienteAuto_estadoCliente'),
+        sucursalClienteSelect: document.getElementById('clienteAuto_sucursalCliente'),
+      },
+    ];
+
+    for (const modal of modals) {
+      const { tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect } = modal;
+
+      if (!tipoClienteSelect || !estadoClienteSelect || !sucursalClienteSelect) {
+        throw new Error('No se encontraron los elementos para los selects en uno de los modales.');
+      }
+
+      // Obtener los tipos de cliente
+      const tipoResponse = await fetch('http://localhost:3000/api/clientes/tipos', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!tipoResponse.ok) {
+        throw new Error('Error al obtener los tipos de cliente');
+      }
+
+      const tiposClientes = await tipoResponse.json();
+
+      // Rellenar el select de tipos de cliente
+      tiposClientes.forEach((tipo) => {
+        const option = document.createElement('option');
+        option.value = tipo.id_tipo_cliente;
+        option.textContent = tipo.descripcion;
+        tipoClienteSelect.appendChild(option);
+      });
+
+      // Obtener los estados de cliente
+      const estadoResponse = await fetch('http://localhost:3000/api/clientes/estados', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!estadoResponse.ok) {
+        throw new Error('Error al obtener los estados de cliente');
+      }
+
+      const estadosClientes = await estadoResponse.json();
+
+      // Rellenar el select de estados de cliente
+      estadosClientes.forEach((estado) => {
+        const option = document.createElement('option');
+        option.value = estado.id_estado_cliente;
+        option.textContent = estado.descripcion;
+        estadoClienteSelect.appendChild(option);
+      });
+
+      // Obtener las sucursales del usuario
+      const sucursalResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!sucursalResponse.ok) {
+        throw new Error('Error al obtener las sucursales del usuario');
+      }
+
+      const sucursales = await sucursalResponse.json();
+
+      // Rellenar el select de sucursales del usuario
+      sucursales.forEach((sucursal) => {
+        const option = document.createElement('option');
+        option.value = sucursal.id_sucursal;
+        option.textContent = sucursal.nombre_sucursal; // Usamos 'nombre_sucursal' del JSON
+        sucursalClienteSelect.appendChild(option);
+      });
+    }
+  } catch (error) {
+    console.error('Error al cargar los datos para los selects:', error);
+    alert('Error al cargar los datos. Por favor, intente nuevamente.');
+  }
+});
+
+
+</script>
 
 
 </body>

@@ -1,24 +1,34 @@
-
 const express = require('express');
+const ClienteController = require('../controllers/clienteController');
 const router = express.Router();
-const clienteController = require('../controllers/clienteController');
 
-// Rutas CRUD para clientes
+// Ruta para obtener todos los tipos de clientes
+router.get('/tipos', ClienteController.getAllTiposClientes);
 
-// Crear un nuevo cliente
-router.post('/', clienteController.createCliente);
+// Ruta para obtener todos los estados de clientes
+router.get('/estados', ClienteController.getAllEstadosClientes);
 
-// Obtener todos los clientes
-router.get('/', clienteController.getAllClientes);
+// Ruta para buscar tipo_cliente por descripción
+router.get('/tipos/:descripcion', ClienteController.getTipoClienteByDescripcion);
 
-// Obtener un cliente por ID
-router.get('/:id', clienteController.getClienteById);
+// Ruta para buscar estado_cliente por descripción
+router.get('/estados/:descripcion', ClienteController.getEstadoClienteByDescripcion);
 
-// Actualizar un cliente por ID
-router.put('/:id', clienteController.updateCliente);
+// Ruta para agregar un nuevo cliente
+router.post('/', ClienteController.addCliente);
 
-// Eliminar un cliente por ID
-router.delete('/:id', clienteController.deleteCliente);
+// Ruta para obtener un cliente por RUT
+router.get('/:rut', ClienteController.getClienteByRut);
+
+// Ruta para actualizar un cliente por RUT
+router.put('/:rut', ClienteController.updateCliente);
+
+// Ruta para eliminar un cliente por RUT
+router.delete('/:rut', ClienteController.deleteCliente);
+
+// Ruta para obtener todos los clientes
+router.get('/', ClienteController.getAllClientes);
+
 
 
 module.exports = router;

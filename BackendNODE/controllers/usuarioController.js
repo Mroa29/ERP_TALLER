@@ -172,6 +172,26 @@ updateNotificationVisibility: async (req, res) => {
       res.status(500).json({ message: 'Error interno del servidor.' });
   }
 },
+/**
+ * Obtiene todas las sucursales asociadas a un usuario.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @returns {void}
+ */
+getUserSucursales: async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Obtener las sucursales asociadas al usuario
+    const sucursales = await User.getUserSucursales(id);
+
+    res.status(200).json(sucursales);
+  } catch (error) {
+    console.error('Error al obtener las sucursales del usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+},
+
 
 };
 

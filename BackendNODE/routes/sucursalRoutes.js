@@ -1,12 +1,23 @@
 const express = require('express');
-const router = express.Router();
 const sucursalController = require('../controllers/sucursalController');
+const router = express.Router();
 
-// Rutas CRUD para sucursales
-router.post('/', sucursalController.createSucursal);         // Crear nueva sucursal
-router.get('/', sucursalController.getAllSucursales);        // Obtener todas las sucursales
-router.get('/:id', sucursalController.getSucursalById);      // Obtener una sucursal por ID
-router.put('/:id', sucursalController.updateSucursal);       // Actualizar una sucursal por ID
-router.delete('/:id', sucursalController.deleteSucursal);    // Eliminar una sucursal por ID
+// Ruta para agregar una nueva sucursal
+router.post('/', sucursalController.addSucursal);
+
+// Ruta para obtener todas las sucursales
+router.get('/', sucursalController.getAllSucursales);
+
+// Ruta para obtener una sucursal por su ID
+router.get('/:id', sucursalController.getSucursalById);
+
+// Ruta para obtener una sucursal por su nombre
+router.get('/nombre/:nombre', sucursalController.getSucursalByNombre);
+
+// Ruta para actualizar una sucursal por su ID
+router.put('/:id', sucursalController.updateSucursal);
+
+// Ruta para eliminar una sucursal por su ID
+router.delete('/:id', sucursalController.deleteSucursal);
 
 module.exports = router;
