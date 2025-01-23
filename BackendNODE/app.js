@@ -18,5 +18,6 @@ app.use('/api/clientes', clientesRoutes);  // Rutas para la entidad clientes
 app.use('/api/talleres', talleresRoutes);  // Rutas para la entidad talleres
 app.use('/api/usuarios', usuarioRoutes);  // Rutas para la entidad usuarios
 
+
 // Exportar la app
 module.exports = app;

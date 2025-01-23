@@ -66,6 +66,82 @@ const User = {
       throw error;
     }
   },
+
+  /**
+   * Obtiene las notificaciones de un usuario por ID.
+   * @param {string} userId - ID del usuario.
+   * @returns {Promise<Array<Object>>} - Retorna una lista de notificaciones del usuario.
+   */
+  getUserNotifications: async (userId) => {
+    try {
+      const query = `
+        SELECT 
+          N.TITULO_NOTIFICACION,
+          N.DESCRIPCION_NOTIFICACION,
+          N.ASUNTO_NOTIFICACION,
+          N.FECHA_CREACION_NOTIFICACION,
+          UN.VISIBILIDAD_NOTIFICACION
+        FROM USUARIO_NOTIFICACION UN
+        INNER JOIN NOTIFICACIONES N ON UN.ID_NOTIFICACION = N.ID_NOTIFICACION
+        WHERE UN.ID_USUARIO = $1
+        ORDER BY N.FECHA_CREACION_NOTIFICACION DESC
+      `;
+      const values = [userId];
+
+      const result = await pool.query(query, values);
+
+      return result.rows;
+    } catch (error) {
+      console.error('Error al obtener notificaciones del usuario:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Cuenta la cantidad de notificaciones visibles de un usuario por ID.
+   * @param {string} userId - ID del usuario.
+   * @returns {Promise<number>} - Retorna el número de notificaciones visibles del usuario.
+   */
+  countVisibleNotifications: async (userId) => {
+    try {
+      const query = `
+        SELECT COUNT(*) AS total
+        FROM USUARIO_NOTIFICACION UN
+        INNER JOIN NOTIFICACIONES N ON UN.ID_NOTIFICACION = N.ID_NOTIFICACION
+        WHERE UN.ID_USUARIO = $1 AND UN.VISIBILIDAD_NOTIFICACION = true
+      `;
+      const values = [userId];
+
+      const result = await pool.query(query, values);
+
+      return parseInt(result.rows[0].total, 10);
+    } catch (error) {
+      console.error('Error al contar notificaciones visibles del usuario:', error);
+      throw error;
+    }
+  },
+  /**
+ * Actualiza la visibilidad de una notificación para un usuario.
+ * @param {string} userId - ID del usuario.
+ * @param {number} notificationId - ID de la notificación.
+ * @param {boolean} visibility - Nueva visibilidad de la notificación.
+ * @returns {Promise<void>} - Promesa que se resuelve cuando la operación termina.
+ */
+updateNotificationVisibility: async (userId, notificationId, visibility) => {
+  try {
+      const query = `
+          UPDATE USUARIO_NOTIFICACION
+          SET VISIBILIDAD_NOTIFICACION = $1
+          WHERE ID_USUARIO = $2 AND ID_NOTIFICACION = $3
+      `;
+      const values = [visibility, userId, notificationId];
+
+      await pool.query(query, values);
+  } catch (error) {
+      console.error('Error al actualizar la visibilidad de la notificación:', error);
+      throw error;
+  }
+},
 };
 
 module.exports = User;

@@ -1,22 +1,20 @@
 const express = require('express');
+const TallerController = require('../controllers/tallerControllers');
 const router = express.Router();
-const tallerController = require('../controllers/tallerControllers');
 
-// Rutas CRUD para talleres
+// Ruta para obtener todos los talleres
+router.get('/', TallerController.getAllTalleres);
 
-// Obtener todos los talleres
-router.get('/', tallerController.getAllTalleres);
+// Ruta para obtener un taller por ID
+router.get('/:id', TallerController.getTallerById);
 
-// Crear un nuevo taller
-router.post('/', tallerController.createTaller);
+// Ruta para crear un nuevo taller
+router.post('/', TallerController.createTaller);
 
-// Obtener un taller por ID
-router.get('/:id', tallerController.getTallerById);
+// Ruta para actualizar un taller por ID
+router.put('/:id', TallerController.updateTaller);
 
-// Actualizar un taller por ID
-router.put('/:id', tallerController.updateTaller);
-
-// Eliminar un taller por ID
-router.delete('/:id', tallerController.deleteTaller);
+// Ruta para eliminar un taller por ID
+router.delete('/:id', TallerController.deleteTaller);
 
 module.exports = router;

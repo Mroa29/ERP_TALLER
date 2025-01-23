@@ -1,0 +1,43 @@
+* Estilos para el contenedor preloader */
+  .preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total de la pantalla */
+    background-color: #3d3d3d; /* Fondo igual al diseño anterior */
+  }
+
+  /* Estilo del título */
+  .title {
+    font-size: 28px;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Efecto de degradado en la palabra "Tech" */
+  .title span {
+    background: linear-gradient(90deg, #5fa2ff, #7bddfe);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
+
+  /* Efecto de animación opcional (como reemplazo del wobble) */
+  .title {
+    animation: wobble 2s infinite;
+  }
+
+  @keyframes wobble {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+  }

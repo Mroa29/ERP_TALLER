@@ -107,6 +107,72 @@ const UserController = {
       res.status(500).json({ message: 'Error interno del servidor' });
     }
   },
+
+  /**
+   * Obtiene las notificaciones de un usuario.
+   * @param {Object} req - Objeto de solicitud HTTP.
+   * @param {Object} res - Objeto de respuesta HTTP.
+   * @returns {void}
+   */
+  getUserNotifications: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      // Obtener las notificaciones del usuario
+      const notifications = await User.getUserNotifications(id);
+
+      res.status(200).json(notifications);
+    } catch (error) {
+      console.error('Error al obtener notificaciones del usuario:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+    }
+  },
+
+  /**
+   * Cuenta las notificaciones visibles de un usuario.
+   * @param {Object} req - Objeto de solicitud HTTP.
+   * @param {Object} res - Objeto de respuesta HTTP.
+   * @returns {void}
+   */
+  countVisibleNotifications: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      // Contar notificaciones visibles del usuario
+      const count = await User.countVisibleNotifications(id);
+
+      res.status(200).json({ count });
+    } catch (error) {
+      console.error('Error al contar notificaciones visibles del usuario:', error);
+      res.status(500).json({ message: 'Error interno del servidor' });
+    }
+  },
+
+  /**
+ * Actualiza la visibilidad de una notificación específica de un usuario.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @returns {void}
+ */
+updateNotificationVisibility: async (req, res) => {
+  const { idUsuario, idNotificacion } = req.params;
+  const { visibility } = req.body; // Recibe la nueva visibilidad desde el cuerpo de la solicitud.
+
+  if (visibility === undefined) {
+      return res.status(400).json({ message: 'La visibilidad es requerida.' });
+  }
+
+  try {
+      // Actualizar la visibilidad de la notificación
+      await User.updateNotificationVisibility(idUsuario, idNotificacion, visibility);
+
+      res.status(200).json({ message: 'Visibilidad de la notificación actualizada con éxito.' });
+  } catch (error) {
+      console.error('Error al actualizar la visibilidad de la notificación:', error);
+      res.status(500).json({ message: 'Error interno del servidor.' });
+  }
+},
+
 };
 
 module.exports = UserController;
