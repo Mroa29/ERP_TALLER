@@ -12,12 +12,11 @@ const talleresRoutes = require('./routes/tallerRoutes');
 const sucursalesRoutes = require('./routes/sucursalRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 
-// Usar las rutas
+
 app.use('/api/sucursales', sucursalesRoutes);
 app.use('/api/clientes', clientesRoutes);  // Rutas para la entidad clientes
 app.use('/api/talleres', talleresRoutes);  // Rutas para la entidad talleres
 app.use('/api/usuarios', usuarioRoutes);  // Rutas para la entidad usuarios
 
 
-// Exportar la app
 module.exports = app;
