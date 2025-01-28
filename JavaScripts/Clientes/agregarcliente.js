@@ -74,7 +74,6 @@ document.getElementById('btnagregarcliente').addEventListener('click', async (ev
         const nuevoCliente = {
             rut_cliente: rutCliente,
             nom_cliente: nombreCliente,
-            tipo_cliente: tipoClienteDesc,
             direccion_cliente: direccion,
             comuna_cliente: comuna,
             ciudad_cliente: ciudad,
@@ -105,6 +104,9 @@ document.getElementById('btnagregarcliente').addEventListener('click', async (ev
         alert('Cliente agregado exitosamente.');
         document.getElementById('idformagregarcliente').reset(); // Limpiar el formulario
         ocultarMensajeError(); // Ocultar cualquier mensaje de error previo
+
+        // Recargar la página
+        window.location.reload();
     } catch (error) {
         console.error('Error al agregar cliente:', error);
         mostrarMensajeError(`Error al agregar cliente: ${error.message}`);

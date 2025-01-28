@@ -5,6 +5,9 @@ const router = express.Router();
 // Ruta para obtener todos los tipos de clientes
 router.get('/tipos', ClienteController.getAllTiposClientes);
 
+//Ruta para obtener un tipo de cliente por id
+router.get('/tipos/:id',ClienteController.getTipoClienteById)
+
 // Ruta para obtener todos los estados de clientes
 router.get('/estados', ClienteController.getAllEstadosClientes);
 

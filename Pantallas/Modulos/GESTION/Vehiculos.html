@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../Styles/stylesclientes.css">
+  <link rel="stylesheet" href="../../../Styles/stylelogo.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -41,7 +42,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../index2.html" class="nav-link bi bi-house"> Inicio</a>
+        <a href="http://127.0.0.1:5500/Pantallas/index2.html" class="nav-link bi bi-house"> Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link bi bi-person-lines-fill"> Contacto</a>
@@ -73,16 +74,16 @@
         </div>
       </li>
 -->
-      <!-- NOTIFICACIONES -->
+      <!-- NOTIFICACIONES 
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-danger navbar-badge" id = "cant_notificaciones"> 0 </span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificaciones_usuario">
-         <!-- Notificaciones dinamicas-->
+          Notificaciones dinamicas
         </div>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -113,8 +114,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="#" class="brand-link">
+      <img src="../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Usuario Kronos</span>
     </a>
 
@@ -123,7 +124,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/Usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Marcos Roa</a>
@@ -167,7 +168,7 @@
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-3">
-                <a href="http://127.0.0.1:5500/Pantallas/Modulos/Proveedores.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Proveedores.html" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
@@ -366,7 +367,7 @@
     <!-- Content Header (Page header) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
-          <i class="bi bi-car-front"></i> <!-- Cambiado a Bootstrap Icons de un vehículo -->
+          <i class="bi bi-car-front"></i>
           Vehículos
         </a>
       </nav>
@@ -393,11 +394,6 @@
               </li>
               
               
-            <li class="nav-item">
-              <a class="nav-link" id="manejovehiculos-tab" data-toggle="pill" href="#manejovehiculos" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-history"></i> Manejo de Vehículos
-              </a>     
-          </li>
           </ul>
         </div>
 
@@ -444,69 +440,62 @@
                         <!-- Fila para búsqueda de cliente y campo no editable -->
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                              <label for="buscarCliente">Buscar Cliente</label>
-                              <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
-                              <!-- Lista de coincidencias -->
-                              <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
+                            <label for="buscarCliente">Buscar Cliente</label>
+                            <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
+                            <!-- Lista de coincidencias -->
+                            <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
                           </div>
                           <div class="form-group col-md-6">
-                              <label for="clienteSeleccionado">Cliente</label>
-                              <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
+                            <label for="clienteSeleccionado">Cliente (RUT)</label>
+                            <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
                           </div>
                         </div>
 
+                        <!-- Formulario para agregar vehículo -->
                         <form id="idformagregarvehiculo">
-                          <!-- Resto del formulario para agregar vehículo -->
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label for="vehiculoPlaca">Placa</label>
-                              <input type="text" class="form-control" id="vehiculoPlaca" placeholder="Ingrese la placa del vehículo" required>
+                              <label for="patenteVehiculo">Patente</label>
+                              <input type="text" class="form-control" id="patenteVehiculo" placeholder="Ingrese la patente del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="vehiculoMarca">Marca</label>
-                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo" required>
+                              <label for="marcaVehiculo">Marca</label>
+                              <input type="text" class="form-control" id="marcaVehiculo" placeholder="Ingrese la marca del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="vehiculoModelo">Modelo</label>
-                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo" required>
+                              <label for="modeloVehiculo">Modelo</label>
+                              <input type="text" class="form-control" id="modeloVehiculo" placeholder="Ingrese el modelo del vehículo" required>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
-                              <label for="vehiculoAnio">Año</label>
-                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo" required>
+                              <label for="anioVehiculo">Año</label>
+                              <input type="text" class="form-control" id="anioVehiculo" placeholder="Ingrese el año del vehículo" required>
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="vehiculoColor">Color</label>
-                              <input type="text" class="form-control" id="vehiculoColor" placeholder="Ingrese el color del vehículo">
+                              <label for="colorVehiculo">Color</label>
+                              <input type="text" class="form-control" id="colorVehiculo" placeholder="Ingrese el color del vehículo">
                             </div>
                             <div class="form-group col-md-4">
-                              <label for="vehiculoVIN">VIN (Número de Identificación del Vehículo)</label>
-                              <input type="text" class="form-control" id="vehiculoVIN" placeholder="Ingrese el VIN del vehículo">
+                              <label for="kilometrajeVehiculo">Kilometraje</label>
+                              <input type="text" class="form-control" id="kilometrajeVehiculo" placeholder="Ingrese el kilometraje del vehículo" required>
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoMotor">Número de Motor</label>
-                              <input type="text" class="form-control" id="vehiculoMotor" placeholder="Ingrese el número de motor">
+                            <div class="form-group col-md-6">
+                              <label for="numMotorVehiculo">Número de Motor</label>
+                              <input type="text" class="form-control" id="numMotorVehiculo" placeholder="Ingrese el número de motor">
                             </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoKilometraje">Kilometraje</label>
-                              <input type="number" class="form-control" id="vehiculoKilometraje" placeholder="Ingrese el kilometraje del vehículo"required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="vehiculoTipo">Tipo de Vehículo</label>
-                              <select class="form-control" id="vehiculoTipo">
-                                <option>Automóvil</option>
-                                <option>Camioneta</option>
-                                <option>Moto</option>
-                                <option>Otro</option>
+                            <div class="form-group col-md-6">
+                              <label for="tipoVehiculo">Tipo de Vehículo</label>
+                              <select class="form-control" id="tipoVehiculoSelect" required>
+                               
                               </select>
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="vehiculoObservaciones">Observaciones</label>
-                            <textarea class="form-control" id="vehiculoObservaciones" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
+                            <label for="obsVehiculo">Observaciones</label>
+                            <textarea class="form-control" id="obsVehiculo" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
                           </div>
                         </form>
                       </div>
@@ -520,401 +509,137 @@
               </div>
 
 
+
               
             </div>
             <div class="tab-pane fade" id="listadovehiculos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
               <div class="card card-primary py-4 px-4 col-md-12">
 
-                <div class="card shadow rounded-3 my-3">
-                  <div class="card-header custom-card-header text-white rounded-top">
-                    <h3 class="card-title bi bi-search nav-icon"> Panel de Búsqueda</h3>
-                  </div>
-                  <div class="card-body">
-                    <div class="input-group" id="busquedaContainer" style="height: 50px;">
-                      <select id="tipoBusqueda" name="tipoBusqueda" class="form-select rounded-start">
-                        <option value="" disabled selected>Buscar por...</option>
-                        <option value="placaVehiculo">Placa del Vehiculo</option>
-                        <option value="rut">RUT del Cliente</option>
-                        <option value="kilometraje">Kilometraje del Vehiculo</option>
-                      </select>
-                      <div id="inputContainer" class="d-flex" style="flex-grow: 1;">
-                        <input type="text" id="valorBusqueda" name="valorBusqueda" class="form-control" style="height: 100%;" placeholder="Ingrese valor">
-                      </div>
-                      <button id="buscarBtn" type="submit" class="btn btn-primary rounded-end" style="height: 100%;">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-car"></i> Panel Listado de Vehículos
-                  </h3>
+                  <h3 class="card-title bi bi-car-front nav-icon"> Panel Listado de Vehiculos</h3>
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 300px;">
-                      <select id="filtroClientes" name="filtroClientes" class="form-control float-right">
-                        <option value="" disabled selected>Filtrar por...</option>
-                        <option value="marcaVehiculo">Marca del Vehiculo</option>
-                        <option value="modeloVehiculo">Modelo del Vehiculo</option>
-                        <option value="añoVehiculo">Año del Vehiculo</option>
-                      </select>
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                      <input type="text" id="barraBuscarVehiculos" name="barraBuscarVehiculos" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
-                        <button id="ordenarAlfabetico" type="button" class="btn btn-default" title="Invertir orden alfabético">
-                          <i class="fas fa-sort-alpha-down-alt"></i>
+                        <button id="search_button" type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div>  
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="tablalistadovheiculos" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadovehiculos" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
                           <th>Patente</th>
-                          <th>Cliente</th>
                           <th>Marca</th>
                           <th>Modelo</th>
-                          <th>Kilometraje</th>
                           <th>Año</th>
+                          <th>Rut Cliente</th>
                           <th>Ver</th>
                         </tr>
                       </thead>
                       <tbody>
                                       
-                       
-                        <!-- Aquí van las filas de los clientes -->
+                        
                       </tbody>
                       
                     </table>
-                    <!--Modals tabla Listado de clientes-->
-                        <!-- Modal info cliente -->
-                        <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header custom-card-header">
-                                <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-md-12 text-center mb-4">
-                                      <h3>JUAN PÉREZ</h3>
-                                      <span class="badge badge-success">Activo</span>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <h5>Datos Básicos</h5>
-                                      <p><strong>N°Cliente:</strong> 0001</p>
-                                      <p><strong>RUT:</strong> 21334556-9</p>
-                                      <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                      <p><strong>Nombre:</strong> Juan Pérez</p>
-                                      <p><strong>Primer Apellido:</strong> Pérez</p>
-                                      <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                      <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                      <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                      <p><strong>Email:</strong> ejemplo@correo.com</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <h5>Datos de Ubicación</h5>
-                                      <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                      <p><strong>Código Postal:</strong> 123456</p>
-                                      <h5>Observaciones</h5>
-                                      <p>Observaciones del cliente.</p>
-                                    </div>
-                                  </div>
-                                  <!-- Nueva sección para vehículos asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <h5>Vehículos Asociados</h5>
-                                      <div class="d-flex flex-wrap">
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> AABB-22
-                                        </button>
-                                        <button type="button" class="btn btn-warning m-2">
-                                          <i class="fas fa-car"></i> CCDD-22
-                                        </button>
-                                        <!-- Agrega más botones de vehículos según sea necesario -->
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row mt-3">
-                                    <div class="col-md-12 text-center">
-                                      <button type="button" class="btn btn-primary" id="crearvheiculoasociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                        <span class="fa-stack fa-1x">
-                                          <i class="fas fa-car fa-stack-1x"></i>
-                                          <i class="fas fa-plus fa-stack-1x fa-inverse" style="font-size: 0.5em; top: -5px; left: 5px;"></i>
-                                        </span> 
-                                        Asociar Nuevo Vehículo
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-success" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
+                    <!--Modals tabla Listado de Vehiculos-->
+                      <!-- Modal Ver Vehículo -->
+                    <div class="modal fade" id="verVehiculoModal" tabindex="-1" aria-labelledby="verVehiculoModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="verVehiculoModalLabel">Detalles del Vehículo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <ul class="list-group">
+                              <li class="list-group-item"><strong>Patente:</strong> <span id="detallePatente"></span></li>
+                              <li class="list-group-item"><strong>Marca:</strong> <span id="detalleMarca"></span></li>
+                              <li class="list-group-item"><strong>Modelo:</strong> <span id="detalleModelo"></span></li>
+                              <li class="list-group-item"><strong>Año:</strong> <span id="detalleAnio"></span></li>
+                              <li class="list-group-item"><strong>Color:</strong> <span id="detalleColor"></span></li>
+                              <li class="list-group-item"><strong>Kilometraje:</strong> <span id="detalleKilometraje"></span></li>
+                              <li class="list-group-item"><strong>Número de Motor:</strong> <span id="detalleMotor"></span></li>
+                              <li class="list-group-item"><strong>Tipo de Vehículo:</strong> <span id="detalleTipo"></span></li>
+                              <li class="list-group-item"><strong>Rut del Cliente:</strong> <span id="detalleRutCliente"></span></li>
+                              <li class="list-group-item"><strong>Observaciones:</strong> <span id="detalleObservaciones"></span></li>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                           </div>
                         </div>
+                      </div>
+                    </div>
 
-                        <!-- Modal edit -->
-                        <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                      
+
+                        <!-- Modal Editar Vehículo -->
+                        <div class="modal fade" id="editarVehiculoModal" tabindex="-1" aria-labelledby="editarVehiculoModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                              <div class="modal-header custom-card-header">
-                                <h5 class="modal-title" id="editarClienteModalLabel">Editar Datos del Cliente</h5>
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editarVehiculoModalLabel">Editar Vehículo</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <div class="card card-body">
-                                  <!-- Mensaje de error -->
-                                  <div id="mensajeErroreditar" class="alert alert-danger" style="display: none;"></div>
-                                  <form id="idformeditarcliente">
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="rut">RUT</label>
-                                          <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="N°Cliente">N°Cliente</label>
-                                          <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">Tipo de Cliente</label>
-                                          <select class="form-control" id="tipoclient">
-                                            <option>Sin definir</option>
-                                            <option>Particular</option>
-                                            <option>Empresa</option>
-                                            <option>Independiente</option>
-                                            
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class = "form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="name">Nombre</label>
-                                          <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="razonsocial">Razon social</label>
-                                          <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                                        </div>
-                            
-                                      </div>
-                                      
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="f-apellido">Primer Apellido</label>
-                                          <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="s-apellido">Segundo Apellido</label>
-                                          <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="phone">Teléfono Fijo</label>
-                                          <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="movil">Teléfono Móvil</label>
-                                          <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="address">Dirección</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="zipCode">Código Postal</label>
-                                          <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="city">Ciudad</label>
-                                          <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">País</label>
-                                          <select class="form-control" id="country">
-                                            <option>Chile</option>
-                                            <option>Argentina</option>
-                                            <option>Perú</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="observations">Observaciones</label>
-                                        <textarea class="form-control" id="observations" rows="3"></textarea>
-                                      </div>
-                                      <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                                        <br>
-                                        <div class="bg-light border"></div>
-                                        <br>
-                                      <br>
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="tipoTarifa">Tipo de Tarifa</label>
-                                            <select class="form-control" id="tipoTarifa">
-                                              <option>Tarifa 1 - 0.5 Hora</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="grupoFacturacion">Grupo de Facturación</label>
-                                            <select class="form-control" id="grupoFacturacion">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoPlazas">Desc. en Plazas</label>
-                                            <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                            <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoGral">Descuento gral</label>
-                                            <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="formaPago">Forma Pago</label>
-                                            <select class="form-control" id="formaPago">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="condicionesPago">Condiciones Pago</label>
-                                            <select class="form-control" id="condicionesPago">
-                                              <option>Sin Definir</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                            <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="cuentaContable">Cuenta Contable</label>
-                                            <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="comoNosConocio">Cómo nos conoció</label>
-                                            <select class="form-control" id="comoNosConocio">
-                                              <option>- sin definir -</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-12 text-center">
-                                          <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                            <span id="iconoFlecha" class="mr-2"></span>
-                                            Crea Vehiculo Asociado (Opcional)
-                                          </button>
-                                        </div>
-                                      </div>
-                                      
-                                      <div id="vehiculoCollapse" class="collapse mt-3">
-                                        <div class="card card-body">
-                                          <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoMarca">Marca</label>
-                                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoModelo">Modelo</label>
-                                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoAnio">Año</label>
-                                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                    
-                                </div>
+                                <form id="formEditarVehiculo">
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="editarMarcaVehiculo">Marca</label>
+                                      <input type="text" class="form-control" id="editarMarcaVehiculo" placeholder="Ingrese la nueva marca" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="editarModeloVehiculo">Modelo</label>
+                                      <input type="text" class="form-control" id="editarModeloVehiculo" placeholder="Ingrese el nuevo modelo" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                      <label for="editarAnioVehiculo">Año</label>
+                                      <input type="text" class="form-control" id="editarAnioVehiculo" placeholder="Ingrese el nuevo año" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="editarColorVehiculo">Color</label>
+                                      <input type="text" class="form-control" id="editarColorVehiculo" placeholder="Ingrese el nuevo color" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="editarKilometrajeVehiculo">Kilometraje</label>
+                                      <input type="text" class="form-control" id="editarKilometrajeVehiculo" placeholder="Ingrese el nuevo kilometraje" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="editarMotorVehiculo">Número de Motor</label>
+                                    <input type="text" class="form-control" id="editarMotorVehiculo" placeholder="Ingrese el nuevo número de motor">
+                                  </div>
+                                </form>
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" id="btneditarcliente">Agregar Cliente</button>
-                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" id="btnGuardarCambiosVehiculo">Guardar Cambios</button>
                               </div>
                             </div>
                           </div>
                         </div>
+
                       
-                     <!--Modals tabla Listado de clientes -->
+                    
                   </div>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
-                </div>
               </div>  
             </div>
           
-            
-            <div class="tab-pane fade" id="manejovehiculos" role="tabpanel" aria-labelledby="manejovehiculos">
-              
-            </div>
-            
             
             
             
@@ -965,7 +690,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2024 <a href="#">ERP Taller</a>.</strong>
+    <strong>Copyright &copy; 2025 <a href="#">KronosTech</a>.</strong>
     Todos los derechos reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
@@ -1014,55 +739,59 @@
   <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  <script type0="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+  <script type="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script type = "module" src="../../../JavaScripts/Vehiculos/agregarvehiculos.js"></script>
-<script type = "module" src="../../../JavaScripts/Funciones/ManejoNotificaciones.js"></script>
 <script type = "module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+<script type = "module" src="../../../JavaScripts/Vehiculos/buscarClienteVehiculo.js"></script>
+<script type = "module" src="../../../JavaScripts/Vehiculos/tablaVehiculos.js"></script>
+<script type = "module" src="../../../JavaScripts/Vehiculos/editarVehiculo.js"></script>
+
 
 <script>
-  const tipoBusqueda = document.getElementById('tipoBusqueda');
-  const inputContainer = document.getElementById('inputContainer');
+  document.addEventListener('DOMContentLoaded', async () => {
+  const tipoVehiculoSelect = document.getElementById('tipoVehiculoSelect');
 
-  tipoBusqueda.addEventListener('change', () => {
-    const selectedValue = tipoBusqueda.value;
+  if (!tipoVehiculoSelect) {
+    console.error('No se encontró el elemento select para el tipo de vehículo');
+    return;
+  }
 
-    // Limpia el contenido de inputContainer
-    inputContainer.innerHTML = '';
+  try {
+    // Limpiar el select antes de rellenarlo
+    tipoVehiculoSelect.innerHTML = '<option value="">Seleccione un tipo de vehículo</option>';
 
-    if (selectedValue === 'kilometraje') {
-      // Crear dos inputs para rango de kilometraje
-      const inputDesde = document.createElement('input');
-      inputDesde.type = 'number';
-      inputDesde.id = 'kilometrajeDesde';
-      inputDesde.name = 'kilometrajeDesde';
-      inputDesde.className = 'form-control';
-      inputDesde.placeholder = 'Desde';
-      inputDesde.style.marginRight = '5px';
+    // Realizar la solicitud para obtener los tipos de vehículos
+    const response = await fetch('http://localhost:3000/api/vehiculos/tipos', { method: 'GET' });
 
-      const inputHasta = document.createElement('input');
-      inputHasta.type = 'number';
-      inputHasta.id = 'kilometrajeHasta';
-      inputHasta.name = 'kilometrajeHasta';
-      inputHasta.className = 'form-control';
-      inputHasta.placeholder = 'Hasta';
-
-      inputContainer.appendChild(inputDesde);
-      inputContainer.appendChild(inputHasta);
-    } else {
-      // Restaurar input único para otros tipos de búsqueda
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.id = 'valorBusqueda';
-      input.name = 'valorBusqueda';
-      input.className = 'form-control';
-      input.placeholder = 'Ingrese valor';
-      input.style.height = '100%';
-
-      inputContainer.appendChild(input);
+    if (!response.ok) {
+      throw new Error('Error al obtener los tipos de vehículo');
     }
+
+    const tiposVehiculos = await response.json();
+
+    // Rellenar el select con los tipos de vehículo
+    tiposVehiculos.forEach((tipoVehiculo) => {
+      const option = document.createElement('option');
+      option.value = tipoVehiculo.id_tipo_vehiculo; // Guardar el ID del tipo de vehículo
+      option.textContent = tipoVehiculo.descripcion;
+      tipoVehiculoSelect.appendChild(option);
+    });
+
+    console.log('Tipos de vehículo cargados correctamente');
+  } catch (error) {
+    console.error('Error al cargar los tipos de vehículo:', error.message);
+    alert('Hubo un problema al cargar los tipos de vehículo. Intente nuevamente.');
+  }
+
+  // Evento para manejar el cambio de selección del tipo de vehículo
+  tipoVehiculoSelect.addEventListener('change', () => {
+    const selectedValue = tipoVehiculoSelect.value; // ID del tipo de vehículo seleccionado
+    console.log('ID del tipo de vehículo seleccionado:', selectedValue);
   });
+});
+
 </script>
 
 

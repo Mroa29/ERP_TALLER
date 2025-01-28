@@ -14,7 +14,6 @@ const Cliente = {
         INSERT INTO CLIENTE (
           RUT_CLIENTE,
           NOM_CLIENTE,
-          TIPO_CLIENTE,
           DIRECCION_CLIENTE,
           COMUNA_CLIENTE,
           CIUDAD_CLIENTE,
@@ -26,13 +25,12 @@ const Cliente = {
           ID_TIPO_CLIENTE,
           ID_ESTADO_CLIENTE,
           ID_TALLER
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
         RETURNING *;
       `;
       const values = [
         cliente.rut_cliente,
         cliente.nom_cliente,
-        cliente.tipo_cliente,
         cliente.direccion_cliente,
         cliente.comuna_cliente,
         cliente.ciudad_cliente,
@@ -87,25 +85,23 @@ const Cliente = {
         UPDATE CLIENTE
         SET
           NOM_CLIENTE = $2,
-          TIPO_CLIENTE = $3,
-          DIRECCION_CLIENTE = $4,
-          COMUNA_CLIENTE = $5,
-          CIUDAD_CLIENTE = $6,
-          PAIS_CLIENTE = $7,
-          EMAIL_CLIENTE = $8,
-          OBS_CLIENTE = $9,
-          TELEFONO_CLIENTE = $10,
-          ID_SUCURSAL = $11,
-          ID_TIPO_CLIENTE = $12,
-          ID_ESTADO_CLIENTE = $13,
-          ID_TALLER = $14
+          DIRECCION_CLIENTE = $3,
+          COMUNA_CLIENTE = $4,
+          CIUDAD_CLIENTE = $5,
+          PAIS_CLIENTE = $6,
+          EMAIL_CLIENTE = $7,
+          OBS_CLIENTE = $8,
+          TELEFONO_CLIENTE = $9,
+          ID_SUCURSAL = $10,
+          ID_TIPO_CLIENTE = $11,
+          ID_ESTADO_CLIENTE = $12,
+          ID_TALLER = $13
         WHERE RUT_CLIENTE = $1
         RETURNING *;
       `;
       const values = [
         rut,
         cliente.nom_cliente,
-        cliente.tipo_cliente,
         cliente.direccion_cliente,
         cliente.comuna_cliente,
         cliente.ciudad_cliente,

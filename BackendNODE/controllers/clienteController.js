@@ -189,6 +189,35 @@ getEstadoClienteByDescripcion: async (req, res) => {
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 },
+
+/**
+   * Obtiene un tipo de cliente por su ID.
+   * @param {Object} req - Objeto de solicitud HTTP.
+   * @param {Object} res - Objeto de respuesta HTTP.
+   */
+getTipoClienteById: async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Validar que el ID sea un número válido
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido. Debe ser un número.' });
+    }
+
+    // Llamar al modelo para obtener el tipo de cliente
+    const tipoCliente = await Cliente.getTipoClienteById(id);
+
+    if (!tipoCliente) {
+      return res.status(404).json({ message: 'Tipo de cliente no encontrado.' });
+    }
+
+    // Enviar el tipo de cliente encontrado
+    res.status(200).json(tipoCliente);
+  } catch (error) {
+    console.error('Error al obtener el tipo de cliente por ID:', error);
+    res.status(500).json({ message: 'Error interno del servidor.' });
+  }
+},
   
 };
 

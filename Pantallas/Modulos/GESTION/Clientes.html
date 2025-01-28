@@ -124,7 +124,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/Usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" id="user-name" class="d-block" >Nombre por defecto</a>
@@ -645,10 +645,7 @@
                             <div class="form-group col-md-6">
                               <label for="vehiculo_tipo">Tipo de Vehículo</label>
                               <select class="form-control" id="vehiculo_tipo">
-                                <option value="">Seleccione Tipo de Vehículo</option>
-                                <option value="Automóvil">Automóvil</option>
-                                <option value="Motocicleta">Motocicleta</option>
-                                <option value="Camión">Camión</option>
+
                               </select>
                             </div>
                           </div>
@@ -668,434 +665,168 @@
             </div>
             <div class="tab-pane fade" id="seccion-2" role="tabpanel" aria-labelledby="panelListaClientes">
               <div class="card card-primary py-4 px-4 col-md-12">
-                
-                <div class="card shadow rounded-3 my-3">
-                  <div class="card-header custom-card-header text-white rounded-top">
-                    <h3 class="card-title bi bi-search nav-icon"> Panel de Búsqueda</h3>
-                  </div>
-                  <div class="card-body">
-                    <div class="input-group" style="height: 50px;">
-                      <select id="tipoBusqueda" name="tipoBusqueda" class="form-select rounded-start">
-                        <option value="" disabled selected>Buscar por...</option>
-                        <option value="nombre">Nombre del Cliente</option>
-                        <option value="rut">RUT del Cliente</option>
-                        <option value="email">Email del Cliente</option>
-                        <option value="telMovil">Tel. Móvil del Cliente</option>
-                        <option value="telFijo">Tel. Fijo del Cliente</option>
-                      </select>
-                      <input type="text" id="valorBusqueda" name="valorBusqueda" class="form-control" style="height: 100%;" placeholder="Ingrese valor">
-                      <button id="buscarBtn" type="submit" class="btn btn-primary rounded-end" style="height: 100%;">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
-                
-                
-                
-                <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
-                  <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 300px;">
-                      <select id="filtroClientes" name="filtroClientes" class="form-control float-right">
-                        <option value="" disabled selected>Filtrar por...</option>
-                        <option value="tipoCliente">Tipo de Cliente</option>
-                        <option value="ciudadCliente">Ciudad del Cliente</option>
-                        <option value="paisCliente">País del Cliente</option>
-                      </select>
-                      <div class="input-group-append">
-                        <button id="ordenarAlfabetico" type="button" class="btn btn-default" title="Invertir orden alfabético">
-                          <i class="fas fa-sort-alpha-down-alt"></i>
-                        </button>
+                  <div class="card-header">
+                    <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
+                    <div class="card-tools">
+                      <div class="input-group input-group-sm" style="width: 200px;">
+                        <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
+                        <div class="input-group-append">
+                          <button id="search_button" type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                    </div>  
                   </div>
-                </div>
-                
-                
-                
-                
-                
-                <!-- /.card-header -->
-                <div class="card-body p-0">
-                  <div class="table-responsive" style="height: 500px;">
-                    <table id="tablalistadoclientes" class="table table-head-fixed table-bordered text-nowrap ">
-                      <thead>
-                        <tr>
-                          <th>RUT</th>
-                          <th>Nombre</th>
-                          <th>Tipo de Cliente</th>
-                          <th>Teléfono Móvil</th>
-                          <th>Ver</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                                      
-                        <!-- Aquí van las filas de los clientes (Dinamico)-->
-                      </tbody>
-                      
-                    </table>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <div class="table-responsive" style="height: 500px;">
+                      <table id="tablalistadoclientes" class="table table-head-fixed table-bordered text-nowrap ">
+                        <thead>
+                          <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Ver</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                                        
+                          
+                        </tbody>
+                        
+                      </table>
                     <!--Modals tabla Listado de clientes-->
                         <!-- Modal info cliente -->
-                        <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalVerCliente" tabindex="-1" aria-labelledby="modalVerClienteLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                              <div class="modal-header text-white custom-card-header bg-dark">
-                                <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="modalVerClienteLabel">Información del Cliente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <div class="container-fluid">
-                                  <div class="row mb-4">
-                                    <div class="col-md-12 text-center">
-                                      <h3 class="mb-1">JUAN PÉREZ</h3>
-                                      <span class="badge badge-success">Activo</span>
-                                    </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <strong>RUT:</strong>
+                                    <p id="modalClienteRut"></p>
                                   </div>
-                        
-                                  <div class="row">
-                                    <!-- Datos Básicos -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightblue">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos Básicos</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>N°Cliente:</strong> 0001</p>
-                                          <p><strong>RUT:</strong> 21334556-9</p>
-                                          <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                          <p><strong>Nombre:</strong> Juan Pérez</p>
-                                          <p><strong>Primer Apellido:</strong> Pérez</p>
-                                          <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                          <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                          <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                          <p><strong>Email:</strong> ejemplo@correo.com</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                                    <!-- Datos de Ubicación -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightgreen">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos de Ubicación</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                          <p><strong>Código Postal:</strong> 123456</p>
-                                          <h5>Observaciones</h5>
-                                          <p>Observaciones del cliente.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                        
-                                  <!-- Vehículos Asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <div class="card shadow-sm card-hover bg-lightcoral">
-                                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                          <h5 class="mb-0">Vehículos Asociados</h5>
-                                          <button type="button" class="btn btn-primary btn-animated btn-sm" id="crearVehiculoAsociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                            <i class="fas fa-plus"></i> Nuevo Vehículo
-                                          </button>
-                                        </div>
-                                        <div class="card-body">
-                                          <div class="row">
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-warning"></i>
-                                                  <h5 class="card-title">Marca: Toyota</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Corolla</p>
-                                                  <p class="card-text"><strong>Patente:</strong> AABB-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2020</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-danger"></i>
-                                                  <h5 class="card-title">Marca: Honda</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Civic</p>
-                                                  <p class="card-text"><strong>Patente:</strong> CCDD-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2019</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Puedes agregar más tarjetas aquí -->
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                  <div class="col-md-6">
+                                    <strong>Nombre Completo:</strong>
+                                    <p id="modalClienteNombre"></p>
                                   </div>
                                 </div>
-                              </div>
-                        
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-success btn-animated" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary btn-animated" data-dismiss="modal">Cerrar</button>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <strong>Tipo de Cliente:</strong>
+                                    <p id="modalClienteTipo"></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <strong>Teléfono:</strong>
+                                    <p id="modalClienteTelefono"></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <strong>Email:</strong>
+                                    <p id="modalClienteEmail"></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <strong>Estado del Cliente:</strong>
+                                    <p id="modalClienteEstado"></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <strong>Dirección:</strong>
+                                    <p id="modalClienteDireccion"></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <strong>Comuna:</strong>
+                                    <p id="modalClienteComuna"></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <strong>Ciudad:</strong>
+                                    <p id="modalClienteCiudad"></p>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <strong>País:</strong>
+                                    <p id="modalClientePais"></p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <strong>Observaciones:</strong>
+                                    <p id="modalClienteObservaciones"></p>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         
-                        
-
-
-
                         <!-- Modal edit -->
-                        <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                        <div class="modal fade" id="modalEditarCliente" tabindex="-1" aria-labelledby="modalEditarClienteLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                              <div class="modal-header custom-card-header">
-                                <h5 class="modal-title" id="editarClienteModalLabel">Editar Datos del Cliente</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="modalEditarClienteLabel">Editar Información del Cliente</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <div class="card card-body">
-                                  <!-- Mensaje de error -->
-                                  <div id="mensajeErroreditar" class="alert alert-danger" style="display: none;"></div>
-                                  <form id="idformeditarcliente">
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="rut">RUT</label>
-                                          <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="N°Cliente">N°Cliente</label>
-                                          <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">Tipo de Cliente</label>
-                                          <select class="form-control" id="tipoclient">
-                                            <option>Sin definir</option>
-                                            <option>Particular</option>
-                                            <option>Empresa</option>
-                                            <option>Independiente</option>
-                                            
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class = "form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="name">Nombre</label>
-                                          <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="razonsocial">Razon social</label>
-                                          <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                                        </div>
-                            
-                                      </div>
-                                      
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="f-apellido">Primer Apellido</label>
-                                          <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="s-apellido">Segundo Apellido</label>
-                                          <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="phone">Teléfono Fijo</label>
-                                          <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="movil">Teléfono Móvil</label>
-                                          <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="address">Dirección</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="zipCode">Código Postal</label>
-                                          <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="city">Ciudad</label>
-                                          <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">País</label>
-                                          <select class="form-control" id="country">
-                                            <option>Chile</option>
-                                            <option>Argentina</option>
-                                            <option>Perú</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="observations">Observaciones</label>
-                                        <textarea class="form-control" id="observations" rows="3"></textarea>
-                                      </div>
-                                      <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                                        <br>
-                                        <div class="bg-light border"></div>
-                                        <br>
-                                      <br>
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="tipoTarifa">Tipo de Tarifa</label>
-                                            <select class="form-control" id="tipoTarifa">
-                                              <option>Tarifa 1 - 0.5 Hora</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="grupoFacturacion">Grupo de Facturación</label>
-                                            <select class="form-control" id="grupoFacturacion">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoPlazas">Desc. en Plazas</label>
-                                            <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                            <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoGral">Descuento gral</label>
-                                            <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="formaPago">Forma Pago</label>
-                                            <select class="form-control" id="formaPago">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="condicionesPago">Condiciones Pago</label>
-                                            <select class="form-control" id="condicionesPago">
-                                              <option>Sin Definir</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                            <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="cuentaContable">Cuenta Contable</label>
-                                            <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="comoNosConocio">Cómo nos conoció</label>
-                                            <select class="form-control" id="comoNosConocio">
-                                              <option>- sin definir -</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-12 text-center">
-                                          <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                            <span id="iconoFlecha" class="mr-2"></span>
-                                            Crea Vehiculo Asociado (Opcional)
-                                          </button>
-                                        </div>
-                                      </div>
-                                      
-                                      <div id="vehiculoCollapse" class="collapse mt-3">
-                                        <div class="card card-body">
-                                          <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoMarca">Marca</label>
-                                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoModelo">Modelo</label>
-                                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoAnio">Año</label>
-                                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                    
-                                </div>
+                                <form id="formEditarCliente">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <label for="editarNombreCliente" class="form-label">Nombre Completo</label>
+                                      <input type="text" class="form-control" id="editarNombreCliente" required />
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="editarTelefonoCliente" class="form-label">Teléfono</label>
+                                      <input type="tel" class="form-control" id="editarTelefonoCliente" />
+                                    </div>
+                                  </div>
+                                  <div class="row mt-3">
+                                    <div class="col-md-6">
+                                      <label for="editarEmailCliente" class="form-label">Email</label>
+                                      <input type="email" class="form-control" id="editarEmailCliente" />
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="editarDireccionCliente" class="form-label">Dirección</label>
+                                      <input type="text" class="form-control" id="editarDireccionCliente" />
+                                    </div>
+                                  </div>
+                                  <div class="row mt-3">
+                                    <div class="col-md-4">
+                                      <label for="editarComunaCliente" class="form-label">Comuna</label>
+                                      <input type="text" class="form-control" id="editarComunaCliente" />
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label for="editarCiudadCliente" class="form-label">Ciudad</label>
+                                      <input type="text" class="form-control" id="editarCiudadCliente" />
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label for="editarPaisCliente" class="form-label">País</label>
+                                      <input type="text" class="form-control" id="editarPaisCliente" />
+                                    </div>
+                                  </div>
+                                </form>
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" id="btneditarcliente">Agregar Cliente</button>
-                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" id="btnGuardarCambiosCliente">Guardar Cambios</button>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
                       
                      <!--Modals tabla Listado de clientes -->
                   </div>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
-                </div>
+                
               </div>  
             </div>
             
@@ -1104,7 +835,7 @@
                 <!-- Botón Exportar -->
                 <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
                   <div class="btn-container">
-                    <button class="btn btn-primary btn-square" onclick="exportarTablaAExcel()">
+                    <button class="btn btn-primary btn-square" id="btn-exportar-clientes">
                       <i class="fas fa-file-export"></i>
                     </button>
                   </div>
@@ -1161,7 +892,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2024 <a href="#">ERP Taller</a>.</strong>
+    <strong>Copyright &copy; 2025 <a href="#">KronosTech</a>.</strong>
     Todos los derechos reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
@@ -1210,7 +941,8 @@
   <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
 
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
@@ -1218,21 +950,25 @@
 <script type="module" src ="../../../JavaScripts/Clientes/agregarclienteauto.js"></script>
 <script type0="module" src ="../../../JavaScripts/Clientes/TablaClientes.js"></script>
 <script type0="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+<script type0="module" src ="../../../JavaScripts/Clientes/buscarClientes.js"></script>
+<script type0="module" src ="../../../JavaScripts/Clientes/editarCliente.js"></script>
+<script type0="module" src ="../../../JavaScripts/Clientes/exportarClientes.js"></script>
+
+
+
+
 
 <script>
  document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Obtener el token del localStorage
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('Usuario no autenticado. Por favor, inicie sesión.');
     }
 
-    // Decodificar el token para obtener el ID del usuario
     const decodedToken = JSON.parse(atob(token.split('.')[1]));
     const userId = decodedToken.id;
 
-    // Seleccionar los selects en ambos modales
     const modals = [
       {
         tipoClienteSelect: document.getElementById('tipoCliente'),
@@ -1243,31 +979,28 @@
         tipoClienteSelect: document.getElementById('clienteAuto_tipoCliente'),
         estadoClienteSelect: document.getElementById('clienteAuto_estadoCliente'),
         sucursalClienteSelect: document.getElementById('clienteAuto_sucursalCliente'),
+        tipoVehiculoSelect: document.getElementById('vehiculo_tipo'),
       },
     ];
 
     for (const modal of modals) {
-      const { tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect } = modal;
+      const { tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect, tipoVehiculoSelect } = modal;
 
       if (!tipoClienteSelect || !estadoClienteSelect || !sucursalClienteSelect) {
         throw new Error('No se encontraron los elementos para los selects en uno de los modales.');
       }
 
-      // Obtener los tipos de cliente
-      const tipoResponse = await fetch('http://localhost:3000/api/clientes/tipos', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      // Limpiar selects para evitar duplicados
+      [tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect, tipoVehiculoSelect].forEach((select) => {
+        if (select) {
+          select.innerHTML = '<option value="">Seleccione una opción</option>';
+        }
       });
 
-      if (!tipoResponse.ok) {
-        throw new Error('Error al obtener los tipos de cliente');
-      }
-
+      // Obtener y rellenar tipos de cliente
+      const tipoResponse = await fetch('http://localhost:3000/api/clientes/tipos', { method: 'GET' });
+      if (!tipoResponse.ok) throw new Error('Error al obtener los tipos de cliente');
       const tiposClientes = await tipoResponse.json();
-
-      // Rellenar el select de tipos de cliente
       tiposClientes.forEach((tipo) => {
         const option = document.createElement('option');
         option.value = tipo.id_tipo_cliente;
@@ -1275,21 +1008,10 @@
         tipoClienteSelect.appendChild(option);
       });
 
-      // Obtener los estados de cliente
-      const estadoResponse = await fetch('http://localhost:3000/api/clientes/estados', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!estadoResponse.ok) {
-        throw new Error('Error al obtener los estados de cliente');
-      }
-
+      // Obtener y rellenar estados de cliente
+      const estadoResponse = await fetch('http://localhost:3000/api/clientes/estados', { method: 'GET' });
+      if (!estadoResponse.ok) throw new Error('Error al obtener los estados de cliente');
       const estadosClientes = await estadoResponse.json();
-
-      // Rellenar el select de estados de cliente
       estadosClientes.forEach((estado) => {
         const option = document.createElement('option');
         option.value = estado.id_estado_cliente;
@@ -1297,32 +1019,36 @@
         estadoClienteSelect.appendChild(option);
       });
 
-      // Obtener las sucursales del usuario
+      // Obtener y rellenar sucursales del usuario
       const sucursalResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
         method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      if (!sucursalResponse.ok) {
-        throw new Error('Error al obtener las sucursales del usuario');
-      }
-
+      if (!sucursalResponse.ok) throw new Error('Error al obtener las sucursales del usuario');
       const sucursales = await sucursalResponse.json();
-
-      // Rellenar el select de sucursales del usuario
       sucursales.forEach((sucursal) => {
         const option = document.createElement('option');
         option.value = sucursal.id_sucursal;
-        option.textContent = sucursal.nombre_sucursal; // Usamos 'nombre_sucursal' del JSON
+        option.textContent = sucursal.nombre_sucursal;
         sucursalClienteSelect.appendChild(option);
       });
+
+      // Rellenar tipos de vehículo (solo en el modal correspondiente)
+      if (tipoVehiculoSelect) {
+        const tipoVehiculoResponse = await fetch('http://localhost:3000/api/vehiculos/tipos', { method: 'GET' });
+        if (!tipoVehiculoResponse.ok) throw new Error('Error al obtener los tipos de vehículo');
+        const tiposVehiculos = await tipoVehiculoResponse.json();
+        tiposVehiculos.forEach((tipoVehiculo) => {
+          const option = document.createElement('option');
+          option.value = tipoVehiculo.id_tipo_vehiculo;
+          option.textContent = tipoVehiculo.descripcion;
+          tipoVehiculoSelect.appendChild(option);
+        });
+      }
     }
   } catch (error) {
-    console.error('Error al cargar los datos para los selects:', error);
-    alert('Error al cargar los datos. Por favor, intente nuevamente.');
+    console.error('Error al cargar los datos para los selects:', error.message);
+    alert('Hubo un problema al cargar los datos. Intente nuevamente.');
   }
 });
 
