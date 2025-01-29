@@ -11,11 +11,15 @@ const talleresRoutes = require('./routes/tallerRoutes');
 const sucursalesRoutes = require('./routes/sucursalRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const vehiculoRoutes = require('./routes/vehiculoRoutes');
+const proveedorRoutes = require('./routes/proveedorRoutes');
+
 
 app.use('/api/sucursales', sucursalesRoutes);
 app.use('/api/clientes', clientesRoutes);  // Rutas para la entidad clientes
 app.use('/api/talleres', talleresRoutes);  // Rutas para la entidad talleres
 app.use('/api/usuarios', usuarioRoutes);  // Rutas para la entidad usuarios
 app.use('/api/vehiculos', vehiculoRoutes);
+app.use('/api/proveedores', proveedorRoutes);
+
 
 module.exports = app;

@@ -702,68 +702,83 @@
                         <!-- Modal info cliente -->
                         <div class="modal fade" id="modalVerCliente" tabindex="-1" aria-labelledby="modalVerClienteLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="modalVerClienteLabel">Información del Cliente</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content border-0 shadow">
+                              <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title fs-5 fw-bold" id="modalVerClienteLabel">Información del Cliente</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <strong>RUT:</strong>
-                                    <p id="modalClienteRut"></p>
+                              <div class="modal-body p-4">
+                                <div class="row g-3">
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">RUT</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteRut">-</p>
+                                    </div>
                                   </div>
-                                  <div class="col-md-6">
-                                    <strong>Nombre Completo:</strong>
-                                    <p id="modalClienteNombre"></p>
+                                  <div class="col-md-6 py-1 ">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Nombre Completo</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteNombre">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Tipo de Cliente</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteTipo">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Teléfono</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteTelefono">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Email</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteEmail">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Estado del Cliente</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteEstado">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Dirección</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteDireccion">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Comuna</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteComuna">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Ciudad</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteCiudad">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">País</p>
+                                      <p class="mb-0 fw-bold" id="modalClientePais">-</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 py-1">
+                                    <div class="bg-light p-3 rounded">
+                                      <p class="mb-1 text-muted small">Observaciones</p>
+                                      <p class="mb-0 fw-bold" id="modalClienteObservaciones">-</p>
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <strong>Tipo de Cliente:</strong>
-                                    <p id="modalClienteTipo"></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <strong>Teléfono:</strong>
-                                    <p id="modalClienteTelefono"></p>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <strong>Email:</strong>
-                                    <p id="modalClienteEmail"></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <strong>Estado del Cliente:</strong>
-                                    <p id="modalClienteEstado"></p>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <strong>Dirección:</strong>
-                                    <p id="modalClienteDireccion"></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <strong>Comuna:</strong>
-                                    <p id="modalClienteComuna"></p>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <strong>Ciudad:</strong>
-                                    <p id="modalClienteCiudad"></p>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <strong>País:</strong>
-                                    <p id="modalClientePais"></p>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <strong>Observaciones:</strong>
-                                    <p id="modalClienteObservaciones"></p>
-                                  </div>
-                                </div>
+                              </div>
+                              <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                               </div>
                             </div>
                           </div>
@@ -772,50 +787,61 @@
                         <!-- Modal edit -->
                         <div class="modal fade" id="modalEditarCliente" tabindex="-1" aria-labelledby="modalEditarClienteLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="modalEditarClienteLabel">Editar Información del Cliente</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content border-0 shadow">
+                              <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title fs-5 fw-bold" id="modalEditarClienteLabel">Editar Información del Cliente</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="modal-body">
+                              <div class="modal-body p-4">
                                 <form id="formEditarCliente">
-                                  <div class="row">
+                                  <div class="row g-3">
                                     <div class="col-md-6">
-                                      <label for="editarNombreCliente" class="form-label">Nombre Completo</label>
-                                      <input type="text" class="form-control" id="editarNombreCliente" required />
-                                    </div>
-                                    <div class="col-md-6">
-                                      <label for="editarTelefonoCliente" class="form-label">Teléfono</label>
-                                      <input type="tel" class="form-control" id="editarTelefonoCliente" />
-                                    </div>
-                                  </div>
-                                  <div class="row mt-3">
-                                    <div class="col-md-6">
-                                      <label for="editarEmailCliente" class="form-label">Email</label>
-                                      <input type="email" class="form-control" id="editarEmailCliente" />
+                                      <div class="form-group">
+                                        <label for="editarNombreCliente" class="form-label text-muted small">Nombre Completo</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarNombreCliente" required />
+                                      </div>
                                     </div>
                                     <div class="col-md-6">
-                                      <label for="editarDireccionCliente" class="form-label">Dirección</label>
-                                      <input type="text" class="form-control" id="editarDireccionCliente" />
+                                      <div class="form-group">
+                                        <label for="editarTelefonoCliente" class="form-label text-muted small">Teléfono</label>
+                                        <input type="tel" class="form-control form-control-lg" id="editarTelefonoCliente" />
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="row mt-3">
-                                    <div class="col-md-4">
-                                      <label for="editarComunaCliente" class="form-label">Comuna</label>
-                                      <input type="text" class="form-control" id="editarComunaCliente" />
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="editarEmailCliente" class="form-label text-muted small">Email</label>
+                                        <input type="email" class="form-control form-control-lg" id="editarEmailCliente" />
+                                      </div>
                                     </div>
-                                    <div class="col-md-4">
-                                      <label for="editarCiudadCliente" class="form-label">Ciudad</label>
-                                      <input type="text" class="form-control" id="editarCiudadCliente" />
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="editarDireccionCliente" class="form-label text-muted small">Dirección</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarDireccionCliente" />
+                                      </div>
                                     </div>
                                     <div class="col-md-4">
-                                      <label for="editarPaisCliente" class="form-label">País</label>
-                                      <input type="text" class="form-control" id="editarPaisCliente" />
+                                      <div class="form-group">
+                                        <label for="editarComunaCliente" class="form-label text-muted small">Comuna</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarComunaCliente" />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="editarCiudadCliente" class="form-label text-muted small">Ciudad</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarCiudadCliente" />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="editarPaisCliente" class="form-label text-muted small">País</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarPaisCliente" />
+                                      </div>
                                     </div>
                                   </div>
                                 </form>
                               </div>
-                              <div class="modal-footer">
+                              <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="button" class="btn btn-primary" id="btnGuardarCambiosCliente">Guardar Cambios</button>
                               </div>
                             </div>

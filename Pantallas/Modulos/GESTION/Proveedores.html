@@ -152,31 +152,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item" id ="submodulo-1">
-                <a href="./Modulos/GESTION/Clientes.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Clientes.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-2">
-                <a href="./Modulos/GESTION/Vehiculos.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Vehiculos.html" class="nav-link">
                   <i class="bi bi-car-front nav-icon"></i>
                   <p>Vehiculos</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-3">
-                <a href="./Modulos/GESTION/Proveedores.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Proveedores.html" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-5">
-                <a href="#" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/empleados.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-6">
-                <a href="#" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Aseguradoras.html" class="nav-link">
                   <i class="bi bi-circle nav-icon"></i>
                   <p>Aseguradoras</p>
                 </a>
@@ -386,11 +386,11 @@
                   <i class="fas fa-list"></i> Lista de Proveedores
               </a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelhistorialproovedores" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
                 <i class="fas fa-receipt"></i> Historial de Pagos y Compras
               </a>
-          </li>
+          </li>-->
           </ul>
         </div>
         <div class="card-body">
@@ -469,10 +469,7 @@
                             <div class="form-group col-md-3">
                               <label for="tipoproveedor">Tipo de Proveedor</label>
                               <select class="form-control" id="tipoproveedor">
-                                <option>Sin definir</option>
-                                <option>Piezas</option>
-                                <option>Herramientas</option>
-                                <option>Suministros Generales</option>
+                                
                                 <!-- Agrega más opciones según sea necesario -->
                               </select>
                             </div>
@@ -492,12 +489,12 @@
             <div class="tab-pane fade" id="panelListaProveedores" role="tabpanel" aria-labelledby="panelListaProveedores">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Clientes</h3>
+                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Proveedores</h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
+                      <input type="text" id="barraBuscarProveedores" name="barraBuscarProveedores" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
-                        <button id="search_button" type="submit" class="btn btn-default">
+                        <button id="buscar_proveedor" type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
@@ -514,7 +511,7 @@
                           <th>RUT</th>
                           <th>Giro</th>
                           <th>Correo</th>
-                          <th>Tipo</th>
+                          <th>Persona Contacto</th>
                           <th>Ver</th>
                         </tr>
                       </thead>
@@ -525,376 +522,138 @@
                       
                     </table>
                     <!--Modals tabla Listado de clientes-->
-                        <!-- Modal info cliente -->
-                        <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header text-white custom-card-header bg-dark">
-                                <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="container-fluid">
-                                  <div class="row mb-4">
-                                    <div class="col-md-12 text-center">
-                                      <h3 class="mb-1">JUAN PÉREZ</h3>
-                                      <span class="badge badge-success">Activo</span>
-                                    </div>
-                                  </div>
-                        
-                                  <div class="row">
-                                    <!-- Datos Básicos -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightblue">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos Básicos</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>N°Cliente:</strong> 0001</p>
-                                          <p><strong>RUT:</strong> 21334556-9</p>
-                                          <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                          <p><strong>Nombre:</strong> Juan Pérez</p>
-                                          <p><strong>Primer Apellido:</strong> Pérez</p>
-                                          <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                          <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                          <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                          <p><strong>Email:</strong> ejemplo@correo.com</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                                    <!-- Datos de Ubicación -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightgreen">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos de Ubicación</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                          <p><strong>Código Postal:</strong> 123456</p>
-                                          <h5>Observaciones</h5>
-                                          <p>Observaciones del cliente.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                        
-                                  <!-- Vehículos Asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <div class="card shadow-sm card-hover bg-lightcoral">
-                                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                          <h5 class="mb-0">Vehículos Asociados</h5>
-                                          <button type="button" class="btn btn-primary btn-animated btn-sm" id="crearVehiculoAsociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                            <i class="fas fa-plus"></i> Nuevo Vehículo
-                                          </button>
-                                        </div>
-                                        <div class="card-body">
-                                          <div class="row">
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-warning"></i>
-                                                  <h5 class="card-title">Marca: Toyota</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Corolla</p>
-                                                  <p class="card-text"><strong>Patente:</strong> AABB-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2020</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-danger"></i>
-                                                  <h5 class="card-title">Marca: Honda</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Civic</p>
-                                                  <p class="card-text"><strong>Patente:</strong> CCDD-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2019</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Puedes agregar más tarjetas aquí -->
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                    <div class="modal fade" id="verProveedorModal" tabindex="-1" aria-labelledby="verProveedorModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content border-0 shadow">
+                          <div class="modal-header bg-primary text-white custom-card-header">
+                            <h5 class="modal-title fs-5 fw-bold" id="verProveedorModalLabel">Información del Proveedor</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body p-4">
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Razón Social</p>
+                                  <p class="mb-0 fw-bold" id="modalRazonSocial">-</p>
                                 </div>
                               </div>
-                        
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-success btn-animated" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary btn-animated" data-dismiss="modal">Cerrar</button>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">RUT</p>
+                                  <p class="mb-0 fw-bold" id="modalRUT">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Giro</p>
+                                  <p class="mb-0 fw-bold" id="modalGiro">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Correo Electrónico</p>
+                                  <p class="mb-0 fw-bold" id="modalCorreo">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Dirección</p>
+                                  <p class="mb-0 fw-bold" id="modalDireccion">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Teléfono</p>
+                                  <p class="mb-0 fw-bold" id="modalTelefono">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Persona de Contacto</p>
+                                  <p class="mb-0 fw-bold" id="modalPersonaContacto">-</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="bg-light p-3 rounded">
+                                  <p class="mb-1 text-muted small">Página Web</p>
+                                  <p class="mb-0 fw-bold" id="modalPaginaWeb">-</p>
+                                </div>
                               </div>
                             </div>
                           </div>
+                          <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                    
                         
                         
 
 
 
                         <!-- Modal edit -->
-                        <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                            <div class="modal-content">
-                              <div class="modal-header custom-card-header">
-                                <h5 class="modal-title" id="editarClienteModalLabel">Editar Datos del Cliente</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+                        <div class="modal fade" id="editarProveedorModal" tabindex="-1" aria-labelledby="editarProveedorModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content border-0 shadow">
+                              <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title fs-5 fw-bold" id="editarProveedorModalLabel">Editar Proveedor</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="modal-body">
-                                <div class="card card-body">
-                                  <!-- Mensaje de error -->
-                                  <div id="mensajeErroreditar" class="alert alert-danger" style="display: none;"></div>
-                                  <form id="idformeditarcliente">
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="rut">RUT</label>
-                                          <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="N°Cliente">N°Cliente</label>
-                                          <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">Tipo de Cliente</label>
-                                          <select class="form-control" id="tipoclient">
-                                            <option>Sin definir</option>
-                                            <option>Particular</option>
-                                            <option>Empresa</option>
-                                            <option>Independiente</option>
-                                            
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class = "form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="name">Nombre</label>
-                                          <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="razonsocial">Razon social</label>
-                                          <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                                        </div>
-                            
-                                      </div>
-                                      
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="f-apellido">Primer Apellido</label>
-                                          <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="s-apellido">Segundo Apellido</label>
-                                          <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="phone">Teléfono Fijo</label>
-                                          <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="movil">Teléfono Móvil</label>
-                                          <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                                        </div>
-                                      </div>
+                              <div class="modal-body p-4">
+                                <form id="formEditarProveedor">
+                                  <div class="row g-3">
+                                    <div class="col-md-6">
                                       <div class="form-group">
-                                        <label for="address">Dirección</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
+                                        <label for="editarRazonSocial" class="form-label text-muted small">Razón Social</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarRazonSocial" placeholder="Ingrese la Razón Social" required>
                                       </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="zipCode">Código Postal</label>
-                                          <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="city">Ciudad</label>
-                                          <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">País</label>
-                                          <select class="form-control" id="country">
-                                            <option>Chile</option>
-                                            <option>Argentina</option>
-                                            <option>Perú</option>
-                                          </select>
-                                        </div>
-                                      </div>
+                                    </div>
+                                    <div class="col-md-6">
                                       <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
+                                        <label for="editarGiro" class="form-label text-muted small">Giro</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarGiro" placeholder="Ingrese el Giro">
                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
                                       <div class="form-group">
-                                        <label for="observations">Observaciones</label>
-                                        <textarea class="form-control" id="observations" rows="3"></textarea>
+                                        <label for="editarCorreo" class="form-label text-muted small">Correo Electrónico</label>
+                                        <input type="email" class="form-control form-control-lg" id="editarCorreo" placeholder="Ingrese el Correo Electrónico" required>
                                       </div>
-                                      <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                                        <br>
-                                        <div class="bg-light border"></div>
-                                        <br>
-                                      <br>
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="tipoTarifa">Tipo de Tarifa</label>
-                                            <select class="form-control" id="tipoTarifa">
-                                              <option>Tarifa 1 - 0.5 Hora</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="grupoFacturacion">Grupo de Facturación</label>
-                                            <select class="form-control" id="grupoFacturacion">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="editarPersonaContacto" class="form-label text-muted small">Persona de Contacto</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarPersonaContacto" placeholder="Ingrese la Persona de Contacto">
                                       </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoPlazas">Desc. en Plazas</label>
-                                            <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                            <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoGral">Descuento gral</label>
-                                            <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="formaPago">Forma Pago</label>
-                                            <select class="form-control" id="formaPago">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="condicionesPago">Condiciones Pago</label>
-                                            <select class="form-control" id="condicionesPago">
-                                              <option>Sin Definir</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                            <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="cuentaContable">Cuenta Contable</label>
-                                            <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="comoNosConocio">Cómo nos conoció</label>
-                                            <select class="form-control" id="comoNosConocio">
-                                              <option>- sin definir -</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-12 text-center">
-                                          <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                            <span id="iconoFlecha" class="mr-2"></span>
-                                            Crea Vehiculo Asociado (Opcional)
-                                          </button>
-                                        </div>
-                                      </div>
-                                      
-                                      <div id="vehiculoCollapse" class="collapse mt-3">
-                                        <div class="card card-body">
-                                          <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoMarca">Marca</label>
-                                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoModelo">Modelo</label>
-                                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoAnio">Año</label>
-                                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                    
-                                </div>
+                                    </div>
+                                  </div>
+                                </form>
                               </div>
-                              <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" id="btneditarcliente">Agregar Cliente</button>
-                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                              <div class="modal-footer bg-light">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" id="guardarCambiosProveedor">Guardar Cambios</button>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
                       
-                     <!--Modals tabla Listado de clientes -->
+                     <!--Modals tabla Listado -->
                   </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
                 </div>
               </div>  
             </div>
             
-            <div class="tab-pane fade" id="panelhistorialproovedores" role="tabpanel" aria-labelledby="panelhistorialproovedores">
+             <!--<div class="tab-pane fade" id="panelhistorialproovedores" role="tabpanel" aria-labelledby="panelhistorialproovedores">
               <div class="container mt-1">
                 <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto my-1">
                   <i class="fas fa-receipt"></i>
                   Historial de Pagos y Compras
                 </a>
             
-                <!-- Resumen General -->
+               
                 <div class="row mb-4">
                   <div class="col-md-4">
                     <div class="card text-white bg-primary mb-3 card-hover" id="totalComprasCard">
@@ -925,7 +684,7 @@
                   </div>
                 </div>
             
-                <!-- Tabla Oculta para Últimas Compras -->
+                
                 <div class="row hidden-table" id="comprasTable">
                   <div class="col-md-12">
                     <div class="card">
@@ -947,7 +706,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <!-- Ejemplo de datos -->
+                            
                             <tr>
                               <td>001</td>
                               <td>20/08/2024</td>
@@ -978,7 +737,7 @@
                               <td>Pagado</td>
                               <td>$0</td>
                             </tr>
-                            <!-- Agrega más filas según sea necesario -->
+                            
                           </tbody>
                         </table>
                       </div>
@@ -986,7 +745,7 @@
                   </div>
                 </div>
             
-                <!-- Tabla Oculta para Total Pagado (Solo los que están Pagados) -->
+                
                 <div class="row hidden-table" id="pagadoTable">
                   <div class="col-md-12">
                     <div class="card">
@@ -1007,7 +766,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <!-- Ejemplo de datos (solo Pagados) -->
+                            
                             <tr>
                               <td>001</td>
                               <td>20/08/2024</td>
@@ -1026,7 +785,7 @@
                               <td>I789012</td>
                               <td>Pagado</td>
                             </tr>
-                            <!-- Agrega más filas según sea necesario -->
+                            
                           </tbody>
                         </table>
                       </div>
@@ -1034,7 +793,6 @@
                   </div>
                 </div>
             
-                <!-- Tabla Oculta para Pendiente de Pago -->
                 <div class="row hidden-table" id="pendienteTable">
                   <div class="col-md-12">
                     <div class="card">
@@ -1056,7 +814,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <!-- Ejemplo de datos (solo Pendientes de Pago) -->
+                            
                             <tr>
                               <td>002</td>
                               <td>10/08/2024</td>
@@ -1067,7 +825,7 @@
                               <td>Pendiente de Pago</td>
                               <td>$300.000</td>
                             </tr>
-                            <!-- Agrega más filas según sea necesario -->
+                           
                           </tbody>
                         </table>
                       </div>
@@ -1077,7 +835,11 @@
               </div>
               
               
-             </div>
+             </div> -->
+
+
+
+
             </div>
           </div>
         </div>
@@ -1177,9 +939,49 @@
 <!--JS para validaciones animaciones y mas -->
 <script type = "module" src="../../../JavaScripts/Proveedores/agregarproveedores.js"></script>
 <script type = "module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+<script type = "module" src="../../../JavaScripts/Proveedores/tablaproveedores.js"></script>
+<script type = "module" src="../../../JavaScripts/Proveedores/editarProveedores.js"></script>
 
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+  const selectTipoProveedor = document.getElementById('tipoproveedor');
+  const mensajeErrorProveedor = document.getElementById('mensajeErrorproveedor');
+
+  try {
+    // Realizar la consulta para obtener los tipos de proveedores
+    const response = await fetch('http://localhost:3000/api/proveedores/tipos', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al obtener los tipos de proveedores.');
+    }
+
+    const tiposProveedores = await response.json();
+
+    // Limpiar el select antes de llenarlo
+    selectTipoProveedor.innerHTML = '<option value="" disabled selected>Seleccione el Tipo de Proveedor</option>';
+
+    // Llenar el select con las opciones obtenidas
+    tiposProveedores.forEach((tipo) => {
+      const option = document.createElement('option');
+      option.value = tipo.id_tipo_proveedor;
+      option.textContent = tipo.descripcion_tipo_proveedor;
+      selectTipoProveedor.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error al llenar el select de tipos de proveedores:', error);
+    mensajeErrorProveedor.textContent = 'Hubo un problema al cargar los tipos de proveedores. Intente nuevamente.';
+    mensajeErrorProveedor.style.display = 'block'; // Mostrar mensaje de error
+  }
+});
+
+</script>
 
 </body>
 </html>

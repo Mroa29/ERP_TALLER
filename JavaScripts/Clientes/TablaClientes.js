@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     // Actualizar el contenido del modal con la información del cliente
                     document.getElementById('modalClienteRut').textContent = clienteData.rut_cliente;
                     document.getElementById('modalClienteNombre').textContent = clienteData.nom_cliente;
-                    document.getElementById('modalClienteTipo').textContent = clienteData.tipo_cliente;
+                    document.getElementById('modalClienteTipo').textContent = clienteData.id_tipo_cliente;
                     document.getElementById('modalClienteTelefono').textContent = clienteData.telefono_cliente || 'No especificado';
                     document.getElementById('modalClienteEmail').textContent = clienteData.email_cliente || 'No especificado';
                     document.getElementById('modalClienteEstado').textContent = clienteData.id_estado_cliente;

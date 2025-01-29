@@ -116,7 +116,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Usuario Kronos</span>
+      <span class="brand-text font-weight-light" id="Nombre_Taller"> Usuario Kronos </span>
     </a>
 
     <!-- Sidebar -->
@@ -127,8 +127,8 @@
           <img src="../../../dist/img/Usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Marcos Roa</a>
-        </div>
+          <a href="#" id="user-name" class="d-block" >Nombre por defecto</a>
+        </div>        
       </div>
 
       <!-- SidebarSearch Form -->
@@ -174,7 +174,7 @@
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-5">
-                <a href="http://127.0.0.1:5500/Pantallas/Modulos/empleados.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/empleados.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Empleados</p>
                 </a>
@@ -550,81 +550,137 @@
                     </table>
                     <!--Modals tabla Listado de Vehiculos-->
                       <!-- Modal Ver Vehículo -->
-                    <div class="modal fade" id="verVehiculoModal" tabindex="-1" aria-labelledby="verVehiculoModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="verVehiculoModalLabel">Detalles del Vehículo</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <ul class="list-group">
-                              <li class="list-group-item"><strong>Patente:</strong> <span id="detallePatente"></span></li>
-                              <li class="list-group-item"><strong>Marca:</strong> <span id="detalleMarca"></span></li>
-                              <li class="list-group-item"><strong>Modelo:</strong> <span id="detalleModelo"></span></li>
-                              <li class="list-group-item"><strong>Año:</strong> <span id="detalleAnio"></span></li>
-                              <li class="list-group-item"><strong>Color:</strong> <span id="detalleColor"></span></li>
-                              <li class="list-group-item"><strong>Kilometraje:</strong> <span id="detalleKilometraje"></span></li>
-                              <li class="list-group-item"><strong>Número de Motor:</strong> <span id="detalleMotor"></span></li>
-                              <li class="list-group-item"><strong>Tipo de Vehículo:</strong> <span id="detalleTipo"></span></li>
-                              <li class="list-group-item"><strong>Rut del Cliente:</strong> <span id="detalleRutCliente"></span></li>
-                              <li class="list-group-item"><strong>Observaciones:</strong> <span id="detalleObservaciones"></span></li>
-                            </ul>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <div class="modal fade" id="verVehiculoModal" tabindex="-1" aria-labelledby="verVehiculoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content border-0 shadow">
+                            <div class="modal-header bg-primary text-white">
+                              <h5 class="modal-title fs-5 fw-bold" id="verVehiculoModalLabel">Detalles del Vehículo</h5>
+                              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                              <div class="row g-3">
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Patente</p>
+                                    <p class="mb-0 fw-bold" id="detallePatente">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Marca</p>
+                                    <p class="mb-0 fw-bold" id="detalleMarca">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Modelo</p>
+                                    <p class="mb-0 fw-bold" id="detalleModelo">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Año</p>
+                                    <p class="mb-0 fw-bold" id="detalleAnio">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Color</p>
+                                    <p class="mb-0 fw-bold" id="detalleColor">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Kilometraje</p>
+                                    <p class="mb-0 fw-bold" id="detalleKilometraje">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Número de Motor</p>
+                                    <p class="mb-0 fw-bold" id="detalleMotor">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Tipo de Vehículo</p>
+                                    <p class="mb-0 fw-bold" id="detalleTipo">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Rut del Cliente</p>
+                                    <p class="mb-0 fw-bold" id="detalleRutCliente">-</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 py-1">
+                                  <div class="bg-light p-3 rounded">
+                                    <p class="mb-1 text-muted small">Observaciones</p>
+                                    <p class="mb-0 fw-bold" id="detalleObservaciones">-</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer bg-light">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
                       
 
                         <!-- Modal Editar Vehículo -->
                         <div class="modal fade" id="editarVehiculoModal" tabindex="-1" aria-labelledby="editarVehiculoModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="editarVehiculoModalLabel">Editar Vehículo</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div class="modal-content border-0 shadow">
+                              <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title fs-5 fw-bold" id="editarVehiculoModalLabel">Editar Vehículo</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="modal-body">
+                              <div class="modal-body p-4">
                                 <form id="formEditarVehiculo">
-                                  <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                      <label for="editarMarcaVehiculo">Marca</label>
-                                      <input type="text" class="form-control" id="editarMarcaVehiculo" placeholder="Ingrese la nueva marca" required>
+                                  <div class="row g-3">
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="editarMarcaVehiculo" class="form-label text-muted small">Marca</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarMarcaVehiculo" placeholder="Ingrese la nueva marca" required>
+                                      </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="editarModeloVehiculo">Modelo</label>
-                                      <input type="text" class="form-control" id="editarModeloVehiculo" placeholder="Ingrese el nuevo modelo" required>
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label for="editarModeloVehiculo" class="form-label text-muted small">Modelo</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarModeloVehiculo" placeholder="Ingrese el nuevo modelo" required>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                      <label for="editarAnioVehiculo">Año</label>
-                                      <input type="text" class="form-control" id="editarAnioVehiculo" placeholder="Ingrese el nuevo año" required>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="editarAnioVehiculo" class="form-label text-muted small">Año</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarAnioVehiculo" placeholder="Ingrese el nuevo año" required>
+                                      </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="editarColorVehiculo">Color</label>
-                                      <input type="text" class="form-control" id="editarColorVehiculo" placeholder="Ingrese el nuevo color" required>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="editarColorVehiculo" class="form-label text-muted small">Color</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarColorVehiculo" placeholder="Ingrese el nuevo color" required>
+                                      </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                      <label for="editarKilometrajeVehiculo">Kilometraje</label>
-                                      <input type="text" class="form-control" id="editarKilometrajeVehiculo" placeholder="Ingrese el nuevo kilometraje" required>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="editarKilometrajeVehiculo" class="form-label text-muted small">Kilometraje</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarKilometrajeVehiculo" placeholder="Ingrese el nuevo kilometraje" required>
+                                      </div>
                                     </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="editarMotorVehiculo">Número de Motor</label>
-                                    <input type="text" class="form-control" id="editarMotorVehiculo" placeholder="Ingrese el nuevo número de motor">
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label for="editarMotorVehiculo" class="form-label text-muted small">Número de Motor</label>
+                                        <input type="text" class="form-control form-control-lg" id="editarMotorVehiculo" placeholder="Ingrese el nuevo número de motor">
+                                      </div>
+                                    </div>
                                   </div>
                                 </form>
                               </div>
-                              <div class="modal-footer">
+                              <div class="modal-footer bg-light">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary" id="btnGuardarCambiosVehiculo">Guardar Cambios</button>
                               </div>
@@ -739,7 +795,6 @@
   <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  <script type="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script type = "module" src="../../../JavaScripts/Vehiculos/agregarvehiculos.js"></script>

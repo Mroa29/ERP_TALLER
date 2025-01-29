@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../Styles/stylesclientes.css">
+  <link rel="stylesheet" href="../../../Styles/stylelogo.css">
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -28,7 +29,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="../../../dist/img/logo.png" alt="logo" height="60" width="60">
+    <h1 class="title">Kronos<span>Tech</span></h1>
   </div>
 
   <!-- Navbar -->
@@ -39,7 +40,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../../../index2.html" class="nav-link bi bi-house"> Inicio</a>
+        <a href="http://127.0.0.1:5500/Pantallas/index2.html" class="nav-link bi bi-house"> Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link bi bi-person-lines-fill"> Contacto</a>
@@ -71,111 +72,32 @@
         </div>
       </li>
 -->
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
+      <!-- NOTIFICACIONES 
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-danger navbar-badge" id = "cant_notificaciones"> 0 </span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificaciones_usuario">
+          Notificaciones dinamicas
         </div>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
+    
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="../../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Usuario Kronos</span>
+    <a href="#" class="brand-link">
+      <img src="../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" id="Nombre_Taller"> Usuario Kronos </span>
     </a>
 
     <!-- Sidebar -->
@@ -183,11 +105,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/Usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Marcos Roa</a>
-        </div>
+          <a href="#" id="user-name" class="d-block" >Nombre por defecto</a>
+        </div>        
       </div>
 
       <!-- SidebarSearch Form -->
@@ -494,7 +416,7 @@
                         <form id="idformagregarempleado">
                           <div class="form-row">
                             <div class="form-group col-md-6">
-                              <label for="rutEmpleado">Rut</label>
+                              <label for="rutEmpleado">RUT</label>
                               <input type="text" class="form-control" id="rutEmpleado" placeholder="Ingrese el RUT del empleado" required>
                             </div>
                             <div class="form-group col-md-6">
@@ -503,19 +425,23 @@
                             </div>
                           </div>
                           <div class="form-row">
-                            <div class="form-group col-md-12">
-                              <label for="domicilioEmpleado">Domicilio</label>
-                              <input type="text" class="form-control" id="domicilioEmpleado" placeholder="Ingrese la dirección del empleado">
+                            <div class="form-group col-md-6">
+                              <label for="direccionEmpleado">Dirección</label>
+                              <input type="text" class="form-control" id="direccionEmpleado" placeholder="Ingrese la dirección del empleado">
                             </div>
-                          </div>
-                          <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="comunaEmpleado">Comuna</label>
                               <input type="text" class="form-control" id="comunaEmpleado" placeholder="Ingrese la comuna del empleado">
                             </div>
+                          </div>
+                          <div class="form-row">
                             <div class="form-group col-md-6">
-                              <label for="domicilioEmpleado">Ciuadad</label>
-                              <input type="text" class="form-control" id="cuidadEmpleado" placeholder="Ingrese la Ciudad del empleado">
+                              <label for="ciudadEmpleado">Ciudad</label>
+                              <input type="text" class="form-control" id="ciudadEmpleado" placeholder="Ingrese la ciudad del empleado">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="nacionalidadEmpleado">Nacionalidad</label>
+                              <input type="text" class="form-control" id="nacionalidadEmpleado" placeholder="Ingrese la nacionalidad" required>
                             </div>
                           </div>
                           <div class="form-row">
@@ -526,21 +452,11 @@
                             <div class="form-group col-md-6">
                               <label for="estadoCivilEmpleado">Estado Civil</label>
                               <select class="form-control" id="estadoCivilEmpleado">
-                                <option>Soltero</option>
-                                <option>Casado</option>
-                                <option>Divorciado</option>
-                                <option>Viudo</option>
+                                <option value="Soltero">Soltero</option>
+                                <option value="Casado">Casado</option>
+                                <option value="Divorciado">Divorciado</option>
+                                <option value="Viudo">Viudo</option>
                               </select>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="nacionalidadEmpleado">Nacionalidad</label>
-                              <input type="text" class="form-control" id="nacionalidadEmpleado" placeholder="Ingrese la nacionalidad" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="cargoEmpleado">Cargo</label>
-                              <input type="text" class="form-control" id="cargoEmpleado" placeholder="Ingrese el cargo del empleado" required>
                             </div>
                           </div>
                           <div class="form-row">
@@ -555,8 +471,8 @@
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-6">
-                              <label for="emergenciaEmpleado">Contacto en Caso de Emergencia</label>
-                              <input type="text" class="form-control" id="emergenciaEmpleado" placeholder="Ingrese nombre y número de teléfono del contacto">
+                              <label for="emergenciaEmpleado">Teléfono de Emergencia</label>
+                              <input type="tel" class="form-control" id="emergenciaEmpleado" placeholder="Ingrese el teléfono de emergencia">
                             </div>
                             <div class="form-group col-md-6">
                               <label for="previsionSaludEmpleado">Previsión de Salud</label>
@@ -569,11 +485,9 @@
                               <input type="text" class="form-control" id="afpEmpleado" placeholder="Ingrese la AFP">
                             </div>
                             <div class="form-group col-md-6">
-                              <label for="tipoContratoEmpleado">Tipo de Contrato</label>
-                              <select class="form-control" id="tipoContratoEmpleado">
-                                <option>Indefinido</option>
-                                <option>Plazo Fijo</option>
-                                <option>Honorarios</option>
+                              <label for="idCargoEmpleado">Cargo</label>
+                              <select class="form-control" id="idCargoEmpleado">
+                                <!-- Opciones dinámicas cargadas desde la base de datos -->
                               </select>
                             </div>
                           </div>
@@ -592,11 +506,12 @@
                     </div>
                     <div class="modal-footer">
                       <button type="submit" class="btn btn-primary" id="btnAgregarEmpleado">Agregar Empleado</button>
-                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
+              
               
               
               
@@ -1151,6 +1066,7 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script type="module" src="../../../JavaScripts/Empleados/agregarempleados.js"></script>
+<script type="module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
 
 
 </body>

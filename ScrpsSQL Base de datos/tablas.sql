@@ -811,3 +811,48 @@ INSERT INTO CLIENTE (
 ('36234567-5', 'Javiera Leiva', '1', 'Calle Universidad 852', 'Tomé', 'Tomé', 'Chile', 'javiera.leiva@hotmail.com', 'Solicita cotización', '962678901', 1, 1, 1, 1),
 ('37234567-6', 'Matías Miranda', '3', 'Av. Comercio 456', 'Hualqui', 'Hualqui', 'Chile', 'matias.miranda@gmail.com', 'Cliente habitual', '972678901', 1, 3, 1, 1),
 ('38234567-7', 'Alejandra Rivera', '2', 'Calle Comercio 951', 'Concepción', 'Concepción', 'Chile', 'alejandra.rivera@gmail.com', 'Cliente nuevo', '982678901', 1, 2, 1, 1);
+
+
+
+INSERT INTO TIPO_PROVEEDOR (DESCRIPCION_TIPO_PROVEEDOR) VALUES
+('Piezas'),
+('Herramientas'),
+('Suministros Generales'),
+('Servicios de Transporte'),
+('Servicios de Limpieza'),
+('Maquinarias'),
+('Materiales de Construcción');
+
+
+INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'PROVEEDORES');
+UPDATE SUBMODULO
+SET NOMBRE_SUBMODULO = 'EMPLEADOS'
+where ID_SUBMODULO = 5
+
+
+SELECT * FROM SUBMODULO
+
+INSERT INTO PANTALLAS_USUARIO (ID_USUARIO, ID_MODULO, ID_SUBMODULO)
+VALUES
+('USER_0', 1, 5)
+
+
+-- Inserción en la tabla NOTIFICACIONES
+INSERT INTO NOTIFICACIONES (
+    TITULO_NOTIFICACION, 
+    DESCRIPCION_NOTIFICACION, 
+    ASUNTO_NOTIFICACION
+) VALUES (
+    'Bienvenida a la Plataforma', 
+    'Nos complace darte la bienvenida. Esperamos que disfrutes de nuestros servicios.', 
+    'Bienvenida'
+);
+
+INSERT INTO USUARIO_NOTIFICACION (
+    ID_USUARIO, 
+    ID_NOTIFICACION, 
+    VISIBILIDAD_NOTIFICACION, 
+    TIEMPO_ESPERA_NOTIFICACION
+) VALUES 
+    ('USER_0', 1, TRUE, 'Sin tiempo de espera'),
+    ('USER_1', 1, TRUE, 'Sin tiempo de espera');
