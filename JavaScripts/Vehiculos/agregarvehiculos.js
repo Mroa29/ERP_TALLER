@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const patente = document.getElementById('patenteVehiculo').value.trim();
             const marca = document.getElementById('marcaVehiculo').value.trim();
             const modelo = document.getElementById('modeloVehiculo').value.trim();
-            const anio = document.getElementById('anioVehiculo').value.trim();
+            const ano = document.getElementById('anioVehiculo').value.trim();
             const color = document.getElementById('colorVehiculo').value.trim();
             const kilometraje = document.getElementById('kilometrajeVehiculo').value.trim();
             const numMotor = document.getElementById('numMotorVehiculo').value.trim();
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const observaciones = document.getElementById('obsVehiculo').value.trim();
 
             // Validar campos obligatorios
-            if (!rutCliente || !patente || !marca || !modelo || !anio || !kilometraje || !tipo) {
+            if (!rutCliente || !patente || !marca || !modelo || !ano || !kilometraje || !tipo) {
                 mostrarError('Por favor, complete todos los campos obligatorios.');
                 return;
             }
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 patente,
                 marca,
                 modelo,
-                anio,
+                ano,
                 color,
                 kilometraje,
                 num_motor: numMotor,

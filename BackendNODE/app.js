@@ -12,6 +12,11 @@ const sucursalesRoutes = require('./routes/sucursalRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const vehiculoRoutes = require('./routes/vehiculoRoutes');
 const proveedorRoutes = require('./routes/proveedorRoutes');
+const empleadoRoutes = require('./routes/empleadosRoutes');
+const cargoRoutes = require('./routes/cargoRoutes');
+const contratoRoutes = require('./routes/contratoRoutes');
+const tipoContratoRoutes = require('./routes/tipocontratoRoutes');
+const documentosRoutes = require("./routes/documentosRoutes");
 
 
 app.use('/api/sucursales', sucursalesRoutes);
@@ -20,6 +25,12 @@ app.use('/api/talleres', talleresRoutes);  // Rutas para la entidad talleres
 app.use('/api/usuarios', usuarioRoutes);  // Rutas para la entidad usuarios
 app.use('/api/vehiculos', vehiculoRoutes);
 app.use('/api/proveedores', proveedorRoutes);
+app.use('/api/empleados', empleadoRoutes);
+app.use('/api/cargos', cargoRoutes);
+app.use('/api/contratos', contratoRoutes);
+app.use('/api/tiposcontrato', tipoContratoRoutes);
+app.use("/api/documentos", documentosRoutes);
+
 
 
 module.exports = app;

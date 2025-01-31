@@ -367,13 +367,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListaClientes" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class="fas fa-users"></i> Lista de clientes
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelContrataciones" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-users"></i> Contrataciones
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelBusqueda" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-file-import"></i> Manejo de Clientes
+                  <i class="fas fa-file-import"></i> Control de Empleados
               </a>
           </li>
           </ul>
@@ -516,13 +516,13 @@
               
               
             </div>
-            <div class="tab-pane fade" id="panelListaClientes" role="tabpanel" aria-labelledby="panelListaClientes">
+            <div class="tab-pane fade" id="panelContrataciones" role="tabpanel" aria-labelledby="panelListaClientes">
               <div class="card card-primary py-4 px-4 col-md-12">
                 <div class="card-header">
-                  <h3 class="card-title bi bi-person-lines-fill nav-icon"> Panel Listado de Empleados</h3>
+                  <h3 class="card-title bi bi-person-lines-fill nav-icon">Listado de Empleados sin Contrato</h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" id="barraBuscarClientes" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
+                      <input type="text" id="barraBuscarEmpleados" name="barraBuscarClientes" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
                         <button id="search_button" type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
@@ -540,433 +540,167 @@
                           <th>Nombre</th>
                           <th>RUT</th>
                           <th>Cargo</th>
-                          <th>Contrato</th>
+                          <th>Correo</th>
                           <th>Teléfono</th>
-                          <th>Ver</th>
+                          <th>Contratar</th>
                         </tr>
                       </thead>
                       <tbody>
                                       
-                        <!-- Aquí van las filas de los clientes (Dinamico)-->
+                      
                       </tbody>
                       
                     </table>
-                    <!--Modals tabla Listado de clientes-->
-                        <!-- Modal info cliente -->
-                        <div class="modal fade custom-modal" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                              <div class="modal-header text-white custom-card-header bg-dark">
-                                <h5 class="modal-title" id="clienteModalLabel">Perfil Cliente - JUAN PÉREZ</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="container-fluid">
-                                  <div class="row mb-4">
-                                    <div class="col-md-12 text-center">
-                                      <h3 class="mb-1">JUAN PÉREZ</h3>
-                                      <span class="badge badge-success">Activo</span>
-                                    </div>
+                    
+                    <div class="modal fade" id="contratarEmpleadoModal" tabindex="-1" aria-labelledby="contratarEmpleadoModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header custom-card-header">
+                            <h5 class="modal-title" id="contratarEmpleadoModalLabel">Contratar Empleado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card card-body">
+                              <!-- Mensaje de error -->
+                              <div id="mensajeErrorContrato" class="alert alert-danger" style="display: none;"></div>
+                              
+                              <form id="formContratarEmpleado">
+                                <!-- Datos del empleado -->
+                                <h5 class="mb-3">Información del Empleado</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoNombreEmpleado">Nombre</label>
+                                    <input type="text" class="form-control" id="contratoNombreEmpleado" readonly>
                                   </div>
-                        
-                                  <div class="row">
-                                    <!-- Datos Básicos -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightblue">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos Básicos</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>N°Cliente:</strong> 0001</p>
-                                          <p><strong>RUT:</strong> 21334556-9</p>
-                                          <p><strong>Tipo de Cliente:</strong> Particular</p>
-                                          <p><strong>Nombre:</strong> Juan Pérez</p>
-                                          <p><strong>Primer Apellido:</strong> Pérez</p>
-                                          <p><strong>Segundo Apellido:</strong> Pérez</p>
-                                          <p><strong>Teléfono Fijo:</strong> +123456789</p>
-                                          <p><strong>Teléfono Móvil:</strong> +123456789</p>
-                                          <p><strong>Email:</strong> ejemplo@correo.com</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                        
-                                    <!-- Datos de Ubicación -->
-                                    <div class="col-md-6">
-                                      <div class="card shadow-sm card-hover bg-lightgreen">
-                                        <div class="card-header bg-primary text-white">
-                                          <h5 class="mb-0">Datos de Ubicación</h5>
-                                        </div>
-                                        <div class="card-body">
-                                          <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-                                          <p><strong>Código Postal:</strong> 123456</p>
-                                          <h5>Observaciones</h5>
-                                          <p>Observaciones del cliente.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                        
-                                  <!-- Vehículos Asociados -->
-                                  <div class="row mt-4">
-                                    <div class="col-md-12">
-                                      <div class="card shadow-sm card-hover bg-lightcoral">
-                                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                                          <h5 class="mb-0">Vehículos Asociados</h5>
-                                          <button type="button" class="btn btn-primary btn-animated btn-sm" id="crearVehiculoAsociado" data-dismiss="modal" data-toggle="modal" data-target="#">
-                                            <i class="fas fa-plus"></i> Nuevo Vehículo
-                                          </button>
-                                        </div>
-                                        <div class="card-body">
-                                          <div class="row">
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-warning"></i>
-                                                  <h5 class="card-title">Marca: Toyota</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Corolla</p>
-                                                  <p class="card-text"><strong>Patente:</strong> AABB-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2020</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Tarjeta de Vehículo -->
-                                            <div class="col-md-4">
-                                              <div class="card mb-3 shadow-sm vehicle-card card-hover bg-lightyellow">
-                                                <div class="card-body text-center">
-                                                  <i class="fas fa-car fa-2x mb-3 text-danger"></i>
-                                                  <h5 class="card-title">Marca: Honda</h5>
-                                                  <p class="card-text"><strong>Modelo:</strong> Civic</p>
-                                                  <p class="card-text"><strong>Patente:</strong> CCDD-22</p>
-                                                  <p class="card-text"><strong>Año:</strong> 2019</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <!-- Fin Tarjeta de Vehículo -->
-                        
-                                            <!-- Puedes agregar más tarjetas aquí -->
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoRutEmpleado">RUT</label>
+                                    <input type="text" class="form-control" id="contratoRutEmpleado" readonly>
                                   </div>
                                 </div>
-                              </div>
-                        
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-success btn-animated" id="editarCliente" data-dismiss="modal" data-toggle="modal" data-target="#editarClienteModal">Editar</button>
-                                <button type="button" class="btn btn-secondary btn-animated" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        
-
-
-
-                        <!-- Modal edit -->
-                        <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                            <div class="modal-content">
-                              <div class="modal-header custom-card-header">
-                                <h5 class="modal-title" id="editarClienteModalLabel">Editar Datos del Cliente</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="card card-body">
-                                  <!-- Mensaje de error -->
-                                  <div id="mensajeErroreditar" class="alert alert-danger" style="display: none;"></div>
-                                  <form id="idformeditarcliente">
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="rut">RUT</label>
-                                          <input type="text" class="form-control" id="rut" placeholder="Ingrese el Rut del Cliente" required>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="N°Cliente">N°Cliente</label>
-                                          <input type="number" class="form-control" id="N°Cliente" placeholder="0000">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">Tipo de Cliente</label>
-                                          <select class="form-control" id="tipoclient">
-                                            <option>Sin definir</option>
-                                            <option>Particular</option>
-                                            <option>Empresa</option>
-                                            <option>Independiente</option>
-                                            
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class = "form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="name">Nombre</label>
-                                          <input type="text" class="form-control" id="nombre" invalid-feedback placeholder="Ingrese nombre del Cliente"required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="razonsocial">Razon social</label>
-                                          <input type="text" class="form-control" id="razonsocial" placeholder="Ingrese Razon social del Cliente">
-                                        </div>
-                            
-                                      </div>
-                                      
-                                      <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                          <label for="f-apellido">Primer Apellido</label>
-                                          <input type="text" class="form-control" id="f-apellido" placeholder="Ingrese primer apellido">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                          <label for="s-apellido">Segundo Apellido</label>
-                                          <input type="text" class="form-control" id="s-apellido" placeholder="Ingrese segundo apellido">
-                                        </div>
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="phone">Teléfono Fijo</label>
-                                          <input type="tel" class="form-control" id="phone" placeholder="Ingrese teléfono fijo">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="movil">Teléfono Móvil</label>
-                                          <input type="tel" class="form-control" id="movil" placeholder="Ingrese teléfono móvil">
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="address">Dirección</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Ingrese una dirección">
-                                      </div>
-                                      <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                          <label for="zipCode">Código Postal</label>
-                                          <input type="text" class="form-control" id="zipCode" placeholder="Ingrese un código postal">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="city">Ciudad</label>
-                                          <input type="text" class="form-control" id="city" placeholder="Ingrese una ciudad">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                          <label for="country">País</label>
-                                          <select class="form-control" id="country">
-                                            <option>Chile</option>
-                                            <option>Argentina</option>
-                                            <option>Perú</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Ingrese un email">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="observations">Observaciones</label>
-                                        <textarea class="form-control" id="observations" rows="3"></textarea>
-                                      </div>
-                                      <h4 class="m-0 card-header text-whiter text-center custom-card-header">Otros Datos del Cliente</h4>
-                                        <br>
-                                        <div class="bg-light border"></div>
-                                        <br>
-                                      <br>
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="tipoTarifa">Tipo de Tarifa</label>
-                                            <select class="form-control" id="tipoTarifa">
-                                              <option>Tarifa 1 - 0.5 Hora</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="grupoFacturacion">Grupo de Facturación</label>
-                                            <select class="form-control" id="grupoFacturacion">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoPlazas">Desc. en Plazas</label>
-                                            <input type="number" class="form-control" id="descuentoPlazas" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoManoObra">Desc. Mano Obra</label>
-                                            <input type="number" class="form-control" id="descuentoManoObra" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="descuentoGral">Descuento gral</label>
-                                            <input type="number" class="form-control" id="descuentoGral" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="formaPago">Forma Pago</label>
-                                            <select class="form-control" id="formaPago">
-                                              <option>Opción 1</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="condicionesPago">Condiciones Pago</label>
-                                            <select class="form-control" id="condicionesPago">
-                                              <option>Sin Definir</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="clienteIvaEspecial">Cliente con IVA especial</label>
-                                            <input type="number" class="form-control" id="clienteIvaEspecial" placeholder="Ingresa un valor">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    
-                                      <div class="row">
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="cuentaContable">Cuenta Contable</label>
-                                            <input type="text" class="form-control" id="cuentaContable" placeholder="Ingresa una cuenta">
-                                          </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="form-group">
-                                            <label for="comoNosConocio">Cómo nos conoció</label>
-                                            <select class="form-control" id="comoNosConocio">
-                                              <option>- sin definir -</option>
-                                              <!-- Agrega más opciones según sea necesario -->
-                                            </select>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      
-                                      <div class="row">
-                                        <div class="col-md-12 text-center">
-                                          <button type="button" class="btn btn-primary btn-block" id="agregarVehiculoBtn">
-                                            <span id="iconoFlecha" class="mr-2"></span>
-                                            Crea Vehiculo Asociado (Opcional)
-                                          </button>
-                                        </div>
-                                      </div>
-                                      
-                                      <div id="vehiculoCollapse" class="collapse mt-3">
-                                        <div class="card card-body">
-                                          <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoMarca">Marca</label>
-                                              <input type="text" class="form-control" id="vehiculoMarca" placeholder="Ingrese la marca del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoModelo">Modelo</label>
-                                              <input type="text" class="form-control" id="vehiculoModelo" placeholder="Ingrese el modelo del vehículo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                              <label for="vehiculoAnio">Año</label>
-                                              <input type="number" class="form-control" id="vehiculoAnio" placeholder="Ingrese el año del vehículo">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                    
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoCargoEmpleado">Cargo</label>
+                                    <input type="text" class="form-control" id="contratoCargoEmpleado" readonly>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoCorreoEmpleado">Correo</label>
+                                    <input type="email" class="form-control" id="contratoCorreoEmpleado" readonly>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" id="btneditarcliente">Agregar Cliente</button>
-                                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                              </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoTelefonoEmpleado">Teléfono</label>
+                                    <input type="text" class="form-control" id="contratoTelefonoEmpleado" readonly>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="contratoPrevisionEmpleado">Previsión de Salud</label>
+                                    <input type="text" class="form-control" id="contratoPrevisionEmpleado" readonly>
+                                  </div>
+                                </div>
+                    
+                                <!-- Datos del contrato -->
+                                <h5 class="mt-4 mb-3">Información del Contrato</h5>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="tipoContrato">Tipo de Contrato</label>
+                                    <select class="form-control" id="tipoContrato" required>
+                                      <option value="" disabled selected>Seleccione un tipo de contrato</option>
+                                      <!-- Opciones dinámicas cargadas desde la base de datos -->
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="remuneracionContrato">Remuneración Mensual</label>
+                                    <input type="number" class="form-control" id="remuneracionContrato" placeholder="Ingrese la remuneración" required>
+                                  </div>
+                                </div>
+                    
+                                <!-- Subir documento opcional -->
+                                <div class="form-group">
+                                  <label for="documentoContrato">Documento (Opcional)</label>
+                                  <input type="file" class="form-control-file" id="documentoContrato" accept=".pdf,.doc,.docx">
+                                </div>
+                    
+                                <!-- Firma del empleado -->
+                                <h5 class="mt-4 mb-3">Firma del Empleado</h5>
+                                <div class="form-group">
+                                  <canvas id="firmaEmpleadoCanvas" class="border" style="width: 100%; height: 200px;"></canvas>
+                                  <button type="button" class="btn btn-secondary mt-2" id="limpiarFirma">Limpiar Firma</button>
+                                </div>
+                              </form>
                             </div>
                           </div>
+                    
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnContratarEmpleado">Contratar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          </div>
                         </div>
-                      
-                     <!--Modals tabla Listado de clientes -->
+                      </div>
+                    </div>
+                    
+                        
+                        
+
+
+
+                       
+                    
                   </div>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                  <a href="javascript:void(0)" class="btn btn-sm  float-right btn-block badge-info ">Ver todos los clientes</a>
-                </div>
+                
               </div>  
             </div>
             
             <div class="tab-pane fade" id="panelBusqueda" role="tabpanel" aria-labelledby="panelBusqueda">
-              <div class="container mt-5">
-                <!-- Botón Exportar -->
-                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                  <div class="btn-container">
-                    <button class="btn btn-primary btn-square" onclick="exportarTablaAExcel()">
-                      <i class="fas fa-file-export"></i>
-                    </button>
-                  </div>
-                  <div class="description-inline ml-3">
-                    <span class="line-1">Exportar</span>
-                    <span class="line-2">Clientes</span>
-                  </div>
-                </div>
-                
-                <!-- Botón Importar -->
-                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                  <div class="btn-container">
-                    <!-- Input para importar archivo Excel -->
-                    <input type="file" id="inputImportarExcel" accept=".xlsx, .xls" class="d-none">
-                    <button class="btn btn-primary btn-square" onclick="document.getElementById('inputImportarExcel').click()">
-                      <i class="fas fa-file-import"></i>
-                    </button>
-                  </div>
-                  <div class="description-inline ml-3">
-                    <span class="line-1">Importar</span>
-                    <span class="line-2">Clientes</span>
-                  </div>
-                </div>
-                
-                <!-- Modal para manejar clientes duplicados -->
-                <div class="modal fade" id="modalDuplicados" tabindex="-1" role="dialog" aria-labelledby="modalDuplicadosLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="modalDuplicadosLabel">Clientes Duplicados Detectados</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                          <div class="modal-body">
-                              Se han encontrado clientes duplicados basados en el RUT. ¿Qué desea hacer?
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" id="btnOmitirDuplicados">Omitir Duplicados</button>
-                              <button type="button" class="btn btn-primary" id="btnReemplazarDuplicados">Reemplazar Duplicados</button>
-                          </div>
+              <div class="card card-primary py-4 px-4 col-md-12">
+                <div class="card-header">
+                  <h3 class="card-title bi bi-person-lines-fill nav-icon">Listado de Empleados Contratados</h3>
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px;">
+                      <input type="text" id="barraBuscarContratados" name="barraBuscarContratados" class="form-control float-right" placeholder="Buscar">
+                      <div class="input-group-append">
+                        <button id="search_button" type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
                       </div>
+                    </div>
+                  </div>  
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <div class="table-responsive" style="height: 500px;">
+                    <table id="tablalistadoContratdos" class="table table-head-fixed table-bordered text-nowrap ">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>RUT</th>
+                          <th>Cargo</th>
+                          <th>Correo</th>
+                          <th>Teléfono</th>
+                          <th>Contratar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                                      
+                      
+                      </tbody>
+                      
+                    </table>
+                    
+                    
+                        
+                        
+
+
+
+                       
+                    
                   </div>
                 </div>
-
                 
-              </div>
+              </div>  
              </div>
             </div>
           </div>
@@ -1066,7 +800,60 @@
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
 <script type="module" src="../../../JavaScripts/Empleados/agregarempleados.js"></script>
+<script type="module" src="../../../JavaScripts/Empleados/tablaEmpleadosSinContrato.js"></script>
+<script type="module" src="../../../JavaScripts/Empleados/firmaEmpleado.js"></script>
 <script type="module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const selectCargo = document.getElementById('idCargoEmpleado');
+
+        // Verificar si el select existe en el DOM
+        if (!selectCargo) {
+            console.error('Error: No se encontró el select de cargos.');
+            return;
+        }
+
+        // Obtener el token almacenado en localStorage
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No hay sesión activa. Por favor, inicie sesión.');
+        }
+
+        // Consultar la API para obtener los cargos
+        const response = await fetch('http://localhost:3000/api/cargos', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener la lista de cargos.');
+        }
+
+        const cargos = await response.json();
+
+        // Limpiar opciones previas en el select
+        selectCargo.innerHTML = '<option value="" disabled selected>Seleccione un cargo</option>';
+
+        // Llenar el select con los datos de la API
+        cargos.forEach(cargo => {
+            const option = document.createElement('option');
+            option.value = cargo.id_cargo;
+            option.textContent = cargo.nom_cargo; // Muestra el nombre del cargo
+            selectCargo.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar los cargos:', error);
+    }
+});
+</script>
 
 
 </body>
