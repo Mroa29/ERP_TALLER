@@ -21,29 +21,22 @@
   <link rel="stylesheet" href="../../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../../../Styles/stylespresupuesto.css">
+  <link rel="stylesheet" href="../../../Styles/stylelogo.css">
   <style>
-    .list-group-item {
-    display: flex;
-    align-items: center;
-}
-.list-group-item i {
-    font-size: 24px;
-    margin-right: 15px;
-}
-.scrollable-list {
-    max-height: 400px; /* Ajusta esta altura según tus necesidades */
-    overflow-y: auto;
-}
+    
   </style>
   
 
 </head>
+
+
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="../../../dist/img/logo.png" alt="logo" height="60" width="60">
+    <h1 class="title">Kronos<span>Tech</span></h1>
   </div>
 
   <!-- Navbar -->
@@ -54,7 +47,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index2.html" class="nav-link bi bi-house"> Inicio</a>
+        <a href="http://127.0.0.1:5500/Pantallas/index2.html" class="nav-link bi bi-house"> Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link bi bi-person-lines-fill"> Contacto</a>
@@ -86,111 +79,32 @@
         </div>
       </li>
 -->
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
+      <!-- NOTIFICACIONES 
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-danger navbar-badge" id = "cant_notificaciones"> 0 </span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificaciones_usuario">
+          Notificaciones dinamicas
         </div>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
+    
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Usuario Kronos</span>
+    <a href="#" class="brand-link">
+      <img src="../../../dist/img/logo.png" alt="Logo Taller" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" id="Nombre_Taller"> Usuario Kronos </span>
     </a>
 
     <!-- Sidebar -->
@@ -198,11 +112,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../../dist/img/Usuario.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Marcos Roa</a>
-        </div>
+          <a href="#" id="user-name" class="d-block" >Nombre por defecto</a>
+        </div>        
       </div>
 
       <!-- SidebarSearch Form -->
@@ -230,30 +144,30 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item" id ="submodulo-1">
-                <a href="./Modulos/GESTION/Clientes.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Clientes.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-2">
-                <a href="./Modulos/GESTION/Vehiculos.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Vehiculos.html" class="nav-link">
                   <i class="bi bi-car-front nav-icon"></i>
                   <p>Vehiculos</p>
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-3">
-                <a href="./Modulos/GESTION/Proveedores.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/Proveedores.html" class="nav-link">
                   <i class="bi bi-box-seam-fill nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
               </li>
-              <li class="nav-item" id = "submodulo-5">
-                <a href="#" class="nav-link">
+              <li class="nav-item" id = "submodulo-4">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/GESTION/empleados.html" class="nav-link">
                   <i class="bi bi-people-fill nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
-              <li class="nav-item" id = "submodulo-6">
+              <li class="nav-item" id = "submodulo-14">
                 <a href="#" class="nav-link">
                   <i class="bi bi-circle nav-icon"></i>
                   <p>Aseguradoras</p>
@@ -276,9 +190,9 @@
                   <p>Ingresos</p>
                 </a>
               </li>
-              <li class="nav-item" id ="submodulo-4">
-                <a href="./Modulos/TALLER/presupuesto.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+              <li class="nav-item" id ="submodulo-5">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/TALLER/presupuesto.html" class="nav-link">
+                  <i class="fas fa-file-invoice-dollar"></i>
                   <p>Presupuestos</p>
                 </a>
               </li>
@@ -329,11 +243,11 @@
                   <p>Recepcion de Repuestos</p>
                 </a>
               </li>
-              <li class="nav-item" id = "submodulo-14">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dispensacion de Insumos</p>
-                </a>
+              <li class="nav-item" id = "submodulo-6">
+                <a href="http://127.0.0.1:5500/Pantallas/Modulos/ABASTECIMIENTO/Insumos.html" class="nav-link">
+                  <i class="fas fa-boxes nav-icon"></i>
+                  <p>Insumos</p>
+                </a>                
               </li>
               <li class="nav-item" id = "submodulo-15">
                 <a href="#" class="nav-link">
@@ -456,19 +370,39 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#panelNuevoPresupuesto" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
-                  <i class="fas fa-file-invoice-dollar"></i> Nuevo presupuesto
+                  <i class="fas fa-file-invoice-dollar"></i>  Cabecera
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelListadodepresupuestos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class=""></i> Lista de presupuestos
+              <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#panelSeteoTrifas" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-dollar-sign"></i> Tarifas
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
-                  <i class="fas fa-search"></i> Búsqueda Avanzada
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#PinturaPresupuestada" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-palette"></i> Pintura
               </a>
-          </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#ManoObraPresupuestada" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-hard-hat"></i> Mano de Obra
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#RepuestosPresupuestados" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-tools"></i> Repuestos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#panelcobrospresupuesto" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-hand-holding-usd"></i> Cobros
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#resumenPresupuesto" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">
+                  <i class="fas fa-file-invoice-dollar"></i> Presupuestos
+              </a>
+            </li>
           </ul>
         </div>
         <div class="card-body">
@@ -477,104 +411,702 @@
               <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
+                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4" data-toggle="modal" data-target="#agregarPresupuestomodal">
                       <div class="btn-container">
-                        <button class="btn btn-primary btn-square" onclick="window.location.href='nuevopresupuesto.html'">
+                        <button class="btn btn-primary btn-square">
                           <i class="fas fa-file-invoice-dollar"></i>
                         </button>
                       </div>
                       <div class="description-inline ml-3">
-                        <span class="line-1">Nuevo</span>
-                        <span class="line-2">Presupuesto</span>
+                        <span class="line-1">Crear</span>
+                        <span class="line-2">Cabecera</span>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <div class="modal fade" id="agregarPresupuestomodal" tabindex="-1" aria-labelledby="agregarPresupuestomodalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header custom-card-header">
+                        <h5 class="modal-title" id="agregarPresupuestomodalLabel">Agregar Presupuesto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="card card-body">
+                          <!-- Mensaje de error -->
+                          <div id="mensajeErrorPresupuesto" class="alert alert-danger" style="display: none;"></div>
+                
+                          <!-- Búsqueda de Cliente -->
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="buscarCliente">Buscar Cliente</label>
+                              <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
+                              <!-- Lista de coincidencias -->
+                              <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="clienteSeleccionado">Cliente (RUT)</label>
+                              <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
+                            </div>
+                          </div>
+                
+                          <!-- Nota informativa -->
+                          <div class="alert alert-info mt-3" role="alert">
+                            Por favor, seleccione un cliente primero antes de buscar y seleccionar un vehículo.
+                          </div>
+                
+                          <!-- Búsqueda de Vehículo -->
+                          <div class="form-row mt-3">
+                            <div class="form-group col-md-6">
+                              <label for="buscarVehiculo">Buscar Vehículo</label>
+                              <input type="text" class="form-control" id="buscarVehiculo" placeholder="Ingrese placa o modelo del vehículo">
+                              <!-- Lista de coincidencias -->
+                              <div id="listaCoincidenciasVehiculos" class="list-group mt-2"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="vehiculoSeleccionado">Vehículo (Placa)</label>
+                              <input type="text" class="form-control" id="vehiculoSeleccionado" placeholder="Vehículo seleccionado" readonly>
+                            </div>
+                          </div>
+                
+                          <!-- Formulario para agregar presupuesto -->
+                          <form id="formAgregarPresupuesto">
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="diasValidezPresupuesto">Días de Validez</label>
+                                <input type="number" class="form-control" id="diasValidezPresupuesto" placeholder="Ingrese la cantidad de días de validez" required>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="sucursalSelect">Sucursal</label>
+                                <select class="form-control" id="sucursalSelect" required>
+                                  <option value="">Seleccione una sucursal</option>
+                                  <!-- Aquí se pueden cargar dinámicamente las opciones de sucursales -->
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="obsPresupuesto">Observaciones</label>
+                              <textarea class="form-control" id="obsPresupuesto" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <!-- El botón se asocia al formulario mediante el atributo "form" -->
+                        <button type="submit" class="btn btn-primary" id="btnAgregarPresupuesto" form="formAgregarPresupuesto">Agregar Presupuesto</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+                
+                
+
+
+
               </div>
             </div>
-            <div class="tab-pane fade" id="panelListadodepresupuestos" role="tabpanel" aria-labelledby="panelListadodepresupuestos">
-              <div class="container mt-5">
-                <div class="card">
-                    <div class="card-header custom-card-header">
-                        <h1 class="mb-0">Lista de Presupuestos</h1>
-                    </div>
-                    <div class="card-body">
-                        <!-- Barra de búsqueda -->
-                        <div class="input-group mb-4">
-                            <input type="text" id="search" class="form-control form-control-custom" placeholder="Buscar presupuesto...">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary btn-primary-custom" type="button">Buscar</button>
-                            </div>
-                        </div>
-        
-                        <!-- Lista de presupuestos -->
-                        <div class="list-group scrollable-list" id="budgetList">
-                            <!-- Presupuestos se llenarán aquí de forma dinámica -->
-                        </div>
-                    </div>
+            <div class="tab-pane fade" id="panelSeteoTrifas" role="tabpanel" aria-labelledby="panelSeteoTrifas">
+              <div class="container  mt-2">
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4" data-toggle="modal" data-target="#agregarTarifaPinturaModal">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square">
+                      <i class="fas fa-palette"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Precio</span>
+                    <span class="line-2">Pintura</span>
+                  </div>
+                </div>
+
+                <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4"data-toggle="modal" data-target="#agregarTarifaManoObraModal">
+                  <div class="btn-container">
+                    <button class="btn btn-primary btn-square">
+                    <i class="fas fa-hard-hat"></i>
+                    </button>
+                  </div>
+                  <div class="description-inline ml-3">
+                    <span class="line-1">Precio</span>
+                    <span class="line-2">Mano de Obra</span>
+                  </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="agregarTarifaPinturaModal" tabindex="-1" aria-labelledby="agregarTarifaModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header custom-card-header">
+                    <h5 class="modal-title" id="agregarTarifaModalLabel">Agregar Tarifa Piezas Pintadas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card card-body">
+                      <!-- Mensaje de error -->
+                      <div id="mensajeErrorTarifa" class="alert alert-danger" style="display: none;"></div>
+            
+                      <!-- Formulario para agregar tarifa -->
+                      <form id="formAgregarTarifa">
+                        <div class="form-row">
+                          <div class="form-group col-md-12">
+                            <label for="descripcionTarifa">Descripción Tarifa</label>
+                            <input type="text" class="form-control" id="descripcionTarifa" placeholder="Ingrese la descripción de la tarifa" required>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="precioPieza">Precio por Pieza Pintada</label>
+                            <input type="number" class="form-control" id="precioPieza" placeholder="Ingrese el precio por pieza pintada" required>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="sucursalSelectTarifa">Sucursal</label>
+                            <select class="form-control" id="sucursalSelectTarifa" required>
+                              <option value="">Seleccione una sucursal</option>
+                              <!-- Aquí se pueden cargar dinámicamente las opciones de sucursales -->
+                            </select>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- Se asocia el botón al formulario mediante el atributo form -->
+                    <button type="submit" class="btn btn-primary" id="btnAgregarTarifa" form="formAgregarTarifa">Agregar Tarifa</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="agregarTarifaManoObraModal" tabindex="-1" aria-labelledby="agregarTarifaManoObraModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header custom-card-header">
+                    <h5 class="modal-title" id="agregarTarifaManoObraModalLabel">Agregar Tarifa Mano de Obra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card card-body">
+                      <!-- Mensaje de error -->
+                      <div id="mensajeErrorTarifaManoObra" class="alert alert-danger" style="display: none;"></div>
+            
+                      <!-- Formulario para agregar tarifa -->
+                      <form id="formAgregarTarifaManoObra">
+                        <div class="form-row">
+                          <div class="form-group col-md-12">
+                            <label for="descripcionTarifaManoObra">Descripción Tarifa</label>
+                            <input type="text" class="form-control" id="descripcionTarifaManoObra" placeholder="Ingrese la descripción de la tarifa" required>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="precioPiezaManoObra">Precio por Pieza Mano de Obra</label>
+                            <input type="number" class="form-control" id="precioPiezaManoObra" placeholder="Ingrese el precio por pieza de mano de obra" required>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="sucursalSelectTarifaManoObra">Sucursal</label>
+                            <select class="form-control" id="sucursalSelectTarifaManoObra" required>
+                              <option value="">Seleccione una sucursal</option>
+                              <!-- Aquí se pueden cargar dinámicamente las opciones de sucursales -->
+                            </select>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- Se asocia el botón al formulario mediante el atributo form -->
+                    <button type="submit" class="btn btn-primary" id="btnAgregarTarifaManoObra" form="formAgregarTarifaManoObra">Agregar Tarifa</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
           </div>
           
-            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header custom-card-header">
-                    <h5 class="card-title"><i class="fas fa-search"></i> Panel Búsqueda Avanzada</h5>
+          <div class="tab-pane fade" id="PinturaPresupuestada" role="tabpanel" aria-labelledby="PinturaPresupuestada">
+            <!-- Cabecera con datos del presupuesto seleccionado -->
+            <div class="card mb-3">
+                <div class="card-header bg-primary text-white">Datos del Presupuesto Seleccionado</div>
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <p><strong>ID Presupuesto:</strong> <span id="idPresupuesto"></span></p>
+                          <p><strong>RUT Cliente:</strong> <span id="rutClientePresupuesto"></span></p>
+                      </div>
+                      <div class="col-md-4">
+                          <p><strong>Placa Vehículo:</strong> <span id="placaVehiculoPresupuesto"></span></p>
+                          <p><strong>Sucursal:</strong> <span id="sucursalPresupuesto"></span></p>
+                      </div>
+                      <div class="col-md-4">
+                        <p><strong>Días de Validez:</strong> <span id="diasValidezPresupuestO"></span></p>
+                      </div>
                   </div>
-                  <div class="card-body">
-                    <!-- Nueva tarjeta de descripción -->
-                    <div class="card mb-3">
-                      <div class="card-body custom-card-header">
-                        <p class="card-text">
-                          Podrá realizar la búsqueda llenando cualquiera de los campos a continuación.
-                        </p>
-                      </div>
+                  
+                      
+                  
+              </div>
+              
+            </div>
+        
+            <!-- Barra de búsqueda de presupuesto -->
+            <div class="form-group">
+                <label for="buscarPresupuesto">Buscar Presupuesto por Patente</label>
+                <input type="text" class="form-control" id="buscarPresupuesto" placeholder="Ingrese la patente del vehículo">
+                <div id="listaCoincidenciasPresupuestos" class="list-group mt-2"></div>
+            </div>
+        
+            <!-- Tarjeta para agregar pintura presupuestada -->
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">Agregar Pintura Presupuestada</div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="nombrePiezaPintada">Nombre de la Pieza</label>
+                            <input type="text" class="form-control" id="nombrePiezaPintada" placeholder="Ej: Puerta Delantera Izquierda">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="cantidadPiezasPintadas">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidadPiezasPintadas" min="1" placeholder="Ej: 2">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="tarifaPiezasPintadas">Tarifa de Pintura</label>
+                            <select class="form-control" id="tarifaPiezasPintadas">
+                                <option value="">Seleccione una tarifa</option>
+                            </select>
+                        </div>
                     </div>
-                    <!-- Formulario de búsqueda avanzada -->
-                    <form>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="rsocial">Razón social</label>
-                          <input type="text" class="form-control" id="rsocial" placeholder="Ingrese la razón social">
-                        </div>
+                    <button type="button" class="btn btn-success" id="btnAgregarPintura"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+          
+              <!-- Lista de tarjetas para piezas agregadas dinámicamente -->
+              <div class="mt-4" id="listaPinturasPresupuestadas">
+                  <!-- Aquí se agregarán dinámicamente las tarjetas -->
+                  </div>
+              
+              </div>
+
+                <div class="tab-pane fade" id="ManoObraPresupuestada" role="tabpanel" aria-labelledby="ManoObraPresupuestada">
+                  <!-- Cabecera con datos del presupuesto seleccionado -->
+                  <div class="card mb-3">
+                      <div class="card-header bg-primary text-white">Datos del Presupuesto Seleccionado</div>
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <p><strong>ID Presupuesto:</strong> <span id="idPresupuestoManoObra"></span></p>
+                                  <p><strong>RUT Cliente:</strong> <span id="rutClientePresupuestoManoObra"></span></p>
+                              </div>
+                              <div class="col-md-4">
+                                  <p><strong>Placa Vehículo:</strong> <span id="placaVehiculoPresupuestoManoObra"></span></p>
+                                  <p><strong>Sucursal:</strong> <span id="sucursalPresupuestoManoObra"></span></p>
+                              </div>
+                              <div class="col-md-4">
+                                  <p><strong>Días de Validez:</strong> <span id="diasValidezPresupuestoManoObra"></span></p>
+                              </div>
+                          </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="movil">Teléfono móvil</label>
-                          <input type="tel" class="form-control" id="movil" placeholder="+56 9 123 456 78" >
-                        </div>
+                  </div>
+              
+                  <!-- Barra de búsqueda de presupuesto -->
+                  <div class="form-group">
+                      <label for="buscarPresupuestoManoObra">Buscar Presupuesto por Patente</label>
+                      <input type="text" class="form-control" id="buscarPresupuestoManoObra" placeholder="Ingrese la patente del vehículo">
+                      <div id="listaCoincidenciasPresupuestosManoObra" class="list-group mt-2"></div>
+                  </div>
+              
+                  <!-- Tarjeta para agregar mano de obra presupuestada -->
+                  <div class="card mt-4">
+                      <div class="card-header bg-success text-white">Agregar Mano de Obra Presupuestada</div>
+                      <div class="card-body">
+                          <div class="form-row">
+                              <div class="form-group col-md-4">
+                                  <label for="nombrePiezaManoObra">Nombre de la Pieza</label>
+                                  <input type="text" class="form-control" id="nombrePiezaManoObra" placeholder="Ej: Parachoques delantero">
+                              </div>
+                              <div class="form-group col-md-4">
+                                  <label for="cantidadPiezasManoObra">Cantidad</label>
+                                  <input type="number" class="form-control" id="cantidadPiezasManoObra" min="1" placeholder="Ej: 2">
+                              </div>
+                              <div class="form-group col-md-4">
+                                  <label for="tarifaManoObra">Tarifa de Mano de Obra</label>
+                                  <select class="form-control" id="tarifaManoObra">
+                                      <option value="">Seleccione una tarifa</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <button type="button" class="btn btn-success" id="btnAgregarManoObra"><i class="fas fa-plus"></i></button>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="tipoclient">Tipo de cliente</label>
-                          <select class="form-control" id="tipoclient">
-                            <option value="">Seleccione un tipo</option>
-                            <option value="empr">Empresa</option>
-                            <option value="par">Particular</option>
-                            <option value="ind">Independiente</option>
-                            <option value="sindef">Sin definir</option>
-                          </select>
+                  </div>
+              
+                  <!-- Lista de tarjetas para piezas agregadas dinámicamente -->
+                  <div class="mt-4" id="listaManoObraPresupuestada">
+                      <!-- Aquí se agregarán dinámicamente las tarjetas -->
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="RepuestosPresupuestados" role="tabpanel" aria-labelledby="RepuestosPresupuestados">
+                <!-- Cabecera con datos del presupuesto seleccionado -->
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">Datos del Presupuesto Seleccionado</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><strong>ID Presupuesto:</strong> <span id="idPresupuestoRepuestos"></span></p>
+                                <p><strong>RUT Cliente:</strong> <span id="rutClientePresupuestoRepuestos"></span></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Placa Vehículo:</strong> <span id="placaVehiculoPresupuestoRepuestos"></span></p>
+                                <p><strong>Sucursal:</strong> <span id="sucursalPresupuestoRepuestos"></span></p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Días de Validez:</strong> <span id="diasValidezPresupuestoRepuestos"></span></p>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                          <label for="Patente">Patente asociada</label>
-                          <input type="text" class="form-control" id="Patente" placeholder="Ingrese Patente • Ejemplo AA1122 • BBCC11">
+                    </div>
+                </div>
+            
+                <!-- Barra de búsqueda de presupuesto -->
+                <div class="form-group">
+                    <label for="buscarPresupuestoRepuestos">Buscar Presupuesto por Patente</label>
+                    <input type="text" class="form-control" id="buscarPresupuestoRepuestos" placeholder="Ingrese la patente del vehículo">
+                    <div id="listaCoincidenciasPresupuestosRepuestos" class="list-group mt-2"></div>
+                </div>
+            
+                <!-- Tarjeta para agregar repuestos presupuestados -->
+                <div class="card mt-4">
+                    <div class="card-header bg-success text-white">Agregar Repuesto Presupuestado</div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombrePiezaRepuesto">Nombre del Repuesto</label>
+                                <input type="text" class="form-control" id="nombrePiezaRepuesto" placeholder="Ej: Parachoques delantero">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="precioPiezaRepuesto">Precio del Repuesto</label>
+                                <input type="number" class="form-control" id="precioPiezaRepuesto" min="1" placeholder="Ej: 25000">
+                            </div>
                         </div>
+                        <button type="button" class="btn btn-success" id="btnAgregarRepuesto"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            
+                <!-- Lista de tarjetas para repuestos agregados dinámicamente -->
+                <div class="mt-4" id="listaRepuestosPresupuestados">
+                    <!-- Aquí se agregarán dinámicamente las tarjetas -->
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="panelcobrospresupuesto" role="tabpanel" aria-labelledby="panelcobrospresupuesto">
+              <div class="container mt-1">
+                <!-- Cabecera con datos del presupuesto seleccionado -->
+                <div class="card mb-3">
+                  <div class="card-header bg-primary text-white">Datos del Presupuesto Seleccionado</div>
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-4">
+                              <p><strong>ID Presupuesto:</strong> <span id="idPresupuestoCobros"></span></p>
+                              <p><strong>RUT Cliente:</strong> <span id="rutClientePresupuestoCobros"></span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p><strong>Placa Vehículo:</strong> <span id="placaVehiculoPresupuestoCobros"></span></p>
+                              <p><strong>Sucursal:</strong> <span id="sucursalPresupuestoCobros"></span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p><strong>Días de Validez:</strong> <span id="diasValidezPresupuestoCobros"></span></p>
+                          </div>
                       </div>
-                      <button type="submit" class="btn btn-primary btn-block" >Buscar</button>
-                    </form>
+                  </div>
+              </div>
+          
+              <!-- Barra de búsqueda de presupuesto -->
+              <div class="form-group">
+                  <label for="buscarPresupuestoRepuestos">Buscar Presupuesto por Patente</label>
+                  <input type="text" class="form-control" id="buscarPresupuestoCobros" placeholder="Ingrese la patente del vehículo">
+                  <div id="listaCoincidenciasPresupuestosCobros" class="list-group mt-2"></div>
+              </div>
+                
+                <!-- Formulario de Agregar Cobro a Cuenta -->
+                <div class="card mt-3">
+                    <div class="card-header custom-card-header text-center text-white">
+                        <h5><i class="fas fa-plus-circle"></i> Agregar Cobro de Cuenta</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formCobro">
+                            <div class="form-group row">
+                                <label for="numeroRecibo" class="col-sm-2 col-form-label">Número Recibo</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="numeroRecibo">
+                                </div>
+                                <label for="importeCobrado" class="col-sm-2 col-form-label">Importe Cobrado</label>
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" id="importeCobrado">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="formaPago" class="col-sm-2 col-form-label">Forma Pago</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" id="formaPago">
+                                        <option>Tarjeta Débito</option>
+                                        <option>Tarjeta Crédito</option>
+                                        <option>Efectivo</option>
+                                        <option>Transferencia</option>
+                                    </select>
+                                </div>
+                                <label for="fechaCobro" class="col-sm-2 col-form-label">Fecha Cobro</label>
+                                <div class="col-sm-4">
+                                    <input type="date" class="form-control" id="fechaCobro">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="descripcion">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col text-center">
+                                  <button type="submit" class="btn btn-primary">Agregar</button>
+                              </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Cobros a Cuenta -->
+                <div class="card card-primary py-4 px-4">
+                  <div class="card-header">
+                      <h3 class="card-title"><i class="fas fa-money-bill-wave"></i> Cobros a Cuenta</h3>
+                  </div>
+                  <div class="card-body p-0">
+                      <div class="table-responsive" style="height: 150px; overflow-y: auto;">
+                          <table id="tablacobrosacuenta" class="table table-head-fixed table-bordered text-nowrap">
+                              <thead>
+                                  <tr>
+                                      <th>N° Recibo</th>
+                                      <th>Importe Cobrado</th>
+                                      <th>Forma Pago</th>
+                                      <th>Fecha Cobro</th>
+                                      <th>Descripción</th>
+                                      <th>Acciones</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Filas de cobros serán añadidas aquí dinámicamente -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+                
+            </div>
+        
+            <!-- Modal para editar cobro -->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Editar Cobro</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formEditCobro">
+                                <div class="form-group">
+                                    <label for="editNumeroRecibo">Número Recibo</label>
+                                    <input type="text" class="form-control" id="editNumeroReciboCobro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editImporteCobrado">Importe Cobrado</label>
+                                    <input type="number" class="form-control" id="editImporteCobradoCorbo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editFormaPago">Forma Pago</label>
+                                    <select class="form-control" id="editFormaPagoCobro">
+                                        <option>Tarjeta Débito</option>
+                                        <option>Tarjeta Crédito</option>
+                                        <option>Efectivo</option>
+                                        <option>Transferencia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editFechaCobro">Fecha Cobro</label>
+                                    <input type="date" class="form-control" id="editFechaCobro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editDescripcion">Descripción</label>
+                                    <input type="text" class="form-control" id="editDescripcionCobro">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+        </div>
+
+        <div class="tab-pane fade" id="resumenPresupuesto" role="tabpanel" aria-labelledby="resumenPresupuesto">
+          <div class="container mt-1">
+              
+              <!-- Cabecera con datos del presupuesto seleccionado -->
+              <div class="card mb-3">
+                  <div class="card-header bg-primary text-white">Datos del Presupuesto Seleccionado</div>
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-4">
+                              <p><strong>ID Presupuesto:</strong> <span id="idPresupuestoResumen"></span></p>
+                              <p><strong>RUT Cliente:</strong> <span id="rutClienteResumen"></span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p><strong>Placa Vehículo:</strong> <span id="placaVehiculoResumen"></span></p>
+                              <p><strong>Sucursal:</strong> <span id="sucursalResumen"></span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p><strong>Días de Validez:</strong> <span id="diasValidezResumen"></span></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- Barra de búsqueda de presupuesto -->
+              <div class="form-group">
+                  <label for="buscarPresupuestoResumen">Buscar Presupuesto por Patente</label>
+                  <input type="text" class="form-control" id="buscarPresupuestoResumen" placeholder="Ingrese la patente del vehículo">
+                  <div id="listaCoincidenciasPresupuestosResumen" class="list-group mt-2"></div>
+              </div>
+      
+              <!-- Observaciones del Presupuesto -->
+                <div class="card mt-3">
+                  <div class="card-header bg-warning text-dark">Observaciones</div>
+                  <div class="card-body">
+                      <textarea class="form-control" id="observacionesResumen" rows="3" readonly></textarea>
                   </div>
                 </div>
+
+      
+              <!-- Tabla de Pintura Presupuestada -->
+              <div class="card card-primary mt-4">
+                  <div class="card-header bg-success text-white">Pintura Presupuestada</div>
+                  <div class="card-body p-0">
+                      <div class="table-responsive">
+                          <table id="tablaPinturaResumen" class="table table-bordered text-nowrap">
+                              <thead>
+                                  <tr>
+                                      <th>Nombre de la Pieza</th>
+                                      <th>Cantidad</th>
+                                      <th>Tarifa</th>
+                                      <th>Total</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Datos dinámicos aquí -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
               </div>
-            </div>
+      
+              <!-- Tabla de Mano de Obra Presupuestada -->
+              <div class="card card-primary mt-4">
+                  <div class="card-header bg-info text-white">Mano de Obra Presupuestada</div>
+                  <div class="card-body p-0">
+                      <div class="table-responsive">
+                          <table id="tablaManoObraResumen" class="table table-bordered text-nowrap">
+                              <thead>
+                                  <tr>
+                                      <th>Nombre de la Pieza</th>
+                                      <th>Cantidad</th>
+                                      <th>Tarifa</th>
+                                      <th>Total</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Datos dinámicos aquí -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- Tabla de Repuestos Presupuestados -->
+              <div class="card card-primary mt-4">
+                  <div class="card-header bg-secondary text-white">Repuestos Presupuestados</div>
+                  <div class="card-body p-0">
+                      <div class="table-responsive">
+                          <table id="tablaRepuestosResumen" class="table table-bordered text-nowrap">
+                              <thead>
+                                  <tr>
+                                      <th>Nombre de la Pieza</th>
+                                      <th>Precio</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Datos dinámicos aquí -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- Tabla de Cobros -->
+              <div class="card card-primary mt-4">
+                  <div class="card-header bg-danger text-white">Cobros Realizados</div>
+                  <div class="card-body p-0">
+                      <div class="table-responsive">
+                          <table id="tablaCobrosResumen" class="table table-bordered text-nowrap">
+                              <thead>
+                                  <tr>
+                                      <th>N° Recibo</th>
+                                      <th>Importe Cobrado</th>
+                                      <th>Forma Pago</th>
+                                      <th>Fecha</th>
+                                      <th>Descripción</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Datos dinámicos aquí -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- Presupuesto Total -->
+              <div class="card mt-3">
+                <div class="card-header bg-info text-white">Presupuesto Total</div>
+                <div class="card-body text-center">
+                    <h4><strong>Total Cobrado:</strong> $<span id="totalCobrado">0</span></h4>
+                    <h4><strong>Presupuesto Total:</strong> $<span id="presupuestoTotal">0</span></h4>
+                    <button class="btn btn-primary mt-3" id="btnImprimirPresupuesto">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                </div>
+              </div>
+
+
+          </div>
+      </div>
+      
+    
+      
+        
+        
+
+            
             
             
             
@@ -626,7 +1158,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2024 <a href="#">ERP Taller</a>.</strong>
+    <strong>Copyright &copy; 2024 <a href="#">KronosTech</a>.</strong>
     Todos los derechos reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
@@ -675,56 +1207,89 @@
   <script src="../../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+
+
+
+
+
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script type = "module" src="JavaScripts/presupuestos.js"></script>
-<script>
-   const budgets = [
-            { id: 1, name: 'Presupuesto A', date: '2024-06-01', file: 'path/to/presupuestoA.pdf' },
-            { id: 2, name: 'Presupuesto B', date: '2024-06-15', file: 'path/to/presupuestoB.pdf' },
-            { id: 3, name: 'Presupuesto C', date: '2024-06-20', file: 'path/to/presupuestoC.pdf' },
-            { id: 4, name: 'Presupuesto D', date: '2024-06-22', file: 'path/to/presupuestoD.pdf' },
-            { id: 5, name: 'Presupuesto E', date: '2024-06-23', file: 'path/to/presupuestoE.pdf' },
-            { id: 6, name: 'Presupuesto F', date: '2024-06-24', file: 'path/to/presupuestoF.pdf' },
-            { id: 7, name: 'Presupuesto G', date: '2024-06-25', file: 'path/to/presupuestoG.pdf' },
-            { id: 8, name: 'Presupuesto H', date: '2024-06-26', file: 'path/to/presupuestoH.pdf' },
-            { id: 9, name: 'Presupuesto I', date: '2024-06-27', file: 'path/to/presupuestoI.pdf' },
-            { id: 10, name: 'Presupuesto J', date: '2024-06-28', file: 'path/to/presupuestoJ.pdf' },
-            { id: 11, name: 'Presupuesto K', date: '2024-06-29', file: 'path/to/presupuestoK.pdf' }
-            // Añade más presupuestos aquí
-        ];
+<script type = "module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/BuscarClientePresupuesto.JS"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/BuscarVehiculoPresupuesto.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CrearPresupuesto.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CargarSucursalespintura.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CrearTarifapintura.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/cargarSucursalesTarifaManoObra.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/SeleccionarPresupuestoPinturaPresupuestada.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/AgregarPinturaPresupuestada.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CargarTarifaManObra.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/agregarTarifaManoObra.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/SelectPresupuestoManoObra.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/AgregarManoObraPresupuestda.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/SelectPresupuestoRepuestos.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/AgregarRepuestoPresupuestdo.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/SelectPresupuestoCobros.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/AgregarCobros.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/EditarCobroPresupuesto.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CargarCabeceraResumenPresupueto.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CargarTablasResumenPresupuesto.js"></script>
+<script type = "module" src="../../../JavaScripts/Presupuesto/CalcularTotalesPresupuesto.js"></script>
 
-        function loadBudgets() {
-            const budgetList = $('#budgetList');
-            budgetList.empty();
-            budgets.forEach(budget => {
-                const budgetItem = `
-                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-dark">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-file-pdf text-danger"></i>
-                            <div class="ml-3">
-                                <h5 class="mb-1 text-white">${budget.name}</h5>
-                                <p class="mb-1 text-white">Fecha: ${budget.date}</p>
-                            </div>
-                        </div>
-                        <a href="${budget.file}" class="btn btn-primary" download>Descargar</a>
-                    </div>
-                `;
-                budgetList.append(budgetItem);
-            });
+
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const selectSucursal = document.getElementById("sucursalSelect");
+
+    try {
+        // 📌 Obtener el token del usuario
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error("Usuario no autenticado. Inicie sesión.");
         }
 
-        // Funcionalidad de búsqueda y filtrado
-        $(document).ready(function() {
-            loadBudgets();
+        // 📌 Decodificar el token para obtener el ID del usuario
+        const decodedToken = JSON.parse(atob(token.split(".")[1]));
+        const userId = decodedToken.id;
 
-            $('#search').on('keyup', function() {
-                const value = $(this).val().toLowerCase();
-                $('#budgetList .list-group-item').filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
-            });
+        // 📌 Obtener las sucursales disponibles para el usuario
+        const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
         });
+
+        if (!response.ok) {
+            throw new Error("Error al obtener las sucursales del usuario.");
+        }
+
+        const sucursales = await response.json();
+        
+        // 📌 Limpiar y llenar el select con las sucursales disponibles
+        selectSucursal.innerHTML = '<option value="" disabled selected>Seleccione una sucursal</option>';
+
+        sucursales.forEach(sucursal => {
+            const option = document.createElement("option");
+            option.value = sucursal.id_sucursal;
+            option.textContent = sucursal.nombre_sucursal;
+            selectSucursal.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar las sucursales:", error);
+        alert("Error al cargar las sucursales. Intente nuevamente.");
+    }
+});
+
 </script>
 
 

@@ -256,7 +256,7 @@
                 </a>
               </li>
               <li class="nav-item" id = "submodulo-6">
-                <a href="http://127.0.0.1:5500/Pantallas/Modulos/ABASTECIMIENTO/Insumos.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="fas fa-boxes nav-icon"></i>
                   <p>Insumos</p>
                 </a>                
@@ -367,8 +367,8 @@
     <!-- Content Header (Page header) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <a class="navbar-brand d-flex align-items-center mx-auto" href="#">
-          <i class="bi bi-car-front"></i>
-          Vehículos
+          <i class="fas fa-boxes nav-icon"></i>
+          Insumos
         </a>
       </nav>
       
@@ -382,144 +382,184 @@
               </h3>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" id="Nuevovheiculo-tab" data-toggle="pill" href="#nuevovheiculo" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
-                    <i class="bi bi-car-front-fill"></i> Nuevo vehículo
+                <a class="nav-link active" id="FlujoInsumos" data-toggle="pill" href="#panelFlujoinsumos" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">
+                    <i class="fas fa-exchange-alt"></i> Flujo de Insumos
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#listadovehiculos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
-                  <i class="fas fa-car-side"></i> Lista de vehículos
+                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#listadoInsumos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-list"></i> Listado de Insumos
                 </a>
               </li>
-              
-              
+
+              <li class="nav-item">
+                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#panelHistorialinsumos" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-box"></i> Historial Insumos 
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" id="Listadovehiculos-tab" data-toggle="pill" href="#panelCrearItem" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">
+                  <i class="fas fa-box"></i> Crear Insumo
+                </a>
+              </li>
           </ul>
         </div>
 
         <div class="card-body">
           <div class="tab-content" id="n">
-            <div class="tab-pane fade show active" id="nuevovheiculo" role="tabpanel" aria-labelledby="nuevovheiculo-tab">
-                <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4">
-                          <div class="btn-container">
-                            <button class="btn btn-primary btn-square" data-toggle="modal" data-target="#agregarvehiculomodal">
-                              <i class="bi bi-car-front-fill"></i> 
-                            </button>
-                          </div>
-                          <div class="description-inline ml-3">
-                            <span class="line-1">Agregar</span>
-                            <span class="line-2">Vehículo</span>
-                          </div>
-                        </div>
+            <div class="tab-pane fade show active" id="panelFlujoinsumos" role="tabpanel" aria-labelledby="panelFlujoinsumos">
+                <div class="container  mt-2">
+                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4" data-toggle="modal" data-target="#agregarItemEspecificoModal">
+                      <div class="btn-container">
+                        <button class="btn btn-primary btn-square">
+                          <i class="fas fa-box-open"></i>
+                        </button>
+                      </div>
+                      <div class="description-inline ml-3">
+                        <span class="line-1">Entrada</span>
+                        <span class="line-2">Insumos</span>
                       </div>
                     </div>
-                  </div>
-                  
-                  
-                  
-                  
-            
-              <!-- Modal agregar Vehículo -->
-              <div class="modal fade" id="agregarvehiculomodal" tabindex="-1" aria-labelledby="agregarvehiculomodal" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                  <div class="modal-content">
-                    <div class="modal-header custom-card-header">
-                      <h5 class="modal-title" id="editarVehiculoModalLabel">Agregar Vehículo</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="card card-body">
-                        <!-- Mensaje de error -->
-                        <div id="mensajeErrorVehiculo" class="alert alert-danger" style="display: none;"></div>
-
-                        <!-- Fila para búsqueda de cliente y campo no editable -->
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="buscarCliente">Buscar Cliente</label>
-                            <input type="text" class="form-control" id="buscarCliente" placeholder="Ingrese nombre o RUT del cliente">
-                            <!-- Lista de coincidencias -->
-                            <div id="listaCoincidenciasClientes" class="list-group mt-2"></div>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="clienteSeleccionado">Cliente (RUT)</label>
-                            <input type="text" class="form-control" id="clienteSeleccionado" placeholder="Cliente seleccionado" readonly>
-                          </div>
-                        </div>
-
-                        <!-- Formulario para agregar vehículo -->
-                        <form id="idformagregarvehiculo">
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="patenteVehiculo">Patente</label>
-                              <input type="text" class="form-control" id="patenteVehiculo" placeholder="Ingrese la patente del vehículo" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="marcaVehiculo">Marca</label>
-                              <input type="text" class="form-control" id="marcaVehiculo" placeholder="Ingrese la marca del vehículo" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="modeloVehiculo">Modelo</label>
-                              <input type="text" class="form-control" id="modeloVehiculo" placeholder="Ingrese el modelo del vehículo" required>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-4">
-                              <label for="anioVehiculo">Año</label>
-                              <input type="text" class="form-control" id="anioVehiculo" placeholder="Ingrese el año del vehículo" required>
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="colorVehiculo">Color</label>
-                              <input type="text" class="form-control" id="colorVehiculo" placeholder="Ingrese el color del vehículo">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="kilometrajeVehiculo">Kilometraje</label>
-                              <input type="text" class="form-control" id="kilometrajeVehiculo" placeholder="Ingrese el kilometraje del vehículo" required>
-                            </div>
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="numMotorVehiculo">Número de Motor</label>
-                              <input type="text" class="form-control" id="numMotorVehiculo" placeholder="Ingrese el número de motor">
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="tipoVehiculo">Tipo de Vehículo</label>
-                              <select class="form-control" id="tipoVehiculoSelect" required>
-                               
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="obsVehiculo">Observaciones</label>
-                            <textarea class="form-control" id="obsVehiculo" rows="3" placeholder="Ingrese observaciones adicionales"></textarea>
-                          </div>
-                        </form>
+  
+                    <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4"data-toggle="modal" data-target="#salidaItemEspecificoModal">
+                      <div class="btn-container">
+                        <button class="btn btn-primary btn-square">
+                        <i class="fas fa-box-open"></i>
+                        </button>
+                      </div>
+                      <div class="description-inline ml-3">
+                        <span class="line-1">Salida</span>
+                        <span class="line-2">Insumos</span>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="btnagregarvehiculo" disabled>Agregar Vehículo</button>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </div>
-                  </div>
+                  
                 </div>
+
+                <div class="modal fade" id="agregarItemEspecificoModal" tabindex="-1" aria-labelledby="agregarItemEspecificoModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                      <div class="modal-content">
+                          <div class="modal-header custom-card-header">
+                              <h5 class="modal-title" id="agregarItemEspecificoModalLabel">Entrada de Insumo</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <div class="card card-body">
+                                  <div id="mensajeErrorItemEspecifico" class="alert alert-danger" style="display: none;"></div>
+              
+                                  <!-- Fila para búsqueda de insumo -->
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                          <label for="buscarInsumo">Buscar Insumo</label>
+                                          <input type="text" class="form-control" id="buscarInsumo" placeholder="Ingrese la descripción del insumo">
+                                          <div id="listaCoincidenciasInsumos" class="list-group mt-2"></div>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                          <label for="insumoSeleccionado">Insumo Seleccionado </label>
+                                          <input type="text" class="form-control" id="insumoSeleccionado" placeholder="Seleccione un insumo" readonly>
+                                          <input type="hidden" id="hiddenInsumoId"> <!-- Campo oculto para guardar el ID -->
+                                        </div>
+                                  </div>
+              
+                                  <!-- Formulario para agregar item específico -->
+                                  <form id="idformagregaritem">
+                                      <div class="form-row">
+                                          <div class="form-group col-md-4">
+                                              <label for="cantidadInsumo">Cantidad</label>
+                                              <input type="number" class="form-control" id="cantidadInsumo" placeholder="Ingrese la cantidad" min="1" required>
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                              <label for="caducidadInsumo">Fecha de Caducidad</label>
+                                              <input type="date" class="form-control" id="caducidadInsumo" >
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                              <label for="sucursalInsumo">Sucursal</label>
+                                              <select class="form-control" id="sucursalInsumoEntrada" required>
+                                                  <option value="">Seleccione una sucursal</option>
+                                                  <!-- Opciones dinámicas cargadas desde la API -->
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnAgregarItemEspecifico">Registrar Entrada</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          </div>
+                      </div>
+                  </div>
               </div>
 
-
-
-              
-            </div>
-            <div class="tab-pane fade" id="listadovehiculos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
+              <div class="modal fade" id="salidaItemEspecificoModal" tabindex="-1" aria-labelledby="salidaItemEspecificoModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header custom-card-header">
+                            <h5 class="modal-title" id="salidaItemEspecificoModalLabel">Salida de Insumo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card card-body">
+                                <div id="mensajeErrorSalidaItem" class="alert alert-danger" style="display: none;"></div>
+            
+                                <!-- Fila para búsqueda de insumo -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="buscarInsumoSalida">Buscar Insumo</label>
+                                        <input type="text" class="form-control" id="buscarInsumoSalida" placeholder="Ingrese la descripción del insumo">
+                                        <div id="listaCoincidenciasInsumosSalida" class="list-group mt-2"></div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="insumoSeleccionadoSalida">Insumo Seleccionado</label>
+                                        <input type="text" class="form-control" id="insumoSeleccionadoSalida" placeholder="Seleccione un insumo" readonly>
+                                        <input type="hidden" id="hiddenInsumoIdSalida"> <!-- Campo oculto para guardar el ID -->
+                                    </div>
+                                </div>
+            
+                                <!-- Formulario para registrar salida de ítem -->
+                                <form id="idformSalidaItem">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="cantidadSalida">Cantidad</label>
+                                            <input type="number" class="form-control" id="cantidadSalida" placeholder="Ingrese la cantidad" min="1" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="caducidadSalida">Fecha de Caducidad</label>
+                                            <input type="date" class="form-control" id="caducidadSalida" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="sucursalSalida">Sucursal</label>
+                                            <select class="form-control" id="sucursalSalida" required>
+                                                <option value="">Seleccione una sucursal</option>
+                                                <!-- Opciones dinámicas cargadas desde la API -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" id="btnRegistrarSalidaItem">Registrar Salida</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+  
+        </div>
+            <div class="tab-pane fade" id="listadoInsumos" role="tabpanel" aria-labelledby="listadovehiculos-tab">
               <div class="card card-primary py-4 px-4 col-md-12">
 
                 <div class="card-header">
-                  <h3 class="card-title bi bi-car-front nav-icon"> Panel Listado de Vehiculos</h3>
+                  <h3 class="card-title">Panel Listado de Insumos</h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" id="barraBuscarVehiculos" name="barraBuscarVehiculos" class="form-control float-right" placeholder="Buscar">
+                      <input type="text" id="barraBuscarIsumos" name="barraBuscarIsumos" class="form-control float-right" placeholder="Buscar">
                       <div class="input-group-append">
                         <button id="search_button" type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
@@ -531,15 +571,14 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive" style="height: 500px;">
-                    <table id="tablalistadovehiculos" class="table table-head-fixed table-bordered text-nowrap ">
+                    <table id="tablalistadoInsumos" class="table table-head-fixed table-bordered text-nowrap ">
                       <thead>
                         <tr>
-                          <th>Patente</th>
-                          <th>Marca</th>
-                          <th>Modelo</th>
-                          <th>Año</th>
-                          <th>Rut Cliente</th>
-                          <th>Ver</th>
+                          <th>Descripcion</th>
+                          <th>Disponible</th>
+                          <th>Precio</th>
+                          <th>Monto Total</th>
+                          <th>Sucursal</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -548,145 +587,14 @@
                       </tbody>
                       
                     </table>
-                    <!--Modals tabla Listado de Vehiculos-->
-                      <!-- Modal Ver Vehículo -->
-                      <div class="modal fade" id="verVehiculoModal" tabindex="-1" aria-labelledby="verVehiculoModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content border-0 shadow">
-                            <div class="modal-header bg-primary text-white">
-                              <h5 class="modal-title fs-5 fw-bold" id="verVehiculoModalLabel">Detalles del Vehículo</h5>
-                              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body p-4">
-                              <div class="row g-3">
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Patente</p>
-                                    <p class="mb-0 fw-bold" id="detallePatente">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Marca</p>
-                                    <p class="mb-0 fw-bold" id="detalleMarca">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Modelo</p>
-                                    <p class="mb-0 fw-bold" id="detalleModelo">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Año</p>
-                                    <p class="mb-0 fw-bold" id="detalleAnio">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Color</p>
-                                    <p class="mb-0 fw-bold" id="detalleColor">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Kilometraje</p>
-                                    <p class="mb-0 fw-bold" id="detalleKilometraje">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Número de Motor</p>
-                                    <p class="mb-0 fw-bold" id="detalleMotor">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Tipo de Vehículo</p>
-                                    <p class="mb-0 fw-bold" id="detalleTipo">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Rut del Cliente</p>
-                                    <p class="mb-0 fw-bold" id="detalleRutCliente">-</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-12 py-1">
-                                  <div class="bg-light p-3 rounded">
-                                    <p class="mb-1 text-muted small">Observaciones</p>
-                                    <p class="mb-0 fw-bold" id="detalleObservaciones">-</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer bg-light">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
 
+                    
+                  
+                  
+                  
                       
 
-                        <!-- Modal Editar Vehículo -->
-                        <div class="modal fade" id="editarVehiculoModal" tabindex="-1" aria-labelledby="editarVehiculoModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content border-0 shadow">
-                              <div class="modal-header bg-primary text-white">
-                                <h5 class="modal-title fs-5 fw-bold" id="editarVehiculoModalLabel">Editar Vehículo</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body p-4">
-                                <form id="formEditarVehiculo">
-                                  <div class="row g-3">
-                                    <div class="col-md-6">
-                                      <div class="form-group">
-                                        <label for="editarMarcaVehiculo" class="form-label text-muted small">Marca</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarMarcaVehiculo" placeholder="Ingrese la nueva marca" required>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="form-group">
-                                        <label for="editarModeloVehiculo" class="form-label text-muted small">Modelo</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarModeloVehiculo" placeholder="Ingrese el nuevo modelo" required>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <label for="editarAnioVehiculo" class="form-label text-muted small">Año</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarAnioVehiculo" placeholder="Ingrese el nuevo año" required>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <label for="editarColorVehiculo" class="form-label text-muted small">Color</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarColorVehiculo" placeholder="Ingrese el nuevo color" required>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <label for="editarKilometrajeVehiculo" class="form-label text-muted small">Kilometraje</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarKilometrajeVehiculo" placeholder="Ingrese el nuevo kilometraje" required>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <div class="form-group">
-                                        <label for="editarMotorVehiculo" class="form-label text-muted small">Número de Motor</label>
-                                        <input type="text" class="form-control form-control-lg" id="editarMotorVehiculo" placeholder="Ingrese el nuevo número de motor">
-                                      </div>
-                                    </div>
-                                  </div>
-                                </form>
-                              </div>
-                              <div class="modal-footer bg-light">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary" id="btnGuardarCambiosVehiculo">Guardar Cambios</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
 
                       
                     
@@ -695,6 +603,131 @@
                 <!-- /.card-body -->
               </div>  
             </div>
+
+
+            <div class="tab-pane fade" id="panelCrearItem" role="tabpanel" aria-labelledby="panelCrearItem">
+              <div class="container  mt-2">
+                  <div class="card card-custom d-flex flex-row justify-content-start align-items-center mb-4" data-toggle="modal" data-target="#agregarInsumoModal">
+                    <div class="btn-container">
+                      <button class="btn btn-primary btn-square">
+                        <i class="fas fa-box-open"></i>
+                      </button>
+                    </div>
+                    <div class="description-inline ml-3">
+                      <span class="line-1">Crear</span>
+                      <span class="line-2">Insumo</span>
+                    </div>
+                  </div>
+
+                
+              </div>
+
+              <div class="modal fade" id="agregarInsumoModal" tabindex="-1" aria-labelledby="agregarInsumoModal" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header custom-card-header">
+                            <h5 class="modal-title" id="agregarInsumoModalLabel">Crear Insumo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card card-body">
+                                <div id="mensajeError" class="alert alert-danger" style="display: none;"></div>
+                                <form id="idformagregarinsumo">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="descripcionInsumo">Descripción</label>
+                                            <input type="text" class="form-control" id="descripcionInsumo" placeholder="Ingrese la descripción" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="formatoInsumo">Formato</label>
+                                            <input type="text" class="form-control" id="formatoInsumo" placeholder="Ejemplo: Caja, Unidad">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="precioInsumo">Precio</label>
+                                            <input type="number" class="form-control" id="precioInsumo" placeholder="Ingrese el precio" min="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="stockMinimoInsumo">Stock Mínimo</label>
+                                            <input type="number" class="form-control" id="stockMinimoInsumo" placeholder="Ingrese el stock mínimo" min="0">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="stockMaximoInsumo">Stock Máximo</label>
+                                            <input type="number" class="form-control" id="stockMaximoInsumo" placeholder="Ingrese el stock máximo" min="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="sucursalInsumo">Sucursal</label>
+                                            <select class="form-control" id="sucursalInsumo" required>
+                                                <option value="">Seleccione una sucursal</option>
+                                                <!-- Opciones dinámicas cargadas desde la API -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnAgregarInsumo">Crear Insumo</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="panelHistorialinsumos" role="tabpanel" aria-labelledby="panelHistorialinsumos">
+            <div class="card card-primary py-4 px-4 col-md-12">
+
+              <div class="card-header">
+                <h3 class="card-title">Historial de Insumos</h3>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 200px;">
+                    <input type="text" id="barraBuscarHistorial" name="barraBuscarHistorial" class="form-control float-right" placeholder="Buscar">
+                    <div class="input-group-append">
+                      <button id="search_button" type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive" style="height: 500px;">
+                  <table id="tablahistorialinsumos" class="table table-head-fixed table-bordered text-nowrap ">
+                    <thead>
+                      <tr>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Operacion</th>
+                        <th>Fecha Operacion</th>
+                        <th>Sucursal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                                    
+                      
+                    </tbody>
+                    
+                  </table>
+                    
+
+                      
+
+                    
+                  
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>  
+          </div>
+
+            
           
             
             
@@ -797,57 +830,69 @@
   <script src="../../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- SCRIPT FUNCIONALIDAD TABLA -->
 <!--JS para validaciones animaciones y mas -->
-<script type = "module" src="../../../JavaScripts/Vehiculos/agregarvehiculos.js"></script>
+
 <script type = "module" src="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
-<script type = "module" src="../../../JavaScripts/Vehiculos/buscarClienteVehiculo.js"></script>
-<script type = "module" src="../../../JavaScripts/Vehiculos/tablaVehiculos.js"></script>
-<script type = "module" src="../../../JavaScripts/Vehiculos/editarVehiculo.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/CreaInsumo.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/TablaInsumos.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/buscarInsumomodal.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/buscarinsumosalida.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/agregarItem.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/SalidaItem.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/TablaHistorialinsumos.js"></script>
+<script type = "module" src="../../../JavaScripts/Insumos/cargarsucursalesEntrada.js"></script>
+
+
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-  const tipoVehiculoSelect = document.getElementById('tipoVehiculoSelect');
+  document.addEventListener("DOMContentLoaded", async () => {
+    const selectSucursal = document.getElementById("sucursalInsumo");
 
-  if (!tipoVehiculoSelect) {
-    console.error('No se encontró el elemento select para el tipo de vehículo');
-    return;
-  }
+    try {
+        // 📌 Obtener el token del usuario
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error("Usuario no autenticado. Inicie sesión.");
+        }
 
-  try {
-    // Limpiar el select antes de rellenarlo
-    tipoVehiculoSelect.innerHTML = '<option value="">Seleccione un tipo de vehículo</option>';
+        // 📌 Decodificar el token para obtener el ID del usuario
+        const decodedToken = JSON.parse(atob(token.split(".")[1]));
+        const userId = decodedToken.id;
 
-    // Realizar la solicitud para obtener los tipos de vehículos
-    const response = await fetch('http://localhost:3000/api/vehiculos/tipos', { method: 'GET' });
+        // 📌 Obtener las sucursales disponibles para el usuario
+        const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        });
 
-    if (!response.ok) {
-      throw new Error('Error al obtener los tipos de vehículo');
+        if (!response.ok) {
+            throw new Error("Error al obtener las sucursales del usuario.");
+        }
+
+        const sucursales = await response.json();
+        
+        // 📌 Limpiar y llenar el select con las sucursales disponibles
+        selectSucursal.innerHTML = '<option value="" disabled selected>Seleccione una sucursal</option>';
+
+        sucursales.forEach(sucursal => {
+            const option = document.createElement("option");
+            option.value = sucursal.id_sucursal;
+            option.textContent = sucursal.nombre_sucursal;
+            selectSucursal.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar las sucursales:", error);
+        alert("Error al cargar las sucursales. Intente nuevamente.");
     }
-
-    const tiposVehiculos = await response.json();
-
-    // Rellenar el select con los tipos de vehículo
-    tiposVehiculos.forEach((tipoVehiculo) => {
-      const option = document.createElement('option');
-      option.value = tipoVehiculo.id_tipo_vehiculo; // Guardar el ID del tipo de vehículo
-      option.textContent = tipoVehiculo.descripcion;
-      tipoVehiculoSelect.appendChild(option);
-    });
-
-    console.log('Tipos de vehículo cargados correctamente');
-  } catch (error) {
-    console.error('Error al cargar los tipos de vehículo:', error.message);
-    alert('Hubo un problema al cargar los tipos de vehículo. Intente nuevamente.');
-  }
-
-  // Evento para manejar el cambio de selección del tipo de vehículo
-  tipoVehiculoSelect.addEventListener('change', () => {
-    const selectedValue = tipoVehiculoSelect.value; // ID del tipo de vehículo seleccionado
-    console.log('ID del tipo de vehículo seleccionado:', selectedValue);
-  });
 });
 
 </script>
+
+
 
 
 </body>
