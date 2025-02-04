@@ -143,6 +143,28 @@ const Empleado = {
             console.error('Error al obtener empleados sin contrato:', error);
             throw error;
         }
+    },
+
+    /**
+     * Obtiene todos los empleados que tienen contrato en el mismo taller del usuario.
+     * @param {number} idTaller - ID del taller asociado al usuario.
+     * @returns {Promise<Array>} - Lista de empleados con contrato en el taller.
+     */
+    getEmpleadosConContrato: async (idTaller) => {
+        try {
+            const query = `
+                SELECT e.*, c.id_contrato, tc.descripcion AS tipo_contrato
+                FROM EMPLEADO e
+                INNER JOIN CONTRATO c ON e.rut_empleado = c.id_empleado
+                INNER JOIN TIPO_CONTRATO tc ON c.id_tipo_contrato = tc.id_tipo_contrato
+                WHERE e.id_taller = $1;
+            `;
+            const result = await pool.query(query, [idTaller]);
+            return result.rows;
+        } catch (error) {
+            console.error('Error al obtener empleados con contrato:', error);
+            throw error;
+        }
     }
 };
 

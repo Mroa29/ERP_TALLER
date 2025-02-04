@@ -116,6 +116,28 @@ const Vehiculo = {
     const result = await pool.query(query);
     return result.rows;
   },
+
+  /**
+   * Obtiene todos los vehículos asociados a un cliente específico.
+   * @param {string} rut_cliente - RUT del cliente.
+   * @returns {Promise<Array<Object>>} - Retorna una lista de vehículos.
+   */
+  getVehiclesByRutCliente: async (rut_cliente) => {
+    try {
+      const query = `
+        SELECT *
+        FROM VEHICULO
+        WHERE RUT_CLIENTE = $1;
+      `;
+      const values = [rut_cliente];
+
+      const result = await pool.query(query, values);
+      return result.rows;
+    } catch (error) {
+      console.error('Error al obtener vehículos por rut_cliente:', error);
+      throw error;
+    }
+  },
 };
 
 module.exports = Vehiculo;

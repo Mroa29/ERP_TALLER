@@ -78,6 +78,30 @@ const ContratoController = {
             console.error('Error al eliminar contrato:', error);
             res.status(500).json({ error: 'Error interno del servidor' });
         }
+    },
+
+    /**
+     * Controlador para obtener un contrato por RUT de empleado.
+     */
+    getContratoByRut: async (req, res) => {
+        try {
+            const { rut } = req.params;
+
+            if (!rut) {
+                return res.status(400).json({ error: "El RUT del empleado es obligatorio." });
+            }
+
+            const contrato = await Contrato.getContratoByRut(rut);
+
+            if (!contrato) {
+                return res.status(404).json({ error: "Contrato no encontrado para este empleado." });
+            }
+
+            res.status(200).json(contrato);
+        } catch (error) {
+            console.error("Error en getContratoByRut:", error);
+            res.status(500).json({ error: "Error interno del servidor." });
+        }
     }
 };
 

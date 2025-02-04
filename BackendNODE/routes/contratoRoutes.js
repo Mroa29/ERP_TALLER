@@ -17,4 +17,10 @@ router.put('/:id', ContratoController.updateContrato);
 // Eliminar un contrato por ID
 router.delete('/:id', ContratoController.deleteContrato);
 
+/**
+ * @route GET /api/contratos/:rut
+ * @desc Obtener contrato por el RUT del empleado.
+ */
+router.get("/contratado/:rut", ContratoController.getContratoByRut);
+
 module.exports = router;

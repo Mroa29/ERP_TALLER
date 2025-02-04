@@ -35,4 +35,8 @@ router.delete('/:rut', empleadoController.deleteEmpleado);
 // Ruta para obtener empleados sin contrato por ID de taller
 router.get('/sin-contrato/:idTaller', empleadoController.getEmpleadosSinContrato);
 
+
+// Ruta para obtener empleados con contrato en el mismo taller
+router.get("/con-contrato/:idTaller", empleadoController.getEmpleadosConContrato);
+
 module.exports = router;

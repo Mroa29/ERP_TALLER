@@ -22,5 +22,8 @@ router.delete('/:patente', VehiculoController.deleteVehiculo);
 router.get('/', VehiculoController.getAllVehiculos);
 
 
+router.get('/rut-cliente/:rut_cliente', VehiculoController.getVehiclesByRutCliente);
+
+
 
 module.exports = router;

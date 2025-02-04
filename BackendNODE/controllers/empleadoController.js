@@ -93,7 +93,33 @@ const empleadoController = {
             console.error("Error al obtener empleados sin contrato:", error);
             res.status(500).json({ error: "Error interno del servidor." });
         }
+    },
+    /**
+     * Obtiene todos los empleados con contrato en el mismo taller del usuario.
+     * @route GET /api/empleados/con-contrato/:idTaller
+     */
+    getEmpleadosConContrato : async (req, res) => {
+        try {
+            const { idTaller } = req.params;
+
+            if (!idTaller) {
+                return res.status(400).json({ error: "El ID del taller es obligatorio." });
+            }
+
+            const empleados = await Empleado.getEmpleadosConContrato(idTaller);
+
+            if (empleados.length === 0) {
+                return res.status(404).json({ mensaje: "No hay empleados con contrato en este taller." });
+            }
+
+            res.status(200).json(empleados);
+        } catch (error) {
+            console.error("Error al obtener empleados con contrato:", error);
+            res.status(500).json({ error: "Error interno del servidor." });
+        }
     }
+
+   
 };
 
 module.exports = empleadoController;
