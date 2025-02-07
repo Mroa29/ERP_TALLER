@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', async function () {
     const inputBuscarInsumo = document.getElementById('buscarInsumo');
     const listaCoincidencias = document.getElementById('listaCoincidenciasInsumos');
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const userId = decodedToken.id;
 
         // Obtener las sucursales asociadas al usuario
-        const sucursalesResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        const sucursalesResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const sucursalIds = sucursales.map(sucursal => sucursal.id_sucursal);
 
         // Obtener la lista de insumos
-        const insumosResponse = await fetch('http://localhost:3000/api/insumos', {
+        const insumosResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

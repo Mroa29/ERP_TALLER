@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const tableBody = document.querySelector("#tablahistorialinsumos tbody");
     const searchInput = document.getElementById("barraBuscarHistorial");
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const userId = decodedToken.id;
 
         // 📌 Obtener las sucursales asociadas al usuario
-        const sucursalResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        const sucursalResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const sucursalIds = sucursales.map(sucursal => sucursal.id_sucursal);
 
         // 📌 Obtener los ítems específicos de las sucursales del usuario
-        const itemResponse = await fetch(`http://localhost:3000/api/item-especifico?sucursales=${sucursalIds.join(",")}`, {
+        const itemResponse = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico?sucursales=${sucursalIds.join(",")}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // 📌 Obtener los detalles de los insumos en base a sus ID
         const insumoIds = [...new Set(items.map(item => item.id_insumo))];
-        const insumosResponse = await fetch(`http://localhost:3000/api/insumos?ids=${insumoIds.join(",")}`, {
+        const insumosResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos?ids=${insumoIds.join(",")}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const formCobro = document.getElementById("formCobro");
     const tablaCobros = document.getElementById("tablacobrosacuenta").querySelector("tbody");
@@ -39,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             // 📌 Enviar el cobro al backend
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:3000/api/cobros", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/cobros`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -55,8 +57,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             const result = await response.json();
             console.log("Cobro agregado:", result);
 
-            // 📌 Agregar el cobro a la tabla
-            agregarFilaCobro(result.cobro);
+            // 📌 Agregar el cobro a la tabla (al inicio para orden inverso)
+            agregarFilaCobro(result.cobro, true);
 
             // Limpiar el formulario
             formCobro.reset();
@@ -69,16 +71,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // 📌 Función para agregar una fila de cobro a la tabla
-    function agregarFilaCobro(cobro) {
+    function agregarFilaCobro(cobro, agregarAlInicio = false) {
         const fila = document.createElement("tr");
         const fecha = new Date(cobro.fecha_cobro).toLocaleDateString("es-ES");
 
         fila.innerHTML = `
             <td>${cobro.numero_recibo}</td>
-            <td>$${cobro.cantidad_cobrada_cobros.toLocaleString()}</td>
-            <td>${cobro.forma_pago_cobros}</td>
+            <td>$${new Intl.NumberFormat("es-CL").format(cobro.cantidad_cobrada)}</td>
+            <td>${cobro.forma_pago}</td>
             <td>${fecha}</td>
-            <td>${cobro.descripcion_cobro || "-"}</td>
+            <td>${cobro.descripcion || "-"}</td>
             <td>
                 <button class="btn btn-warning btn-sm btnEditarCobro" data-id="${cobro.id_cobro}">
                     Editar
@@ -86,6 +88,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             </td>
         `;
 
-        tablaCobros.appendChild(fila);
+        // 📌 Insertar en la primera posición para mantener orden inverso
+        if (agregarAlInicio) {
+            tablaCobros.prepend(fila);
+        } else {
+            tablaCobros.appendChild(fila);
+        }
     }
 });

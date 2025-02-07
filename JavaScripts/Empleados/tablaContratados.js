@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const tableBody = document.querySelector("#tablalistadoContratdos tbody");
     const searchInput = document.getElementById("barraBuscarContratados");
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userId = decodedToken.id;
 
         // Obtener los datos del usuario para obtener el ID del taller
-        const userResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}`, {
+        const userResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const idTaller = userData.user.taller;
 
         // Obtener empleados con contrato del mismo taller
-        const response = await fetch(`http://localhost:3000/api/empleados/con-contrato/${idTaller}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/api/empleados/con-contrato/${idTaller}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -48,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await Promise.all(empleados.map(async empleado => {
             if (empleado.id_cargo) {
                 try {
-                    const cargoResponse = await fetch(`http://localhost:3000/api/cargos/${empleado.id_cargo}`, {
+                    const cargoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/cargos/${empleado.id_cargo}`, {
                         method: "GET",
                         headers: {
                             "Authorization": `Bearer ${token}`,
@@ -107,7 +109,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <i class="fas fa-eye"></i> Ver Contrato
                     </button>
                 </td>
-
             `;
             tableBody.appendChild(row);
         });

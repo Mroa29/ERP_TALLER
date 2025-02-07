@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     const btnAgregarItemEspecifico = document.getElementById('btnAgregarItemEspecifico');
 
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log("📌 Enviando datos a la API para agregar el ítem:", JSON.stringify(itemData, null, 2));
 
-            const itemResponse = await fetch("http://localhost:3000/api/item-especifico", {
+            const itemResponse = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -77,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // 📌 Paso 2: Obtener el nuevo stock disponible
             console.log(`📌 Consultando stock disponible para ID_INSUMO=${idInsumo} en ID_SUCURSAL=${idSucursal}`);
 
-            const stockResponse = await fetch(`http://localhost:3000/api/item-especifico/total-stock/${idInsumo}/${idSucursal}`, {
+            const stockResponse = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico/total-stock/${idInsumo}/${idSucursal}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // 📌 Paso 3: Obtener datos del insumo
             console.log(`📌 Obteniendo información del insumo con ID=${idInsumo}`);
 
-            const insumoResponse = await fetch(`http://localhost:3000/api/insumos/${idInsumo}`, {
+            const insumoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos/${idInsumo}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -125,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log("📌 Enviando datos a la API para actualizar el stock del insumo:", JSON.stringify(actualizarStock, null, 2));
 
-            const updateResponse = await fetch(`http://localhost:3000/api/insumos/stock/${idInsumo}`, {
+            const updateResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos/stock/${idInsumo}`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,

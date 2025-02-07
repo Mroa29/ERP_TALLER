@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Obtener el token del localStorage
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const userId = decodedToken.id;
 
     // Consultar las pantallas disponibles para el usuario
-    const responsePantallas = await fetch(`http://localhost:3000/api/usuarios/${userId}/pantallas`, {
+    const responsePantallas = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/pantallas`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -55,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Consultar la información del usuario para mostrar su nombre, apellido y taller
-    const responseUsuario = await fetch(`http://localhost:3000/api/usuarios/${userId}`, {
+    const responseUsuario = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Consultar el nombre del taller
-    const responseTaller = await fetch(`http://localhost:3000/api/talleres/${taller}`, {
+    const responseTaller = await fetch(`${CONFIG.API_BASE_URL}/api/talleres/${taller}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

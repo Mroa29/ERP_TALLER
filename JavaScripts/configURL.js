@@ -1,0 +1,6 @@
+const CONFIG = {
+    API_BASE_URL: "http://localhost:3000", // Cambia esta URL al desplegar
+  };
+  
+  export default CONFIG;
+  

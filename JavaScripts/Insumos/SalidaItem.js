@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     const btnAgregarItemSalida = document.getElementById('btnRegistrarSalidaItem');
 
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log("✅ Todos los elementos del formulario existen.");
 
-            let cantidadInsumo = cantidadInsumoInput.value;
+            let cantidadInsumo = parseInt(cantidadInsumoInput.value);
             const caducidadInsumo = caducidadInsumoInput.value;
             const idInsumo = idInsumoInput.value;
             const idSucursal = idSucursalInput.value;
@@ -41,16 +43,42 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("- ID Insumo:", idInsumo);
             console.log("- ID Sucursal:", idSucursal);
 
-            if (!cantidadInsumo || !caducidadInsumo || !idInsumo || !idSucursal) {
+            if (!cantidadInsumo || cantidadInsumo <= 0 || !caducidadInsumo || !idInsumo || !idSucursal) {
                 console.error("❌ Error: Falta uno o más campos obligatorios.");
-                alert("Todos los campos son obligatorios.");
+                alert("Todos los campos son obligatorios y la cantidad debe ser mayor a 0.");
+                return;
+            }
+
+            // 📌 Paso 1: Obtener el stock actual del insumo
+            console.log(`📌 Consultando stock disponible para ID_INSUMO=${idInsumo} en ID_SUCURSAL=${idSucursal}`);
+
+            const stockResponse = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico/total-stock/${idInsumo}/${idSucursal}`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!stockResponse.ok) {
+                console.error("❌ Error en la respuesta de la API al obtener el stock disponible:", await stockResponse.text());
+                throw new Error("Error al obtener el stock disponible.");
+            }
+
+            const stockResult = await stockResponse.json();
+            const stockDisponible = stockResult.total_stock || 0;
+            console.log(`✅ Stock disponible actual: ${stockDisponible}`);
+
+            // 📌 Validar que la cantidad a retirar no sea mayor que el stock disponible
+            if (cantidadInsumo > stockDisponible) {
+                alert(`No puede retirar más de ${stockDisponible} unidades disponibles.`);
                 return;
             }
 
             // 📌 Convertir la cantidad en negativo para indicar salida
             cantidadInsumo = -Math.abs(cantidadInsumo);
 
-            // 📌 Paso 1: Agregar el ítem específico (Salida)
+            // 📌 Paso 2: Registrar la salida del ítem
             const itemData = {
                 cantidad_insumo: cantidadInsumo,
                 caducidad_insumo: caducidadInsumo,
@@ -60,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log("📌 Enviando datos a la API para registrar salida de ítem:", JSON.stringify(itemData, null, 2));
 
-            const itemResponse = await fetch("http://localhost:3000/api/item-especifico", {
+            const itemResponse = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -77,10 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const itemResult = await itemResponse.json();
             console.log("✅ Salida de ítem registrada con éxito:", itemResult);
 
-            // 📌 Paso 2: Obtener el nuevo stock disponible
-            console.log(`📌 Consultando stock disponible para ID_INSUMO=${idInsumo} en ID_SUCURSAL=${idSucursal}`);
-
-            const stockResponse = await fetch(`http://localhost:3000/api/item-especifico/total-stock/${idInsumo}/${idSucursal}`, {
+            // 📌 Paso 3: Obtener el nuevo stock disponible después de la salida
+            const stockResponseUpdated = await fetch(`${CONFIG.API_BASE_URL}/api/item-especifico/total-stock/${idInsumo}/${idSucursal}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -88,19 +114,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            if (!stockResponse.ok) {
-                console.error("❌ Error en la respuesta de la API al obtener el stock disponible:", await stockResponse.text());
-                throw new Error("Error al obtener el stock disponible.");
+            if (!stockResponseUpdated.ok) {
+                console.error("❌ Error en la respuesta de la API al obtener el nuevo stock:", await stockResponseUpdated.text());
+                throw new Error("Error al obtener el nuevo stock disponible.");
             }
 
-            const stockResult = await stockResponse.json();
-            const nuevoStockDisponible = stockResult.total_stock || 0;
-            console.log(`✅ Nuevo stock disponible: ${nuevoStockDisponible}`);
+            const stockResultUpdated = await stockResponseUpdated.json();
+            const nuevoStockDisponible = stockResultUpdated.total_stock || 0;
+            console.log(`✅ Nuevo stock disponible después de la salida: ${nuevoStockDisponible}`);
 
-            // 📌 Paso 3: Obtener datos del insumo
-            console.log(`📌 Obteniendo información del insumo con ID=${idInsumo}`);
-
-            const insumoResponse = await fetch(`http://localhost:3000/api/insumos/${idInsumo}`, {
+            // 📌 Paso 4: Obtener datos del insumo para evaluar si el stock es crítico
+            const insumoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos/${idInsumo}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -120,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const esStockCritico = nuevoStockDisponible < insumoData.stock_minimo_insumo;
             console.log(`📌 Stock crítico: ${esStockCritico ? "Sí" : "No"}`);
 
-            // 📌 Paso 4: Actualizar el stock en la tabla INSUMO (Solo stock_disponible y stock_critico)
+            // 📌 Paso 5: Actualizar el stock en la tabla INSUMO
             const actualizarStock = {
                 stock_disponible: nuevoStockDisponible,
                 stock_critico: esStockCritico
@@ -128,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log("📌 Enviando datos a la API para actualizar el stock del insumo:", JSON.stringify(actualizarStock, null, 2));
 
-            const updateResponse = await fetch(`http://localhost:3000/api/insumos/stock/${idInsumo}`, {
+            const updateResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos/stock/${idInsumo}`, {
                 method: "PUT",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -146,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("✅ Insumo actualizado con nuevo stock:", updateResult);
 
             alert("Salida de ítem registrada y stock actualizado correctamente.");
-            location.reload();
+            window.location.reload();
 
         } catch (error) {
             console.error("❌ Error en el proceso de salida de ítem:", error);

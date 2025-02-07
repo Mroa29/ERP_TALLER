@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', async function () {
     const inputBuscarInsumoSalida = document.getElementById('buscarInsumoSalida');
     const listaCoincidenciasSalida = document.getElementById('listaCoincidenciasInsumosSalida');
@@ -16,13 +18,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         const userId = decodedToken.id;
 
         // 📌 Obtener las sucursales asociadas al usuario
-        const sucursalesResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        const sucursalesResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
         });
+
         if (!sucursalesResponse.ok) throw new Error('Error al obtener las sucursales del usuario.');
 
         const sucursales = await sucursalesResponse.json();
@@ -38,12 +41,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log('✅ Sucursales cargadas correctamente:', sucursales);
 
         // 📌 Obtener la lista de insumos
-        const insumosResponse = await fetch('http://localhost:3000/api/insumos', {
+        const insumosResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos`, {
             method: 'GET',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
         });
+
         if (!insumosResponse.ok) throw new Error('Error al obtener los insumos.');
 
         insumosFiltrados = await insumosResponse.json();
@@ -67,12 +72,17 @@ document.addEventListener('DOMContentLoaded', async function () {
             insumo.descripcion_insumo.toLowerCase().includes(filtro)
         );
 
-        // 📌 Mostrar coincidencias
+        // 📌 Mostrar coincidencias con stock disponible
         coincidencias.forEach(insumo => {
             const item = document.createElement('a');
             item.href = '#';
             item.classList.add('list-group-item', 'list-group-item-action');
-            item.textContent = `${insumo.descripcion_insumo} (ID: ${insumo.id_insumo})`;
+            item.innerHTML = `
+                <div>
+                    <strong>${insumo.descripcion_insumo}</strong>
+                    <span class="badge badge-info float-right">Stock: ${insumo.stock_disponible_insumo || 0}</span>
+                </div>
+            `;
             item.addEventListener('click', function (e) {
                 e.preventDefault();
                 seleccionarInsumo(insumo);

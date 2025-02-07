@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js"; // 📌 Archivo de configuración con la URL base de la API
+
 document.addEventListener("DOMContentLoaded", async function () {
     const inputBuscarPresupuesto = document.getElementById("buscarPresupuestoManoObra");
     const listaCoincidenciasPresupuestos = document.getElementById("listaCoincidenciasPresupuestosManoObra");
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const decodedToken = JSON.parse(atob(token.split(".")[1]));
             const userId = decodedToken.id;
 
-            const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             sucursalesUsuario = await obtenerSucursalesUsuario();
             if (sucursalesUsuario.length === 0) return;
 
-            const response = await fetch("http://localhost:3000/api/presupuestos");
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/presupuestos`);
             if (!response.ok) throw new Error("Error al obtener presupuestos.");
 
             const todosLosPresupuestos = await response.json();
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     // 📌 Seleccionar presupuesto y mostrar en la cabecera
     function seleccionarPresupuesto(presupuesto) {
-        idPresupuesto.textContent = presupuesto.id_presupuesto
+        idPresupuesto.textContent = presupuesto.id_presupuesto;
         rutClientePresupuesto.textContent = presupuesto.rut_cliente;
         placaVehiculoPresupuesto.textContent = presupuesto.placa_vehiculo;
         sucursalPresupuesto.textContent = presupuesto.id_sucursal;

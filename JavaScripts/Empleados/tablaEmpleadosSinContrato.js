@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const tableBody = document.querySelector("#tablalistadoempleados tbody");
     const searchInput = document.getElementById("barraBuscarEmpleados");
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userId = decodedToken.id;
 
         // Obtener los datos del usuario para obtener el ID del taller
-        const userResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}`, {
+        const userResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const idTaller = userData.user.taller;
 
         // Obtener empleados sin contrato del mismo taller
-        const response = await fetch(`http://localhost:3000/api/empleados/sin-contrato/${idTaller}`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/api/empleados/sin-contrato/${idTaller}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             console.log(`Obteniendo datos del empleado con RUT: ${rut}`);
 
-            const response = await fetch(`http://localhost:3000/api/empleados/${rut}`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/empleados/${rut}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function cargarTiposContrato() {
         try {
-            const response = await fetch("http://localhost:3000/api/tiposcontrato", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tiposcontrato`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,

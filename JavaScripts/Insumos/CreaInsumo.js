@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const btnAgregarInsumo = document.getElementById("btnAgregarInsumo");
 
@@ -25,6 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            // 📌 Validar que el stock mínimo no sea mayor que el stock máximo
+            if (stockMinimo > stockMaximo) {
+                alert("El stock mínimo no puede ser mayor que el stock máximo.");
+                return;
+            }
+
             // 📌 Crear el objeto del insumo
             const nuevoInsumo = {
                 descripcion: descripcion,
@@ -38,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // 📌 Enviar solicitud a la API
-            const response = await fetch("http://localhost:3000/api/insumos", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/insumos`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,

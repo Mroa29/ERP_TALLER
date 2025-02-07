@@ -1,6 +1,16 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const btnAgregarRepuesto = document.getElementById("btnAgregarRepuesto");
     const listaRepuestosPresupuestados = document.getElementById("listaRepuestosPresupuestados");
+
+    // 📌 Obtener el token del usuario
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Usuario no autenticado. Inicie sesión.");
+        window.location.href = "../login/loginkronos.html";
+        return;
+    }
 
     // 📌 Agregar repuesto a la base de datos y a la lista de tarjetas
     btnAgregarRepuesto.addEventListener("click", async function () {
@@ -30,29 +40,25 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         try {
             // 📌 Enviar el repuesto presupuestado al backend
-            const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:3000/api/repuestos-presupuestados", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/repuestos-presupuestados`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": token ? `Bearer ${token}` : ""
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
             });
 
             if (!response.ok) {
                 const errorData = await response.json();
-                if (errorData.message.includes("duplicate key")) {
-                    throw new Error("Este repuesto ya está presupuestado en este presupuesto.");
-                }
                 throw new Error(errorData.message || "Error al agregar el repuesto presupuestado.");
             }
 
             // 📌 Obtener el resultado de la API correctamente
             const result = await response.json();
-            console.log("Repuesto presupuestado agregado:", result.repuesto.id_repuestos_presupuestado);
+            console.log("Repuesto presupuestado agregado:", result);
 
-            if (!result || !result.repuesto.id_repuestos_presupuestado) {
+            if (!result || !result.repuesto?.id_repuestos_presupuestado) {
                 throw new Error("Error: El backend no devolvió un ID válido para el repuesto presupuestado.");
             }
 
@@ -73,31 +79,24 @@ document.addEventListener("DOMContentLoaded", async function () {
             // 📌 Evento para eliminar la tarjeta
             card.querySelector(".btnEliminarRepuesto").addEventListener("click", async function (event) {
                 const idRepuesto = event.target.getAttribute("data-id");
-                if (!idRepuesto) {
-                    alert("No se encontró el ID del repuesto presupuestado.");
-                    return;
-                }
 
-                const confirmacion = confirm("¿Seguro que desea eliminar este repuesto presupuestado?");
-                if (!confirmacion) return;
+                if (confirm("¿Seguro que desea eliminar este repuesto presupuestado?")) {
+                    try {
+                        const deleteResponse = await fetch(`${CONFIG.API_BASE_URL}/api/repuestos-presupuestados/${idRepuesto}`, {
+                            method: "DELETE",
+                            headers: {
+                                "Authorization": `Bearer ${token}`
+                            }
+                        });
 
-                try {
-                    const deleteResponse = await fetch(`http://localhost:3000/api/repuestos-presupuestados/${idRepuesto}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Authorization": token ? `Bearer ${token}` : ""
-                        }
-                    });
+                        if (!deleteResponse.ok) throw new Error("Error al eliminar el repuesto presupuestado.");
 
-                    if (!deleteResponse.ok) {
-                        throw new Error("Error al eliminar el repuesto presupuestado.");
+                        card.remove();
+                        alert("Repuesto presupuestado eliminado correctamente.");
+                    } catch (error) {
+                        console.error("Error al eliminar repuesto presupuestado:", error);
+                        alert(error.message);
                     }
-
-                    card.remove();
-                    alert("Repuesto presupuestado eliminado correctamente.");
-                } catch (error) {
-                    console.error("Error al eliminar repuesto presupuestado:", error);
-                    alert(error.message);
                 }
             });
 

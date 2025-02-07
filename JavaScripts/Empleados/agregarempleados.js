@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const btnAgregarEmpleado = document.getElementById('btnAgregarEmpleado');
 
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const userId = decodedToken.id;
 
             // Obtener ID del taller del usuario
-            const usuarioResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}`, {
+            const usuarioResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             // Enviar la solicitud POST a la API
-            const agregarEmpleadoResponse = await fetch('http://localhost:3000/api/empleados', {
+            const agregarEmpleadoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/empleados`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,

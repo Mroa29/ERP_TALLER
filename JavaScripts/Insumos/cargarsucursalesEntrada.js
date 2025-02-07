@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const selectSucursal = document.getElementById("sucursalInsumoEntrada");
 
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userId = decodedToken.id;
 
         // 📌 Obtener las sucursales disponibles para el usuario
-        const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

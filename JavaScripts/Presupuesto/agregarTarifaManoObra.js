@@ -1,22 +1,15 @@
-document.addEventListener('DOMContentLoaded', function () {
+import CONFIG from "../configURL.js";
+
+document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM fully loaded and parsed.");
 
     // Elementos del formulario de tarifa de mano de obra
     const formAgregarTarifaManoObra = document.getElementById('formAgregarTarifaManoObra');
-    const btnAgregarTarifaManoObra = document.getElementById('btnAgregarTarifaManoObra');
     const mensajeErrorTarifaManoObra = document.getElementById('mensajeErrorTarifaManoObra');
 
     // Verificar que los elementos existan
-    if (!formAgregarTarifaManoObra) {
-        console.error("No se encontró el formulario 'formAgregarTarifaManoObra'.");
-        return;
-    }
-    if (!btnAgregarTarifaManoObra) {
-        console.error("No se encontró el botón 'btnAgregarTarifaManoObra'.");
-        return;
-    }
-    if (!mensajeErrorTarifaManoObra) {
-        console.error("No se encontró el contenedor de mensaje de error 'mensajeErrorTarifaManoObra'.");
+    if (!formAgregarTarifaManoObra || !mensajeErrorTarifaManoObra) {
+        console.error("Elementos del formulario no encontrados.");
         return;
     }
 
@@ -36,31 +29,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Obtener valores ingresados
         const descripcionTarifa = inputDescripcionTarifaManoObra.value.trim();
-        const precioPieza = inputPrecioPiezaManoObra.value.trim();
-        const idSucursal = selectSucursalTarifaManoObra.value;
+        const precioPieza = parseInt(inputPrecioPiezaManoObra.value.trim(), 10);
+        const idSucursal = parseInt(selectSucursalTarifaManoObra.value, 10);
 
         // Validar campos obligatorios
         if (!descripcionTarifa) {
-            mensajeErrorTarifaManoObra.style.display = 'block';
-            mensajeErrorTarifaManoObra.textContent = 'Debe ingresar una descripción para la tarifa.';
+            mostrarError("Debe ingresar una descripción para la tarifa.");
             return;
         }
-        if (!precioPieza || isNaN(precioPieza) || parseInt(precioPieza, 10) <= 0) {
-            mensajeErrorTarifaManoObra.style.display = 'block';
-            mensajeErrorTarifaManoObra.textContent = 'Debe ingresar un precio válido.';
+        if (isNaN(precioPieza) || precioPieza <= 0) {
+            mostrarError("Debe ingresar un precio válido.");
             return;
         }
         if (!idSucursal) {
-            mensajeErrorTarifaManoObra.style.display = 'block';
-            mensajeErrorTarifaManoObra.textContent = 'Debe seleccionar una sucursal.';
+            mostrarError("Debe seleccionar una sucursal.");
             return;
         }
 
         // Construir el objeto de datos a enviar
         const data = {
             descripcion_tarifa: descripcionTarifa,
-            precio_por_pieza: parseInt(precioPieza, 10),
-            id_sucursal: parseInt(idSucursal, 10)
+            precio_por_pieza: precioPieza,
+            id_sucursal: idSucursal
         };
 
         console.log("Datos a enviar:", data);
@@ -68,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Obtener el token si se requiere autenticación
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3000/api/tarifas-mano-obra', {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tarifas-mano-obra`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,8 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorMsg = "Ya existe una tarifa con esta descripción en la misma sucursal.";
             }
 
-            mensajeErrorTarifaManoObra.style.display = 'block';
-            mensajeErrorTarifaManoObra.textContent = errorMsg;
+            mostrarError(errorMsg);
         }
     });
+
+    // Función para mostrar mensajes de error
+    function mostrarError(mensaje) {
+        mensajeErrorTarifaManoObra.style.display = 'block';
+        mensajeErrorTarifaManoObra.textContent = mensaje;
+    }
 });

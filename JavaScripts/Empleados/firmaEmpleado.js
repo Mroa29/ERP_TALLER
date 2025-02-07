@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("firmaEmpleadoCanvas");
     const ctx = canvas.getContext("2d");
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const formDataFirma = new FormData();
             formDataFirma.append("archivo", firmaFile);
 
-            const firmaResponse = await fetch("http://localhost:3000/api/documentos/firmas-empleado/subir", {
+            const firmaResponse = await fetch(`${CONFIG.API_BASE_URL}/api/documentos/firmas-empleado/subir`, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${token}` },
                 body: formDataFirma
@@ -104,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const formDataContrato = new FormData();
                 formDataContrato.append("archivo", archivoContrato);
 
-                const contratoResponse = await fetch("http://localhost:3000/api/documentos/documentos/subir", {
+                const contratoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/documentos/documentos/subir`, {
                     method: "POST",
                     headers: { "Authorization": `Bearer ${token}` },
                     body: formDataContrato
@@ -138,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 id_documento: idDocumento
             };
 
-            const contratoResponse = await fetch("http://localhost:3000/api/contratos", {
+            const contratoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/contratos`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,

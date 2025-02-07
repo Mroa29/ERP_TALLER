@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js"; // 📌 Archivo de configuración con la URL base de la API
+
 document.addEventListener("DOMContentLoaded", async function () {
     const selectTarifaManoObra = document.getElementById("tarifaManoObra");
 
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const decodedToken = JSON.parse(atob(token.split(".")[1]));
             const userId = decodedToken.id;
 
-            const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (sucursalesUsuario.length === 0) return;
 
             // Obtener todas las tarifas de mano de obra
-            const response = await fetch("http://localhost:3000/api/tarifas-mano-obra");
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tarifas-mano-obra`);
             if (!response.ok) throw new Error("Error al obtener tarifas.");
 
             const todasLasTarifas = await response.json();

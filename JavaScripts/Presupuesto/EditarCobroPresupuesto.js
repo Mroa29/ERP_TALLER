@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js"; // 📌 Archivo de configuración con la URL base de la API
+
 document.addEventListener("DOMContentLoaded", function () {
     const formEditCobro = document.getElementById("formEditCobro");
     const modalEditCobro = new bootstrap.Modal(document.getElementById("editModal"));
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 📌 Función para cargar los datos del cobro en el modal
     async function cargarDatosCobro(idCobro) {
         try {
-            const response = await fetch(`http://localhost:3000/api/cobros/${idCobro}`);
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/cobros/${idCobro}`);
             if (!response.ok) throw new Error("Error al obtener los datos del cobro.");
 
             const cobro = await response.json();
@@ -54,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         try {
-            const response = await fetch(`http://localhost:3000/api/cobros/${idCobroSeleccionado}`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/cobros/${idCobroSeleccionado}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

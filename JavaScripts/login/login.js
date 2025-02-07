@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
   event.preventDefault(); // Evitar recargar la página
 
@@ -10,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
   try {
       console.log('Datos enviados:', data); // Verificar datos enviados
-      const response = await fetch('http://localhost:3000/api/usuarios/login', {
+      const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

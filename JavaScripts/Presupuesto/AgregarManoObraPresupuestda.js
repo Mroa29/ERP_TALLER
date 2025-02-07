@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const btnAgregarManoObra = document.getElementById("btnAgregarManoObra");
     const listaPinturasPresupuestadasManoObra = document.getElementById("listaManoObraPresupuestada");
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const decodedToken = JSON.parse(atob(token.split(".")[1]));
             const userId = decodedToken.id;
 
-            const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             sucursalesUsuario = await obtenerSucursalesUsuario();
             if (sucursalesUsuario.length === 0) return;
 
-            const response = await fetch("http://localhost:3000/api/tarifas-mano-obra");
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tarifas-mano-obra`);
             if (!response.ok) throw new Error("Error al obtener tarifas.");
 
             const todasLasTarifas = await response.json();
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             tarifas.forEach(tarifa => {
                 const option = document.createElement("option");
                 option.value = tarifa.id_tarifa_mano_de_obra;
-                option.textContent = `${tarifa.descripcion_tarifa_mano_de_obra} - $${tarifa.precio_por_pieza_mano_de_obra}`;
+                option.textContent = `${tarifa.descripcion_tarifa_mano_de_obra} - $${tarifa.precio_por_pieza_mano_de_obra.toLocaleString()}`;
                 selectTarifaManoObra.appendChild(option);
             });
         } catch (error) {
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const nombrePieza = document.getElementById("nombrePiezaManoObra").value.trim();
         const cantidad = parseInt(document.getElementById("cantidadPiezasManoObra").value.trim(), 10);
         const idTarifa = selectTarifaManoObra.value;
-        const tarifaText = selectTarifaManoObra.options[selectTarifaManoObra.selectedIndex].text;
+        const tarifaText = selectTarifaManoObra.options[selectTarifaManoObra.selectedIndex]?.text;
 
         // Obtener ID del presupuesto desde la cabecera
         const idPresupuesto = document.getElementById("idPresupuestoManoObra").textContent.trim();
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         // Obtener el precio de la tarifa
-        const precioTarifa = parseInt(tarifaText.match(/\$(\d+)/)?.[1], 10) || 0;
+        const precioTarifa = tarifas.find(tarifa => tarifa.id_tarifa_mano_de_obra == idTarifa)?.precio_por_pieza_mano_de_obra || 0;
         const valorTotal = cantidad * precioTarifa;
 
         // 📌 Datos para enviar al backend
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             // 📌 Enviar la mano de obra presupuestada al backend
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:3000/api/mano-de-obra-presupuestada", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/mano-de-obra-presupuestada`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -104,19 +106,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                if (errorData.message.includes("duplicate key")) {
-                    throw new Error("Esta pieza ya está presupuestada en este presupuesto.");
-                }
                 throw new Error(errorData.message || "Error al agregar la mano de obra presupuestada.");
             }
 
             // 📌 Obtener el resultado de la API correctamente
             const result = await response.json();
             console.log("Mano de obra presupuestada agregada:", result.manoDeObra.id_mano_obra);
-
-            if (!result || !result.manoDeObra.id_mano_obra) {
-                throw new Error("Error: El backend no devolvió un ID válido para la mano de obra presupuestada.");
-            }
 
             // 📌 Crear la tarjeta visualmente después de éxito
             const card = document.createElement("div");
@@ -136,31 +131,24 @@ document.addEventListener("DOMContentLoaded", async function () {
             // 📌 Evento para eliminar la tarjeta
             card.querySelector(".btnEliminarManoObra").addEventListener("click", async function (event) {
                 const idManoObra = event.target.getAttribute("data-id");
-                if (!idManoObra) {
-                    alert("No se encontró el ID de la mano de obra presupuestada.");
-                    return;
-                }
 
-                const confirmacion = confirm("¿Seguro que desea eliminar esta mano de obra presupuestada?");
-                if (!confirmacion) return;
+                if (confirm("¿Seguro que desea eliminar esta mano de obra presupuestada?")) {
+                    try {
+                        const deleteResponse = await fetch(`${CONFIG.API_BASE_URL}/api/mano-de-obra-presupuestada/${idManoObra}`, {
+                            method: "DELETE",
+                            headers: {
+                                "Authorization": token ? `Bearer ${token}` : ""
+                            }
+                        });
 
-                try {
-                    const deleteResponse = await fetch(`http://localhost:3000/api/mano-de-obra-presupuestada/${idManoObra}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Authorization": token ? `Bearer ${token}` : ""
-                        }
-                    });
+                        if (!deleteResponse.ok) throw new Error("Error al eliminar la mano de obra presupuestada.");
 
-                    if (!deleteResponse.ok) {
-                        throw new Error("Error al eliminar la mano de obra presupuestada.");
+                        card.remove();
+                        alert("Mano de obra presupuestada eliminada correctamente.");
+                    } catch (error) {
+                        console.error("Error al eliminar mano de obra presupuestada:", error);
+                        alert(error.message);
                     }
-
-                    card.remove();
-                    alert("Mano de obra presupuestada eliminada correctamente.");
-                } catch (error) {
-                    console.error("Error al eliminar mano de obra presupuestada:", error);
-                    alert(error.message);
                 }
             });
 

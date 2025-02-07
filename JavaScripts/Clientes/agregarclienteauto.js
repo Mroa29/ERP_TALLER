@@ -1,4 +1,6 @@
 import validarRUT from '../Funciones/ValidarRUT.js';
+import CONFIG from "../configURL.js";
+
 document.getElementById('btnagregarclienteauto').addEventListener('click', async (event) => {
     event.preventDefault(); // Evita el envío del formulario por defecto
 
@@ -51,7 +53,7 @@ document.getElementById('btnagregarclienteauto').addEventListener('click', async
         }
 
         // Obtener ID del taller asociado al usuario
-        const usuarioResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}`, {
+        const usuarioResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -83,7 +85,7 @@ document.getElementById('btnagregarclienteauto').addEventListener('click', async
             id_taller: idTaller,
         };
 
-        const agregarClienteResponse = await fetch('http://localhost:3000/api/clientes', {
+        const agregarClienteResponse = await fetch(`${CONFIG.API_BASE_URL}/api/clientes`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -110,7 +112,7 @@ document.getElementById('btnagregarclienteauto').addEventListener('click', async
             id_taller: idTaller,
         };
 
-        const agregarVehiculoResponse = await fetch('http://localhost:3000/api/vehiculos', {
+        const agregarVehiculoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/vehiculos`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

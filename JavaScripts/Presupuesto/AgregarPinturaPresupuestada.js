@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const btnAgregarPintura = document.getElementById("btnAgregarPintura");
     const listaPinturasPresupuestadas = document.getElementById("listaPinturasPresupuestadas");
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const decodedToken = JSON.parse(atob(token.split(".")[1]));
             const userId = decodedToken.id;
 
-            const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             sucursalesUsuario = await obtenerSucursalesUsuario();
             if (sucursalesUsuario.length === 0) return;
 
-            const response = await fetch("http://localhost:3000/api/tarifasPintura");
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tarifasPintura`);
             if (!response.ok) throw new Error("Error al obtener tarifas.");
 
             const todasLasTarifas = await response.json();
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             tarifas.forEach(tarifa => {
                 const option = document.createElement("option");
                 option.value = tarifa.id_tarifa_piezas_pintadas;
-                option.textContent = `${tarifa.descripcion_tarifa_piezas_pintadas} - $${tarifa.precio_por_pieza_pintada}`;
+                option.textContent = `${tarifa.descripcion_tarifa_piezas_pintadas} - $${tarifa.precio_por_pieza_pintada.toLocaleString()}`;
                 selectTarifaPintura.appendChild(option);
             });
         } catch (error) {
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const nombrePieza = document.getElementById("nombrePiezaPintada").value.trim();
         const cantidad = parseInt(document.getElementById("cantidadPiezasPintadas").value.trim(), 10);
         const idTarifa = selectTarifaPintura.value;
-        const tarifaText = selectTarifaPintura.options[selectTarifaPintura.selectedIndex].text;
+        const tarifaText = selectTarifaPintura.options[selectTarifaPintura.selectedIndex]?.text;
 
         // Obtener ID del presupuesto desde la cabecera
         const idPresupuesto = document.getElementById("idPresupuesto").textContent.trim();
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         // Obtener el precio de la tarifa
-        const precioTarifa = parseInt(tarifaText.match(/\$(\d+)/)?.[1], 10) || 0;
+        const precioTarifa = tarifas.find(tarifa => tarifa.id_tarifa_piezas_pintadas == idTarifa)?.precio_por_pieza_pintada || 0;
         const valorTotal = cantidad * precioTarifa;
 
         // 📌 Datos para enviar al backend
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             // 📌 Enviar la pintura presupuestada al backend
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:3000/api/pintura-presupuestada", {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/pintura-presupuestada`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -104,19 +106,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                if (errorData.message.includes("duplicate key")) {
-                    throw new Error("Esta pieza ya está presupuestada en este presupuesto.");
-                }
                 throw new Error(errorData.message || "Error al agregar la pintura presupuestada.");
             }
 
             // 📌 Obtener el resultado de la API correctamente
             const result = await response.json();
             console.log("Pintura presupuestada agregada:", result);
-
-            if (!result || !result.pintura.id_pintura_presupuestada) {
-                throw new Error("Error: El backend no devolvió un ID válido para la pintura presupuestada.");
-            }
 
             // 📌 Crear la tarjeta visualmente después de éxito
             const card = document.createElement("div");
@@ -136,31 +131,24 @@ document.addEventListener("DOMContentLoaded", async function () {
             // 📌 Evento para eliminar la tarjeta
             card.querySelector(".btnEliminarPintura").addEventListener("click", async function (event) {
                 const idPintura = event.target.getAttribute("data-id");
-                if (!idPintura) {
-                    alert("No se encontró el ID de la pintura presupuestada.");
-                    return;
-                }
 
-                const confirmacion = confirm("¿Seguro que desea eliminar esta pieza presupuestada?");
-                if (!confirmacion) return;
+                if (confirm("¿Seguro que desea eliminar esta pieza presupuestada?")) {
+                    try {
+                        const deleteResponse = await fetch(`${CONFIG.API_BASE_URL}/api/pintura-presupuestada/${idPintura}`, {
+                            method: "DELETE",
+                            headers: {
+                                "Authorization": token ? `Bearer ${token}` : ""
+                            }
+                        });
 
-                try {
-                    const deleteResponse = await fetch(`http://localhost:3000/api/pintura-presupuestada/${idPintura}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Authorization": token ? `Bearer ${token}` : ""
-                        }
-                    });
+                        if (!deleteResponse.ok) throw new Error("Error al eliminar la pintura presupuestada.");
 
-                    if (!deleteResponse.ok) {
-                        throw new Error("Error al eliminar la pintura presupuestada.");
+                        card.remove();
+                        alert("Pieza presupuestada eliminada correctamente.");
+                    } catch (error) {
+                        console.error("Error al eliminar pintura presupuestada:", error);
+                        alert(error.message);
                     }
-
-                    card.remove();
-                    alert("Pieza presupuestada eliminada correctamente.");
-                } catch (error) {
-                    console.error("Error al eliminar pintura presupuestada:", error);
-                    alert(error.message);
                 }
             });
 

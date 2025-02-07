@@ -976,112 +976,14 @@
 <!--JS para validaciones animaciones y mas -->
 <script type="module" src="../../../JavaScripts/Clientes/agregarcliente.js"></script>
 <script type="module" src ="../../../JavaScripts/Clientes/agregarclienteauto.js"></script>
-<script type0="module" src ="../../../JavaScripts/Clientes/TablaClientes.js"></script>
-<script type0="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
-<script type0="module" src ="../../../JavaScripts/Clientes/buscarClientes.js"></script>
-<script type0="module" src ="../../../JavaScripts/Clientes/editarCliente.js"></script>
-<script type0="module" src ="../../../JavaScripts/Clientes/exportarClientes.js"></script>
+<script type="module" src ="../../../JavaScripts/Clientes/TablaClientes.js"></script>
+<script typ="module" src ="../../../JavaScripts/Funciones/MostrarPantallas.js"></script>
+<script type="module" src ="../../../JavaScripts/Clientes/buscarClientes.js"></script>
+<script type="module" src ="../../../JavaScripts/Clientes/editarCliente.js"></script>
+<script type="module" src ="../../../JavaScripts/Clientes/exportarClientes.js"></script>
+<script type=  "module" src ="../../../JavaScripts/Clientes/Cargardatosmodal.js"></script>
 
 
-
-
-
-<script>
- document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('Usuario no autenticado. Por favor, inicie sesión.');
-    }
-
-    const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    const userId = decodedToken.id;
-
-    const modals = [
-      {
-        tipoClienteSelect: document.getElementById('tipoCliente'),
-        estadoClienteSelect: document.getElementById('estadoCliente'),
-        sucursalClienteSelect: document.getElementById('sucursalCliente'),
-      },
-      {
-        tipoClienteSelect: document.getElementById('clienteAuto_tipoCliente'),
-        estadoClienteSelect: document.getElementById('clienteAuto_estadoCliente'),
-        sucursalClienteSelect: document.getElementById('clienteAuto_sucursalCliente'),
-        tipoVehiculoSelect: document.getElementById('vehiculo_tipo'),
-      },
-    ];
-
-    for (const modal of modals) {
-      const { tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect, tipoVehiculoSelect } = modal;
-
-      if (!tipoClienteSelect || !estadoClienteSelect || !sucursalClienteSelect) {
-        throw new Error('No se encontraron los elementos para los selects en uno de los modales.');
-      }
-
-      // Limpiar selects para evitar duplicados
-      [tipoClienteSelect, estadoClienteSelect, sucursalClienteSelect, tipoVehiculoSelect].forEach((select) => {
-        if (select) {
-          select.innerHTML = '<option value="">Seleccione una opción</option>';
-        }
-      });
-
-      // Obtener y rellenar tipos de cliente
-      const tipoResponse = await fetch('http://localhost:3000/api/clientes/tipos', { method: 'GET' });
-      if (!tipoResponse.ok) throw new Error('Error al obtener los tipos de cliente');
-      const tiposClientes = await tipoResponse.json();
-      tiposClientes.forEach((tipo) => {
-        const option = document.createElement('option');
-        option.value = tipo.id_tipo_cliente;
-        option.textContent = tipo.descripcion;
-        tipoClienteSelect.appendChild(option);
-      });
-
-      // Obtener y rellenar estados de cliente
-      const estadoResponse = await fetch('http://localhost:3000/api/clientes/estados', { method: 'GET' });
-      if (!estadoResponse.ok) throw new Error('Error al obtener los estados de cliente');
-      const estadosClientes = await estadoResponse.json();
-      estadosClientes.forEach((estado) => {
-        const option = document.createElement('option');
-        option.value = estado.id_estado_cliente;
-        option.textContent = estado.descripcion;
-        estadoClienteSelect.appendChild(option);
-      });
-
-      // Obtener y rellenar sucursales del usuario
-      const sucursalResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!sucursalResponse.ok) throw new Error('Error al obtener las sucursales del usuario');
-      const sucursales = await sucursalResponse.json();
-      sucursales.forEach((sucursal) => {
-        const option = document.createElement('option');
-        option.value = sucursal.id_sucursal;
-        option.textContent = sucursal.nombre_sucursal;
-        sucursalClienteSelect.appendChild(option);
-      });
-
-      // Rellenar tipos de vehículo (solo en el modal correspondiente)
-      if (tipoVehiculoSelect) {
-        const tipoVehiculoResponse = await fetch('http://localhost:3000/api/vehiculos/tipos', { method: 'GET' });
-        if (!tipoVehiculoResponse.ok) throw new Error('Error al obtener los tipos de vehículo');
-        const tiposVehiculos = await tipoVehiculoResponse.json();
-        tiposVehiculos.forEach((tipoVehiculo) => {
-          const option = document.createElement('option');
-          option.value = tipoVehiculo.id_tipo_vehiculo;
-          option.textContent = tipoVehiculo.descripcion;
-          tipoVehiculoSelect.appendChild(option);
-        });
-      }
-    }
-  } catch (error) {
-    console.error('Error al cargar los datos para los selects:', error.message);
-    alert('Hubo un problema al cargar los datos. Intente nuevamente.');
-  }
-});
-
-
-</script>
 
 
 </body>

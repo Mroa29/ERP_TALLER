@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js"; // 📌 Archivo de configuración con la URL base de la API
+
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM fully loaded and parsed.");
 
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Obtener el token si se requiere autenticación
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3000/api/tarifasPintura', {
+            const response = await fetch(`${CONFIG.API_BASE_URL}/api/tarifasPintura`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

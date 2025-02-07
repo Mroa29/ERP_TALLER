@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Obtener el token del localStorage
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const userId = decodedToken.id;
 
         // Realizar la consulta a la API para contar las notificaciones visibles
-        const countResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/notificaciones/count`, {
+        const countResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/notificaciones/count`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // Realizar la consulta a la API para obtener las notificaciones
-        const response = await fetch(`http://localhost:3000/api/usuarios/${userId}/notificaciones`, {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/notificaciones`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -106,12 +108,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 notificacionesContainer.appendChild(divider);
             }
         });
-          // Agregar el botón de "Notificaciones"
-          const footer = document.createElement('a');
-          footer.href = '#';
-          footer.className = 'dropdown-item dropdown-footer';
-          footer.textContent = 'Cerrar Notificaciones';
-          notificacionesContainer.appendChild(footer);
+
+        // Agregar el botón de "Cerrar Notificaciones"
+        const footer = document.createElement('a');
+        footer.href = '#';
+        footer.className = 'dropdown-item dropdown-footer';
+        footer.textContent = 'Cerrar Notificaciones';
+        notificacionesContainer.appendChild(footer);
 
     } catch (error) {
         console.error('Error al procesar las notificaciones:', error);

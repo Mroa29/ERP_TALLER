@@ -1,3 +1,5 @@
+import CONFIG from "../configURL.js";
+
 document.addEventListener("DOMContentLoaded", async function () {
     const tableBody = document.querySelector("#tablalistadoInsumos tbody");
     const searchInput = document.getElementById("barraBuscarIsumos");
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const userId = decodedToken.id;
 
         // 📌 Obtener las sucursales asociadas al usuario
-        const sucursalResponse = await fetch(`http://localhost:3000/api/usuarios/${userId}/sucursales`, {
+        const sucursalResponse = await fetch(`${CONFIG.API_BASE_URL}/api/usuarios/${userId}/sucursales`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const sucursalIds = sucursales.map(sucursal => sucursal.id_sucursal);
 
         // 📌 Obtener los insumos de las sucursales del usuario
-        const insumoResponse = await fetch(`http://localhost:3000/api/insumos?sucursales=${sucursalIds.join(",")}`, {
+        const insumoResponse = await fetch(`${CONFIG.API_BASE_URL}/api/insumos?sucursales=${sucursalIds.join(",")}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -88,13 +90,17 @@ document.addEventListener("DOMContentLoaded", async function () {
                 stockDisplay = `<span style="color: red; font-weight: bold;">${stockDisponible} ${formato} (Crítico)</span>`;
             }
 
-            // 📌 Calcular el Monto Total
+            // 📌 Calcular el Monto Total (Stock Disponible * Precio Unitario)
             const montoTotal = stockDisponible * insumo.precio_insumo;
+
+            // 📌 Calcular el Precio con IVA (19%)
+            const precioIVA = insumo.precio_insumo * 1.19;
 
             row.innerHTML = `
                 <td>${insumo.descripcion_insumo}</td>
                 <td>${stockDisplay}</td>
-                <td>$${insumo.precio_insumo}</td>
+                <td>$${insumo.precio_insumo.toLocaleString("es-CL")}</td>
+                <td>$${precioIVA.toFixed(0).toLocaleString("es-CL")}</td>
                 <td>$${montoTotal.toLocaleString("es-CL")}</td>
                 <td>${sucursalMap[insumo.id_sucursal] || "No asignado"}</td>
             `;

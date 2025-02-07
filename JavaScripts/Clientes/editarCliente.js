@@ -1,10 +1,14 @@
+import CONFIG from "../configURL.js";
+
+
+
 document.addEventListener('click', async (event) => {
   if (event.target.classList.contains('btn-editar-cliente')) {
       const rutCliente = event.target.getAttribute('data-rut');
 
       try {
           // Obtener datos del cliente
-          const clienteResponse = await fetch(`http://localhost:3000/api/clientes/${rutCliente}`, {
+          const clienteResponse = await fetch(`${CONFIG.API_BASE_URL}/api/clientes/${rutCliente}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -48,7 +52,7 @@ document.addEventListener('click', async (event) => {
               };
 
               try {
-                  const actualizarResponse = await fetch(`http://localhost:3000/api/clientes/${rutCliente}`, {
+                  const actualizarResponse = await fetch(`${CONFIG.API_BASE_URL}/api/clientes/${rutCliente}`, {
                       method: 'PUT',
                       headers: {
                           'Authorization': `Bearer ${localStorage.getItem('token')}`,
