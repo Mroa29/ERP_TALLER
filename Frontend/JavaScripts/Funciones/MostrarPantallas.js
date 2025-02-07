@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!token) {
       // Si no hay token, redirigir al login
-      window.location.href = 'http://127.0.0.1:5500/Login/loginkronos.html';
+      window.location.href = '../login/loginkronos.html';
       return;
     }
 
@@ -104,6 +104,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error al procesar las pantallas del usuario:', error);
     alert('Error al cargar las opciones disponibles.');
     // Redirigir al login en caso de error crítico
-    window.location.href = 'http://127.0.0.1:5500/Login/loginkronos.html';
+    window.location.href = '../Login/loginkronos.html';
   }
 });
