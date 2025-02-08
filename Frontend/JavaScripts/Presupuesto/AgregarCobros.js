@@ -17,21 +17,26 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Obtener valores del formulario
         const numeroRecibo = document.getElementById("numeroRecibo").value.trim();
-        const importeCobrado = document.getElementById("importeCobrado").value.trim();
+        const importeCobrado = parseInt(document.getElementById("importeCobrado").value.trim(), 10);
         const formaPago = document.getElementById("formaPago").value;
         const fechaCobro = document.getElementById("fechaCobro").value;
         const descripcion = document.getElementById("descripcion").value.trim();
 
         // Validaciones
-        if (!numeroRecibo || !importeCobrado || !fechaCobro) {
+        if (!numeroRecibo || isNaN(importeCobrado) || !fechaCobro) {
             alert("Debe completar todos los campos obligatorios.");
+            return;
+        }
+
+        if (importeCobrado <= 0) {
+            alert("El importe cobrado debe ser un valor positivo.");
             return;
         }
 
         // 📌 Datos para enviar al backend
         const data = {
             id_presupuesto: parseInt(idPresupuesto),
-            cantidad_cobrada: parseInt(importeCobrado),
+            cantidad_cobrada: importeCobrado,
             forma_pago: formaPago,
             fecha_cobro: fechaCobro,
             numero_recibo: numeroRecibo,

@@ -108,7 +108,23 @@ deletePinturaPresupuestada: async (req, res) => {
         console.error("Error al eliminar pintura presupuestada:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
-}
+  },
+  /**
+     * Obtiene la suma total de las pinturas presupuestadas para un presupuesto.
+     * @param {Object} req - Objeto de la solicitud HTTP.
+     * @param {Object} res - Objeto de la respuesta HTTP.
+     */
+  async getTotalPinturaPresupuestada(req, res) {
+    try {
+        const { idPresupuesto } = req.params;
+        const totalPintura = await PinturaPresupuestada.getTotalPinturaPresupuestada(idPresupuesto);
+
+        res.json({ total_pintura_presupuestada: totalPintura });
+    } catch (error) {
+        console.error("Error al obtener el total de pintura presupuestada:", error);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
+ }
 
 };
 

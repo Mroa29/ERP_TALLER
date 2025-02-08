@@ -11,4 +11,8 @@ router.get('/:id_presupuesto', ManoDeObraPresupuestadaController.getManoDeObraBy
 // 📌 Ruta para eliminar una mano de obra presupuestada por su ID
 router.delete('/:id', ManoDeObraPresupuestadaController.deleteManoDeObraPresupuestada);
 
+// Ruta para obtener el total de mano de obra presupuestada
+router.get("/total/:idPresupuesto", ManoDeObraPresupuestadaController.getTotalManoObraPresupuestada);
+
+
 module.exports = router;

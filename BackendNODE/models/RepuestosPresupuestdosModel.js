@@ -70,6 +70,25 @@ const RepuestoPresupuestado = {
             console.error('Error al obtener repuestos por presupuesto:', error);
             throw error;
         }
+    },
+    /**
+     * Obtiene la suma total del precio de los repuestos presupuestados para un presupuesto específico.
+     * @param {number} idPresupuesto - ID del presupuesto.
+     * @returns {Promise<number>} - Total del precio de repuestos presupuestados.
+     */
+    async getTotalRepuestosPresupuestados(idPresupuesto) {
+        try {
+            const query = `
+                SELECT COALESCE(SUM(PRECIO_PIEZA_REPUESTO), 0) AS total_repuestos_presupuestados
+                FROM REPUESTOS_PRESUPUESTADOS
+                WHERE ID_PRESUPUESTO = $1;
+            `;
+            const { rows } = await pool.query(query, [idPresupuesto]);
+            return rows.length ? rows[0].total_repuestos_presupuestados : 0;
+        } catch (error) {
+            console.error("Error al obtener el total de repuestos presupuestados:", error);
+            throw error;
+        }
     }
 };
 

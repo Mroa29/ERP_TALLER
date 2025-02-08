@@ -70,6 +70,26 @@ const ManoDeObraPresupuestada = {
             console.error('Error al eliminar mano de obra presupuestada:', error);
             throw error;
         }
+    },
+    /**
+     * Obtiene la suma total del precio de toda la mano de obra presupuestada para un presupuesto específico.
+     * @param {number} idPresupuesto - ID del presupuesto.
+     * @returns {Promise<number>} - Total del precio de mano de obra presupuestada.
+     */
+    async getTotalManoObraPresupuestada(idPresupuesto) {
+        try {
+            const query = `
+                SELECT COALESCE(SUM(mop.CANTIDAD_PIEZAS_MANO_OBRA * tmo.PRECIO_POR_PIEZA_MANO_DE_OBRA), 0) AS total_mano_obra_presupuestada
+                FROM MANO_DE_OBRA_PRESUPUESTADA mop
+                JOIN TARIFA_MANO_DE_OBRA tmo ON mop.ID_TARIFA_MANO_DE_OBRA = tmo.ID_TARIFA_MANO_DE_OBRA
+                WHERE mop.ID_PRESUPUESTO = $1;
+            `;
+            const { rows } = await pool.query(query, [idPresupuesto]);
+            return rows.length ? rows[0].total_mano_obra_presupuestada : 0;
+        } catch (error) {
+            console.error("Error al obtener el total de mano de obra presupuestada:", error);
+            throw error;
+        }
     }
 };
 

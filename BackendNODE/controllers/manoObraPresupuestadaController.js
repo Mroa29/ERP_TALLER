@@ -71,6 +71,22 @@ const ManoDeObraPresupuestadaController = {
             console.error("Error al eliminar mano de obra presupuestada:", error);
             res.status(500).json({ message: "Error interno del servidor" });
         }
+    },
+    /**
+     * Obtiene la suma total de la mano de obra presupuestada para un presupuesto.
+     * @param {Object} req - Objeto de la solicitud HTTP.
+     * @param {Object} res - Objeto de la respuesta HTTP.
+     */
+    async getTotalManoObraPresupuestada(req, res) {
+        try {
+            const { idPresupuesto } = req.params;
+            const totalManoObra = await ManoDeObraPresupuestada.getTotalManoObraPresupuestada(idPresupuesto);
+
+            res.json({ total_mano_obra_presupuestada: totalManoObra });
+        } catch (error) {
+            console.error("Error al obtener el total de mano de obra presupuestada:", error);
+            res.status(500).json({ message: "Error interno del servidor" });
+        }
     }
 };
 

@@ -19,6 +19,9 @@ router.put("/:idCobro", CobroController.updateCobro);
 // ✅ Eliminar un cobro por su ID
 router.delete("/:idCobro", CobroController.deleteCobro);
 
+// Ruta para obtener la suma total de los cobros de un presupuesto
+router.get("/total/:idPresupuesto", CobroController.getTotalCobradoByPresupuesto);
+
 
 
 router.get("/:id", CobroController.getCobroById);

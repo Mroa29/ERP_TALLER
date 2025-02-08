@@ -93,7 +93,25 @@ const CobroController = {
         console.error("Error al obtener el cobro por ID:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
-    }
+    },
+
+    /**
+     * Obtiene la suma total de los cobros para un presupuesto específico.
+     * @param {Object} req - Objeto de la solicitud HTTP.
+     * @param {Object} res - Objeto de la respuesta HTTP.
+     */
+    async getTotalCobradoByPresupuesto(req, res) {
+      try {
+          const { idPresupuesto } = req.params;
+          const totalCobrado = await Cobro.getTotalCobradoByPresupuesto(idPresupuesto);
+
+          res.json({ total_cobrado: totalCobrado });
+      } catch (error) {
+          console.error("Error al obtener el total cobrado:", error);
+          res.status(500).json({ message: "Error interno del servidor" });
+      }
+  }
+    
 };
 
 module.exports = CobroController;

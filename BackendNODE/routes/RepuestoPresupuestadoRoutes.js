@@ -11,4 +11,8 @@ router.delete("/:id", RepuestoPresupuestadoController.deleteRepuestoPresupuestad
 // 📌 Ruta para obtener los repuestos presupuestados por ID de presupuesto
 router.get("/presupuesto/:idPresupuesto", RepuestoPresupuestadoController.getRepuestosByPresupuesto);
 
+// Ruta para obtener el total de repuestos presupuestados
+router.get("/total/:idPresupuesto", RepuestoPresupuestadoController.getTotalRepuestosPresupuestados);
+
+
 module.exports = router;

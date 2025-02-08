@@ -114,6 +114,26 @@ deletePinturaPresupuestada: async (id) => {
       console.error('Error al eliminar pintura presupuestada:', error);
       throw error;
   }
+},
+/**
+     * Obtiene la suma total del precio de todas las pinturas presupuestadas para un presupuesto específico.
+     * @param {number} idPresupuesto - ID del presupuesto.
+     * @returns {Promise<number>} - Total del precio de pintura presupuestada.
+     */
+async getTotalPinturaPresupuestada(idPresupuesto) {
+  try {
+      const query = `
+          SELECT COALESCE(SUM(pp.CANTIDAD_PIEZAS_PINTADAS * tp.PRECIO_POR_PIEZA_PINTADA), 0) AS total_pintura_presupuestada
+          FROM PINTURA_PRESUPUESTADA pp
+          JOIN TARIFA_PIEZAS_PINTADAS tp ON pp.ID_TARIFA_PIEZAS_PINTADAS = tp.ID_TARIFA_PIEZAS_PINTADAS
+          WHERE pp.ID_PRESUPUESTO = $1;
+      `;
+      const { rows } = await pool.query(query, [idPresupuesto]);
+      return rows.length ? rows[0].total_pintura_presupuestada : 0;
+  } catch (error) {
+      console.error("Error al obtener el total de pintura presupuestada:", error);
+      throw error;
+  }
 }
 
 };

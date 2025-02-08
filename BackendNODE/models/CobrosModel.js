@@ -127,7 +127,26 @@ const Cobro = {
         console.error("Error al obtener el cobro por ID:", error);
         throw error;
     }
-}
+},
+  /**
+   * Obtiene la suma total de la cantidad cobrada para un presupuesto específico.
+   * @param {number} idPresupuesto - ID del presupuesto.
+   * @returns {Promise<number>} - Suma total cobrada.
+   */
+  getTotalCobradoByPresupuesto: async (idPresupuesto) => {
+    try {
+      const query = `
+        SELECT COALESCE(SUM(CANTIDAD_COBRADA_COBROS), 0) AS total_cobrado
+        FROM COBROS
+        WHERE ID_PRESUPUESTO = $1;
+      `;
+      const { rows } = await pool.query(query, [idPresupuesto]);
+      return rows.length ? rows[0].total_cobrado : 0;
+    } catch (error) {
+      console.error("Error al obtener total cobrado:", error);
+      throw error;
+    }
+  }
 };
 
 module.exports = Cobro;

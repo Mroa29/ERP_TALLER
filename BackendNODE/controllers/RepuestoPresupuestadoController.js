@@ -74,6 +74,22 @@ const RepuestoPresupuestadoController = {
             console.error("Error al obtener repuestos presupuestados:", error);
             res.status(500).json({ message: "Error interno del servidor." });
         }
+    },
+    /**
+     * Obtiene la suma total de los repuestos presupuestados para un presupuesto.
+     * @param {Object} req - Objeto de la solicitud HTTP.
+     * @param {Object} res - Objeto de la respuesta HTTP.
+     */
+    async getTotalRepuestosPresupuestados(req, res) {
+        try {
+            const { idPresupuesto } = req.params;
+            const totalRepuestos = await RepuestoPresupuestado.getTotalRepuestosPresupuestados(idPresupuesto);
+
+            res.json({ total_repuestos_presupuestados: totalRepuestos });
+        } catch (error) {
+            console.error("Error al obtener el total de repuestos presupuestados:", error);
+            res.status(500).json({ message: "Error interno del servidor" });
+        }
     }
 };
 

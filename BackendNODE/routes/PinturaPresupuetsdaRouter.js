@@ -18,4 +18,8 @@ router.get("/presupuesto/:id_presupuesto", PinturaPresupuestadaController.getPin
 // 📌 Ruta para eliminar una pintura presupuestada por ID
 router.delete("/:id", PinturaPresupuestadaController.deletePinturaPresupuestada);
 
+// Ruta para obtener el total de pintura presupuestada
+router.get("/total/:idPresupuesto", PinturaPresupuestadaController.getTotalPinturaPresupuestada);
+
+
 module.exports = router;
