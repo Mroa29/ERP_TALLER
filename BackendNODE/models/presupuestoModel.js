@@ -150,6 +150,63 @@ const Presupuesto = {
       console.error('Error al obtener presupuestos por placa de vehículo:', error);
       throw error;
     }
+  },
+  /**
+   * Obtiene la cantidad de presupuestos de un taller en el mes en curso.
+   * @param {number} idTaller - ID del taller.
+   * @returns {Promise<number>} - Retorna la cantidad de presupuestos del mes en curso para el taller.
+   */
+  getCantidadPresupuestosMes: async (idTaller) => {
+    try {
+      const query = `
+        SELECT 
+          COUNT(p.ID_PRESUPUESTO) AS cantidad_presupuestos
+        FROM 
+          PRESUPUESTO p
+        JOIN 
+          SUCURSAL s ON p.ID_SUCURSAL = s.ID_SUCURSAL
+        WHERE 
+          s.ID_TALLER = $1
+          AND DATE_PART('year', p.FECHA_CREACION_PRESUPUESTO_GENERAL) = DATE_PART('year', CURRENT_DATE)
+          AND DATE_PART('month', p.FECHA_CREACION_PRESUPUESTO_GENERAL) = DATE_PART('month', CURRENT_DATE)
+      `;
+      const values = [idTaller];
+
+      const result = await pool.query(query, values);
+      return result.rows[0].cantidad_presupuestos || 0;
+    } catch (error) {
+      console.error('Error al obtener la cantidad de presupuestos del mes en curso:', error);
+      throw error;
+    }
+  },
+  /**
+   * Obtiene la cantidad de presupuestos del mes en curso con al menos un cobro asociado.
+   * @param {number} idTaller - ID del taller.
+   * @returns {Promise<number>} - Retorna la cantidad de presupuestos.
+   */
+  getPresupuestosConCobroMes: async (idTaller) => {
+    try {
+      const query = `
+        SELECT 
+          COUNT(DISTINCT p.ID_PRESUPUESTO) AS cantidad_presupuestos
+        FROM 
+          PRESUPUESTO p
+        JOIN 
+          COBROS c ON p.ID_PRESUPUESTO = c.ID_PRESUPUESTO
+        JOIN 
+          SUCURSAL s ON p.ID_SUCURSAL = s.ID_SUCURSAL
+        WHERE 
+          s.ID_TALLER = $1
+          AND DATE_PART('year', c.FECHA_COBRO) = DATE_PART('year', CURRENT_DATE)
+          AND DATE_PART('month', c.FECHA_COBRO) = DATE_PART('month', CURRENT_DATE);
+      `;
+      const values = [idTaller];
+      const result = await pool.query(query, values);
+      return result.rows[0].cantidad_presupuestos || 0;
+    } catch (error) {
+      console.error('Error al obtener presupuestos con cobros del mes:', error);
+      throw error;
+    }
   }
 };
 

@@ -146,6 +146,40 @@ const Cobro = {
       console.error("Error al obtener total cobrado:", error);
       throw error;
     }
+  },
+  /**
+   * Obtiene la suma de la cantidad cobrada de todos los cobros de un taller dentro del mes en curso.
+   * @param {number} idTaller - ID del taller.
+   * @returns {Promise<number>} - Retorna la suma total cobrada.
+   */
+  getTotalCobradoPorTaller: async (idTaller) => {
+    try {
+      const query = `
+        SELECT 
+            s.ID_TALLER,
+            SUM(c.CANTIDAD_COBRADA_COBROS) AS total_cobrado
+        FROM 
+            COBROS c
+        JOIN 
+            PRESUPUESTO p ON c.ID_PRESUPUESTO = p.ID_PRESUPUESTO
+        JOIN 
+            SUCURSAL s ON p.ID_SUCURSAL = s.ID_SUCURSAL
+        WHERE 
+            s.ID_TALLER = $1
+            AND DATE_PART('year', c.FECHA_COBRO) = DATE_PART('year', CURRENT_DATE)
+            AND DATE_PART('month', c.FECHA_COBRO) = DATE_PART('month', CURRENT_DATE)
+        GROUP BY 
+            s.ID_TALLER;
+
+      `;
+      const values = [idTaller];
+
+      const result = await pool.query(query, values);
+      return result.rows[0].total_cobrado || 0;
+    } catch (error) {
+      console.error('Error al obtener la suma total cobrada:', error);
+      throw error;
+    }
   }
 };
 

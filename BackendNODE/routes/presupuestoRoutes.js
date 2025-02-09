@@ -20,4 +20,13 @@ router.delete('/:id', PresupuestoController.deletePresupuesto);
 // 📌 Ruta para obtener presupuestos por placa de vehículo
 router.get('/placa/:placa', PresupuestoController.getPresupuestosByPlaca);
 
+// Ruta para obtener la cantidad de presupuestos del mes en curso para un taller
+router.get('/mes/:idTaller', PresupuestoController.getCantidadPresupuestosMes);
+
+// Ruta para obtener la cantidad de presupuestos del mes en curso con al menos un cobro asociado
+router.get('/con-cobros/mes/:idTaller', PresupuestoController.getPresupuestosConCobroMes);
+
+
+
+
 module.exports = router;

@@ -110,6 +110,34 @@ const CobroController = {
           console.error("Error al obtener el total cobrado:", error);
           res.status(500).json({ message: "Error interno del servidor" });
       }
+  },
+
+  /**
+   * Controlador para obtener la suma total de la cantidad cobrada de un taller.
+   * @param {Object} req - Objeto de solicitud (Request).
+   * @param {Object} res - Objeto de respuesta (Response).
+   */
+  getTotalCobrado: async (req, res) => {
+    try {
+      const { idTaller } = req.params;
+
+      // Validación básica del parámetro
+      if (!idTaller || isNaN(idTaller)) {
+        return res.status(400).json({ message: 'El ID del taller es requerido y debe ser un número.' });
+      }
+
+      // Llamar al modelo para obtener la suma total cobrada
+      const totalCobrado = await Cobro.getTotalCobradoPorTaller(idTaller);
+
+      // Respuesta exitosa
+      return res.status(200).json({ 
+        idTaller: parseInt(idTaller, 10), 
+        totalCobrado 
+      });
+    } catch (error) {
+      console.error('Error en el controlador getTotalCobrado:', error);
+      return res.status(500).json({ message: 'Error al obtener el total cobrado.' });
+    }
   }
     
 };

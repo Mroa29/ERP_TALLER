@@ -22,6 +22,9 @@ router.delete("/:idCobro", CobroController.deleteCobro);
 // Ruta para obtener la suma total de los cobros de un presupuesto
 router.get("/total/:idPresupuesto", CobroController.getTotalCobradoByPresupuesto);
 
+// Ruta para obtener la suma total cobrada de un taller
+router.get('/total/idTaller/:idTaller', CobroController.getTotalCobrado);
+
 
 
 router.get("/:id", CobroController.getCobroById);

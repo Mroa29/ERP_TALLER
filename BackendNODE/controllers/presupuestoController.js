@@ -153,7 +153,61 @@ const PresupuestoController = {
         console.error('Error al obtener presupuestos por placa de vehículo:', error);
         res.status(500).json({ message: "Error interno del servidor" });
       }
+    },
+    /**
+   * Controlador para obtener la cantidad de presupuestos del mes en curso de un taller.
+   * @param {Object} req - Objeto de solicitud (Request).
+   * @param {Object} res - Objeto de respuesta (Response).
+   */
+  getCantidadPresupuestosMes: async (req, res) => {
+    try {
+      const { idTaller } = req.params;
+
+      // Validación básica del parámetro
+      if (!idTaller || isNaN(idTaller)) {
+        return res.status(400).json({ message: 'El ID del taller es requerido y debe ser un número.' });
+      }
+
+      // Llamar al modelo para obtener la cantidad de presupuestos
+      const cantidadPresupuestos = await Presupuesto.getCantidadPresupuestosMes(idTaller);
+
+      // Respuesta exitosa
+      return res.status(200).json({ 
+        idTaller: parseInt(idTaller, 10), 
+        cantidadPresupuestos 
+      });
+    } catch (error) {
+      console.error('Error en el controlador getCantidadPresupuestosMes:', error);
+      return res.status(500).json({ message: 'Error al obtener la cantidad de presupuestos del mes en curso.' });
     }
+  },
+  /**
+   * Controlador para obtener la cantidad de presupuestos del mes en curso con al menos un cobro asociado.
+   * @param {Object} req - Objeto de solicitud (Request).
+   * @param {Object} res - Objeto de respuesta (Response).
+   */
+  getPresupuestosConCobroMes: async (req, res) => {
+    try {
+      const { idTaller } = req.params;
+
+      // Validación básica del parámetro
+      if (!idTaller || isNaN(idTaller)) {
+        return res.status(400).json({ message: 'El ID del taller es requerido y debe ser un número.' });
+      }
+
+      // Llamar al modelo para obtener la cantidad de presupuestos
+      const cantidadPresupuestos = await Presupuesto.getPresupuestosConCobroMes(idTaller);
+
+      // Respuesta exitosa
+      return res.status(200).json({ 
+        idTaller: parseInt(idTaller, 10), 
+        cantidadPresupuestos 
+      });
+    } catch (error) {
+      console.error('Error en el controlador getPresupuestosConCobroMes:', error);
+      return res.status(500).json({ message: 'Error al obtener la cantidad de presupuestos con cobros del mes.' });
+    }
+  }
 };
 
 module.exports = PresupuestoController;
