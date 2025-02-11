@@ -1,0 +1,3719 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.6 (Homebrew)
+-- Dumped by pg_dump version 17.0
+
+-- Started on 2025-02-10 22:58:14 -03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 239 (class 1259 OID 16527)
+-- Name: ban_usuario_permiso; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ban_usuario_permiso (
+    id_usuario character varying(8),
+    id_permiso bigint
+);
+
+
+ALTER TABLE public.ban_usuario_permiso OWNER TO postgres;
+
+--
+-- TOC entry 274 (class 1259 OID 16785)
+-- Name: cambio_registrado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cambio_registrado (
+    id_cambio_registrado bigint NOT NULL,
+    id_usuario character varying(100) NOT NULL,
+    fecha_cambio_registrado date NOT NULL,
+    id_cambio_permitido bigint NOT NULL
+);
+
+
+ALTER TABLE public.cambio_registrado OWNER TO postgres;
+
+--
+-- TOC entry 273 (class 1259 OID 16784)
+-- Name: cambio_registrado_id_cambio_registrado_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.cambio_registrado ALTER COLUMN id_cambio_registrado ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.cambio_registrado_id_cambio_registrado_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 272 (class 1259 OID 16779)
+-- Name: cambios_permitidos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cambios_permitidos (
+    id_cambio_permitido bigint NOT NULL,
+    descripcion_cambio_permitido character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.cambios_permitidos OWNER TO postgres;
+
+--
+-- TOC entry 271 (class 1259 OID 16778)
+-- Name: cambios_permitidos_id_cambio_permitido_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.cambios_permitidos ALTER COLUMN id_cambio_permitido ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.cambios_permitidos_id_cambio_permitido_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 292 (class 1259 OID 16923)
+-- Name: cargo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cargo (
+    id_cargo bigint NOT NULL,
+    nom_cargo character varying(255) NOT NULL,
+    descripcion_cargo character varying(500),
+    pago_cargo integer NOT NULL
+);
+
+
+ALTER TABLE public.cargo OWNER TO postgres;
+
+--
+-- TOC entry 291 (class 1259 OID 16922)
+-- Name: cargo_id_cargo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.cargo ALTER COLUMN id_cargo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.cargo_id_cargo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 245 (class 1259 OID 16565)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    rut_cliente character varying(25) NOT NULL,
+    nom_cliente character varying(255) NOT NULL,
+    direccion_cliente character varying(255),
+    comuna_cliente character varying(100),
+    ciudad_cliente character varying(100),
+    pais_cliente character varying(100),
+    email_cliente character varying(255),
+    obs_cliente character varying(500),
+    telefono_cliente character varying(50),
+    id_sucursal bigint,
+    id_tipo_cliente bigint,
+    id_estado_cliente bigint,
+    id_taller bigint
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 252 (class 1259 OID 16639)
+-- Name: cobros; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cobros (
+    id_cobro bigint NOT NULL,
+    id_presupuesto bigint NOT NULL,
+    cantidad_cobrada_cobros integer NOT NULL,
+    forma_pago_cobros character varying(100),
+    fecha_cobro date NOT NULL,
+    numero_recibo character varying(50),
+    descripcion_cobro character varying(255)
+);
+
+
+ALTER TABLE public.cobros OWNER TO postgres;
+
+--
+-- TOC entry 251 (class 1259 OID 16638)
+-- Name: cobros_id_cobro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.cobros ALTER COLUMN id_cobro ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.cobros_id_cobro_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 278 (class 1259 OID 16826)
+-- Name: comision_desabolladura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.comision_desabolladura (
+    id_comision_desabolladura bigint NOT NULL,
+    descripcion_comision_desabolladura character varying(255) NOT NULL,
+    porcentaje_comision_desabolladura integer NOT NULL,
+    id_sucursal bigint NOT NULL
+);
+
+
+ALTER TABLE public.comision_desabolladura OWNER TO postgres;
+
+--
+-- TOC entry 277 (class 1259 OID 16825)
+-- Name: comision_desabolladura_id_comision_desabolladura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.comision_desabolladura ALTER COLUMN id_comision_desabolladura ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.comision_desabolladura_id_comision_desabolladura_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 282 (class 1259 OID 16853)
+-- Name: comision_pintura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.comision_pintura (
+    id_comision_pintura bigint NOT NULL,
+    descripcion_comision_pintura character varying(255) NOT NULL,
+    precio_pieza_trabajada integer NOT NULL,
+    id_sucursal bigint NOT NULL
+);
+
+
+ALTER TABLE public.comision_pintura OWNER TO postgres;
+
+--
+-- TOC entry 281 (class 1259 OID 16852)
+-- Name: comision_pintura_id_comision_pintura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.comision_pintura ALTER COLUMN id_comision_pintura ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.comision_pintura_id_comision_pintura_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 288 (class 1259 OID 16891)
+-- Name: consumo_orden_de_trabajo_desabolladura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.consumo_orden_de_trabajo_desabolladura (
+    id_consumo_ot bigint NOT NULL,
+    id_detalle_desabolladura bigint NOT NULL,
+    id_insumo bigint NOT NULL,
+    cantidad_consumida integer NOT NULL
+);
+
+
+ALTER TABLE public.consumo_orden_de_trabajo_desabolladura OWNER TO postgres;
+
+--
+-- TOC entry 287 (class 1259 OID 16890)
+-- Name: consumo_orden_de_trabajo_desabolladura_id_consumo_ot_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.consumo_orden_de_trabajo_desabolladura ALTER COLUMN id_consumo_ot ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.consumo_orden_de_trabajo_desabolladura_id_consumo_ot_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 290 (class 1259 OID 16907)
+-- Name: consumo_orden_de_trabajo_pintura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.consumo_orden_de_trabajo_pintura (
+    id_consumo_ot bigint NOT NULL,
+    id_detalle_pintura bigint NOT NULL,
+    id_insumo bigint NOT NULL,
+    cantidad_consumida integer NOT NULL
+);
+
+
+ALTER TABLE public.consumo_orden_de_trabajo_pintura OWNER TO postgres;
+
+--
+-- TOC entry 289 (class 1259 OID 16906)
+-- Name: consumo_orden_de_trabajo_pintura_id_consumo_ot_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.consumo_orden_de_trabajo_pintura ALTER COLUMN id_consumo_ot ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.consumo_orden_de_trabajo_pintura_id_consumo_ot_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 299 (class 1259 OID 16960)
+-- Name: contrato; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.contrato (
+    id_contrato bigint NOT NULL,
+    id_empleado character varying(50) NOT NULL,
+    id_tipo_contrato bigint NOT NULL,
+    remuneracion_contrato integer NOT NULL,
+    id_firma_empleado bigint NOT NULL,
+    id_documento bigint NOT NULL
+);
+
+
+ALTER TABLE public.contrato OWNER TO postgres;
+
+--
+-- TOC entry 298 (class 1259 OID 16959)
+-- Name: contrato_id_contrato_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.contrato ALTER COLUMN id_contrato ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.contrato_id_contrato_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 280 (class 1259 OID 16837)
+-- Name: detalle_desabolladura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.detalle_desabolladura (
+    id_detalle_desabolladura bigint NOT NULL,
+    rut_empleado character varying(50) NOT NULL,
+    pago_total_detalle_desabolladura integer NOT NULL,
+    descripcion_trabajo_desabolladura character varying(255) NOT NULL,
+    id_comision_desabolladura bigint NOT NULL,
+    id_orden_trabajo bigint NOT NULL
+);
+
+
+ALTER TABLE public.detalle_desabolladura OWNER TO postgres;
+
+--
+-- TOC entry 279 (class 1259 OID 16836)
+-- Name: detalle_desabolladura_id_detalle_desabolladura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.detalle_desabolladura ALTER COLUMN id_detalle_desabolladura ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.detalle_desabolladura_id_detalle_desabolladura_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 284 (class 1259 OID 16864)
+-- Name: detalle_pintura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.detalle_pintura (
+    id_detalle_pintura bigint NOT NULL,
+    rut_empleado character varying(50) NOT NULL,
+    cantidad_piezas_trabajadas integer NOT NULL,
+    descripcion_trabajo_pintura character varying(255) NOT NULL,
+    id_comision_pintura bigint NOT NULL,
+    id_orden_trabajo bigint NOT NULL
+);
+
+
+ALTER TABLE public.detalle_pintura OWNER TO postgres;
+
+--
+-- TOC entry 283 (class 1259 OID 16863)
+-- Name: detalle_pintura_id_detalle_pintura_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.detalle_pintura ALTER COLUMN id_detalle_pintura ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.detalle_pintura_id_detalle_pintura_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 254 (class 1259 OID 16650)
+-- Name: documento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.documento (
+    id_documento bigint NOT NULL,
+    direccion_documento character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.documento OWNER TO postgres;
+
+--
+-- TOC entry 253 (class 1259 OID 16649)
+-- Name: documento_id_documento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.documento ALTER COLUMN id_documento ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.documento_id_documento_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 293 (class 1259 OID 16930)
+-- Name: empleado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.empleado (
+    rut_empleado character varying(50) NOT NULL,
+    id_taller bigint NOT NULL,
+    nombre_empleado character varying(255) NOT NULL,
+    direccion_empleado character varying(255),
+    comuna_empleado character varying(100),
+    ciudad_empleado character varying(100),
+    nacionalidad_empleado character varying(100),
+    fecha_nacimiento_empleado date,
+    estado_civil_empleado character varying(50),
+    grupo_sanguineo_empleado character varying(50),
+    telefono_empleado character varying(20),
+    telefono_emergencia_empleado character varying(20),
+    prevision_salud_empleado character varying(50),
+    afp_empleado character varying(50),
+    email_empleado character varying(100),
+    observaciones_empleado character varying(500),
+    id_cargo bigint NOT NULL
+);
+
+
+ALTER TABLE public.empleado OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1259 OID 16560)
+-- Name: estado_cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.estado_cliente (
+    id_estado_cliente bigint NOT NULL,
+    descripcion character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.estado_cliente OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1259 OID 16559)
+-- Name: estado_cliente_id_estado_cliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.estado_cliente ALTER COLUMN id_estado_cliente ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.estado_cliente_id_estado_cliente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 222 (class 1259 OID 16414)
+-- Name: estado_usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.estado_usuario (
+    id_estado_usuario bigint NOT NULL,
+    descripcion_estado_usuario character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.estado_usuario OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16413)
+-- Name: estado_usuario_id_estado_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.estado_usuario ALTER COLUMN id_estado_usuario ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.estado_usuario_id_estado_usuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 256 (class 1259 OID 16656)
+-- Name: firma_cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.firma_cliente (
+    id_firma_cliente bigint NOT NULL,
+    direccion_firma_cliente character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.firma_cliente OWNER TO postgres;
+
+--
+-- TOC entry 255 (class 1259 OID 16655)
+-- Name: firma_cliente_id_firma_cliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.firma_cliente ALTER COLUMN id_firma_cliente ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.firma_cliente_id_firma_cliente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 297 (class 1259 OID 16954)
+-- Name: firma_empleado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.firma_empleado (
+    id_firma_empleado bigint NOT NULL,
+    direccion_firma_empleado character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.firma_empleado OWNER TO postgres;
+
+--
+-- TOC entry 296 (class 1259 OID 16953)
+-- Name: firma_empleado_id_firma_empleado_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.firma_empleado ALTER COLUMN id_firma_empleado ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.firma_empleado_id_firma_empleado_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 275 (class 1259 OID 16795)
+-- Name: historial_orden_de_ingreso; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.historial_orden_de_ingreso (
+    id_cambio_registrado bigint NOT NULL,
+    id_orden_ingreso bigint NOT NULL
+);
+
+
+ALTER TABLE public.historial_orden_de_ingreso OWNER TO postgres;
+
+--
+-- TOC entry 276 (class 1259 OID 16810)
+-- Name: historial_orden_de_trabajo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.historial_orden_de_trabajo (
+    id_cambio_registrado bigint NOT NULL,
+    id_orden_trabajo bigint NOT NULL
+);
+
+
+ALTER TABLE public.historial_orden_de_trabajo OWNER TO postgres;
+
+--
+-- TOC entry 286 (class 1259 OID 16880)
+-- Name: insumo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.insumo (
+    id_insumo bigint NOT NULL,
+    descripcion_insumo character varying(255) NOT NULL,
+    formato_insumo character varying(50),
+    precio_insumo integer,
+    stock_minimo_insumo integer,
+    stock_maximo_insumo integer,
+    id_sucursal bigint NOT NULL,
+    stock_disponible_insumo integer,
+    stock_critico_insumo boolean DEFAULT false
+);
+
+
+ALTER TABLE public.insumo OWNER TO postgres;
+
+--
+-- TOC entry 285 (class 1259 OID 16879)
+-- Name: insumo_id_insumo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.insumo ALTER COLUMN id_insumo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.insumo_id_insumo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 307 (class 1259 OID 17041)
+-- Name: item_especifico; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.item_especifico (
+    id_item_especifico bigint NOT NULL,
+    cantidad_insumo integer NOT NULL,
+    caducidad_insumo date NOT NULL,
+    fecha_ingreso_item timestamp without time zone DEFAULT now(),
+    id_insumo bigint NOT NULL,
+    id_sucursal bigint NOT NULL
+);
+
+
+ALTER TABLE public.item_especifico OWNER TO postgres;
+
+--
+-- TOC entry 306 (class 1259 OID 17040)
+-- Name: item_especifico_id_item_especifico_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.item_especifico ALTER COLUMN id_item_especifico ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.item_especifico_id_item_especifico_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 264 (class 1259 OID 16705)
+-- Name: mano_de_obra_presupuestada; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mano_de_obra_presupuestada (
+    id_mano_obra bigint NOT NULL,
+    id_presupuesto bigint NOT NULL,
+    nombre_pieza_mano_de_obra character varying(255) NOT NULL,
+    cantidad_piezas_mano_obra integer NOT NULL,
+    id_documento bigint,
+    id_tarifa_mano_de_obra bigint NOT NULL
+);
+
+
+ALTER TABLE public.mano_de_obra_presupuestada OWNER TO postgres;
+
+--
+-- TOC entry 263 (class 1259 OID 16704)
+-- Name: mano_de_obra_presupuestada_id_mano_obra_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.mano_de_obra_presupuestada ALTER COLUMN id_mano_obra ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.mano_de_obra_presupuestada_id_mano_obra_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 229 (class 1259 OID 16450)
+-- Name: modulo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.modulo (
+    id_modulo bigint NOT NULL,
+    nombre_modulo character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.modulo OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 16449)
+-- Name: modulo_id_modulo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.modulo ALTER COLUMN id_modulo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.modulo_id_modulo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 304 (class 1259 OID 17009)
+-- Name: notificaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.notificaciones (
+    id_notificacion bigint NOT NULL,
+    titulo_notificacion character varying(255) NOT NULL,
+    descripcion_notificacion character varying(500),
+    asunto_notificacion character varying(255),
+    fecha_creacion_notificacion timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.notificaciones OWNER TO postgres;
+
+--
+-- TOC entry 303 (class 1259 OID 17008)
+-- Name: notificaciones_id_notificacion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.notificaciones ALTER COLUMN id_notificacion ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.notificaciones_id_notificacion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 266 (class 1259 OID 16726)
+-- Name: orden_de_ingreso; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orden_de_ingreso (
+    id_orden_ingreso bigint NOT NULL,
+    llave_orden_ingreso boolean NOT NULL,
+    permiso_circulacion_orden_ingreso boolean NOT NULL,
+    revision_tecnica_orden_ingreso boolean NOT NULL,
+    seguro_obligatorio_orden_ingreso boolean NOT NULL,
+    extintor_orden_ingreso boolean NOT NULL,
+    botiquin_orden_ingreso boolean NOT NULL,
+    triangulo_orden_ingreso boolean NOT NULL,
+    rueda_repuesto_orden_ingreso boolean NOT NULL,
+    gata_orden_ingreso boolean NOT NULL,
+    barrote_orden_ingreso boolean NOT NULL,
+    dado_seguridad_orden_ingreso boolean NOT NULL,
+    herramientas_seguridad_orden_ingreso boolean NOT NULL,
+    encendedor_orden_ingreso boolean NOT NULL,
+    parlante_orden_ingreso boolean NOT NULL,
+    llantas_orden_ingreso boolean NOT NULL,
+    pisos_orden_ingreso boolean NOT NULL,
+    tag_orden_ingreso boolean NOT NULL,
+    radio_orden_ingreso boolean NOT NULL,
+    panel_orden_ingreso boolean NOT NULL,
+    panel_radio_orden_ingreso boolean NOT NULL,
+    alzavidrios_orden_ingreso boolean NOT NULL,
+    cierre_centralizado_orden_ingreso boolean NOT NULL,
+    espejos_electricos_orden_ingreso boolean NOT NULL,
+    antena_orden_ingreso boolean NOT NULL,
+    alarma_orden_ingreso boolean NOT NULL,
+    aire_acondicionado_orden_ingreso boolean NOT NULL,
+    aire_acondicionado_trasero_orden_ingreso boolean NOT NULL,
+    parabrisas_orden_ingreso boolean NOT NULL,
+    limpia_parabrisas_orden_ingreso boolean NOT NULL,
+    luces_bajas_orden_ingreso boolean NOT NULL,
+    luces_altas_orden_ingreso boolean NOT NULL,
+    luces_traseras_orden_ingreso boolean NOT NULL,
+    luces_estacionamiento_orden_ingreso boolean NOT NULL,
+    sensores_retroceso_orden_ingreso boolean NOT NULL,
+    camara_retroceso_orden_ingreso boolean NOT NULL,
+    nivel_combustible_orden_ingreso character varying(50) NOT NULL,
+    pantalla_interior_orden_ingreso boolean NOT NULL,
+    observaciones_orden_ingreso boolean NOT NULL,
+    id_presupuesto bigint NOT NULL
+);
+
+
+ALTER TABLE public.orden_de_ingreso OWNER TO postgres;
+
+--
+-- TOC entry 265 (class 1259 OID 16725)
+-- Name: orden_de_ingreso_id_orden_ingreso_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.orden_de_ingreso ALTER COLUMN id_orden_ingreso ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.orden_de_ingreso_id_orden_ingreso_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 268 (class 1259 OID 16737)
+-- Name: orden_de_trabajo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orden_de_trabajo (
+    id_orden_trabajo bigint NOT NULL,
+    id_orden_ingreso bigint NOT NULL,
+    patente_vehiculo character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.orden_de_trabajo OWNER TO postgres;
+
+--
+-- TOC entry 267 (class 1259 OID 16736)
+-- Name: orden_de_trabajo_id_orden_trabajo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.orden_de_trabajo ALTER COLUMN id_orden_trabajo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.orden_de_trabajo_id_orden_trabajo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 227 (class 1259 OID 16443)
+-- Name: pago; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pago (
+    id_pago bigint NOT NULL,
+    metodo_pago character varying(50) NOT NULL,
+    cantidad_pagada integer NOT NULL,
+    fecha_pago timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public.pago OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 16442)
+-- Name: pago_id_pago_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.pago ALTER COLUMN id_pago ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.pago_id_pago_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 238 (class 1259 OID 16509)
+-- Name: pantallas_usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pantallas_usuario (
+    id_usuario character varying(8),
+    id_modulo bigint,
+    id_submodulo bigint
+);
+
+
+ALTER TABLE public.pantallas_usuario OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 16478)
+-- Name: permiso; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.permiso (
+    id_permiso bigint NOT NULL,
+    descripcion_permiso character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.permiso OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1259 OID 16477)
+-- Name: permiso_id_permiso_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.permiso ALTER COLUMN id_permiso ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.permiso_id_permiso_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 260 (class 1259 OID 16673)
+-- Name: pintura_presupuestada; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pintura_presupuestada (
+    id_pintura_presupuestada bigint NOT NULL,
+    id_presupuesto bigint NOT NULL,
+    nombre_pieza_pintada character varying(255) NOT NULL,
+    cantidad_piezas_pintadas integer NOT NULL,
+    id_documento bigint,
+    id_tarifa_piezas_pintadas bigint NOT NULL
+);
+
+
+ALTER TABLE public.pintura_presupuestada OWNER TO postgres;
+
+--
+-- TOC entry 259 (class 1259 OID 16672)
+-- Name: pintura_presupuestada_id_pintura_presupuestada_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.pintura_presupuestada ALTER COLUMN id_pintura_presupuestada ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.pintura_presupuestada_id_pintura_presupuestada_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 250 (class 1259 OID 16616)
+-- Name: presupuesto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.presupuesto (
+    id_presupuesto bigint NOT NULL,
+    rut_cliente character varying(20) NOT NULL,
+    placa_vehiculo character varying(20) NOT NULL,
+    fecha_creacion_presupuesto_general date DEFAULT (now())::date NOT NULL,
+    dias_validez_presupuesto_general integer NOT NULL,
+    obs_presupuesto_general character varying(500),
+    id_sucursal bigint
+);
+
+
+ALTER TABLE public.presupuesto OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1259 OID 16615)
+-- Name: presupuesto_id_presupuesto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.presupuesto ALTER COLUMN id_presupuesto ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.presupuesto_id_presupuesto_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 302 (class 1259 OID 16991)
+-- Name: proveedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.proveedor (
+    rut_proveedor bigint NOT NULL,
+    id_taller bigint NOT NULL,
+    razon_social_proveedor character varying(255) NOT NULL,
+    giro_proveedor character varying(255),
+    direccion_proveedor character varying(255),
+    telefono_proveedor character varying(50),
+    email_proveedor character varying(255),
+    persona_contacto_proveedor character varying(255),
+    pagina_web_proveedor character varying(255),
+    id_tipo_proveedor bigint NOT NULL
+);
+
+
+ALTER TABLE public.proveedor OWNER TO postgres;
+
+--
+-- TOC entry 270 (class 1259 OID 16753)
+-- Name: recepcion_activa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.recepcion_activa (
+    id_recepcion_activa bigint NOT NULL,
+    id_orden_ingreso bigint NOT NULL,
+    id_firma_cliente bigint NOT NULL,
+    id_presupuesto bigint NOT NULL,
+    id_orden_trabajo bigint NOT NULL
+);
+
+
+ALTER TABLE public.recepcion_activa OWNER TO postgres;
+
+--
+-- TOC entry 269 (class 1259 OID 16752)
+-- Name: recepcion_activa_id_recepcion_activa_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.recepcion_activa ALTER COLUMN id_recepcion_activa ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.recepcion_activa_id_recepcion_activa_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 309 (class 1259 OID 17065)
+-- Name: repuestos_presupuestados; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.repuestos_presupuestados (
+    id_repuestos_presupuestado bigint NOT NULL,
+    id_presupuesto bigint NOT NULL,
+    nombre_pieza_repuesto character varying(255) NOT NULL,
+    precio_pieza_repuesto integer NOT NULL,
+    id_documento bigint
+);
+
+
+ALTER TABLE public.repuestos_presupuestados OWNER TO postgres;
+
+--
+-- TOC entry 308 (class 1259 OID 17064)
+-- Name: repuestos_presupuestados_id_repuestos_presupuestado_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.repuestos_presupuestados ALTER COLUMN id_repuestos_presupuestado ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.repuestos_presupuestados_id_repuestos_presupuestado_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 233 (class 1259 OID 16467)
+-- Name: seccion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.seccion (
+    id_seccion bigint NOT NULL,
+    nombre_seccion character varying(50) NOT NULL,
+    id_submodulo bigint
+);
+
+
+ALTER TABLE public.seccion OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 16466)
+-- Name: seccion_id_seccion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.seccion ALTER COLUMN id_seccion ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.seccion_id_seccion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 236 (class 1259 OID 16483)
+-- Name: seccion_permiso; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.seccion_permiso (
+    id_seccion bigint,
+    id_permiso bigint
+);
+
+
+ALTER TABLE public.seccion_permiso OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 16496)
+-- Name: seccion_usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.seccion_usuario (
+    id_seccion bigint,
+    id_usuario character varying(8)
+);
+
+
+ALTER TABLE public.seccion_usuario OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 16456)
+-- Name: submodulo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.submodulo (
+    id_submodulo bigint NOT NULL,
+    nombre_submodulo character varying(50) NOT NULL,
+    id_modulo bigint
+);
+
+
+ALTER TABLE public.submodulo OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 16455)
+-- Name: submodulo_id_submodulo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.submodulo ALTER COLUMN id_submodulo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.submodulo_id_submodulo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 225 (class 1259 OID 16436)
+-- Name: subscripcion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.subscripcion (
+    id_subscripcion bigint NOT NULL,
+    cantidad_pago_sub integer NOT NULL,
+    estado_sub boolean NOT NULL,
+    tipo_sub character varying(50) NOT NULL,
+    fecha_inicio_sub timestamp without time zone DEFAULT now() NOT NULL,
+    fechar_vencimiento_sub date NOT NULL
+);
+
+
+ALTER TABLE public.subscripcion OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 16435)
+-- Name: subscripcion_id_subscripcion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.subscripcion ALTER COLUMN id_subscripcion ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.subscripcion_id_subscripcion_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 220 (class 1259 OID 16403)
+-- Name: sucursal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sucursal (
+    id_sucursal bigint NOT NULL,
+    nombre_sucursal character varying(50) NOT NULL,
+    direccion_sucursal character varying(50) NOT NULL,
+    comuna_sucursal character varying(50) NOT NULL,
+    ciudad_sucursal character varying(50) NOT NULL,
+    pais_sucursal character varying(50) NOT NULL,
+    email_sucursal character varying(50) NOT NULL,
+    capacidad_sucursal integer,
+    telefono_sucursal character varying(50) NOT NULL,
+    id_taller bigint
+);
+
+
+ALTER TABLE public.sucursal OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16402)
+-- Name: sucursal_id_sucursal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.sucursal ALTER COLUMN id_sucursal ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.sucursal_id_sucursal_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 216 (class 1259 OID 16391)
+-- Name: superusuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.superusuario (
+    id_superusuario bigint NOT NULL,
+    email_superusuario character varying(50) NOT NULL,
+    "contraseÑa_superusuario" character varying(10) NOT NULL,
+    nombre_superusuario character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.superusuario OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16390)
+-- Name: superusuario_id_superusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.superusuario ALTER COLUMN id_superusuario ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.superusuario_id_superusuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 218 (class 1259 OID 16397)
+-- Name: taller; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.taller (
+    id_taller bigint NOT NULL,
+    nombre_taller character varying(50) NOT NULL,
+    direccion_taller character varying(255) NOT NULL,
+    comuna_taller character varying(50) NOT NULL,
+    ciudad_taller character varying(50) NOT NULL,
+    pais_taller character varying(50) NOT NULL,
+    email_taller character varying(100) NOT NULL,
+    capacidad_total_taller integer,
+    gerente_taller character varying(50) NOT NULL,
+    telefono_taller character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.taller OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16396)
+-- Name: taller_id_taller_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.taller ALTER COLUMN id_taller ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.taller_id_taller_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 262 (class 1259 OID 16694)
+-- Name: tarifa_mano_de_obra; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tarifa_mano_de_obra (
+    id_tarifa_mano_de_obra bigint NOT NULL,
+    descripcion_tarifa_mano_de_obra character varying(255) NOT NULL,
+    precio_por_pieza_mano_de_obra integer NOT NULL,
+    id_sucursal bigint NOT NULL
+);
+
+
+ALTER TABLE public.tarifa_mano_de_obra OWNER TO postgres;
+
+--
+-- TOC entry 261 (class 1259 OID 16693)
+-- Name: tarifa_mano_de_obra_id_tarifa_mano_de_obra_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tarifa_mano_de_obra ALTER COLUMN id_tarifa_mano_de_obra ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tarifa_mano_de_obra_id_tarifa_mano_de_obra_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 258 (class 1259 OID 16662)
+-- Name: tarifa_piezas_pintadas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tarifa_piezas_pintadas (
+    id_tarifa_piezas_pintadas bigint NOT NULL,
+    descripcion_tarifa_piezas_pintadas character varying(255) NOT NULL,
+    precio_por_pieza_pintada integer NOT NULL,
+    id_sucursal bigint NOT NULL
+);
+
+
+ALTER TABLE public.tarifa_piezas_pintadas OWNER TO postgres;
+
+--
+-- TOC entry 257 (class 1259 OID 16661)
+-- Name: tarifa_piezas_pintadas_id_tarifa_piezas_pintadas_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tarifa_piezas_pintadas ALTER COLUMN id_tarifa_piezas_pintadas ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tarifa_piezas_pintadas_id_tarifa_piezas_pintadas_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 242 (class 1259 OID 16554)
+-- Name: tipo_cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_cliente (
+    id_tipo_cliente bigint NOT NULL,
+    descripcion character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_cliente OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1259 OID 16553)
+-- Name: tipo_cliente_id_tipo_cliente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tipo_cliente ALTER COLUMN id_tipo_cliente ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tipo_cliente_id_tipo_cliente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 295 (class 1259 OID 16948)
+-- Name: tipo_contrato; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_contrato (
+    id_tipo_contrato bigint NOT NULL,
+    descripcion character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_contrato OWNER TO postgres;
+
+--
+-- TOC entry 294 (class 1259 OID 16947)
+-- Name: tipo_contrato_id_tipo_contrato_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tipo_contrato ALTER COLUMN id_tipo_contrato ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tipo_contrato_id_tipo_contrato_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 301 (class 1259 OID 16986)
+-- Name: tipo_proveedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_proveedor (
+    id_tipo_proveedor bigint NOT NULL,
+    descripcion_tipo_proveedor character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_proveedor OWNER TO postgres;
+
+--
+-- TOC entry 300 (class 1259 OID 16985)
+-- Name: tipo_proveedor_id_tipo_proveedor_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tipo_proveedor ALTER COLUMN id_tipo_proveedor ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tipo_proveedor_id_tipo_proveedor_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 247 (class 1259 OID 16593)
+-- Name: tipo_vehiculo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_vehiculo (
+    id_tipo_vehiculo bigint NOT NULL,
+    descripcion character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_vehiculo OWNER TO postgres;
+
+--
+-- TOC entry 246 (class 1259 OID 16592)
+-- Name: tipo_vehiculo_id_tipo_vehiculo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.tipo_vehiculo ALTER COLUMN id_tipo_vehiculo ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.tipo_vehiculo_id_tipo_vehiculo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 223 (class 1259 OID 16419)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario (
+    id_usuario character varying(8) NOT NULL,
+    email_usuario character varying(50) NOT NULL,
+    contrasena_usuario character varying(60) NOT NULL,
+    nombre_usuario character varying(50) NOT NULL,
+    apep_usuario character varying(50),
+    apem_usuario character varying(50),
+    contacto_usuario character varying(50) NOT NULL,
+    f_ingreso_usuario timestamp without time zone DEFAULT now() NOT NULL,
+    id_estado_usuario bigint,
+    id_taller bigint
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 305 (class 1259 OID 17017)
+-- Name: usuario_notificacion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario_notificacion (
+    id_usuario character varying(8) NOT NULL,
+    id_notificacion bigint NOT NULL,
+    visibilidad_notificacion boolean NOT NULL,
+    tiempo_espera_notificacion character varying(255)
+);
+
+
+ALTER TABLE public.usuario_notificacion OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1259 OID 16540)
+-- Name: usuario_sucursal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario_sucursal (
+    id_usuario character varying(8),
+    id_sucursal bigint
+);
+
+
+ALTER TABLE public.usuario_sucursal OWNER TO postgres;
+
+--
+-- TOC entry 248 (class 1259 OID 16598)
+-- Name: vehiculo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.vehiculo (
+    patente_vehiculo character varying(20) NOT NULL,
+    marca_vehiculo character varying(100),
+    modelo_vehiculo character varying(100),
+    ano_vehiculo character varying(4),
+    color_vehiculo character varying(50),
+    kilometraje_vehiculo character varying(20),
+    tipo_vehiculo character varying(100),
+    num_motor_vehiculo character varying(50),
+    obs_vehiculo character varying(500),
+    rut_cliente character varying(25),
+    id_taller bigint
+);
+
+
+ALTER TABLE public.vehiculo OWNER TO postgres;
+
+--
+-- TOC entry 4125 (class 0 OID 16527)
+-- Dependencies: 239
+-- Data for Name: ban_usuario_permiso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.ban_usuario_permiso (id_usuario, id_permiso) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4160 (class 0 OID 16785)
+-- Dependencies: 274
+-- Data for Name: cambio_registrado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cambio_registrado (id_cambio_registrado, id_usuario, fecha_cambio_registrado, id_cambio_permitido) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4158 (class 0 OID 16779)
+-- Dependencies: 272
+-- Data for Name: cambios_permitidos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cambios_permitidos (id_cambio_permitido, descripcion_cambio_permitido) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4178 (class 0 OID 16923)
+-- Dependencies: 292
+-- Data for Name: cargo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cargo (id_cargo, nom_cargo, descripcion_cargo, pago_cargo) FROM stdin;
+1	Mecánico	Encargado de realizar mantenimiento y reparación de vehículos.	800000
+2	Recepcionista	Atiende a los clientes y gestiona la recepción de vehículos.	600000
+3	Jefe de Taller	Supervisa y coordina las actividades del taller.	1200000
+4	Asistente Administrativo	Realiza tareas administrativas y de gestión documental.	700000
+5	Electricista Automotriz	Especialista en diagnóstico y reparación de sistemas eléctricos de vehículos.	900000
+6	Pintor Automotriz	Encargado de la pintura y acabado de vehículos.	850000
+7	Lavador de Autos	Encargado de la limpieza y detallado de los vehículos.	500000
+8	Jefe de Bodega	Administra el inventario de repuestos y herramientas del taller.	950000
+9	Gerente General	Encargado de la gestión y toma de decisiones estratégicas del taller.	2000000
+\.
+
+
+--
+-- TOC entry 4131 (class 0 OID 16565)
+-- Dependencies: 245
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (rut_cliente, nom_cliente, direccion_cliente, comuna_cliente, ciudad_cliente, pais_cliente, email_cliente, obs_cliente, telefono_cliente, id_sucursal, id_tipo_cliente, id_estado_cliente, id_taller) FROM stdin;
+214488388	Jocsan Magdiel Riquelme Mella	Collao 456	Concepcion	Concepcion	Chile	jocsanriquelme@gmail.com	\N	931130363	1	2	1	4
+15.212.121-0	Francisco Riquelme	Frontera 456	Nacimiento	Nacimiento	Chile	fran@gmail.com		973895581	1	2	1	4
+15821959k	Milca Mella	Collao 456	Hualpen	Concepcion	Chile	milca@gmail.com		968979466	1	2	1	4
+179433222	Marcos Roa	Santa Sofia	Hualpen	Concepcion	Chile	mroa@kronosdetail.cl	\N	956432211	1	2	1	4
+17396532k	Jonathan Saez	Santa Sofia	Consepcion	Consepcion	Chile	jonathan@gmail.com	\N	976554433	1	2	1	4
+21.133.699-4	Gastañadui Rojas Irwin Jose Jose	awsdef	sdfg	sdfg	dfg	sdxfg@sfvdgf	\N	123456	1	3	2	4
+26.411.272-9	Anthony Jose	ssss	ssss	ssss	ssss	jjj@jj.cl		987665544	1	2	1	4
+15.821.959-k	Milca	asdf	sdf	sd	sdf	asd	\N	asdcf	1	3	1	4
+\.
+
+
+--
+-- TOC entry 4138 (class 0 OID 16639)
+-- Dependencies: 252
+-- Data for Name: cobros; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cobros (id_cobro, id_presupuesto, cantidad_cobrada_cobros, forma_pago_cobros, fecha_cobro, numero_recibo, descripcion_cobro) FROM stdin;
+18	1	8000	Tarjeta Débito	2025-02-03	8090	Pago 1
+19	8	20000	Efectivo	2025-02-03	345655	Pago efectivo
+20	1	80000	Efectivo	2024-09-01	4567	
+21	1	600000	Tarjeta Débito	2020-09-09	0001	
+22	1	90000	Tarjeta Crédito	2025-09-09	003	
+24	1	80000	Tarjeta Débito	2025-02-09	0009	Pago prueba
+\.
+
+
+--
+-- TOC entry 4164 (class 0 OID 16826)
+-- Dependencies: 278
+-- Data for Name: comision_desabolladura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.comision_desabolladura (id_comision_desabolladura, descripcion_comision_desabolladura, porcentaje_comision_desabolladura, id_sucursal) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4168 (class 0 OID 16853)
+-- Dependencies: 282
+-- Data for Name: comision_pintura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.comision_pintura (id_comision_pintura, descripcion_comision_pintura, precio_pieza_trabajada, id_sucursal) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4174 (class 0 OID 16891)
+-- Dependencies: 288
+-- Data for Name: consumo_orden_de_trabajo_desabolladura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.consumo_orden_de_trabajo_desabolladura (id_consumo_ot, id_detalle_desabolladura, id_insumo, cantidad_consumida) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4176 (class 0 OID 16907)
+-- Dependencies: 290
+-- Data for Name: consumo_orden_de_trabajo_pintura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.consumo_orden_de_trabajo_pintura (id_consumo_ot, id_detalle_pintura, id_insumo, cantidad_consumida) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4185 (class 0 OID 16960)
+-- Dependencies: 299
+-- Data for Name: contrato; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.contrato (id_contrato, id_empleado, id_tipo_contrato, remuneracion_contrato, id_firma_empleado, id_documento) FROM stdin;
+10	152121210	3	56666666	17	9
+11	214488388	1	20000000	18	10
+12	15821959k	1	7000000	19	11
+13	226696768	3	800000	20	12
+14	213345679	1	900000	21	13
+15	1794323222	1	1900000	22	14
+16	21.133.699-4	2	600000	23	15
+\.
+
+
+--
+-- TOC entry 4166 (class 0 OID 16837)
+-- Dependencies: 280
+-- Data for Name: detalle_desabolladura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.detalle_desabolladura (id_detalle_desabolladura, rut_empleado, pago_total_detalle_desabolladura, descripcion_trabajo_desabolladura, id_comision_desabolladura, id_orden_trabajo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4170 (class 0 OID 16864)
+-- Dependencies: 284
+-- Data for Name: detalle_pintura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.detalle_pintura (id_detalle_pintura, rut_empleado, cantidad_piezas_trabajadas, descripcion_trabajo_pintura, id_comision_pintura, id_orden_trabajo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4140 (class 0 OID 16650)
+-- Dependencies: 254
+-- Data for Name: documento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.documento (id_documento, direccion_documento) FROM stdin;
+1	/uploads/documentos/archivo-1738276185911-45833923.pdf
+2	/uploads/documentos/archivo-1738276337554-707121857.pdf
+3	/uploads/documentos/archivo-1738276434605-975343589.pdf
+4	/uploads/documentos/archivo-1738276706949-984882904.pdf
+5	/uploads/documentos/archivo-1738276723580-764890070.pdf
+6	/uploads/documentos/archivo-1738276752074-938935422.pdf
+7	/uploads/documentos/archivo-1738276828511-525994457.pdf
+8	/uploads/documentos/archivo-1738279948912-409569643.pdf
+9	/uploads/documentos/archivo-1738280115646-78643001.pdf
+10	/uploads/documentos/archivo-1738280304478-214000546.pdf
+11	/uploads/documentos/archivo-1738280948304-819172471.pdf
+12	/uploads/documentos/archivo-1738288099601-410990167.pdf
+13	/uploads/documentos/archivo-1738295735693-343870630.pdf
+14	/uploads/documentos/archivo-1738608236474-199999460.pdf
+15	/uploads/documentos/archivo-1738870743436-143881882.pdf
+\.
+
+
+--
+-- TOC entry 4179 (class 0 OID 16930)
+-- Dependencies: 293
+-- Data for Name: empleado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.empleado (rut_empleado, id_taller, nombre_empleado, direccion_empleado, comuna_empleado, ciudad_empleado, nacionalidad_empleado, fecha_nacimiento_empleado, estado_civil_empleado, grupo_sanguineo_empleado, telefono_empleado, telefono_emergencia_empleado, prevision_salud_empleado, afp_empleado, email_empleado, observaciones_empleado, id_cargo) FROM stdin;
+214488388	4	Jocsan Riquelme Mella	Santos Medel 330	Hualpen	Concepcion	Chilena	2003-11-20	Soltero	A	931130363	968979466	Fonasa	Modelo 1	jocsan@gmail.com	primer empleado	7
+152121210	4	Francisco Riquelme	Santos Medel	Nacimiento	Concepcion	Chilena	2000-12-20	Casado	B	967678900	954678933	FONOSA	A	fran@gmail.com		1
+15821959k	4	Milca Mella	Constanera 345	Nacimiento	Nacimiento	Chilena	2000-09-07	Casado	D	987654322	967834522	FONASA	UNO			2
+226696768	4	Jair Aron Riquelme Mella	Santso medel 330	Nacimiento	Nacimiento	Chilena	2003-03-12	Soltero	A	978561243	978045562	ISAPRE	MODELO	jair@gmail.com		1
+213345679	4	Karina Cifuentes	Cocrahne 234	Hualpen	Concepcion	Chilena	2004-01-29	Soltero	A	987564322	956432211	Isapre	MODELO	karina@gmail.com		2
+1794323222	4	Marcos Roa	Santa Sofia	Concepcion	Concepcion	Chilena	1991-07-29	Casado	A1	978563345	912345566	ISAPRE	MODELO	mroa@kronosdetail.cl		9
+21.133.699-4	4	Jose Rojas	asdfg	sdf	asdf	asdf	0456-03-12	Divorciado	sdfg	sdf	sdfg	sdf	asdf	sdfgv		4
+\.
+
+
+--
+-- TOC entry 4130 (class 0 OID 16560)
+-- Dependencies: 244
+-- Data for Name: estado_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.estado_cliente (id_estado_cliente, descripcion) FROM stdin;
+1	Activo
+2	Inactivo
+\.
+
+
+--
+-- TOC entry 4108 (class 0 OID 16414)
+-- Dependencies: 222
+-- Data for Name: estado_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.estado_usuario (id_estado_usuario, descripcion_estado_usuario) FROM stdin;
+2	Activo
+\.
+
+
+--
+-- TOC entry 4142 (class 0 OID 16656)
+-- Dependencies: 256
+-- Data for Name: firma_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.firma_cliente (id_firma_cliente, direccion_firma_cliente) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4183 (class 0 OID 16954)
+-- Dependencies: 297
+-- Data for Name: firma_empleado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.firma_empleado (id_firma_empleado, direccion_firma_empleado) FROM stdin;
+1	/uploads/firmas-empleados/archivo-1738276185883-668622076.png
+2	/uploads/firmas-empleados/archivo-1738276337538-683937438.png
+3	/uploads/firmas-empleados/archivo-1738276390050-968130222.png
+4	/uploads/firmas-empleados/archivo-1738276434591-37377154.png
+5	/uploads/firmas-empleados/archivo-1738276706932-601558019.png
+6	/uploads/firmas-empleados/archivo-1738276723564-791853271.png
+7	/uploads/firmas-empleados/archivo-1738276752058-11524683.png
+8	/uploads/firmas-empleados/archivo-1738276828495-150641779.png
+9	/uploads/firmas-empleados/archivo-1738277472631-69748008.png
+10	/uploads/firmas-empleados/archivo-1738279020773-707928554.png
+11	ajajaja
+12	/uploads/firmas-empleados/archivo-1738279349344-566974307.png
+13	/uploads/firmas-empleados/archivo-1738279478356-505820351.png
+14	/uploads/firmas-empleados/archivo-1738279671187-108079320.png
+15	/uploads/firmas-empleados/archivo-1738279784369-758213442.png
+16	/uploads/firmas-empleados/archivo-1738279948889-517747803.png
+17	/uploads/firmas-empleados/archivo-1738280115635-195910796.png
+19	/uploads/firmas-empleados/archivo-1738280948283-34769392.png
+20	/uploads/firmas-empleados/archivo-1738288099582-912283997.png
+18	/uploads/firmas-empleados/archivo-1738280304454-584748275.png
+21	/uploads/firmas-empleados/archivo-1738295735664-419837796.png
+22	/uploads/firmas-empleados/archivo-1738608236449-584897195.png
+23	/uploads/firmas-empleados/archivo-1738870743414-237942697.png
+\.
+
+
+--
+-- TOC entry 4161 (class 0 OID 16795)
+-- Dependencies: 275
+-- Data for Name: historial_orden_de_ingreso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.historial_orden_de_ingreso (id_cambio_registrado, id_orden_ingreso) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4162 (class 0 OID 16810)
+-- Dependencies: 276
+-- Data for Name: historial_orden_de_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.historial_orden_de_trabajo (id_cambio_registrado, id_orden_trabajo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4172 (class 0 OID 16880)
+-- Dependencies: 286
+-- Data for Name: insumo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.insumo (id_insumo, descripcion_insumo, formato_insumo, precio_insumo, stock_minimo_insumo, stock_maximo_insumo, id_sucursal, stock_disponible_insumo, stock_critico_insumo) FROM stdin;
+1	Aceite Lubricante	Litros	9000	60	200	1	800	f
+2	Masilla	Kilo	6900	40	300	1	10	t
+4	Lija Gruesa	Unidad	800	20	80	1	0	t
+\.
+
+
+--
+-- TOC entry 4193 (class 0 OID 17041)
+-- Dependencies: 307
+-- Data for Name: item_especifico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.item_especifico (id_item_especifico, cantidad_insumo, caducidad_insumo, fecha_ingreso_item, id_insumo, id_sucursal) FROM stdin;
+1	200	2026-09-09	2025-02-01 03:17:02.284463	1	1
+2	200	2026-11-11	2025-02-01 03:28:06.219255	1	1
+3	200	0240-09-09	2025-02-01 03:30:45.005304	1	1
+4	200	2026-11-11	2025-02-01 03:35:41.211059	1	1
+5	200	2027-11-11	2025-02-01 03:50:53.493126	1	1
+6	-200	2027-11-11	2025-02-01 04:27:50.613943	1	1
+7	30	2029-12-30	2025-02-01 05:18:27.425804	2	1
+8	-20	2029-12-30	2025-02-01 05:19:26.940003	2	1
+\.
+
+
+--
+-- TOC entry 4150 (class 0 OID 16705)
+-- Dependencies: 264
+-- Data for Name: mano_de_obra_presupuestada; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.mano_de_obra_presupuestada (id_mano_obra, id_presupuesto, nombre_pieza_mano_de_obra, cantidad_piezas_mano_obra, id_documento, id_tarifa_mano_de_obra) FROM stdin;
+1	1	CAPOT	7	\N	1
+3	1	CAPOT	5	\N	2
+5	8	PUERTA DELANTERA DERECHA	2	\N	2
+6	8	Vehiculo Cmpleto	1	\N	4
+7	8	PUERTA DELANTERA DERECHA	5	\N	2
+9	8	Vehiculo Completo	1	\N	3
+11	1	PUERTA DELANTERA DERECHA	6	\N	1
+\.
+
+
+--
+-- TOC entry 4115 (class 0 OID 16450)
+-- Dependencies: 229
+-- Data for Name: modulo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.modulo (id_modulo, nombre_modulo) FROM stdin;
+1	GESTION
+2	TALLER
+3	ABASTECIMIENTO
+\.
+
+
+--
+-- TOC entry 4190 (class 0 OID 17009)
+-- Dependencies: 304
+-- Data for Name: notificaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.notificaciones (id_notificacion, titulo_notificacion, descripcion_notificacion, asunto_notificacion, fecha_creacion_notificacion) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4152 (class 0 OID 16726)
+-- Dependencies: 266
+-- Data for Name: orden_de_ingreso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orden_de_ingreso (id_orden_ingreso, llave_orden_ingreso, permiso_circulacion_orden_ingreso, revision_tecnica_orden_ingreso, seguro_obligatorio_orden_ingreso, extintor_orden_ingreso, botiquin_orden_ingreso, triangulo_orden_ingreso, rueda_repuesto_orden_ingreso, gata_orden_ingreso, barrote_orden_ingreso, dado_seguridad_orden_ingreso, herramientas_seguridad_orden_ingreso, encendedor_orden_ingreso, parlante_orden_ingreso, llantas_orden_ingreso, pisos_orden_ingreso, tag_orden_ingreso, radio_orden_ingreso, panel_orden_ingreso, panel_radio_orden_ingreso, alzavidrios_orden_ingreso, cierre_centralizado_orden_ingreso, espejos_electricos_orden_ingreso, antena_orden_ingreso, alarma_orden_ingreso, aire_acondicionado_orden_ingreso, aire_acondicionado_trasero_orden_ingreso, parabrisas_orden_ingreso, limpia_parabrisas_orden_ingreso, luces_bajas_orden_ingreso, luces_altas_orden_ingreso, luces_traseras_orden_ingreso, luces_estacionamiento_orden_ingreso, sensores_retroceso_orden_ingreso, camara_retroceso_orden_ingreso, nivel_combustible_orden_ingreso, pantalla_interior_orden_ingreso, observaciones_orden_ingreso, id_presupuesto) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4154 (class 0 OID 16737)
+-- Dependencies: 268
+-- Data for Name: orden_de_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orden_de_trabajo (id_orden_trabajo, id_orden_ingreso, patente_vehiculo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4113 (class 0 OID 16443)
+-- Dependencies: 227
+-- Data for Name: pago; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pago (id_pago, metodo_pago, cantidad_pagada, fecha_pago) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4124 (class 0 OID 16509)
+-- Dependencies: 238
+-- Data for Name: pantallas_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pantallas_usuario (id_usuario, id_modulo, id_submodulo) FROM stdin;
+USER_0	1	1
+USER_0	1	2
+USER_0	1	3
+USER_0	2	4
+USER_1	1	1
+USER_1	1	2
+USER_0	1	5
+USER_0	3	6
+\.
+
+
+--
+-- TOC entry 4121 (class 0 OID 16478)
+-- Dependencies: 235
+-- Data for Name: permiso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.permiso (id_permiso, descripcion_permiso) FROM stdin;
+1	CREAR CLIENTE
+2	CREAR VEHICULO
+3	BUSCAR CLIENTE
+4	BUSCAR VEHICULO
+5	EXPORTAR CLIENTES
+6	CREAR PROVEEDOR
+7	BUCAR PROVEEDOR
+\.
+
+
+--
+-- TOC entry 4146 (class 0 OID 16673)
+-- Dependencies: 260
+-- Data for Name: pintura_presupuestada; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pintura_presupuestada (id_pintura_presupuestada, id_presupuesto, nombre_pieza_pintada, cantidad_piezas_pintadas, id_documento, id_tarifa_piezas_pintadas) FROM stdin;
+20	1	PUERTA DELANTERA DERECHA	5	\N	1
+21	1	PUERTA DELANTERA IZQUIERDA	6	\N	1
+22	8	PUERTA DELANTERA DERECHA	4	\N	2
+\.
+
+
+--
+-- TOC entry 4136 (class 0 OID 16616)
+-- Dependencies: 250
+-- Data for Name: presupuesto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.presupuesto (id_presupuesto, rut_cliente, placa_vehiculo, fecha_creacion_presupuesto_general, dias_validez_presupuesto_general, obs_presupuesto_general, id_sucursal) FROM stdin;
+1	214488388	SJM	2025-02-02	90		1
+2	214488388	JRM	2025-02-02	20		1
+7	214488388	JMRM	2025-02-02	20		1
+8	179433222	MRO	2025-02-03	30		1
+9	26.411.272-9	QASDYT67	2025-02-07	3000		1
+\.
+
+
+--
+-- TOC entry 4188 (class 0 OID 16991)
+-- Dependencies: 302
+-- Data for Name: proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.proveedor (rut_proveedor, id_taller, razon_social_proveedor, giro_proveedor, direccion_proveedor, telefono_proveedor, email_proveedor, persona_contacto_proveedor, pagina_web_proveedor, id_tipo_proveedor) FROM stdin;
+214488388	4	Jocsan Riquelme	wsdef	sdf	1234	sdfg	swdf	sd	1
+\.
+
+
+--
+-- TOC entry 4156 (class 0 OID 16753)
+-- Dependencies: 270
+-- Data for Name: recepcion_activa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.recepcion_activa (id_recepcion_activa, id_orden_ingreso, id_firma_cliente, id_presupuesto, id_orden_trabajo) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4195 (class 0 OID 17065)
+-- Dependencies: 309
+-- Data for Name: repuestos_presupuestados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.repuestos_presupuestados (id_repuestos_presupuestado, id_presupuesto, nombre_pieza_repuesto, precio_pieza_repuesto, id_documento) FROM stdin;
+2	1	Parachoces	500000	\N
+3	8	TAPARBARROS DELANTERO	39000	\N
+\.
+
+
+--
+-- TOC entry 4119 (class 0 OID 16467)
+-- Dependencies: 233
+-- Data for Name: seccion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.seccion (id_seccion, nombre_seccion, id_submodulo) FROM stdin;
+1	NUEVO CLIENTE	1
+2	LISTA DE CLIENTES	1
+3	MANEJO DE CLIENTES	1
+4	NUEVO VEHICULO	2
+5	LISTA DE VEHICULOS	2
+6	NUEVO PROVEEDOR	3
+7	LISTA DE PROVEEDORES	3
+\.
+
+
+--
+-- TOC entry 4122 (class 0 OID 16483)
+-- Dependencies: 236
+-- Data for Name: seccion_permiso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.seccion_permiso (id_seccion, id_permiso) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4123 (class 0 OID 16496)
+-- Dependencies: 237
+-- Data for Name: seccion_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.seccion_usuario (id_seccion, id_usuario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4117 (class 0 OID 16456)
+-- Dependencies: 231
+-- Data for Name: submodulo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.submodulo (id_submodulo, nombre_submodulo, id_modulo) FROM stdin;
+1	CLIENTES	1
+2	VEHICULOS	1
+3	PROVEEDORES	1
+4	EMPLEADOS	1
+5	PRESUPUESTOS	2
+6	DISEPENSACION DE INSUMOS	3
+\.
+
+
+--
+-- TOC entry 4111 (class 0 OID 16436)
+-- Dependencies: 225
+-- Data for Name: subscripcion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.subscripcion (id_subscripcion, cantidad_pago_sub, estado_sub, tipo_sub, fecha_inicio_sub, fechar_vencimiento_sub) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4106 (class 0 OID 16403)
+-- Dependencies: 220
+-- Data for Name: sucursal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sucursal (id_sucursal, nombre_sucursal, direccion_sucursal, comuna_sucursal, ciudad_sucursal, pais_sucursal, email_sucursal, capacidad_sucursal, telefono_sucursal, id_taller) FROM stdin;
+1	Kronos Santa Sofia	Santa Sofia 337	Concepcion	Concepcion	Chile	contacto@kronosdetail.cl	50	96662828	4
+\.
+
+
+--
+-- TOC entry 4102 (class 0 OID 16391)
+-- Dependencies: 216
+-- Data for Name: superusuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.superusuario (id_superusuario, email_superusuario, "contraseÑa_superusuario", nombre_superusuario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4104 (class 0 OID 16397)
+-- Dependencies: 218
+-- Data for Name: taller; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.taller (id_taller, nombre_taller, direccion_taller, comuna_taller, ciudad_taller, pais_taller, email_taller, capacidad_total_taller, gerente_taller, telefono_taller) FROM stdin;
+4	Kronos Automotriz	Santa Sofia 337	Concepcion	Concepcion	Chile	contacto@kronosdetail.cl	50	Marcos Roa	966602828
+\.
+
+
+--
+-- TOC entry 4148 (class 0 OID 16694)
+-- Dependencies: 262
+-- Data for Name: tarifa_mano_de_obra; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tarifa_mano_de_obra (id_tarifa_mano_de_obra, descripcion_tarifa_mano_de_obra, precio_por_pieza_mano_de_obra, id_sucursal) FROM stdin;
+1	PRECIO MASILLA	9000	1
+2	PRECIO DESABOYADURA	8000	1
+3	PRECIO PULIR	15000	1
+4	PULIR SEDAN COMPLETO	150000	1
+\.
+
+
+--
+-- TOC entry 4144 (class 0 OID 16662)
+-- Dependencies: 258
+-- Data for Name: tarifa_piezas_pintadas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tarifa_piezas_pintadas (id_tarifa_piezas_pintadas, descripcion_tarifa_piezas_pintadas, precio_por_pieza_pintada, id_sucursal) FROM stdin;
+1	PRECIO POR PIEZA PINTADA	4000	1
+2	PRECIO POR PIEZA 2	5900	1
+\.
+
+
+--
+-- TOC entry 4128 (class 0 OID 16554)
+-- Dependencies: 242
+-- Data for Name: tipo_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_cliente (id_tipo_cliente, descripcion) FROM stdin;
+1	Sin definir
+2	Particular
+3	Empresa
+4	Independiente
+\.
+
+
+--
+-- TOC entry 4181 (class 0 OID 16948)
+-- Dependencies: 295
+-- Data for Name: tipo_contrato; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_contrato (id_tipo_contrato, descripcion) FROM stdin;
+1	Indefinido
+2	Plazo Fijo
+3	Honorarios
+4	Part-time
+5	Por Proyecto
+6	Aprendizaje
+7	Obra o Faena
+8	Contrato de Prueba
+\.
+
+
+--
+-- TOC entry 4187 (class 0 OID 16986)
+-- Dependencies: 301
+-- Data for Name: tipo_proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_proveedor (id_tipo_proveedor, descripcion_tipo_proveedor) FROM stdin;
+1	Piezas
+2	Herramientas
+3	Suministros Generales
+4	Servicios de Transporte
+5	Servicios de Limpieza
+6	Maquinarias
+7	Materiales de Construcción
+\.
+
+
+--
+-- TOC entry 4133 (class 0 OID 16593)
+-- Dependencies: 247
+-- Data for Name: tipo_vehiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_vehiculo (id_tipo_vehiculo, descripcion) FROM stdin;
+1	Automóvil
+2	Motocicleta
+3	Camión
+4	Bus
+5	Furgón
+6	Tractor
+7	Remolque
+8	Camioneta
+9	Crossover
+10	SUV
+11	Convertible
+12	Deportivo
+13	Minivan
+14	Coupe
+\.
+
+
+--
+-- TOC entry 4109 (class 0 OID 16419)
+-- Dependencies: 223
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario (id_usuario, email_usuario, contrasena_usuario, nombre_usuario, apep_usuario, apem_usuario, contacto_usuario, f_ingreso_usuario, id_estado_usuario, id_taller) FROM stdin;
+USER_1	mroa@kronosdetail.cl	Kronos2020.	Marcos	Roa	Ocampos	985820285	2023-03-17 00:00:00	2	4
+USER_2	jsaez@kronosdetail.cl	Kronos2020.	Jonathan	Sáez	Rocha	996109401	2023-03-13 00:00:00	2	4
+USER_3	ejecutivo@kronosdetail.cl	Kronos2020.	Rosse	Inestroza	López	928347125	2023-01-02 00:00:00	2	4
+USER_4	administracion@kronosdetail.cl	Kronos2020.	Jaasiel	Lepe	Concha	939429265	2022-06-06 00:00:00	2	4
+USER_0	jocsan.riquelme.m@gmail.com	12345678	Jocsan	Riquelme	Mella	+56931130363	2025-01-29 23:30:43.28769	2	4
+\.
+
+
+--
+-- TOC entry 4191 (class 0 OID 17017)
+-- Dependencies: 305
+-- Data for Name: usuario_notificacion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario_notificacion (id_usuario, id_notificacion, visibilidad_notificacion, tiempo_espera_notificacion) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4126 (class 0 OID 16540)
+-- Dependencies: 240
+-- Data for Name: usuario_sucursal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.usuario_sucursal (id_usuario, id_sucursal) FROM stdin;
+USER_1	1
+USER_2	1
+USER_3	1
+USER_4	1
+USER_0	1
+\.
+
+
+--
+-- TOC entry 4134 (class 0 OID 16598)
+-- Dependencies: 248
+-- Data for Name: vehiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.vehiculo (patente_vehiculo, marca_vehiculo, modelo_vehiculo, ano_vehiculo, color_vehiculo, kilometraje_vehiculo, tipo_vehiculo, num_motor_vehiculo, obs_vehiculo, rut_cliente, id_taller) FROM stdin;
+MMG	PEUGEOT	3008	2020	BLANCO	70	1	3245654	\N	15821959k	4
+SJRX45	GEARTWALL	POER	2023	AZUL	33000	8	AJA3A4AACAVBN	\N	17396532k	4
+MRO	BMW	M4	2025	Negro	0	1	MARCOROA4321	\N	179433222	4
+GHGHTY	FORD	RAPTOR	2009	AZUL	45000	8	9000	\N	26.411.272-9	4
+QASDYT67	TOYOTA	HILUX	2007	AZUL	708000	8	456543	\N	26.411.272-9	4
+SJM	NISSAN	370Z NISMO	2020	ROJO	100	\N	123465	\N	\N	\N
+JRM	BWM	M4	2020	AZUL	1000	1	987890	\N	214488388	4
+JMRM	FORD	RAPTOR	2019	AZUL	45000	3	568822	\N	214488388	4
+\.
+
+
+--
+-- TOC entry 4201 (class 0 OID 0)
+-- Dependencies: 273
+-- Name: cambio_registrado_id_cambio_registrado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cambio_registrado_id_cambio_registrado_seq', 1, false);
+
+
+--
+-- TOC entry 4202 (class 0 OID 0)
+-- Dependencies: 271
+-- Name: cambios_permitidos_id_cambio_permitido_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cambios_permitidos_id_cambio_permitido_seq', 1, false);
+
+
+--
+-- TOC entry 4203 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: cargo_id_cargo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cargo_id_cargo_seq', 9, true);
+
+
+--
+-- TOC entry 4204 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: cobros_id_cobro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cobros_id_cobro_seq', 24, true);
+
+
+--
+-- TOC entry 4205 (class 0 OID 0)
+-- Dependencies: 277
+-- Name: comision_desabolladura_id_comision_desabolladura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comision_desabolladura_id_comision_desabolladura_seq', 1, false);
+
+
+--
+-- TOC entry 4206 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: comision_pintura_id_comision_pintura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comision_pintura_id_comision_pintura_seq', 1, false);
+
+
+--
+-- TOC entry 4207 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: consumo_orden_de_trabajo_desabolladura_id_consumo_ot_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.consumo_orden_de_trabajo_desabolladura_id_consumo_ot_seq', 1, false);
+
+
+--
+-- TOC entry 4208 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: consumo_orden_de_trabajo_pintura_id_consumo_ot_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.consumo_orden_de_trabajo_pintura_id_consumo_ot_seq', 1, false);
+
+
+--
+-- TOC entry 4209 (class 0 OID 0)
+-- Dependencies: 298
+-- Name: contrato_id_contrato_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.contrato_id_contrato_seq', 16, true);
+
+
+--
+-- TOC entry 4210 (class 0 OID 0)
+-- Dependencies: 279
+-- Name: detalle_desabolladura_id_detalle_desabolladura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_desabolladura_id_detalle_desabolladura_seq', 1, false);
+
+
+--
+-- TOC entry 4211 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: detalle_pintura_id_detalle_pintura_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.detalle_pintura_id_detalle_pintura_seq', 1, false);
+
+
+--
+-- TOC entry 4212 (class 0 OID 0)
+-- Dependencies: 253
+-- Name: documento_id_documento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.documento_id_documento_seq', 15, true);
+
+
+--
+-- TOC entry 4213 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: estado_cliente_id_estado_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.estado_cliente_id_estado_cliente_seq', 2, true);
+
+
+--
+-- TOC entry 4214 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: estado_usuario_id_estado_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.estado_usuario_id_estado_usuario_seq', 2, true);
+
+
+--
+-- TOC entry 4215 (class 0 OID 0)
+-- Dependencies: 255
+-- Name: firma_cliente_id_firma_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.firma_cliente_id_firma_cliente_seq', 1, false);
+
+
+--
+-- TOC entry 4216 (class 0 OID 0)
+-- Dependencies: 296
+-- Name: firma_empleado_id_firma_empleado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.firma_empleado_id_firma_empleado_seq', 23, true);
+
+
+--
+-- TOC entry 4217 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: insumo_id_insumo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.insumo_id_insumo_seq', 4, true);
+
+
+--
+-- TOC entry 4218 (class 0 OID 0)
+-- Dependencies: 306
+-- Name: item_especifico_id_item_especifico_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.item_especifico_id_item_especifico_seq', 12, true);
+
+
+--
+-- TOC entry 4219 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: mano_de_obra_presupuestada_id_mano_obra_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.mano_de_obra_presupuestada_id_mano_obra_seq', 11, true);
+
+
+--
+-- TOC entry 4220 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: modulo_id_modulo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.modulo_id_modulo_seq', 4, true);
+
+
+--
+-- TOC entry 4221 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: notificaciones_id_notificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.notificaciones_id_notificacion_seq', 1, false);
+
+
+--
+-- TOC entry 4222 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: orden_de_ingreso_id_orden_ingreso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orden_de_ingreso_id_orden_ingreso_seq', 1, false);
+
+
+--
+-- TOC entry 4223 (class 0 OID 0)
+-- Dependencies: 267
+-- Name: orden_de_trabajo_id_orden_trabajo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orden_de_trabajo_id_orden_trabajo_seq', 1, false);
+
+
+--
+-- TOC entry 4224 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: pago_id_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pago_id_pago_seq', 1, false);
+
+
+--
+-- TOC entry 4225 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: permiso_id_permiso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.permiso_id_permiso_seq', 7, true);
+
+
+--
+-- TOC entry 4226 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: pintura_presupuestada_id_pintura_presupuestada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pintura_presupuestada_id_pintura_presupuestada_seq', 22, true);
+
+
+--
+-- TOC entry 4227 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: presupuesto_id_presupuesto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.presupuesto_id_presupuesto_seq', 13, true);
+
+
+--
+-- TOC entry 4228 (class 0 OID 0)
+-- Dependencies: 269
+-- Name: recepcion_activa_id_recepcion_activa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.recepcion_activa_id_recepcion_activa_seq', 1, false);
+
+
+--
+-- TOC entry 4229 (class 0 OID 0)
+-- Dependencies: 308
+-- Name: repuestos_presupuestados_id_repuestos_presupuestado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.repuestos_presupuestados_id_repuestos_presupuestado_seq', 3, true);
+
+
+--
+-- TOC entry 4230 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: seccion_id_seccion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.seccion_id_seccion_seq', 7, true);
+
+
+--
+-- TOC entry 4231 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: submodulo_id_submodulo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.submodulo_id_submodulo_seq', 6, true);
+
+
+--
+-- TOC entry 4232 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: subscripcion_id_subscripcion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.subscripcion_id_subscripcion_seq', 1, false);
+
+
+--
+-- TOC entry 4233 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: sucursal_id_sucursal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sucursal_id_sucursal_seq', 1, true);
+
+
+--
+-- TOC entry 4234 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: superusuario_id_superusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.superusuario_id_superusuario_seq', 1, false);
+
+
+--
+-- TOC entry 4235 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: taller_id_taller_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.taller_id_taller_seq', 4, true);
+
+
+--
+-- TOC entry 4236 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: tarifa_mano_de_obra_id_tarifa_mano_de_obra_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tarifa_mano_de_obra_id_tarifa_mano_de_obra_seq', 4, true);
+
+
+--
+-- TOC entry 4237 (class 0 OID 0)
+-- Dependencies: 257
+-- Name: tarifa_piezas_pintadas_id_tarifa_piezas_pintadas_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tarifa_piezas_pintadas_id_tarifa_piezas_pintadas_seq', 2, true);
+
+
+--
+-- TOC entry 4238 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: tipo_cliente_id_tipo_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_cliente_id_tipo_cliente_seq', 4, true);
+
+
+--
+-- TOC entry 4239 (class 0 OID 0)
+-- Dependencies: 294
+-- Name: tipo_contrato_id_tipo_contrato_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_contrato_id_tipo_contrato_seq', 8, true);
+
+
+--
+-- TOC entry 4240 (class 0 OID 0)
+-- Dependencies: 300
+-- Name: tipo_proveedor_id_tipo_proveedor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_proveedor_id_tipo_proveedor_seq', 7, true);
+
+
+--
+-- TOC entry 4241 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: tipo_vehiculo_id_tipo_vehiculo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_vehiculo_id_tipo_vehiculo_seq', 14, true);
+
+
+--
+-- TOC entry 3847 (class 2606 OID 16789)
+-- Name: cambio_registrado cambio_registrado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cambio_registrado
+    ADD CONSTRAINT cambio_registrado_pkey PRIMARY KEY (id_cambio_registrado);
+
+
+--
+-- TOC entry 3845 (class 2606 OID 16783)
+-- Name: cambios_permitidos cambios_permitidos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cambios_permitidos
+    ADD CONSTRAINT cambios_permitidos_pkey PRIMARY KEY (id_cambio_permitido);
+
+
+--
+-- TOC entry 3867 (class 2606 OID 16929)
+-- Name: cargo cargo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cargo
+    ADD CONSTRAINT cargo_pkey PRIMARY KEY (id_cargo);
+
+
+--
+-- TOC entry 3815 (class 2606 OID 16571)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (rut_cliente);
+
+
+--
+-- TOC entry 3825 (class 2606 OID 16643)
+-- Name: cobros cobros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cobros
+    ADD CONSTRAINT cobros_pkey PRIMARY KEY (id_cobro);
+
+
+--
+-- TOC entry 3853 (class 2606 OID 16830)
+-- Name: comision_desabolladura comision_desabolladura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comision_desabolladura
+    ADD CONSTRAINT comision_desabolladura_pkey PRIMARY KEY (id_comision_desabolladura);
+
+
+--
+-- TOC entry 3857 (class 2606 OID 16857)
+-- Name: comision_pintura comision_pintura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comision_pintura
+    ADD CONSTRAINT comision_pintura_pkey PRIMARY KEY (id_comision_pintura);
+
+
+--
+-- TOC entry 3863 (class 2606 OID 16895)
+-- Name: consumo_orden_de_trabajo_desabolladura consumo_orden_de_trabajo_desabolladura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_desabolladura
+    ADD CONSTRAINT consumo_orden_de_trabajo_desabolladura_pkey PRIMARY KEY (id_consumo_ot);
+
+
+--
+-- TOC entry 3865 (class 2606 OID 16911)
+-- Name: consumo_orden_de_trabajo_pintura consumo_orden_de_trabajo_pintura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_pintura
+    ADD CONSTRAINT consumo_orden_de_trabajo_pintura_pkey PRIMARY KEY (id_consumo_ot);
+
+
+--
+-- TOC entry 3875 (class 2606 OID 16964)
+-- Name: contrato contrato_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contrato
+    ADD CONSTRAINT contrato_pkey PRIMARY KEY (id_contrato);
+
+
+--
+-- TOC entry 3855 (class 2606 OID 16841)
+-- Name: detalle_desabolladura detalle_desabolladura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_desabolladura
+    ADD CONSTRAINT detalle_desabolladura_pkey PRIMARY KEY (id_detalle_desabolladura);
+
+
+--
+-- TOC entry 3859 (class 2606 OID 16868)
+-- Name: detalle_pintura detalle_pintura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_pintura
+    ADD CONSTRAINT detalle_pintura_pkey PRIMARY KEY (id_detalle_pintura);
+
+
+--
+-- TOC entry 3827 (class 2606 OID 16654)
+-- Name: documento documento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.documento
+    ADD CONSTRAINT documento_pkey PRIMARY KEY (id_documento);
+
+
+--
+-- TOC entry 3869 (class 2606 OID 16936)
+-- Name: empleado empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.empleado
+    ADD CONSTRAINT empleado_pkey PRIMARY KEY (rut_empleado);
+
+
+--
+-- TOC entry 3813 (class 2606 OID 16564)
+-- Name: estado_cliente estado_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.estado_cliente
+    ADD CONSTRAINT estado_cliente_pkey PRIMARY KEY (id_estado_cliente);
+
+
+--
+-- TOC entry 3795 (class 2606 OID 16418)
+-- Name: estado_usuario estado_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.estado_usuario
+    ADD CONSTRAINT estado_usuario_pkey PRIMARY KEY (id_estado_usuario);
+
+
+--
+-- TOC entry 3829 (class 2606 OID 16660)
+-- Name: firma_cliente firma_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.firma_cliente
+    ADD CONSTRAINT firma_cliente_pkey PRIMARY KEY (id_firma_cliente);
+
+
+--
+-- TOC entry 3873 (class 2606 OID 16958)
+-- Name: firma_empleado firma_empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.firma_empleado
+    ADD CONSTRAINT firma_empleado_pkey PRIMARY KEY (id_firma_empleado);
+
+
+--
+-- TOC entry 3849 (class 2606 OID 16799)
+-- Name: historial_orden_de_ingreso historial_orden_de_ingreso_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_ingreso
+    ADD CONSTRAINT historial_orden_de_ingreso_pkey PRIMARY KEY (id_cambio_registrado, id_orden_ingreso);
+
+
+--
+-- TOC entry 3851 (class 2606 OID 16814)
+-- Name: historial_orden_de_trabajo historial_orden_de_trabajo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_trabajo
+    ADD CONSTRAINT historial_orden_de_trabajo_pkey PRIMARY KEY (id_cambio_registrado, id_orden_trabajo);
+
+
+--
+-- TOC entry 3861 (class 2606 OID 16884)
+-- Name: insumo insumo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.insumo
+    ADD CONSTRAINT insumo_pkey PRIMARY KEY (id_insumo);
+
+
+--
+-- TOC entry 3885 (class 2606 OID 17046)
+-- Name: item_especifico item_especifico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_especifico
+    ADD CONSTRAINT item_especifico_pkey PRIMARY KEY (id_item_especifico);
+
+
+--
+-- TOC entry 3837 (class 2606 OID 16709)
+-- Name: mano_de_obra_presupuestada mano_de_obra_presupuestada_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mano_de_obra_presupuestada
+    ADD CONSTRAINT mano_de_obra_presupuestada_pkey PRIMARY KEY (id_mano_obra);
+
+
+--
+-- TOC entry 3803 (class 2606 OID 16454)
+-- Name: modulo modulo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.modulo
+    ADD CONSTRAINT modulo_pkey PRIMARY KEY (id_modulo);
+
+
+--
+-- TOC entry 3881 (class 2606 OID 17016)
+-- Name: notificaciones notificaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notificaciones
+    ADD CONSTRAINT notificaciones_pkey PRIMARY KEY (id_notificacion);
+
+
+--
+-- TOC entry 3839 (class 2606 OID 16730)
+-- Name: orden_de_ingreso orden_de_ingreso_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_de_ingreso
+    ADD CONSTRAINT orden_de_ingreso_pkey PRIMARY KEY (id_orden_ingreso);
+
+
+--
+-- TOC entry 3841 (class 2606 OID 16741)
+-- Name: orden_de_trabajo orden_de_trabajo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_de_trabajo
+    ADD CONSTRAINT orden_de_trabajo_pkey PRIMARY KEY (id_orden_trabajo);
+
+
+--
+-- TOC entry 3801 (class 2606 OID 16448)
+-- Name: pago pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pago
+    ADD CONSTRAINT pago_pkey PRIMARY KEY (id_pago);
+
+
+--
+-- TOC entry 3809 (class 2606 OID 16482)
+-- Name: permiso permiso_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.permiso
+    ADD CONSTRAINT permiso_pkey PRIMARY KEY (id_permiso);
+
+
+--
+-- TOC entry 3833 (class 2606 OID 16677)
+-- Name: pintura_presupuestada pintura_presupuestada_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pintura_presupuestada
+    ADD CONSTRAINT pintura_presupuestada_pkey PRIMARY KEY (id_pintura_presupuestada);
+
+
+--
+-- TOC entry 3821 (class 2606 OID 16622)
+-- Name: presupuesto presupuesto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.presupuesto
+    ADD CONSTRAINT presupuesto_pkey PRIMARY KEY (id_presupuesto);
+
+
+--
+-- TOC entry 3879 (class 2606 OID 16997)
+-- Name: proveedor proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.proveedor
+    ADD CONSTRAINT proveedor_pkey PRIMARY KEY (rut_proveedor, id_taller);
+
+
+--
+-- TOC entry 3843 (class 2606 OID 16757)
+-- Name: recepcion_activa recepcion_activa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recepcion_activa
+    ADD CONSTRAINT recepcion_activa_pkey PRIMARY KEY (id_recepcion_activa);
+
+
+--
+-- TOC entry 3887 (class 2606 OID 17069)
+-- Name: repuestos_presupuestados repuestos_presupuestados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.repuestos_presupuestados
+    ADD CONSTRAINT repuestos_presupuestados_pkey PRIMARY KEY (id_repuestos_presupuestado);
+
+
+--
+-- TOC entry 3807 (class 2606 OID 16471)
+-- Name: seccion seccion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion
+    ADD CONSTRAINT seccion_pkey PRIMARY KEY (id_seccion);
+
+
+--
+-- TOC entry 3805 (class 2606 OID 16460)
+-- Name: submodulo submodulo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.submodulo
+    ADD CONSTRAINT submodulo_pkey PRIMARY KEY (id_submodulo);
+
+
+--
+-- TOC entry 3799 (class 2606 OID 16441)
+-- Name: subscripcion subscripcion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.subscripcion
+    ADD CONSTRAINT subscripcion_pkey PRIMARY KEY (id_subscripcion);
+
+
+--
+-- TOC entry 3793 (class 2606 OID 16407)
+-- Name: sucursal sucursal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sucursal
+    ADD CONSTRAINT sucursal_pkey PRIMARY KEY (id_sucursal);
+
+
+--
+-- TOC entry 3789 (class 2606 OID 16395)
+-- Name: superusuario superusuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.superusuario
+    ADD CONSTRAINT superusuario_pkey PRIMARY KEY (id_superusuario);
+
+
+--
+-- TOC entry 3791 (class 2606 OID 16401)
+-- Name: taller taller_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.taller
+    ADD CONSTRAINT taller_pkey PRIMARY KEY (id_taller);
+
+
+--
+-- TOC entry 3835 (class 2606 OID 16698)
+-- Name: tarifa_mano_de_obra tarifa_mano_de_obra_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tarifa_mano_de_obra
+    ADD CONSTRAINT tarifa_mano_de_obra_pkey PRIMARY KEY (id_tarifa_mano_de_obra);
+
+
+--
+-- TOC entry 3831 (class 2606 OID 16666)
+-- Name: tarifa_piezas_pintadas tarifa_piezas_pintadas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tarifa_piezas_pintadas
+    ADD CONSTRAINT tarifa_piezas_pintadas_pkey PRIMARY KEY (id_tarifa_piezas_pintadas);
+
+
+--
+-- TOC entry 3811 (class 2606 OID 16558)
+-- Name: tipo_cliente tipo_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_cliente
+    ADD CONSTRAINT tipo_cliente_pkey PRIMARY KEY (id_tipo_cliente);
+
+
+--
+-- TOC entry 3871 (class 2606 OID 16952)
+-- Name: tipo_contrato tipo_contrato_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_contrato
+    ADD CONSTRAINT tipo_contrato_pkey PRIMARY KEY (id_tipo_contrato);
+
+
+--
+-- TOC entry 3877 (class 2606 OID 16990)
+-- Name: tipo_proveedor tipo_proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_proveedor
+    ADD CONSTRAINT tipo_proveedor_pkey PRIMARY KEY (id_tipo_proveedor);
+
+
+--
+-- TOC entry 3817 (class 2606 OID 16597)
+-- Name: tipo_vehiculo tipo_vehiculo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_vehiculo
+    ADD CONSTRAINT tipo_vehiculo_pkey PRIMARY KEY (id_tipo_vehiculo);
+
+
+--
+-- TOC entry 3823 (class 2606 OID 17063)
+-- Name: presupuesto unique_placa_idsucursal; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.presupuesto
+    ADD CONSTRAINT unique_placa_idsucursal UNIQUE (placa_vehiculo, id_sucursal);
+
+
+--
+-- TOC entry 3883 (class 2606 OID 17021)
+-- Name: usuario_notificacion usuario_notificacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_notificacion
+    ADD CONSTRAINT usuario_notificacion_pkey PRIMARY KEY (id_usuario, id_notificacion);
+
+
+--
+-- TOC entry 3797 (class 2606 OID 16424)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+
+
+--
+-- TOC entry 3819 (class 2606 OID 16604)
+-- Name: vehiculo vehiculo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vehiculo
+    ADD CONSTRAINT vehiculo_pkey PRIMARY KEY (patente_vehiculo);
+
+
+--
+-- TOC entry 3900 (class 2606 OID 16535)
+-- Name: ban_usuario_permiso ban_usuario_permiso_id_permiso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ban_usuario_permiso
+    ADD CONSTRAINT ban_usuario_permiso_id_permiso_fkey FOREIGN KEY (id_permiso) REFERENCES public.permiso(id_permiso);
+
+
+--
+-- TOC entry 3901 (class 2606 OID 16530)
+-- Name: ban_usuario_permiso ban_usuario_permiso_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ban_usuario_permiso
+    ADD CONSTRAINT ban_usuario_permiso_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+
+--
+-- TOC entry 3929 (class 2606 OID 16790)
+-- Name: cambio_registrado cambio_registrado_id_cambio_permitido_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cambio_registrado
+    ADD CONSTRAINT cambio_registrado_id_cambio_permitido_fkey FOREIGN KEY (id_cambio_permitido) REFERENCES public.cambios_permitidos(id_cambio_permitido);
+
+
+--
+-- TOC entry 3904 (class 2606 OID 16582)
+-- Name: cliente cliente_id_estado_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_id_estado_cliente_fkey FOREIGN KEY (id_estado_cliente) REFERENCES public.estado_cliente(id_estado_cliente);
+
+
+--
+-- TOC entry 3905 (class 2606 OID 16572)
+-- Name: cliente cliente_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3906 (class 2606 OID 16587)
+-- Name: cliente cliente_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3907 (class 2606 OID 16577)
+-- Name: cliente cliente_id_tipo_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_id_tipo_cliente_fkey FOREIGN KEY (id_tipo_cliente) REFERENCES public.tipo_cliente(id_tipo_cliente);
+
+
+--
+-- TOC entry 3913 (class 2606 OID 16644)
+-- Name: cobros cobros_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cobros
+    ADD CONSTRAINT cobros_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3934 (class 2606 OID 16831)
+-- Name: comision_desabolladura comision_desabolladura_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comision_desabolladura
+    ADD CONSTRAINT comision_desabolladura_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3937 (class 2606 OID 16858)
+-- Name: comision_pintura comision_pintura_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comision_pintura
+    ADD CONSTRAINT comision_pintura_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3941 (class 2606 OID 16896)
+-- Name: consumo_orden_de_trabajo_desabolladura consumo_orden_de_trabajo_desaboll_id_detalle_desabolladura_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_desabolladura
+    ADD CONSTRAINT consumo_orden_de_trabajo_desaboll_id_detalle_desabolladura_fkey FOREIGN KEY (id_detalle_desabolladura) REFERENCES public.detalle_desabolladura(id_detalle_desabolladura);
+
+
+--
+-- TOC entry 3942 (class 2606 OID 16901)
+-- Name: consumo_orden_de_trabajo_desabolladura consumo_orden_de_trabajo_desabolladura_id_insumo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_desabolladura
+    ADD CONSTRAINT consumo_orden_de_trabajo_desabolladura_id_insumo_fkey FOREIGN KEY (id_insumo) REFERENCES public.insumo(id_insumo);
+
+
+--
+-- TOC entry 3943 (class 2606 OID 16912)
+-- Name: consumo_orden_de_trabajo_pintura consumo_orden_de_trabajo_pintura_id_detalle_pintura_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_pintura
+    ADD CONSTRAINT consumo_orden_de_trabajo_pintura_id_detalle_pintura_fkey FOREIGN KEY (id_detalle_pintura) REFERENCES public.detalle_pintura(id_detalle_pintura);
+
+
+--
+-- TOC entry 3944 (class 2606 OID 16917)
+-- Name: consumo_orden_de_trabajo_pintura consumo_orden_de_trabajo_pintura_id_insumo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.consumo_orden_de_trabajo_pintura
+    ADD CONSTRAINT consumo_orden_de_trabajo_pintura_id_insumo_fkey FOREIGN KEY (id_insumo) REFERENCES public.insumo(id_insumo);
+
+
+--
+-- TOC entry 3947 (class 2606 OID 16980)
+-- Name: contrato contrato_id_documento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contrato
+    ADD CONSTRAINT contrato_id_documento_fkey FOREIGN KEY (id_documento) REFERENCES public.documento(id_documento);
+
+
+--
+-- TOC entry 3948 (class 2606 OID 16965)
+-- Name: contrato contrato_id_empleado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contrato
+    ADD CONSTRAINT contrato_id_empleado_fkey FOREIGN KEY (id_empleado) REFERENCES public.empleado(rut_empleado);
+
+
+--
+-- TOC entry 3949 (class 2606 OID 16975)
+-- Name: contrato contrato_id_firma_empleado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contrato
+    ADD CONSTRAINT contrato_id_firma_empleado_fkey FOREIGN KEY (id_firma_empleado) REFERENCES public.firma_empleado(id_firma_empleado);
+
+
+--
+-- TOC entry 3950 (class 2606 OID 16970)
+-- Name: contrato contrato_id_tipo_contrato_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.contrato
+    ADD CONSTRAINT contrato_id_tipo_contrato_fkey FOREIGN KEY (id_tipo_contrato) REFERENCES public.tipo_contrato(id_tipo_contrato);
+
+
+--
+-- TOC entry 3935 (class 2606 OID 16842)
+-- Name: detalle_desabolladura detalle_desabolladura_id_comision_desabolladura_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_desabolladura
+    ADD CONSTRAINT detalle_desabolladura_id_comision_desabolladura_fkey FOREIGN KEY (id_comision_desabolladura) REFERENCES public.comision_desabolladura(id_comision_desabolladura);
+
+
+--
+-- TOC entry 3936 (class 2606 OID 16847)
+-- Name: detalle_desabolladura detalle_desabolladura_id_orden_trabajo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_desabolladura
+    ADD CONSTRAINT detalle_desabolladura_id_orden_trabajo_fkey FOREIGN KEY (id_orden_trabajo) REFERENCES public.orden_de_trabajo(id_orden_trabajo);
+
+
+--
+-- TOC entry 3938 (class 2606 OID 16869)
+-- Name: detalle_pintura detalle_pintura_id_comision_pintura_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_pintura
+    ADD CONSTRAINT detalle_pintura_id_comision_pintura_fkey FOREIGN KEY (id_comision_pintura) REFERENCES public.comision_pintura(id_comision_pintura);
+
+
+--
+-- TOC entry 3939 (class 2606 OID 16874)
+-- Name: detalle_pintura detalle_pintura_id_orden_trabajo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.detalle_pintura
+    ADD CONSTRAINT detalle_pintura_id_orden_trabajo_fkey FOREIGN KEY (id_orden_trabajo) REFERENCES public.orden_de_trabajo(id_orden_trabajo);
+
+
+--
+-- TOC entry 3945 (class 2606 OID 16942)
+-- Name: empleado empleado_id_cargo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.empleado
+    ADD CONSTRAINT empleado_id_cargo_fkey FOREIGN KEY (id_cargo) REFERENCES public.cargo(id_cargo);
+
+
+--
+-- TOC entry 3946 (class 2606 OID 16937)
+-- Name: empleado empleado_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.empleado
+    ADD CONSTRAINT empleado_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3954 (class 2606 OID 17052)
+-- Name: item_especifico fk_item_sucursal; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_especifico
+    ADD CONSTRAINT fk_item_sucursal FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3930 (class 2606 OID 16800)
+-- Name: historial_orden_de_ingreso historial_orden_de_ingreso_id_cambio_registrado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_ingreso
+    ADD CONSTRAINT historial_orden_de_ingreso_id_cambio_registrado_fkey FOREIGN KEY (id_cambio_registrado) REFERENCES public.cambio_registrado(id_cambio_registrado);
+
+
+--
+-- TOC entry 3931 (class 2606 OID 16805)
+-- Name: historial_orden_de_ingreso historial_orden_de_ingreso_id_orden_ingreso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_ingreso
+    ADD CONSTRAINT historial_orden_de_ingreso_id_orden_ingreso_fkey FOREIGN KEY (id_orden_ingreso) REFERENCES public.orden_de_ingreso(id_orden_ingreso);
+
+
+--
+-- TOC entry 3932 (class 2606 OID 16815)
+-- Name: historial_orden_de_trabajo historial_orden_de_trabajo_id_cambio_registrado_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_trabajo
+    ADD CONSTRAINT historial_orden_de_trabajo_id_cambio_registrado_fkey FOREIGN KEY (id_cambio_registrado) REFERENCES public.cambio_registrado(id_cambio_registrado);
+
+
+--
+-- TOC entry 3933 (class 2606 OID 16820)
+-- Name: historial_orden_de_trabajo historial_orden_de_trabajo_id_orden_trabajo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.historial_orden_de_trabajo
+    ADD CONSTRAINT historial_orden_de_trabajo_id_orden_trabajo_fkey FOREIGN KEY (id_orden_trabajo) REFERENCES public.orden_de_trabajo(id_orden_trabajo);
+
+
+--
+-- TOC entry 3940 (class 2606 OID 16885)
+-- Name: insumo insumo_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.insumo
+    ADD CONSTRAINT insumo_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3955 (class 2606 OID 17047)
+-- Name: item_especifico item_especifico_id_insumo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_especifico
+    ADD CONSTRAINT item_especifico_id_insumo_fkey FOREIGN KEY (id_insumo) REFERENCES public.insumo(id_insumo);
+
+
+--
+-- TOC entry 3919 (class 2606 OID 16715)
+-- Name: mano_de_obra_presupuestada mano_de_obra_presupuestada_id_documento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mano_de_obra_presupuestada
+    ADD CONSTRAINT mano_de_obra_presupuestada_id_documento_fkey FOREIGN KEY (id_documento) REFERENCES public.documento(id_documento);
+
+
+--
+-- TOC entry 3920 (class 2606 OID 16710)
+-- Name: mano_de_obra_presupuestada mano_de_obra_presupuestada_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mano_de_obra_presupuestada
+    ADD CONSTRAINT mano_de_obra_presupuestada_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3921 (class 2606 OID 16720)
+-- Name: mano_de_obra_presupuestada mano_de_obra_presupuestada_id_tarifa_mano_de_obra_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mano_de_obra_presupuestada
+    ADD CONSTRAINT mano_de_obra_presupuestada_id_tarifa_mano_de_obra_fkey FOREIGN KEY (id_tarifa_mano_de_obra) REFERENCES public.tarifa_mano_de_obra(id_tarifa_mano_de_obra);
+
+
+--
+-- TOC entry 3922 (class 2606 OID 16731)
+-- Name: orden_de_ingreso orden_de_ingreso_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_de_ingreso
+    ADD CONSTRAINT orden_de_ingreso_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3923 (class 2606 OID 16742)
+-- Name: orden_de_trabajo orden_de_trabajo_id_orden_ingreso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_de_trabajo
+    ADD CONSTRAINT orden_de_trabajo_id_orden_ingreso_fkey FOREIGN KEY (id_orden_ingreso) REFERENCES public.orden_de_ingreso(id_orden_ingreso);
+
+
+--
+-- TOC entry 3924 (class 2606 OID 16747)
+-- Name: orden_de_trabajo orden_de_trabajo_patente_vehiculo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orden_de_trabajo
+    ADD CONSTRAINT orden_de_trabajo_patente_vehiculo_fkey FOREIGN KEY (patente_vehiculo) REFERENCES public.vehiculo(patente_vehiculo);
+
+
+--
+-- TOC entry 3897 (class 2606 OID 16517)
+-- Name: pantallas_usuario pantallas_usuario_id_modulo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pantallas_usuario
+    ADD CONSTRAINT pantallas_usuario_id_modulo_fkey FOREIGN KEY (id_modulo) REFERENCES public.modulo(id_modulo);
+
+
+--
+-- TOC entry 3898 (class 2606 OID 16522)
+-- Name: pantallas_usuario pantallas_usuario_id_submodulo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pantallas_usuario
+    ADD CONSTRAINT pantallas_usuario_id_submodulo_fkey FOREIGN KEY (id_submodulo) REFERENCES public.submodulo(id_submodulo);
+
+
+--
+-- TOC entry 3899 (class 2606 OID 16512)
+-- Name: pantallas_usuario pantallas_usuario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pantallas_usuario
+    ADD CONSTRAINT pantallas_usuario_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+
+--
+-- TOC entry 3915 (class 2606 OID 16683)
+-- Name: pintura_presupuestada pintura_presupuestada_id_documento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pintura_presupuestada
+    ADD CONSTRAINT pintura_presupuestada_id_documento_fkey FOREIGN KEY (id_documento) REFERENCES public.documento(id_documento);
+
+
+--
+-- TOC entry 3916 (class 2606 OID 16678)
+-- Name: pintura_presupuestada pintura_presupuestada_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pintura_presupuestada
+    ADD CONSTRAINT pintura_presupuestada_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3917 (class 2606 OID 16688)
+-- Name: pintura_presupuestada pintura_presupuestada_id_tarifa_piezas_pintadas_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pintura_presupuestada
+    ADD CONSTRAINT pintura_presupuestada_id_tarifa_piezas_pintadas_fkey FOREIGN KEY (id_tarifa_piezas_pintadas) REFERENCES public.tarifa_piezas_pintadas(id_tarifa_piezas_pintadas);
+
+
+--
+-- TOC entry 3910 (class 2606 OID 16633)
+-- Name: presupuesto presupuesto_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.presupuesto
+    ADD CONSTRAINT presupuesto_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3911 (class 2606 OID 16628)
+-- Name: presupuesto presupuesto_placa_vehiculo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.presupuesto
+    ADD CONSTRAINT presupuesto_placa_vehiculo_fkey FOREIGN KEY (placa_vehiculo) REFERENCES public.vehiculo(patente_vehiculo);
+
+
+--
+-- TOC entry 3912 (class 2606 OID 16623)
+-- Name: presupuesto presupuesto_rut_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.presupuesto
+    ADD CONSTRAINT presupuesto_rut_cliente_fkey FOREIGN KEY (rut_cliente) REFERENCES public.cliente(rut_cliente);
+
+
+--
+-- TOC entry 3951 (class 2606 OID 17003)
+-- Name: proveedor proveedor_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.proveedor
+    ADD CONSTRAINT proveedor_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3952 (class 2606 OID 16998)
+-- Name: proveedor proveedor_id_tipo_proveedor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.proveedor
+    ADD CONSTRAINT proveedor_id_tipo_proveedor_fkey FOREIGN KEY (id_tipo_proveedor) REFERENCES public.tipo_proveedor(id_tipo_proveedor);
+
+
+--
+-- TOC entry 3925 (class 2606 OID 16763)
+-- Name: recepcion_activa recepcion_activa_id_firma_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recepcion_activa
+    ADD CONSTRAINT recepcion_activa_id_firma_cliente_fkey FOREIGN KEY (id_firma_cliente) REFERENCES public.firma_cliente(id_firma_cliente);
+
+
+--
+-- TOC entry 3926 (class 2606 OID 16758)
+-- Name: recepcion_activa recepcion_activa_id_orden_ingreso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recepcion_activa
+    ADD CONSTRAINT recepcion_activa_id_orden_ingreso_fkey FOREIGN KEY (id_orden_ingreso) REFERENCES public.orden_de_ingreso(id_orden_ingreso);
+
+
+--
+-- TOC entry 3927 (class 2606 OID 16773)
+-- Name: recepcion_activa recepcion_activa_id_orden_trabajo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recepcion_activa
+    ADD CONSTRAINT recepcion_activa_id_orden_trabajo_fkey FOREIGN KEY (id_orden_trabajo) REFERENCES public.orden_de_trabajo(id_orden_trabajo);
+
+
+--
+-- TOC entry 3928 (class 2606 OID 16768)
+-- Name: recepcion_activa recepcion_activa_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recepcion_activa
+    ADD CONSTRAINT recepcion_activa_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3956 (class 2606 OID 17075)
+-- Name: repuestos_presupuestados repuestos_presupuestados_id_documento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.repuestos_presupuestados
+    ADD CONSTRAINT repuestos_presupuestados_id_documento_fkey FOREIGN KEY (id_documento) REFERENCES public.documento(id_documento);
+
+
+--
+-- TOC entry 3957 (class 2606 OID 17070)
+-- Name: repuestos_presupuestados repuestos_presupuestados_id_presupuesto_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.repuestos_presupuestados
+    ADD CONSTRAINT repuestos_presupuestados_id_presupuesto_fkey FOREIGN KEY (id_presupuesto) REFERENCES public.presupuesto(id_presupuesto);
+
+
+--
+-- TOC entry 3892 (class 2606 OID 16472)
+-- Name: seccion seccion_id_submodulo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion
+    ADD CONSTRAINT seccion_id_submodulo_fkey FOREIGN KEY (id_submodulo) REFERENCES public.submodulo(id_submodulo);
+
+
+--
+-- TOC entry 3893 (class 2606 OID 16491)
+-- Name: seccion_permiso seccion_permiso_id_permiso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion_permiso
+    ADD CONSTRAINT seccion_permiso_id_permiso_fkey FOREIGN KEY (id_permiso) REFERENCES public.permiso(id_permiso);
+
+
+--
+-- TOC entry 3894 (class 2606 OID 16486)
+-- Name: seccion_permiso seccion_permiso_id_seccion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion_permiso
+    ADD CONSTRAINT seccion_permiso_id_seccion_fkey FOREIGN KEY (id_seccion) REFERENCES public.seccion(id_seccion);
+
+
+--
+-- TOC entry 3895 (class 2606 OID 16499)
+-- Name: seccion_usuario seccion_usuario_id_seccion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion_usuario
+    ADD CONSTRAINT seccion_usuario_id_seccion_fkey FOREIGN KEY (id_seccion) REFERENCES public.seccion(id_seccion);
+
+
+--
+-- TOC entry 3896 (class 2606 OID 16504)
+-- Name: seccion_usuario seccion_usuario_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seccion_usuario
+    ADD CONSTRAINT seccion_usuario_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+
+--
+-- TOC entry 3891 (class 2606 OID 16461)
+-- Name: submodulo submodulo_id_modulo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.submodulo
+    ADD CONSTRAINT submodulo_id_modulo_fkey FOREIGN KEY (id_modulo) REFERENCES public.modulo(id_modulo);
+
+
+--
+-- TOC entry 3888 (class 2606 OID 16408)
+-- Name: sucursal sucursal_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sucursal
+    ADD CONSTRAINT sucursal_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3918 (class 2606 OID 16699)
+-- Name: tarifa_mano_de_obra tarifa_mano_de_obra_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tarifa_mano_de_obra
+    ADD CONSTRAINT tarifa_mano_de_obra_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3914 (class 2606 OID 16667)
+-- Name: tarifa_piezas_pintadas tarifa_piezas_pintadas_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tarifa_piezas_pintadas
+    ADD CONSTRAINT tarifa_piezas_pintadas_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3889 (class 2606 OID 16425)
+-- Name: usuario usuario_id_estado_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_id_estado_usuario_fkey FOREIGN KEY (id_estado_usuario) REFERENCES public.estado_usuario(id_estado_usuario);
+
+
+--
+-- TOC entry 3890 (class 2606 OID 16430)
+-- Name: usuario usuario_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3953 (class 2606 OID 17022)
+-- Name: usuario_notificacion usuario_notificacion_id_notificacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_notificacion
+    ADD CONSTRAINT usuario_notificacion_id_notificacion_fkey FOREIGN KEY (id_notificacion) REFERENCES public.notificaciones(id_notificacion);
+
+
+--
+-- TOC entry 3902 (class 2606 OID 16548)
+-- Name: usuario_sucursal usuario_sucursal_id_sucursal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_sucursal
+    ADD CONSTRAINT usuario_sucursal_id_sucursal_fkey FOREIGN KEY (id_sucursal) REFERENCES public.sucursal(id_sucursal);
+
+
+--
+-- TOC entry 3903 (class 2606 OID 16543)
+-- Name: usuario_sucursal usuario_sucursal_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_sucursal
+    ADD CONSTRAINT usuario_sucursal_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES public.usuario(id_usuario);
+
+
+--
+-- TOC entry 3908 (class 2606 OID 16610)
+-- Name: vehiculo vehiculo_id_taller_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vehiculo
+    ADD CONSTRAINT vehiculo_id_taller_fkey FOREIGN KEY (id_taller) REFERENCES public.taller(id_taller);
+
+
+--
+-- TOC entry 3909 (class 2606 OID 16605)
+-- Name: vehiculo vehiculo_rut_cliente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vehiculo
+    ADD CONSTRAINT vehiculo_rut_cliente_fkey FOREIGN KEY (rut_cliente) REFERENCES public.cliente(rut_cliente);
+
+
+-- Completed on 2025-02-10 22:58:14 -03
+
+--
+-- PostgreSQL database dump complete
+--
+
