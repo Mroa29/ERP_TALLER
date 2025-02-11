@@ -1,4 +1,4 @@
-const InsumoModel = require("../models/insumoModel");
+const InsumoModel = require("../models/InsumoModel");
 
 const InsumoController = {
     // 📌 Obtener todos los insumos

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (!token) {
             // Si no hay token, redirigir al login
-            window.location.href = 'http://127.0.0.1:5500/Login/loginkronos.html';
+            window.location.href = '../Login/loginkronos.html';
             return;
         }
 
