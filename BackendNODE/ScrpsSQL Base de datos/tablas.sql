@@ -9,15 +9,15 @@ CREATE TABLE SUPERUSUARIO (
 
 CREATE TABLE TALLER (
     ID_TALLER BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,        
-    NOMBRE_TALLER VARCHAR(15) NOT NULL ,                 
-    DIRECCION_TALLER VARCHAR(100) NOT NULL,          
-    COMUNA_TALLER VARCHAR(25) NOT NULL,              
-    CIUDAD_TALLER VARCHAR(25) NOT NULL,              
-    PAIS_TALLER VARCHAR(15) NOT NULL,                          
-    EMAIL_TALLER VARCHAR(25) NOT NULL,               
+    NOMBRE_TALLER VARCHAR(50) NOT NULL ,                 
+    DIRECCION_TALLER VARCHAR(255) NOT NULL,          
+    COMUNA_TALLER VARCHAR(50) NOT NULL,              
+    CIUDAD_TALLER VARCHAR(50) NOT NULL,              
+    PAIS_TALLER VARCHAR(50) NOT NULL,                          
+    EMAIL_TALLER VARCHAR(100) NOT NULL,               
     CAPACIDAD_TOTAL_TALLER INT,                              
-    GERENTE_TALLER VARCHAR(15) NOT NULL,
-    TELEFONO_TALLER VARCHAR(15) NOT NULL             
+    GERENTE_TALLER VARCHAR(50) NOT NULL,
+    TELEFONO_TALLER VARCHAR(20) NOT NULL             
 );
 
 
@@ -44,7 +44,7 @@ CREATE TABLE ESTADO_USUARIO (
 CREATE TABLE USUARIO (
     ID_USUARIO VARCHAR(8) PRIMARY KEY,
     EMAIL_USUARIO VARCHAR(50) NOT NULL,
-    CONTRASENA_USUARIO VARCHAR(10) NOT NULL,
+    CONTRASENA_USUARIO VARCHAR(60) NOT NULL,
     NOMBRE_USUARIO VARCHAR(50) NOT NULL,
     APEP_USUARIO VARCHAR(50) ,
     APEM_USUARIO VARCHAR(50) ,
@@ -204,9 +204,10 @@ CREATE TABLE COBROS (
     FORMA_PAGO_COBROS VARCHAR(100),
     FECHA_COBRO DATE NOT NULL,
     NUMERO_RECIBO VARCHAR(50),
-    DESCRIPCION_COBROS VARCHAR (255),
+    DESCRIPCION_COBRO VARCHAR (255),
     FOREIGN KEY (ID_PRESUPUESTO) REFERENCES PRESUPUESTO(ID_PRESUPUESTO)
 );
+
 
 CREATE TABLE DOCUMENTO (
     ID_DOCUMENTO BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -537,10 +538,11 @@ CREATE TABLE USUARIO_NOTIFICACION (
 );
 
 
-
-
 INSERT INTO ESTADO_USUARIO (DESCRIPCION_ESTADO_USUARIO)
 VALUES ('Activo');
+
+INSERT INTO ESTADO_USUARIO (DESCRIPCION_ESTADO_USUARIO) 
+VALUES ('Inactivo'); 
 
 INSERT INTO TALLER (
     NOMBRE_TALLER,
@@ -553,79 +555,16 @@ INSERT INTO TALLER (
     GERENTE_TALLER,
     TELEFONO_TALLER
 ) VALUES (
-    'KronosDetail',
-    'Av. Principal 123',
-    'Comuna Ejemplo',
-    'Ciudad Ejemplo',
+    'Kronos Automotriz',
+    'Santa Sofia 337',
+    'Concepcion',
+    'Concepcion',
     'Chile',
-    'kronos@detail.com',
-    50, -- Capacidad total del taller
-    'Juan Perez', -- Nombre del gerente
-    '+56912345678' -- Teléfono del taller
+    'contacto@kronosdetail.cl',
+    50, 
+    'Marcos Roa', 
+    '+56966602828' 
 );
-
-INSERT INTO USUARIO (
-    ID_USUARIO, 
-    EMAIL_USUARIO, 
-    CONTRASENA_USUARIO, 
-    NOMBRE_USUARIO, 
-    APEP_USUARIO, 
-    APEM_USUARIO, 
-    CONTACTO_USUARIO, 
-    F_INGRESO_USUARIO, 
-    ID_ESTADO_USUARIO, 
-    ID_TALLER
-) VALUES (
-    'USR001', 
-    'jocsan.riquelme.m@gmail.com', 
-    '12345678', -- Reemplaza con un hash cifrado si es necesario
-    'Jocsan', 
-    'Riquelme', 
-    'Mella', 
-    '+56931130363', 
-    NOW(), 
-    1, -- ID de estado de usuario, debe existir en la tabla ESTADO_USUARIO
-    1  -- ID de taller, debe existir en la tabla TALLER
-);
-
-select * from permiso 
-
-
-ALTER TABLE USUARIO 
-ALTER COLUMN CONTRASENA_USUARIO TYPE VARCHAR(60);
-
-UPDATE USUARIO 
-SET CONTRASENA_USUARIO = '12345678'
-WHERE EMAIL_USUARIO = 'jocsan.riquelme.m@gmail.com';
-
-
-
-
-select * from usuario 
-
-ALTER TABLE TALLER
-ALTER COLUMN NOMBRE_TALLER TYPE VARCHAR(50),
-ALTER COLUMN DIRECCION_TALLER TYPE VARCHAR(255),
-ALTER COLUMN COMUNA_TALLER TYPE VARCHAR(50),
-ALTER COLUMN CIUDAD_TALLER TYPE VARCHAR(50),
-ALTER COLUMN PAIS_TALLER TYPE VARCHAR(50),
-ALTER COLUMN EMAIL_TALLER TYPE VARCHAR(100),
-ALTER COLUMN GERENTE_TALLER TYPE VARCHAR(50),
-ALTER COLUMN TELEFONO_TALLER TYPE VARCHAR(20);
-
-
-UPDATE TALLER
-SET 
-    NOMBRE_TALLER = 'Kronos Automotriz',
-    DIRECCION_TALLER = 'Santa Sofia 337',
-    COMUNA_TALLER = 'Concepcion',
-    CIUDAD_TALLER = 'Concepcion',
-    PAIS_TALLER = 'Chile',
-    EMAIL_TALLER = 'contacto@kronosdetail.cl',
-    CAPACIDAD_TOTAL_TALLER = 50,
-    GERENTE_TALLER = 'Marcos Roa',
-    TELEFONO_TALLER = '966602828'
-WHERE ID_TALLER = 1;
 
 INSERT INTO SUCURSAL (
     NOMBRE_SUCURSAL, 
@@ -667,101 +606,36 @@ VALUES
     ('USER_1', 'mroa@kronosdetail.cl', 'Kronos2020.', 'Marcos', 'Roa', 'Ocampos', '985820285', '2023-03-17', 1, 1),
     ('USER_2', 'jsaez@kronosdetail.cl', 'Kronos2020.', 'Jonathan', 'Sáez', 'Rocha', '996109401', '2023-03-13', 1, 1),
     ('USER_3', 'ejecutivo@kronosdetail.cl', 'Kronos2020.', 'Rosse', 'Inestroza', 'López', '928347125', '2023-01-02', 1, 1),
-    ('USER_4', 'administracion@kronosdetail.cl', 'Kronos2020.', 'Jaasiel', 'Lepe', 'Concha', '939429265', '2022-06-06', 1, 1);
+    ('USER_4', 'administracion@kronosdetail.cl', 'Kronos2020.', 'Jaasiel', 'Lepe', 'Concha', '939429265', '2022-06-06', 1, 1),
+    ('USER_5', 'jocsan.riquelme.m@gmail.com', '1234', 'Jocsan', 'Riquelme', 'Mella', '931130363', '2024-04-06', 1, 1);
 
-UPDATE USUARIO
-SET ID_USUARIO = 'USER_0'
-WHERE ID_USUARIO = 'USR001';
+
 
 
 
 INSERT INTO modulo (nombre_modulo) VALUES ('GESTION');
-
 INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'CLIENTES');
-INSERT INTO SECCION (ID_SUBMODULO, NOMBRE_SECCION)
-VALUES (1, 'NUEVO CLIENTE'), (1, 'LISTA DE CLIENTES'), (1, 'MANEJO DE CLIENTES');
-INSERT INTO PERMISO (DESCRIPCION_PERMISO) 
-VALUES ('CREAR CLIENTE'), ('CREAR VEHICULO'),('BUSCAR CLIENTE'), ('BUSCAR VEHICULO'), ('EXPORTAR CLIENTES');
-
-INSERT INTO SECCION_PERMISO VALUES (1,1), (1,2);
-INSERT INTO SECCION_PERMISO VALUES (2,3);
-INSERT INTO SECCION_PERMISO VALUES (3,5);
-
-SELECT * FROM SECCION_PERMISO
-SELECT * FROM PERMISO
-SELECT * FROM SECCION
-
 INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'VEHICULOS');
-INSERT INTO SECCION (ID_SUBMODULO, NOMBRE_SECCION)
-VALUES (2, 'NUEVO VEHICULO'), (2, 'LISTA DE VEHICULOS');
-INSERT INTO SECCION_PERMISO VALUES (4,2), (4,3);
-INSERT INTO SECCION_PERMISO VALUES (5,4);
-
-
 INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'PROVEEDORES');
-
-INSERT INTO SECCION (ID_SUBMODULO, NOMBRE_SECCION)
-VALUES (3, 'NUEVO PROVEEDOR'), (3, 'LISTA DE PROVEEDORES');
-INSERT INTO PERMISO (DESCRIPCION_PERMISO)
-VALUES ('CREAR PROVEEDOR'),('BUCAR PROVEEDOR');
-INSERT INTO SECCION_PERMISO VALUES (6,6), (7,7);
+INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'EMPLEADOS');
 
 
 INSERT INTO modulo (nombre_modulo) VALUES ('TALLER');
 INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (2, 'PRESUPUESTOS');
 
-
-INSERT INTO ESTADO_USUARIO (DESCRIPCION_ESTADO_USUARIO) VALUES ('Inactivo'); 
-
+INSERT INTO modulo (nombre_modulo) VALUES ('ABASTECIMIENTO');
+INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (3, 'INSUMOS');
 
 INSERT INTO USUARIO_SUCURSAL (ID_USUARIO, ID_SUCURSAL) VALUES 
-('USER_1', 1),('USER_2', 1),('USER_3', 1), ('USER_4', 1),('USER_0', 1);
-
-
-INSERT INTO TALLER (NOMBRE_TALLER, DIRECCION_TALLER, COMUNA_TALLER, CIUDAD_TALLER, PAIS_TALLER, EMAIL_TALLER, CAPACIDAD_TOTAL_TALLER, GERENTE_TALLER, TELEFONO_TALLER)
-VALUES 
-('TallerPrueba', 'Av. Principal 123', 'Centro', 'Santiago', 'Chile', 'contacto@kronostech.cl', 100, 'Marcos', '987654321'),
-('AutoPro', 'Calle Secundaria 456', 'Providencia', 'Santiago', 'Chile', 'info@autopro.cl', 50, 'Luis', '912345678');
-
-INSERT INTO SUCURSAL (NOMBRE_SUCURSAL, DIRECCION_SUCURSAL, COMUNA_SUCURSAL, CIUDAD_SUCURSAL, PAIS_SUCURSAL, EMAIL_SUCURSAL, CAPACIDAD_SUCURSAL, TELEFONO_SUCURSAL, ID_TALLER)
-VALUES 
-('Sucursal Central', 'Av. Principal 123', 'Centro', 'Santiago', 'Chile', 'central@kronostech.cl', 50, '987654321', 6),
-('Sucursal Norte', 'Calle Norte 789', 'Recoleta', 'Santiago', 'Chile', 'norte@kronostech.cl', 30, '912345678', 6),
-('Sucursal AutoPro', 'Calle Secundaria 456', 'Providencia', 'Santiago', 'Chile', 'autopro@autopro.cl', 40, '912345678', 7);
-
-INSERT INTO USUARIO (ID_USUARIO, EMAIL_USUARIO, CONTRASENA_USUARIO, NOMBRE_USUARIO, APEP_USUARIO, APEM_USUARIO, CONTACTO_USUARIO, F_INGRESO_USUARIO, ID_ESTADO_USUARIO, ID_TALLER)
-VALUES 
-('USER_5', 'admin@kronostech.cl', 'admin123', 'Admin', 'Tech', NULL, '777777777', DEFAULT, 1, 6),
-('USER_6', 'empleado@kronostech.cl', 'emple123', 'Empleado', 'Sucursal', 'Central', '888888888', DEFAULT, 1, 6),
-('USER_7', 'luis@autopro.cl', 'auto123', 'Luis', 'Auto', NULL, '777777777', DEFAULT, 1, 7);
-
-INSERT INTO USUARIO_SUCURSAL (ID_USUARIO, ID_SUCURSAL)
-VALUES 
-('USER_5', 11), ('USER_5', 12), ('USER_6', 11),('USER_7', 13) ; 
-
-
-INSERT INTO SECCION_USUARIO (ID_SECCION, ID_USUARIO)
-VALUES
-(1, 'USER_0'),
-(2, 'USER_0'),
-(3, 'USER_0'),
-(4, 'USER_0'),
-(5, 'USER_0'),
-(6, 'USER_0'),
-(7, 'USER_0');
-
-INSERT INTO SECCION_USUARIO (ID_SECCION, ID_USUARIO)
-VALUES
-(1, 'USER_1'),
-(2, 'USER_1');
+('USER_1', 1),('USER_2', 1),('USER_3', 1), ('USER_4', 1),('USER_5', 1);
 
 INSERT INTO PANTALLAS_USUARIO (ID_USUARIO, ID_MODULO, ID_SUBMODULO)
 VALUES
-('USER_0', 1, 1),('USER_0', 1, 2),('USER_0', 1, 3),('USER_0', 2, 4)
+('USER_5', 1, 1),('USER_5', 1, 2),('USER_5', 1, 3),('USER_5', 1, 4),('USER_5', 2, 5),('USER_5', 3, 6);
 
 INSERT INTO PANTALLAS_USUARIO (ID_USUARIO, ID_MODULO, ID_SUBMODULO)
 VALUES
-('USER_1', 1, 1),('USER_1', 1, 2);
+('USER_1', 1, 1),('USER_1', 1, 2),('USER_1', 1, 3),('USER_1', 1, 4),('USER_1', 2, 5),('USER_5', 3, 6);
 
 INSERT INTO ESTADO_CLIENTE (DESCRIPCION)
 VALUES 
@@ -793,51 +667,6 @@ VALUES
 ('Coupe');
 
 
-INSERT INTO CLIENTE (
-    RUT_CLIENTE, NOM_CLIENTE, TIPO_CLIENTE, DIRECCION_CLIENTE, COMUNA_CLIENTE, 
-    CIUDAD_CLIENTE, PAIS_CLIENTE, EMAIL_CLIENTE, OBS_CLIENTE, TELEFONO_CLIENTE, 
-    ID_SUCURSAL, ID_TIPO_CLIENTE, ID_ESTADO_CLIENTE, ID_TALLER
-) VALUES 
-('12345678-1', 'Juan Pérez', '2', 'Calle Principal 123', 'Concepción', 'Concepción', 'Chile', 'juan.perez@gmail.com', 'Cliente regular', '912345678', 1, 2, 1, 1),
-('23456789-2', 'María López', '3', 'Av. Las Flores 456', 'Talca', 'Talca', 'Chile', 'maria.lopez@hotmail.com', 'Primer cliente', '922345678', 1, 3, 1, 1),
-('34567890-3', 'Carlos García', '1', 'Camino Real 789', 'Chillán', 'Chillán', 'Chile', 'carlos.garcia@yahoo.com', 'Ninguna observación', '933345678', 1, 1, 1, 1),
-('45678901-4', 'Ana Castillo', '2', 'Calle Sur 321', 'Los Ángeles', 'Los Ángeles', 'Chile', 'ana.castillo@gmail.com', 'Requiere seguimiento', '944345678', 1, 2, 1, 1),
-('56789012-5', 'Pedro González', '3', 'Av. Norte 654', 'San Pedro', 'San Pedro', 'Chile', 'pedro.gonzalez@outlook.com', 'Sin observaciones', '955345678', 1, 3, 1, 1),
-('67890123-6', 'Laura Díaz', '2', 'Paseo Central 987', 'Concepción', 'Concepción', 'Chile', 'laura.diaz@gmail.com', 'Cliente frecuente', '966345678', 1, 2, 1, 1),
-('78901234-7', 'Jorge Silva', '1', 'Calle Esquina 147', 'Hualpén', 'Hualpén', 'Chile', 'jorge.silva@yahoo.com', 'Ninguna', '977345678', 1, 1, 1, 1),
-('89012345-8', 'Elena Soto', '2', 'Avenida Industrial 258', 'Talcahuano', 'Talcahuano', 'Chile', 'elena.soto@gmail.com', 'Cliente nuevo', '988345678', 1, 2, 1, 1),
-('90123456-9', 'Luis Fernández', '3', 'Camino Viejo 369', 'Coronel', 'Coronel', 'Chile', 'luis.fernandez@outlook.com', 'Pide descuentos', '999345678', 1, 3, 1, 1),
-('11234567-0', 'Sofía Muñoz', '2', 'Calle Comercio 741', 'Concepción', 'Concepción', 'Chile', 'sofia.munoz@gmail.com', 'Sin observaciones', '912456789', 1, 2, 1, 1),
-('12234567-1', 'Andrés Herrera', '1', 'Av. Independencia 852', 'Tomé', 'Tomé', 'Chile', 'andres.herrera@gmail.com', 'Cliente leal', '922456789', 1, 1, 1, 1),
-('13234567-2', 'Camila Reyes', '3', 'Paseo Urbano 963', 'Lota', 'Lota', 'Chile', 'camila.reyes@hotmail.com', 'Solicita facturas', '932456789', 1, 3, 1, 1),
-('14234567-3', 'Ricardo Ortiz', '2', 'Calle Norte 159', 'Arauco', 'Arauco', 'Chile', 'ricardo.ortiz@yahoo.com', 'Cliente habitual', '942456789', 1, 2, 1, 1),
-('15234567-4', 'Gabriela Vargas', '1', 'Av. Universidad 951', 'Concepción', 'Concepción', 'Chile', 'gabriela.vargas@gmail.com', 'Cliente frecuente', '952456789', 1, 1, 1, 1),
-('16234567-5', 'Manuel Vega', '3', 'Calle Pinos 753', 'San Pedro', 'San Pedro', 'Chile', 'manuel.vega@hotmail.com', 'Cliente de promoción', '962456789', 1, 3, 1, 1),
-('17234567-6', 'Valentina Fuentes', '2', 'Paseo Laguna 357', 'Hualqui', 'Hualqui', 'Chile', 'valentina.fuentes@gmail.com', 'Recomienda amigos', '972456789', 1, 2, 1, 1),
-('18234567-7', 'Pablo Morales', '1', 'Av. Peatonal 654', 'Concepción', 'Concepción', 'Chile', 'pablo.morales@outlook.com', 'Cliente satisfecho', '982456789', 1, 1, 1, 1),
-('19234567-8', 'Fernanda Rojas', '3', 'Calle Industrial 258', 'Talcahuano', 'Talcahuano', 'Chile', 'fernanda.rojas@gmail.com', 'Cliente frecuente', '992456789', 1, 3, 1, 1),
-('20234567-9', 'Daniel Cáceres', '2', 'Calle Lago 789', 'Chiguayante', 'Chiguayante', 'Chile', 'daniel.caceres@yahoo.com', 'Solicita cotización', '902456789', 1, 2, 1, 1),
-('21234567-0', 'Claudia Pino', '1', 'Av. Central 963', 'Santa Juana', 'Santa Juana', 'Chile', 'claudia.pino@gmail.com', 'Cliente habitual', '912567890', 1, 1, 1, 1),
-('22234567-1', 'Mario Figueroa', '3', 'Paseo Las Lomas 147', 'Concepción', 'Concepción', 'Chile', 'mario.figueroa@outlook.com', 'Recomienda servicios', '922567890', 1, 3, 1, 1),
-('23234567-2', 'Isabel Morales', '2', 'Av. Italia 369', 'Chiguayante', 'Chiguayante', 'Chile', 'isabel.morales@gmail.com', 'Cliente leal', '932567890', 1, 2, 1, 1),
-('24234567-3', 'Héctor Sandoval', '1', 'Calle Laguna 852', 'Hualpén', 'Hualpén', 'Chile', 'hector.sandoval@hotmail.com', 'Requiere seguimiento', '942567890', 1, 1, 1, 1),
-('25234567-4', 'Carmen Araya', '3', 'Paseo Comercial 123', 'San Pedro', 'San Pedro', 'Chile', 'carmen.araya@gmail.com', 'Pide descuentos', '952567890', 1, 3, 1, 1),
-('26234567-5', 'Felipe Guzmán', '2', 'Av. Las Palmeras 456', 'Coronel', 'Coronel', 'Chile', 'felipe.guzman@yahoo.com', 'Cliente nuevo', '962567890', 1, 2, 1, 1),
-('27234567-6', 'Lorena Olivares', '1', 'Calle Universidad 789', 'Concepción', 'Concepción', 'Chile', 'lorena.olivares@gmail.com', 'Cliente satisfecho', '972567890', 1, 1, 1, 1),
-('28234567-7', 'Roberto Jara', '3', 'Av. Andes 963', 'Talca', 'Talca', 'Chile', 'roberto.jara@hotmail.com', 'Ninguna', '982567890', 1, 3, 1, 1),
-('29234567-8', 'Francisca Soto', '2', 'Calle Lago 147', 'Talcahuano', 'Talcahuano', 'Chile', 'francisca.soto@gmail.com', 'Cliente frecuente', '992567890', 1, 2, 1, 1),
-('30234567-9', 'Cristóbal Rojas', '1', 'Av. Comercio 753', 'Chiguayante', 'Chiguayante', 'Chile', 'cristobal.rojas@outlook.com', 'Cliente leal', '902567890', 1, 1, 1, 1),
-('31234567-0', 'Paola Salazar', '3', 'Paseo Norte 258', 'Concepción', 'Concepción', 'Chile', 'paola.salazar@gmail.com', 'Recomienda servicios', '912678901', 1, 3, 1, 1),
-('32234567-1', 'Gonzalo Medina', '2', 'Av. Sur 654', 'San Pedro', 'San Pedro', 'Chile', 'gonzalo.medina@yahoo.com', 'Sin observaciones', '922678901', 1, 2, 1, 1),
-('33234567-2', 'Tamara Sáez', '1', 'Calle Los Ríos 369', 'Hualpén', 'Hualpén', 'Chile', 'tamara.saez@gmail.com', 'Cliente habitual', '932678901', 1, 1, 1, 1),
-('34234567-3', 'Fabián Parra', '3', 'Paseo Central 789', 'Chillán', 'Chillán', 'Chile', 'fabian.parra@hotmail.com', 'Cliente nuevo', '942678901', 1, 3, 1, 1),
-('35234567-4', 'Beatriz Campos', '2', 'Av. Independencia 147', 'Concepción', 'Concepción', 'Chile', 'beatriz.campos@gmail.com', 'Sin observaciones', '952678901', 1, 2, 1, 1),
-('36234567-5', 'Javiera Leiva', '1', 'Calle Universidad 852', 'Tomé', 'Tomé', 'Chile', 'javiera.leiva@hotmail.com', 'Solicita cotización', '962678901', 1, 1, 1, 1),
-('37234567-6', 'Matías Miranda', '3', 'Av. Comercio 456', 'Hualqui', 'Hualqui', 'Chile', 'matias.miranda@gmail.com', 'Cliente habitual', '972678901', 1, 3, 1, 1),
-('38234567-7', 'Alejandra Rivera', '2', 'Calle Comercio 951', 'Concepción', 'Concepción', 'Chile', 'alejandra.rivera@gmail.com', 'Cliente nuevo', '982678901', 1, 2, 1, 1);
-
-
-
 INSERT INTO TIPO_PROVEEDOR (DESCRIPCION_TIPO_PROVEEDOR) VALUES
 ('Piezas'),
 ('Herramientas'),
@@ -847,21 +676,6 @@ INSERT INTO TIPO_PROVEEDOR (DESCRIPCION_TIPO_PROVEEDOR) VALUES
 ('Maquinarias'),
 ('Materiales de Construcción');
 
-
-INSERT INTO SUBMODULO (ID_MODULO, NOMBRE_SUBMODULO) VALUES (1, 'PROVEEDORES');
-UPDATE SUBMODULO
-SET NOMBRE_SUBMODULO = 'EMPLEADOS'
-where ID_SUBMODULO = 5
-
-
-SELECT * FROM SUBMODULO
-
-INSERT INTO PANTALLAS_USUARIO (ID_USUARIO, ID_MODULO, ID_SUBMODULO)
-VALUES
-('USER_0', 1, 5)
-
-
--- Inserción en la tabla NOTIFICACIONES
 INSERT INTO NOTIFICACIONES (
     TITULO_NOTIFICACION, 
     DESCRIPCION_NOTIFICACION, 
@@ -878,5 +692,5 @@ INSERT INTO USUARIO_NOTIFICACION (
     VISIBILIDAD_NOTIFICACION, 
     TIEMPO_ESPERA_NOTIFICACION
 ) VALUES 
-    ('USER_0', 1, TRUE, 'Sin tiempo de espera'),
+    ('USER_5', 1, TRUE, 'Sin tiempo de espera'),
     ('USER_1', 1, TRUE, 'Sin tiempo de espera');

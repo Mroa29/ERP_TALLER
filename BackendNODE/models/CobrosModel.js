@@ -143,7 +143,7 @@ const Cobro = {
       const { rows } = await pool.query(query, [idPresupuesto]);
       return rows.length ? rows[0].total_cobrado : 0;
     } catch (error) {
-      console.error("Error al obtener total cobrado:", error);
+      console.error("Error al obtener total cobrado por presupuesto:", error);
       throw error;
     }
   },
@@ -177,7 +177,7 @@ const Cobro = {
       const result = await pool.query(query, values);
       return result.rows[0].total_cobrado || 0;
     } catch (error) {
-      console.error('Error al obtener la suma total cobrada:', error);
+      console.error('Error al obtener la suma total cobrada por taller :', error);
       throw error;
     }
   }
